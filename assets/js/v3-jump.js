@@ -38,6 +38,8 @@
     if(block==="center"){ var avail=innerHeight-th-bh; y=r.top+scrollY-th-Math.max(GAP,(avail-r.height)/2) }
     else if(block==="nearest"||block==="end"){ if(r.top>=th && r.bottom<=innerHeight-bh) return; y=(r.top<th||block==="nearest"&&r.height>innerHeight-th-bh)?r.top+scrollY-th-GAP:r.bottom+scrollY-(innerHeight-bh)+GAP }
     else y=r.top+scrollY-th-(m==="none"?0:GAP);
+    // v7: a jump down the page slides the header away (scroll up to bring it back); close to the top the header stays
+    if(m==="hdr" && topMode(L)==="hdr" && hdr && block==="start"){ var yh=r.top+scrollY-GAP; if(yh>hdr.offsetHeight+160){ y=yh; m="hide" } }
     y=Math.max(0,Math.round(y)); setHeader(m);
     window.scrollTo({top:y,behavior:(opt.behavior==="smooth"&&!reduce.matches)?"smooth":"instant"});
     if(opt.inline && opt.inline!=="nearest") try{ orig.call(el,{block:"nearest",inline:opt.inline,behavior:"auto"}) }catch(e){}

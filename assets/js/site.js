@@ -255,7 +255,7 @@
     var ends=$$(".formsec, footer.foot"), vis=new Set();
     var endObs=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) vis.add(e.target); else vis.delete(e.target) }); nearEnd=vis.size>0; sync() });
     ends.forEach(function(el){ endObs.observe(el) });
-    window.addEventListener("scroll",function(){ if(stk.classList.contains("show")) requestAnimationFrame(place) },{passive:true});
+    window.addEventListener("scroll",function(){ var p=trig.getBoundingClientRect().bottom<0; if(p!==past){ past=p; sync() } if(stk.classList.contains("show")) requestAnimationFrame(place) },{passive:true});
     if(hdr) hdr.addEventListener("transitionend",place);
     // scroll spy for the in-page anchors
     var links=$$(".sa a",stk), secs=links.map(function(a){return document.getElementById(a.getAttribute("href").slice(1))});
