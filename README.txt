@@ -1,0 +1,8 @@
+Crown Pavilions: concept prototype (phase 1). Not a live site.
+Open index.html in a browser (works straight from the unzipped folder), or serve the folder from any static web server.
+Full pages: Homepage, Gazebos & Pavilions hub and its four range pages (Classic, Glazed, Insulated, Garden Shelters), Garden Rooms hub, Contemporary collection, Heritage collection (with a 2D design generator and an 'Explore in 3D' link to Crown's planner).
+Gazebos hub: 'Find your pavilion' grid of every model, filtered by range, price and seats. Deep links pre-filter it, e.g. gazebos/index.html#range-glazed.
+Added 2 Oct 2026 (Matthew's picks): Visit Us hub + a page per show site with an appointment request by preferred times; Your Project timeline with a 'Where are you?' chooser and four step pages (How it works, Planning, Prices & finance, Guarantee & aftercare); Inspiration masonry gallery with lightbox; Ideas by use; site search (magnifier); 'Send me this design' panels; 'Step inside' film strips (films TBC); tick-to-compare on the gazebo finder; one smart enquiry form with a call-back option; new footer; back link + switcher instead of breadcrumbs; mobile bottom bar Call · Visit · Brochure.
+Sandringham, Clarence, Buckingham, Bespoke and the planning guide are still 'Coming soon in the prototype' stubs. Forms check your entries and go to the thank-you page or show a confirmation; nothing is sent (the live build would post model, postcode and source into Capsule CRM).
+No external scripts, fonts, trackers or analytics. noindex/nofollow on every page; robots.txt disallows all.
+Facts from crownpavilions.com, checked 1 Oct 2026. TBC = to be confirmed.

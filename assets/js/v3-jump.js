@@ -1,0 +1,85 @@
+/* proto-awesomeo v3: in-page jumps and auto-scrolls land on the usable content, not the section heading.
+   Loaded before site.js so every scrollIntoView (site.js, pa.js, generator) goes through here.
+   - Top offset = what is actually pinned at the top after the jump: the sticky site header, or on collection
+     pages at >=1080px the slim .stk bar (the header slides away while you move down the page).
+   - Bottom offset = any visible bottom bar (.mbar / .pabar / mobile .stk / configurator footer).
+   - Landing block: [data-land] inside the target if present, else the block after a section's .secthead. */
+(function(){
+  "use strict";
+  var D=document, root=D.documentElement, GAP=12, orig=Element.prototype.scrollIntoView;
+  var desk=window.matchMedia("(min-width:1080px)"), reduce=window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hdr=null, stk=null, want=null, lockUntil=0;
+  function q(s){return D.querySelector(s)}
+  function vis(e){ if(!e) return false; var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden") return false; var r=e.getBoundingClientRect(); return r.height>0 && r.bottom>0 && r.top<innerHeight }
+  function inCfg(el){ return !!(el && el.closest && el.closest(".ccfg")) }
+  function topMode(el){ // "stk" (collection page, desktop), "none" (configurator hides the bars) or "hdr"
+    stk=stk||q(".stk"); if(stk && desk.matches) return inCfg(el)?"none":"stk"; return "hdr" }
+  function topH(el){ hdr=hdr||q(".site-h"); var m=topMode(el); if(m==="none") return 0; if(m==="stk") return stk.offsetHeight||58; return hdr?hdr.offsetHeight:0 }
+  function botH(){ var h=0; [".mbar.show",".pabar.show",".stk.show"].forEach(function(s){ var e=q(s); if(e && vis(e)){ var r=e.getBoundingClientRect(); if(r.bottom>=innerHeight-2) h=Math.max(h,innerHeight-r.top) } }); return h }
+  function land(el){
+    if(!el) return el;
+    if(el.hasAttribute("data-land-self")) return el;
+    var t=el.querySelector("[data-land]"); if(t && t.offsetParent) return t;
+    if(/^H[1-4]$/.test(el.tagName)){ var s=el.closest("section"); if(s && s.querySelector(".secthead")) return land(s); return el }
+    var sh=el.matches("section, .sec")?el.querySelector(".secthead"):null;
+    if(sh){ var n=sh.nextElementSibling; while(n && (n.hidden||!n.offsetHeight||n.tagName==="SCRIPT")) n=n.nextElementSibling; if(n) return n }
+    if(el.tagName==="SECTION"){ // no .secthead: skip the section's top padding and land on its first block
+      var w=el.querySelector(":scope > .wrap")||el, f=w.firstElementChild; while(f && (f.hidden||!f.offsetHeight||f.tagName==="SCRIPT"||f.classList.contains("anc"))) f=f.nextElementSibling; if(f) return f }
+    return el;
+  }
+  function stkWill(y){ var t=q("[data-sticky-trigger]"); if(!t) return false; if(t.getBoundingClientRect().bottom+scrollY>y) return false;
+    var ends=D.querySelectorAll(".formsec, footer.foot"); for(var i=0;i<ends.length;i++){ var b=ends[i].getBoundingClientRect(), tp=b.top+scrollY; if(tp<y+innerHeight && tp+b.height>y) return false } return true }
+  function setHeader(mode){ hdr=hdr||q(".site-h"); if(!hdr) return; want=(mode==="hdr")?"show":"hide"; lockUntil=Date.now()+6000; apply() }
+  function apply(){ if(!hdr||!want||Date.now()>lockUntil) return; var h=hdr.classList.contains("hid"); if(want==="hide" && !h) hdr.classList.add("hid"); else if(want==="show" && h) hdr.classList.remove("hid") }
+  function go(el,opt){
+    opt=opt||{}; var L=land(el), m=topMode(L), th=topH(L), bh=botH(), r=L.getBoundingClientRect(), y, block=opt.block||"start";
+    // the slim .stk bar only shows once the hero CTA has scrolled away and the form/footer are off screen: if it will not, keep the header
+    if(m==="stk" && !stkWill(r.top+scrollY-th-GAP)){ m="hdr"; th=hdr?hdr.offsetHeight:0 }
+    if(block==="center"){ var avail=innerHeight-th-bh; y=r.top+scrollY-th-Math.max(GAP,(avail-r.height)/2) }
+    else if(block==="nearest"||block==="end"){ if(r.top>=th && r.bottom<=innerHeight-bh) return; y=(r.top<th||block==="nearest"&&r.height>innerHeight-th-bh)?r.top+scrollY-th-GAP:r.bottom+scrollY-(innerHeight-bh)+GAP }
+    else y=r.top+scrollY-th-(m==="none"?0:GAP);
+    y=Math.max(0,Math.round(y)); setHeader(m);
+    window.scrollTo({top:y,behavior:(opt.behavior==="smooth"&&!reduce.matches)?"smooth":"instant"});
+    if(opt.inline && opt.inline!=="nearest") try{ orig.call(el,{block:"nearest",inline:opt.inline,behavior:"auto"}) }catch(e){}
+  }
+  window.__v3jump={go:go,land:land,topH:topH,botH:botH};
+  Element.prototype.scrollIntoView=function(o){
+    // horizontal-only scrollers (tab strips, tables) keep the native behaviour
+    if(this.closest("[data-hscroll]")) return orig.apply(this,arguments);
+    var opt=(typeof o==="object"&&o)?o:{block:o===false?"end":"start"}; go(this,opt);
+  };
+  // keep the header in the state the jump expects while the scroll settles (site.js toggles it on scroll direction)
+  var mo=new MutationObserver(apply);
+  // the lock holds until the visitor scrolls by hand (wheel, touch, keys), so site.js's scroll-direction rule
+  // cannot slide the header over the content we just landed on
+  function release(){ lockUntil=0 }
+  ["wheel","touchstart","keydown","mousedown"].forEach(function(t){ window.addEventListener(t,function(e){ if(t==="keydown" && !/^(Arrow|Page|Home|End| )/.test(e.key)) return; if(t==="mousedown" && e.target.closest && e.target.closest("a,button")) return; release() },{passive:true,capture:true}) });
+  function boot(){ hdr=q(".site-h"); stk=q(".stk"); if(hdr) mo.observe(hdr,{attributes:true,attributeFilter:["class"]}); sync() }
+  // CSS fallbacks: scroll-margin/padding = the real pinned heights
+  function sync(){ root.style.setProperty("--toph",(topH(null)+GAP)+"px"); root.style.setProperty("--both",botH()+"px") }
+  window.addEventListener("resize",sync); window.addEventListener("scroll",function(){ if(Date.now()>lockUntil) return; requestAnimationFrame(apply) },{passive:true});
+  if(D.readyState==="loading") D.addEventListener("DOMContentLoaded",boot); else boot();
+  function special(h){ return /^(range|seats|model)-/.test(h) || !!q('[role=tab][data-hash="'+h+'"]') }
+  // same-page links: land on the content (site.js keeps its own handling for filters, model cards and tab hashes)
+  D.addEventListener("click",function(e){
+    var a=e.target.closest && e.target.closest("a[href*='#']"); if(!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    if(a.pathname!==location.pathname || a.search!==location.search) return;
+    var h=decodeURIComponent(a.hash.slice(1)); if(!h || h==="main" || special(h)) return;
+    var el=D.getElementById(h); if(!el) return;
+    e.preventDefault(); if(history.pushState && location.hash!=="#"+h) history.pushState(null,"","#"+h);
+    go(el,{behavior:"smooth"});
+  });
+  // arriving with a #hash (cross-page links such as "Compare all collections"): re-align once layout has settled
+  function arrive(){ var h=decodeURIComponent(location.hash.slice(1)); if(!h || h==="main" || /^(range|seats)-/.test(h)) return; var el=D.getElementById(h);
+    var t=q('[role=tab][data-hash="'+h+'"]'); if(t) el=t.closest("section");
+    if(el) go(el,{block:/^model-/.test(h)?"center":"start"}) }
+  window.addEventListener("load",function(){ setTimeout(arrive,140) });
+  // main nav (desktop, mouse): hovering "Gazebos & Pavilions" / "Garden Rooms" opens the ribbon as before; clicking goes to
+  // that ribbon's "View all" page. Keyboard (Enter/Space) and touch keep the disclosure behaviour.
+  var fine=window.matchMedia("(hover:hover) and (pointer:fine)");
+  D.addEventListener("click",function(e){
+    var b=e.target.closest && e.target.closest(".nav button[aria-controls^=mega-]"); if(!b || !e.detail || !fine.matches || !desk.matches) return;
+    var v=D.querySelector("#"+b.getAttribute("aria-controls")+" .ribf a.rs"); if(!v) return;
+    e.preventDefault(); e.stopImmediatePropagation(); location.href=v.href;
+  },true);
+})();

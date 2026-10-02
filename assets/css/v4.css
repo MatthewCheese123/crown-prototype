@@ -1,0 +1,117 @@
+/* proto-awesomeo v4: Matthew's condense picks (2 Oct 2026). Loaded after v3.css on every page. */
+
+/* ---------- 1. Gazebo selector: compact grid, one sticky filter line ---------- */
+.finder.v4f{padding-top:56px;padding-bottom:64px}
+.v4f .secthead{margin-bottom:14px}
+.v4f .filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px 26px;padding:9px 16px;margin-top:0;z-index:20;transition:top .3s ease}
+.v4f .filters .frow{display:contents}
+.v4f .filters .fg{gap:6px}
+.v4f .filters .fg .fl{font-size:10.5px;margin-right:3px}
+.v4f .filters .fg .chip{padding:4px 11px}
+@media (min-width:900px){
+ .v4f .filters{position:sticky;top:var(--hdrvis,0px);box-shadow:0 6px 14px -12px rgba(13,42,30,.35)}
+}
+.v4f .mgrp{margin-top:24px;scroll-margin-top:calc(var(--hdrvis,0px) + 70px)}
+.v4f .lgh{align-items:baseline;gap:4px 14px;padding-bottom:7px;margin-bottom:12px;justify-content:flex-start}
+.v4f .lgh>div{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.v4f .lgh h3{font-size:23px}
+.v4f .lgh .sub{display:inline;margin:0;font-size:13px}
+.v4f .lgh .pk{font-size:12.5px;line-height:1.4;color:#3d4a40;background:#f3f6f1;border-left:3px solid var(--f);padding:2px 8px}
+.v4f .lgh>.lnk{margin-left:auto}
+.v4f .g6{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:640px){.v4f .g6{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:900px){.v4f .g6{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1100px){.v4f .g6{grid-template-columns:repeat(6,1fr)}}
+.v4f .g6 .card>img{aspect-ratio:3/2}
+.v4f .g6 .card .tx{padding:9px 11px 6px}
+.v4f .g6 .card .tag2{display:none}
+.v4f .g6 .card h4{font-size:16.5px;margin:0 0 2px;line-height:1.2}
+.v4f .g6 .card .tx>p{font-size:12.5px!important;color:#666;margin:0 0 4px!important}
+.v4f .g6 .card .fp{font-size:13px}.v4f .g6 .card .fp b{font-size:15px}
+.v4f .g6 .card .inc{font-size:11.5px;padding:3px 7px;margin:4px 0 4px!important}
+.v4f .mgrp[data-pk] .g6 .card .inc{display:none}
+.v4f .g6 .cfoot{padding-bottom:0!important;padding-top:4px;margin-top:auto;border-top:1px solid #eee7d8;gap:4px;flex-wrap:nowrap}
+.v4f .g6 .cfoot .lnk{font-size:12px;white-space:nowrap}
+.v4f .g6 .cmpk{min-height:36px;font-size:12px;gap:6px;white-space:nowrap}
+.v4f .g6 .cmpk input{width:17px;height:17px}
+.v4f .soonln{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:#fff;border:1px dashed var(--g);padding:10px 16px;font-size:13.5px;color:#555}
+.v4f .soonln b{font-family:Optima,Georgia,serif;font-weight:400;font-size:17px;color:var(--f)}
+.v4f .soonln .lnk{margin-left:auto;font-size:13px}
+.v4f .soonln[hidden]{display:none}
+
+/* ---------- 2. Compare opens as a sheet over the grid ---------- */
+.cmpscrim{position:fixed;inset:0;z-index:150;background:rgba(13,30,22,.5)}
+.cmpscrim[hidden]{display:none}
+.v4f .cmpp{position:fixed;z-index:151;left:50%;transform:translateX(-50%);bottom:84px;width:min(1000px,calc(100% - 40px));max-height:calc(100vh - 120px);overflow:auto;margin:0;box-shadow:0 18px 50px rgba(0,0,0,.35);padding:16px 22px;overscroll-behavior:contain}
+.v4f .cmpp .cmpt th img{max-height:110px;width:auto;max-width:100%}
+body.cmp-open .cmptray{z-index:152}
+html.cmp-lock,html.cmp-lock body{overflow:hidden}
+@media (max-width:639px){
+ .v4f .cmpp{left:0;right:0;transform:none;width:auto;bottom:0;max-height:88vh;padding:14px 14px 18px;border-radius:10px 10px 0 0}
+ body.cmp-open .cmptray{display:none}
+}
+
+/* ---------- 3. Gazebo range table: slim sticky header ---------- */
+.ct.v4slim thead th{padding-bottom:12px;padding-top:8px;vertical-align:bottom}
+.ct.v4slim thead th h4{margin-top:0}
+.ct.v4slim thead th h4 .csoon{display:block;font:600 10.5px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-top:4px}
+.ct.v4slim thead th,.ct.v4slim thead td{border-bottom:2px solid var(--f)}
+@media (min-width:900px){
+ .tscroll.v4stick{overflow:visible}
+ .ct.v4slim thead th,.ct.v4slim thead td{position:sticky;top:var(--hdrvis,0px);z-index:3;background:#fff;box-shadow:inset 0 -2px 0 var(--f),0 6px 10px -8px rgba(0,0,0,.25);transition:top .3s ease}
+}
+
+/* ---------- 4. Garden room comparison: clickable images, one "on all five" line ---------- */
+.ct a.gcol{display:block;color:inherit;text-decoration:none}
+.ct a.gcol .gim{display:block;position:relative;overflow:hidden}
+.ct a.gcol img{display:block;transition:transform .35s ease}
+.ct a.gcol .gcue{position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--f);display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:all .25s ease}
+.ct a.gcol .gcue span{display:none;font:600 11.5px Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-right:6px}
+.ct a.gcol:hover img,.ct a.gcol:focus-visible img{transform:scale(1.05)}
+.ct a.gcol:hover .gcue,.ct a.gcol:focus-visible .gcue{width:auto;padding:0 12px;border-radius:15px;background:var(--f);color:#fff}
+.ct a.gcol:hover .gcue span,.ct a.gcol:focus-visible .gcue span{display:inline}
+.ct a.gcol:hover h4,.ct a.gcol:focus-visible h4{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--g)}
+.ct a.gcol h4{margin-top:10px}
+.ct tr.allin th[scope=row]{color:var(--gd)}
+.ct tr.allin td{background:#f6f2ea!important;padding-top:10px;padding-bottom:10px}
+.ct tr.allin ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;color:#3d4a40}
+.ct tr.allin li i{font-style:normal;color:var(--gd);font-weight:700;margin-right:6px}
+
+/* ---------- 5. Configurators: shorter drawing, notes removed ---------- */
+@media (min-width:1000px){ section.sec.v3c{--svgh:clamp(220px,calc(100vh - 500px),300px)} }
+.v3c .stnote,.v3c .kfoot,.v3c .hgs-foot,.v3c .bp:first-child>.mini{display:none!important}
+.v3c.sec,section.v3c{padding-top:56px}
+.v3c .chead{margin-bottom:14px}
+
+/* ---------- 6. Book a visit: compact tiles, side-by-side steps ---------- */
+.pagrid .paopt .hr{display:none}
+.pagrid .paopt:has(input:checked) .hr{display:block}
+.pagrid .paopt{padding:10px 14px}
+@media (min-width:900px){
+ .pabook>div:first-child{display:grid;grid-template-columns:1fr 1fr;column-gap:30px;align-content:start}
+ .pabook>div:first-child>.pastep{grid-column:1/-1;padding:20px 0}
+ .pabook>div:first-child>.pastep[data-step="2"]{grid-column:1}
+ .pabook>div:first-child>.pastep[data-step="3"]{grid-column:2;border-top:1px solid var(--ln)}
+ .pabook>div:first-child>.pastep:first-child{padding-top:0}
+ .pabook .pastep[data-step="2"] .why,.pabook .pastep[data-step="3"] .why{margin-left:50px}
+ .pabook .pastep[data-step="4"]{display:grid;grid-template-columns:1fr 1fr;column-gap:18px;align-items:start}
+ .pabook .pastep[data-step="4"]>:not(.paf){grid-column:1/-1}
+ .pabook .pastep[data-step="4"]>.pasubmit{justify-self:start}
+ .pabook .pastep>h3{font-size:23px}
+}
+
+/* ---------- 7. Your Project: 2 x 2 step cards ---------- */
+@media (min-width:900px){
+ .ytl{display:grid;grid-template-columns:1fr 1fr;gap:22px 26px}
+ .ytl:before{display:none}
+ .yps{padding:0!important;background:#fff;border:1px solid var(--ln);gap:0;align-content:start}
+ .yps .ypt{order:0;padding:16px 18px 18px}
+ .yps .ypi{order:-1}
+ .yps .ypi img{aspect-ratio:16/7}
+ .yps .ypn{display:none}
+ .yps h2{font-size:26px!important}
+ .yps p{margin-bottom:12px}
+ .yps.on{border-color:var(--g);box-shadow:inset 0 0 0 2px var(--g)}
+ .yps.on .ypi img{outline:0}
+}
+@media (min-width:1000px){ .v3c #hg-svg,.v3c #ct-svg{height:var(--svgh,300px)} }
