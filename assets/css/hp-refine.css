@@ -1,0 +1,301 @@
+/* Hampton refine (direction A, consensus 2 Oct 2026). Source: review/hampton-ui-refine/site/mock + tools/clara_fixes.css */
+/* Hampton UI refine: shared layer for directions A/B/C (review mockups only) */
+:root{--rf-g:#123627;--rf-gd:#0d2a1e;--rf-cr:#F7F5F2;--rf-au:#C9A86B;--rf-al:#E8D7B3;--rf-ln:#d9d2c3;--rf-mu:#5b6b60}
+.util{display:none!important}
+.rfgst,.gst{color:var(--rf-au);letter-spacing:1px}
+.tbc{font-size:.8em;font-weight:600;color:#8a6d36;border-bottom:1px dotted #8a6d36;margin-left:2px}
+/* hero additions (Arthur) */
+#hero .prc{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+#hero .pctx{flex-basis:100%;font-size:14px;color:#4a4a44;line-height:1.5}
+.rfbase{margin:10px 0 0;font-size:14px;line-height:1.55;color:#4a4a44;padding-left:12px;border-left:2px solid var(--rf-al)}
+.rftrust{margin:12px 0 0;font-size:13.5px;color:#4a4a44}.rftrust a{color:var(--rf-g);font-weight:600}
+.rfcta{display:flex;align-items:center;gap:22px;margin-top:20px;flex-wrap:wrap}
+.rfcta .lnk{font-weight:600;color:var(--rf-g)}
+.rfsee{margin:14px 0 0;font-size:13.5px;color:#555}.rfsee a{color:var(--rf-g);font-weight:600}
+/* real installs strip (Arthur) */
+.rfreal{padding:44px 0 8px;background:#fff}
+.rfreal .rk{font:600 11px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8a6d36;margin-bottom:14px}
+.rfreal ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rfreal img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.rfreal li span{display:block;padding-top:8px}.rfreal b{display:block;font:500 16px Optima,Georgia,serif;color:var(--rf-g)}.rfreal small{font-size:12.5px;color:#777}
+.rfreal .lnk{display:inline-block;margin-top:14px;font-weight:600;color:var(--rf-g)}
+/* configurator shell (Clara) */
+.hpcfg .ccfg{background:var(--rf-cr);border:0}
+.hpcfg .chead{margin-bottom:18px}
+.btabs{background:transparent!important;border-bottom:1px solid var(--rf-ln)!important}
+.btabs [role=tab]{border:0!important;border-bottom:2px solid transparent!important;background:none!important;padding:10px 14px 12px!important;min-height:0!important;gap:8px!important}
+.btabs [role=tab] i{border:0!important;background:none!important;width:auto!important;flex:0 0 auto!important;height:auto!important;font:500 12px Montserrat,Arial,sans-serif!important;color:#8a8270!important;align-self:flex-start;margin-top:3px}
+.btabs [role=tab] b{font:400 16px/1.2 Optima,Georgia,serif!important;color:var(--rf-g)!important}
+.btabs [role=tab] .v{font-size:12px!important;color:#7a7466!important}
+.btabs [aria-selected=true]{border-bottom-color:var(--rf-au)!important}
+.btabs [aria-selected=true] i{color:var(--rf-g)!important;font-weight:700!important}
+.btabs .hpsum i{color:var(--rf-au)!important}
+.v6fit .ccfg .stg{padding:0!important;background:#efe9dd!important}
+.v6fit .ccfg .stagebar{display:none!important}
+.hpstage .hpbcap{font-size:12.5px;padding:30px 16px 12px}
+.bpanel{padding:28px 30px!important;background:var(--rf-cr)!important;border-left:0!important}
+.bpanel,.bpanel small,.bpanel li,.bpanel p{font-size:14.5px;line-height:1.55}
+.hpcfg .klab{font-size:11px;letter-spacing:.14em;margin:22px 0 10px;color:#8a6d36}
+.bp>*+*{margin-top:0}
+.pkcard{border:0!important;background:none!important;padding:0!important;box-shadow:none!important}
+.pkcard>b{font:400 24px Optima,Georgia,serif!important;color:var(--rf-g)}
+.pkstd{font:600 10.5px Montserrat,Arial,sans-serif!important;letter-spacing:.14em;color:#8a6d36!important}
+.hpinc{font-size:14px!important;padding-left:0!important;list-style:none}
+.hpinc li{padding:6px 0 6px 20px;border-bottom:1px solid rgba(232,215,179,.6);position:relative}
+.hpinc li::before{content:"✓";position:absolute;left:0;color:var(--rf-au);font-size:12px}
+/* one chip style (Clara) */
+.hpseg button,.hpo,.hppre button,.hpgr button,.rfleg button,.rfpre button,.hpq button{border:1px solid var(--rf-ln)!important;background:#fffdf9!important;border-radius:2px!important;box-shadow:none!important;color:var(--rf-g)!important;font-variant-numeric:tabular-nums}
+.hpseg button{min-height:44px!important;padding:8px 14px!important;font:500 14px Montserrat,Arial,sans-serif!important}
+.hpseg [aria-checked=true],.hpo[aria-checked=true],.hpgr [aria-checked=true],.rfleg [aria-checked=true],.rfpre [aria-pressed=true]{border:1.5px solid var(--rf-g)!important;background:#fff!important;color:var(--rf-g)!important;font-weight:600!important;position:relative}
+.hpseg [aria-checked=true]::after,.hpo[aria-checked=true]::after,.rfleg [aria-checked=true]::after,.rfpre [aria-pressed=true]::after{content:"✓";position:absolute;top:-8px;right:-8px;width:18px;height:18px;border-radius:50%;background:var(--rf-au);color:#fff;font:700 10px/18px Montserrat,Arial,sans-serif;text-align:center}
+.hprow{grid-template-columns:96px 1fr!important;gap:16px!important;padding:16px 0!important;border-bottom:1px solid rgba(232,215,179,.7)!important}
+.hprow>img{width:96px!important;height:72px!important}
+.hprow b{font:400 17px Optima,Georgia,serif!important}
+.hpo{padding:10px!important;grid-template-columns:96px 1fr!important}.hpo img{width:96px!important;height:66px!important}
+.hpo b{font:400 17px Optima,Georgia,serif!important}.hpo small{font-size:13.5px!important}
+.hpfd .hpo{grid-template-columns:80px 1fr!important}.hpfd .hpo img{width:80px!important;height:54px!important}
+.hpnote,.rfok{font-size:13.5px!important;color:var(--rf-mu)!important}
+.rfok{margin:18px 0 0}.rfok i{color:var(--rf-au);font-style:normal;font-weight:700;margin-right:4px}
+.rfins{margin:0 0 14px;font-size:14.5px;color:var(--rf-mu)}
+.rfk{display:block;font:600 11px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8a6d36;margin:22px 0 10px}
+/* panel legend: list rows with line symbol (Clara A) */
+.rfleg{display:grid;gap:8px}
+.rfleg button{display:grid!important;grid-template-columns:44px 1fr 52px;gap:14px;align-items:center;padding:10px 12px!important;text-align:left;cursor:pointer;font:inherit}
+.rfleg img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.rfleg .tx b{display:block;font:400 16.5px Optima,Georgia,serif;color:var(--rf-g)}
+.rfleg .tx small{display:block;font-size:13px!important;line-height:1.4;color:#6b675c}
+.rfsym{width:48px;height:22px;fill:none;stroke:var(--rf-g);stroke-width:1.5}
+.rfsym .tk{stroke-width:1}.rfsym .gl{stroke:var(--rf-au);stroke-width:2.2}
+.hpcount{font-size:13.5px!important;color:#555!important;margin-top:14px!important}
+/* quick-layout thumbnails */
+.rfpre{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rfpre button{display:grid;gap:4px;justify-items:center;padding:8px 6px 10px!important;cursor:pointer;font:inherit}
+.rfpre b{font:500 12.5px Montserrat,Arial,sans-serif;color:var(--rf-g)}
+.rfpre.big{grid-template-columns:1fr;gap:10px}
+.rfpre.big button{grid-template-columns:150px 1fr;justify-items:start;align-items:center;text-align:left;padding:10px 14px!important}
+.rfpre.big b{font:400 18px Optima,Georgia,serif}.rfpre.big small{display:block;font-size:13.5px;line-height:1.45;color:#666;margin-top:3px}
+.rfmini{width:100%;max-width:150px;height:auto;fill:none}
+.rfpre.big .rfmini{max-width:150px}
+/* fine-line plan (Clara) */
+.hpplanw{background:var(--rf-cr)!important;flex-direction:column}
+.rfplan{width:100%;height:100%;max-height:100%;fill:none}
+.rfplan .roofl{stroke:#123627;stroke-opacity:.18;stroke-width:.6}
+.rfplan .bay,.rfmini .bay{cursor:pointer}
+.rfplan .bay path,.rfmini .bay path{fill:none;stroke:var(--rf-g);stroke-width:1.5;stroke-linecap:round;transition:stroke .15s,stroke-width .15s}
+.rfmini .bay path{stroke-width:1}
+.rfplan .bay .hit{stroke:transparent!important;stroke-width:44px!important;pointer-events:stroke}
+.rfplan .bay .tk,.rfmini .bay .tk{stroke-width:1}
+.rfplan .bay .gl,.rfmini .bay .gl{stroke:var(--rf-au);stroke-width:2.6}
+.rfmini .bay .gl{stroke-width:1.6}
+.rfplan .bay .ent,.rfmini .bay .ent{stroke:none}
+.bay .sF,.bay .sB,.bay .sH{display:none}
+.bay[data-t=F] .sF,.bay[data-t=B] .sB,.bay[data-t=H] .sH{display:inline}
+.rfplan .bay:not([data-i="0"]):hover path:not(.hit),.rfplan .bay:focus-visible path:not(.hit){stroke:var(--rf-au);stroke-width:3}
+.rfplan .bay.lit{filter:drop-shadow(0 0 6px rgba(201,168,107,.9))}
+.rfplan .bay:focus{outline:none}
+.rfplan .bn{font:500 11px Montserrat,Arial,sans-serif;fill:#8a8270;stroke:none;text-anchor:middle}
+.rfplan .post,.rfmini .post{fill:var(--rf-g)}
+.rfplan .tb{stroke:#123627;stroke-opacity:.45;stroke-width:1}
+.rfplan .tl{font:italic 400 12px Optima,Georgia,serif;fill:#5f5a4f;text-anchor:middle;stroke:none}
+.rfplan .entl{font:500 11.5px Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;fill:var(--rf-g);text-anchor:middle;stroke:none}
+.rfplan .dimln{stroke:#8a8270;stroke-width:.8}
+.rfplan .dim{font:400 11.5px Montserrat,Arial,sans-serif;fill:#6b675c;text-anchor:middle;stroke:none}
+/* elevation strip (Clara B) */
+.rfelev{width:100%;padding:10px 18px 14px;border-top:1px solid var(--rf-ln);background:#fbf9f5}
+.rfelev .ek{font:600 10.5px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8a6d36;margin-bottom:6px}
+.rfelev .er{display:grid;grid-template-columns:repeat(9,1fr);gap:3px}
+.rfelev .eb{border:0;background:none;padding:0;cursor:pointer;display:grid;gap:2px;justify-items:center;font:500 10.5px Montserrat,Arial,sans-serif;color:#8a8270}
+.rfelev svg{width:100%;height:64px;fill:none;stroke:var(--rf-g);stroke-width:1.2;background:#fff}
+.rfelev .eF,.rfelev .eB,.rfelev .eH{display:none}
+.rfelev .eb[data-t=F] .eF,.rfelev .eb[data-t=B] .eB,.rfelev .eb[data-t=H] .eH{display:inline}
+.rfelev .eF rect{fill:#f1e7d3}.rfelev .eH rect:first-child{fill:#f1e7d3}
+.rfelev .gls{fill:#eef1ee;stroke:var(--rf-au);stroke-width:1}.rfelev .gli{stroke:#fff;stroke-width:2}
+.rfelev .bl{fill:var(--rf-al);stroke:none}.rfelev .beam{stroke-width:3;stroke:#8a6d36}
+.rfelev .eb:hover svg{outline:2px solid var(--rf-au)}
+/* colour swatches as round fabric chips (Clara) */
+.hpsw{grid-template-columns:repeat(6,1fr)!important;gap:8px!important}
+.hpsw button.rfsw{flex-direction:column;gap:6px;min-height:0!important;padding:4px 0!important;border:0!important;background:none!important;box-shadow:none!important;font:500 12px Montserrat,Arial,sans-serif!important;color:#555!important;text-align:center;align-items:center}
+.hpsw button.rfsw i{width:44px!important;height:44px!important;border-radius:50%;border:1px solid rgba(0,0,0,.12)!important;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.08) 0 1px,transparent 1px 3px),repeating-linear-gradient(-45deg,rgba(0,0,0,.08) 0 1px,transparent 1px 3px)}
+.hpsw button.rfsw[aria-checked=true]{color:var(--rf-g)!important;font-weight:600!important}
+.hpsw button.rfsw[aria-checked=true] i{box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--rf-au)}
+/* fabric close-up stage (Clara A) */
+.hpfab{background:var(--rf-cr)!important}
+.hpfab>.hpfi,.hpfab>.hpcap,.hpfab>.hpfn{display:none!important}
+.rffab{flex:1 1 auto;display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:1fr 1fr;gap:12px;padding:16px;min-height:0}
+.rffab figure{margin:0;display:flex;flex-direction:column;min-height:0}
+.rffab .fc{grid-row:1/3}
+.rffab .fi{flex:1 1 auto;min-height:60px;background-size:cover;background-position:center;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.rffab .weave{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px),repeating-linear-gradient(-45deg,rgba(0,0,0,.08) 0 1px,transparent 1px 3px)!important}
+.rffab .pip{background-clip:content-box;padding:0}
+.rffab figcaption{padding-top:8px;font-size:13px;color:#555}.rffab figcaption b{font:400 16px Optima,Georgia,serif;color:var(--rf-g)}
+.rffn{flex:none;margin:0;padding:0 16px 12px;font-size:12px;color:#6b675c}
+/* summary: design code + plan thumb */
+.rfcode{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;padding:10px 0 12px;border-bottom:1px solid rgba(232,215,179,.8)}
+.rfcode .rfk{margin:0 0 2px}.rfcode b{font:400 22px Optima,Georgia,serif;color:var(--rf-g);letter-spacing:.06em}
+.rfcode small{display:block;font-size:12px!important;color:#666;line-height:1.4}
+.rfthumb svg{width:110px;height:auto}
+.hpsumm h3{font:400 24px Optima,Georgia,serif!important}
+.hplines b{font:400 15.5px Optima,Georgia,serif!important}
+.hplines .lp{font-variant-numeric:tabular-nums;font-weight:500!important}
+.hptot b{font-size:34px!important}
+/* slim sticky price bar, 64px (Clara) */
+.hpcfg .bfoot{min-height:64px;padding:8px 22px!important;grid-template-columns:auto 1fr auto!important;gap:4px 22px!important;border-top:0!important;background:var(--rf-g)!important;align-items:center}
+.hpcfg .bfoot .bfl{display:flex;align-items:baseline;gap:12px;flex-wrap:nowrap}
+.hpcfg .bfoot .pk{font-size:11px!important;letter-spacing:.12em;color:#e9e1cf!important}
+.hpcfg .bfoot [data-hpo=total]{font-size:26px!important;color:var(--rf-au)!important;display:inline!important}
+.hpcfg .bfoot [data-hpo=pnote]{display:none!important}
+.hpcfg .bfoot .bfm .kproof{font-size:12.5px;color:#d9e0da;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hpcfg .bfoot .kst{color:var(--rf-au)!important}
+.hpcfg .bfoot .btn{min-height:44px!important;padding:8px 18px!important}
+/* page sticky bar: mobile Call · Visit · Brochure (Arthur) */
+.hp-stk .kst,.hp-stk .st{color:var(--rf-au)}
+@media (max-width:999px){
+ .rfreal ul{grid-template-columns:1fr 1fr 1fr;gap:8px}.rfreal b{font-size:13px}.rfreal small{display:none}
+ .bpanel{padding:20px 18px!important}
+ .btabs{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 28px),transparent)}
+ .btabs [role=tab] b{font-size:15px!important}
+ .hpsw{grid-template-columns:repeat(3,1fr)!important}
+ .rfleg button{grid-template-columns:40px 1fr 44px}
+ .rffab{grid-template-columns:1fr 1fr;grid-template-rows:180px 90px}.rffab .fc{grid-row:auto;grid-column:1/3}
+ .hpcfg .bfoot{min-height:60px;padding:8px 14px!important}.hpcfg .bfoot .bfm{display:none}
+ .hpcfg .bfoot [data-hpo=total]{font-size:22px!important}
+ .hp-stk .sb .rfm{display:inline-flex;min-height:44px;min-width:44px;align-items:center;justify-content:center;padding:6px 12px;font-size:12px}
+}
+/* iter-03 fit fixes */
+.hpcfg .chead{margin-bottom:10px!important}.hpcfg .chead h2{margin:4px 0 0!important}
+.hpcfg.sec{padding-top:40px!important}
+.rfleg button{padding:8px 12px!important}.rfleg .tx small{font-weight:400!important}
+.rfleg img{width:40px;height:40px}
+.rfplan .bay .gl{stroke:#d3b77f;stroke-width:2.2}
+.rfpre button{padding:6px 4px 8px!important}.rfpre .rfmini{max-width:120px}
+.hpcount{display:none}
+.rfprew .rfk{margin-top:16px}
+@media (min-width:1000px){.hpplanw .rfplan{max-height:440px}}
+/* iter-04 */
+.rfplan .bn{fill:#5f5a4f;font-size:12px}
+.rfpre button small,.rfpre button b{font-weight:400}
+.rfpre.big b{font-weight:400!important}
+.rffab{grid-template-columns:1fr 1fr 1fr!important;grid-template-rows:auto!important;align-content:center;padding:28px!important;gap:16px!important}
+.rffab .fc{grid-row:auto!important;grid-column:auto!important}
+.rffab .fi{flex:none!important;aspect-ratio:1/1;height:auto}
+[data-hptab="6"] .hpfab{background:url(../img/hampton/h03-1400.webp) center 60%/cover!important}
+[data-hptab="6"] .rffab,[data-hptab="6"] .rffn{display:none!important}
+@media (max-width:999px){.rffab{padding:14px!important;gap:10px!important}}
+@media (max-width:999px){
+ .hpcfg .bfoot{grid-template-columns:minmax(0,1fr) auto!important}
+ .hpcfg .bfoot .bfl{flex-wrap:wrap;gap:0 8px}.hpcfg .bfoot .pk{font-size:9.5px!important}
+ .hpcfg .bfoot .kctas .btn{padding:8px 12px!important;font-size:11px!important}
+ .hp-stk .wrap{gap:8px!important}
+ .hp-stk .sn b{display:none}
+ .hp-stk .sb{display:flex;gap:6px;flex-wrap:nowrap}
+ .hp-stk .sb .rfm{padding:6px 10px!important;font-size:11.5px!important;letter-spacing:.04em}
+}
+@media (max-width:999px){#installs .sggal ul{grid-template-columns:1fr 1fr!important;grid-auto-rows:auto!important}#installs .sggal ul li:first-child{grid-row:auto!important;grid-column:1/3}}
+@media (max-width:999px){.hpcfg .bfoot .pk{font-size:9.5px!important;letter-spacing:.12em!important}.hpcfg .bfoot .pk::after{content:none!important}}
+.hprow{grid-template-columns:80px 1fr!important;padding:12px 0!important}.hprow>img{width:80px!important;height:60px!important}
+.hpq small{display:none}
+
+/* A · Atelier: same structure as v7, refined (Clara's picks throughout) */
+.backbar .wrap{min-height:40px}
+.backbar{background:#fff;border-bottom:1px solid #eee7da}
+@media (min-width:1000px){
+ #hero .mh{grid-template-columns:minmax(0,1.35fr) 440px;gap:56px;padding:32px 0 36px}
+ #hero .gmain img{aspect-ratio:3/2;height:auto}
+}
+#hero .sgflag{display:none}
+#hero .story{font-size:16px;line-height:1.65}
+#hero .f4{border-top:1px solid #e8dfcb;border-bottom:1px solid #e8dfcb;background:none!important;padding:12px 0!important;margin-top:18px}
+#hero .f4>div{background:none!important;border:0!important}
+#hero .stc{margin-top:14px;border:0!important;background:none!important;padding:0!important}
+#hero .stc summary{padding:0!important;font-size:13.5px}
+#hero .proof{display:none}
+@media (min-width:1000px){
+ .hpcfg .ccfg{grid-template-columns:minmax(0,62fr) minmax(0,38fr)!important}
+ .hpstage{min-height:clamp(380px,100vh - 300px,520px)!important}
+}
+#installs .sggal ul{grid-template-columns:2fr 1fr 1fr!important;grid-auto-rows:190px}
+#installs .sggal ul li:first-child{grid-row:span 2}
+#installs .sggal ul li img{height:100%;object-fit:cover}
+
+/* ===== Clara's must-fixes on A (consensus, 2 Oct 2026) ===== */
+:root{--rf-chip-r:999px;--rf-card-r:8px;--rf-sel:#123627;--rf-grey:#8f8c84;--rf-lab:#4f5a52}
+/* 4 · gold only for underlines and the price */
+.hpcfg .klab,.rfk,.pkstd,.rfreal .rk,.rfelev .ek,.ribs span{color:var(--rf-lab)!important}
+.hpinc li::before,.rfok i{color:var(--rf-g)!important}
+.hpseg [aria-checked=true]::after,.hpo[aria-checked=true]::after,.rfleg [aria-checked=true]::after,.rfpre [aria-pressed=true]::after{background:var(--rf-g)!important}
+.hpsw button.rfsw[aria-checked=true] i{box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--rf-sel)!important}
+#hero .gst,.rftrust .gst,.hp-stk .kst{color:var(--rf-g)!important}
+.hpcfg .bfoot .kst{color:#E8D7B3!important}
+.rfsym .gl{stroke:#9aa9ad!important;stroke-width:1.2!important;stroke-dasharray:3 2}
+#hero .rfcta .btn,.hp-stk .sb .btn:not(.gh){background:var(--rf-g)!important;border-color:var(--rf-g)!important;color:#F7F5F2!important}
+.hpcfg .bfoot .btn:not(.gh):not(.ghl){background:#F7F5F2!important;border:1px solid #F7F5F2!important;color:var(--rf-g)!important}
+.hpcfg .bfoot .btn.gh,.hpcfg .bfoot .btn.ghl{background:transparent!important;border:1px solid rgba(247,245,242,.7)!important;color:#F7F5F2!important}
+/* 3 · one chip + radius style: chips, bar buttons and swatches all fully round; cards share one 8px radius; one border, one selected state */
+.hpseg button,.hpq button,.hpgr button,.hpcfg .bfoot .btn,.hp-stk .sb .btn,#hero .rfcta .btn{border-radius:var(--rf-chip-r)!important}
+.hpo,.rfleg button,.rfpre button,.hprow>img,.hpo img,.rfleg img{border-radius:var(--rf-card-r)!important}
+.rfleg img{border-radius:50%!important}
+.hpseg button,.hpq button,.hpgr button,.hpo,.rfleg button,.rfpre button{border:1px solid var(--rf-ln)!important}
+.hpseg [aria-checked=true],.hpq [aria-checked=true],.hpgr [aria-checked=true],.hpo[aria-checked=true],.rfleg [aria-checked=true],.rfpre [aria-pressed=true]{border:1.5px solid var(--rf-sel)!important;box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(18,54,39,.25)!important}
+.hpsw button.rfsw i{border:1px solid var(--rf-ln)!important}
+/* 4 · colour stage: a swatch row (cushion, piping, blind) instead of a full-width cushion tile */
+.rffab{display:flex!important;justify-content:center;align-items:flex-start;gap:clamp(18px,4vw,48px)!important;padding:clamp(18px,5vw,56px) 16px!important;flex-wrap:nowrap}
+.rffab figure{align-items:center;text-align:center;flex:0 0 auto}
+.rffab .fi{width:clamp(76px,11vw,132px)!important;height:auto!important;aspect-ratio:1/1;border-radius:50%!important;border:1px solid var(--rf-ln);box-shadow:0 0 0 4px #fff,0 2px 8px rgba(0,0,0,.08)!important}
+.rffab figcaption{font-size:13px}.rffab figcaption b{display:block;font-size:17px}
+.rffn{text-align:center}
+/* 2 · fine-line plan hierarchy: bays 1px mid-grey, selected bay gold 1.5-2px, labels Montserrat >= 11px (set in screen px by fit()) */
+.rfplan .bay path:not(.hit){stroke:var(--rf-grey)!important;stroke-width:1px!important;vector-effect:non-scaling-stroke}
+.rfplan .bay .gl{stroke:#9aa9ad!important;stroke-dasharray:4 3}
+.rfplan .bay .hit{vector-effect:non-scaling-stroke}
+.rfplan .bay.lit path:not(.hit),.rfplan .bay:not([data-i="0"]):hover path:not(.hit),.rfplan .bay:focus-visible path:not(.hit){stroke:var(--rf-au)!important;stroke-width:1.75px!important}
+.rfplan .bay.lit{filter:none!important}
+.rfplan .post{fill:var(--rf-grey)!important}
+.rfplan .roofl,.rfplan .tb,.rfplan .dimln{vector-effect:non-scaling-stroke}
+.rfplan .bn,.rfplan .tl,.rfplan .entl,.rfplan .dim{font-family:Montserrat,Arial,sans-serif!important;font-style:normal!important;fill:var(--rf-lab)!important;font-weight:500}
+/* 1 · mobile: bar on one line, content padded by the bar height */
+@media (max-width:999px){
+ .hpcfg .bfoot{grid-template-columns:auto 1fr auto!important;min-height:56px!important;white-space:nowrap}
+ .hpcfg .bfoot .pk{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ .hpcfg .bfoot .bfl{flex-wrap:nowrap!important}
+ .hpcfg .bfoot .kctas{display:flex;gap:6px;flex-wrap:nowrap}
+ .bpanel{padding-bottom:calc(var(--rf-bar,64px) + 20px)!important}
+ body{padding-bottom:var(--rf-stk,0px)}
+ .hp-stk .wrap{flex-wrap:nowrap!important;white-space:nowrap}
+}
+
+/* iter-14 · View in 3D preview (read-only, same line weight and palette as the plan) */
+.rf3d{margin-top:16px;border-top:1px solid var(--rf-ln);padding-top:12px}
+.rf3d summary{cursor:pointer;font:400 17px Optima,Georgia,serif;color:var(--rf-g);list-style:none;display:flex;align-items:baseline;gap:10px;min-height:44px;align-items:center}
+.rf3d summary::-webkit-details-marker{display:none}
+.rf3d summary::before{content:"+";font:500 14px Montserrat,Arial,sans-serif;width:22px;height:22px;border:1px solid var(--rf-ln);border-radius:50%;display:inline-grid;place-items:center;color:var(--rf-g)}
+.rf3d[open] summary::before{content:"−"}
+.rf3d summary small{font:500 12px Montserrat,Arial,sans-serif;color:var(--rf-mu)}
+.rf3dw{background:#fff;border:1px solid var(--rf-ln);border-radius:var(--rf-card-r,8px);padding:6px}
+.rf3dsvg{display:block;width:100%;height:auto;pointer-events:none}
+.rf3dsvg path,.rf3dsvg ellipse{vector-effect:non-scaling-stroke;stroke-width:1px}
+.rf3dsvg .f3{fill:var(--rf-cr);stroke:var(--rf-grey)}
+.rf3dsvg .r3{fill:none;stroke:var(--rf-grey);stroke-dasharray:3 3;opacity:.6}
+.rf3dsvg .cl{fill:#efe4cc;stroke:var(--rf-grey)}
+.rf3dsvg .b3:not(.on) .cl{fill-opacity:.92}
+.rf3dsvg .gl3{fill:rgba(214,226,229,.45);stroke:#9aa9ad;stroke-dasharray:4 3}
+.rf3dsvg .bl3{fill:var(--rf-al);stroke:var(--rf-grey)}
+.rf3dsvg .ln3,.rf3dsvg .po3{fill:none;stroke:var(--rf-grey)}
+.rf3dsvg .hl3{fill:none;stroke:none}
+.rf3dsvg .b3.on .hl3{stroke:var(--rf-au);stroke-width:1.75px;fill:rgba(201,168,107,.12)}
+.rf3dsvg .t3{font-family:Montserrat,Arial,sans-serif;font-weight:500;fill:var(--rf-lab);text-anchor:middle}
+.rf3dt{margin:8px 0 0;font-size:13.5px!important;color:var(--rf-mu)}
+.rf3dn{margin:2px 0 0;font-size:12.5px!important;color:#7a7466}
+
+/* in the Sides stage, under the plan: plan + preview share the stage height */
+.hpplanw{justify-content:flex-start!important;gap:0}
+.hpplanw .rf3d{width:100%;margin:0;padding:6px 16px 10px;border-top:1px solid var(--rf-ln);background:#fbf9f5}
+.hpplanw .rf3d summary{min-height:36px;font-size:15px}
+
+.rf3dbody{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px;align-items:center}
+.rf3dbody .rf3dw{border:0;padding:0;background:none}
+@media (min-width:1000px){.hpplanw .rfplan{max-height:300px!important}.rf3dsvg{max-height:150px}}
+@media (max-width:999px){.rf3dbody{grid-template-columns:1fr}.rf3dsvg{max-height:170px}}
+
+/* iter-17: keep "View in 3D" on one line; the hint wraps underneath on narrow screens */
+.rf3d summary{white-space:nowrap;flex-wrap:wrap;row-gap:0}
+.rf3d summary small{white-space:normal}

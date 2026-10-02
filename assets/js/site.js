@@ -177,7 +177,15 @@
       var m=/^(range|seats)-([a-z]+)$/.exec(location.hash.slice(1)); if(!m) return false;
       if(!fchips.some(function(x){return x.getAttribute("data-key")===m[1] && x.getAttribute("data-f")===m[2]})) return false;
       ["range","price","seats","use"].forEach(function(k){fset(k,"all")}); fset(m[1],m[2]); fapply();
-      if(scroll!==false) fsec.scrollIntoView({behavior:"instant",block:"start"});
+      if(scroll!==false){
+        // range-*: frame that group under the sticky filters; seats-*: frame the filters themselves
+        var tgt=null;
+        if(m[1]==="range") tgt=document.getElementById("range-"+m[2]);
+        if(!tgt || tgt.hidden) tgt=fnd.querySelector(".filters")||fh||fsec;
+        var J=window.__v3jump;
+        if(J&&J.go) J.go(tgt,{behavior:"instant",block:"start"});
+        else tgt.scrollIntoView({behavior:"instant",block:"start"});
+      }
       return true;
     };
     // same-page deep links (range cards, seat cards, the menu while on the hub): filter + scroll, even if the hash is unchanged

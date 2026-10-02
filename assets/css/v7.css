@@ -28,3 +28,28 @@
  .mega.mega-gr .ribl img{aspect-ratio:auto;height:clamp(150px,12.6vw,196px)}
  .mega.mega-gr .ribl .rd{min-height:2.8em}
 }
+
+/* iter mega-01: shared 5-tile grid, shallower panels (identical for Gazebos & Garden Rooms) */
+.mega.mega-gr{padding:24px 0 20px}
+.rib2.rib5,.rib2.rib-gz.rib5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:28px}
+.rib5 .rgrp:first-child{grid-column:1 / span 3}
+.rib5 .rgrp:nth-child(2){grid-column:4 / span 2}
+.rib5 .rgrp .ribl{grid-auto-flow:row;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:28px}
+.rib5 .rgrp:nth-child(2) .ribl{--n:2}
+.rib5 .ribs{height:20px;margin-bottom:14px}
+.mega.mega-gr .rib5 .ribl img{height:auto;aspect-ratio:16/9;object-position:center 60%;filter:brightness(1.02) saturate(.96)}
+.rib5 .ribl .rn{margin-top:10px;font-size:18px}
+.rib5 .ribl .rd{margin-top:4px;font-size:12.5px;min-height:2.8em}
+.rib5 .ribl .rp{padding-top:4px}
+.rib5 .ribf{margin-top:16px;padding-top:16px}
+.rib5 .ribl .rsi{font-size:10px;padding:2px 6px}
+
+/* iter 3d-link */
+.lnk3d{display:inline-flex;align-items:center;min-height:32px;margin-top:4px;font-size:13px;font-weight:600;color:var(--f);text-decoration:underline;text-decoration-color:var(--g);text-underline-offset:4px}
+.lnk3d:hover{text-decoration-thickness:2px}
+.lnk3d:focus-visible{outline:2px solid var(--f);outline-offset:3px}
+/* iter-19: keep the 3D link on one line with its arrow (it wrapped at 390) */
+.lnk3d{display:inline;line-height:1.5;min-height:0}
+.lnk3d span{white-space:nowrap}
+@media (max-width:519px){.lnk3d{display:inline-block;padding:6px 0;line-height:1.35}}
+@media (max-width:519px){.stg .stagebar:has(.lnk3d){flex-wrap:wrap;row-gap:10px}.stg .stagebar:has(.lnk3d)>div:first-child{flex:1 1 100%;overflow:visible}.stg .stagebar:has(.lnk3d)>.vtabs{flex:1 1 100%;margin-left:0}.stg .stagebar:has(.lnk3d)>.vtabs>*{flex:1}.lnk3d{padding:4px 0}}

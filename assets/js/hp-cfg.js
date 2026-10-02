@@ -1,5 +1,5 @@
 /* proto-awesomeo v7: Crown Hampton configurator (Premium Package; sides, roof, colours, extras, foundation, summary).
-   Prices: live Hampton page £41,400; heaters/side cabinet from the live Windsor page; BBQ table £3,000 (Crown, 2 Oct 2026);
+   Prices: live Hampton page £41,400; heaters/side cabinet from the live Windsor page; BBQ table: brochure Smokeless BBQ, single £6,450 / double £7,850 (approved by Matthew, 2 Oct 2026);
    EcoGrid £6,500 (live); redwood/composite decks and the £460 survey from the 2026 Gazebo Brochure / live foundations page.
    The panel layout, roof and colours are all included: they never change the price.
    Colour preview (v7): the real Hampton photo (h12) stays unchanged; the chosen colours show as named fabric swatches.
@@ -10,7 +10,7 @@
   var I="../../assets/img/hampton/";
   var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
   var gbp=function(n){return "£"+Math.round(n).toLocaleString("en-GB")};
-  var BASE=41400, PR={h3:1150,h36:1950,L:1250,T:1250,bbq:3000,ecogrid:6500,tanalised:11400,composite:13110,survey:460};
+  var BASE=41400, PR={h3:1150,h36:1950,L:1250,T:1250,bbq1:6450,bbq2:7850,ecogrid:6500,tanalised:11400,composite:13110,survey:460};
   var COL={green:"Green",burgundy:"Burgundy",beige:"Beige",ivory:"Ivory",navy:"Navy",taupe:"Taupe"};
   var HEX={green:"#005224",burgundy:"#850f1b",beige:"#eae4cc",ivory:"#dee6ed",navy:"#191f54",taupe:"#7b7e77"};
   var L={roof:{cedar:"Cedar shingles",thatch:"Thatch"},heater:{none:"None",h3:"3kW infrared heater",h36:"3/6kW infrared heater"},cab:{none:"None",L:"L-shape side cabinet",T:"T-shape side cabinet"},
@@ -25,24 +25,24 @@
   function lines(){
     var a=[["Crown Hampton","Premium Package, 5.9m × 4.2m, installed",gbp(BASE)],["Sides",bayText(),"Included"],["Roof",L.roof[S.roof]+", redwood-clad underside","Included"],
       ["Colours",COL[S.cushion]+" cushions · "+COL[S.piping]+" piping · "+COL[S.blind]+" blinds","Included"]];
-    if(S.heater!=="none") a.push(["Heating",S.hq+" × "+L.heater[S.heater],gbp(PR[S.heater]*S.hq)]);
+    if(S.heater!=="none") a.push(["Heating",S.hq+" × "+L.heater[S.heater]+": supplied and hung by our team; electrical connection by your own electrician",gbp(PR[S.heater]*S.hq)]);
     if(S.cab!=="none") a.push(["Side cabinet",L.cab[S.cab],gbp(PR[S.cab])]);
-    if(S.bbq==="yes") a.push(["BBQ table","Smokeless grill in your dining table",gbp(PR.bbq)]);
-    if(S.found!=="own"){ a.push(["Foundation",L.found[S.found]+(S.found==="ecogrid"?" · "+S.gravel+" gravel":S.found==="composite"?" · "+S.deck:""),gbp(PR[S.found])]); a.push(["Site survey","Survey and ground-screw test",gbp(PR.survey)]) }
-    else a.push(["Foundation","Your own level base","Quoted after survey"]);
+    if(S.bbq==="single") a.push(["BBQ table, single grill","Smokeless electric grill in your dining table",gbp(PR.bbq1)]); if(S.bbq==="double") a.push(["BBQ table, double grill","Larger smokeless electric grill, for hosting",gbp(PR.bbq2)]);
+    if(S.found!=="own"){ a.push(["Base",L.found[S.found]+(S.found==="ecogrid"?" · "+S.gravel+" gravel":S.found==="composite"?" · "+S.deck:"")+" · confirmed after the site survey","from "+gbp(PR[S.found])]); a.push(["Site survey","Survey and ground-screw test",gbp(PR.survey)]) }
+    else a.push(["Base","Your own level base, prepared to our specification","Not supplied by Crown"]);
     return a }
-  function total(){ var t=BASE; if(S.heater!=="none") t+=PR[S.heater]*S.hq; if(S.cab!=="none") t+=PR[S.cab]; if(S.bbq==="yes") t+=PR.bbq; if(S.found!=="own") t+=PR[S.found]+PR.survey; return t }
-  function extrasN(){ return (S.heater!=="none"?1:0)+(S.cab!=="none"?1:0)+(S.bbq==="yes"?1:0) }
+  function total(){ var t=BASE; if(S.heater!=="none") t+=PR[S.heater]*S.hq; if(S.cab!=="none") t+=PR[S.cab]; if(S.bbq==="single") t+=PR.bbq1; if(S.bbq==="double") t+=PR.bbq2; if(S.found!=="own") t+=PR[S.found]+PR.survey; return t }
+  function extrasN(){ return (S.heater!=="none"?1:0)+(S.cab!=="none"?1:0)+(S.bbq!=="no"?1:0) }
   function put(k,v){ $$("[data-hpo="+k+"]").forEach(function(e){ e.textContent=v }) }
   function say(m){ var l=$("[data-hpo=live]"); if(l){ l.textContent=""; setTimeout(function(){ l.textContent=m },30) } }
   var VIEWS=["photo","plan","photo","fabric","photo","photo","fabric"];
   function stagePhoto(){
     if(S.tab===0) return [I+"h02.webp","Inside the Premium Package: glass-topped tables, clad sofa benches, redwood-clad ceiling","Photo","The Premium Package"];
     if(S.tab===2){ var b=$("[data-hp=roof][data-v="+S.roof+"]"); return [b.getAttribute("data-stage"),b.getAttribute("data-cap"),"Photo",L.roof[S.roof]] }
-    if(S.tab===4){ if(S.bbq==="yes") return ["../../assets/img/smokeless.webp","The BBQ table: a smokeless grill built into the dining table (shown in another Crown pavilion)","Photo","BBQ table"];
-      if(S.cab!=="none") return ["../../assets/img/h18-cab.webp","Timber side cabinet with wine shelves and space for a wine cooler","Photo","Side cabinet"]; return [I+"h25.webp","Infrared ceiling heaters with built-in spotlights","Photo","Heat & extras"] }
+    if(S.tab===4){ if(S.bbq!=="no") return ["../../assets/img/smokeless.webp","The BBQ table: a smokeless grill built into the dining table (shown in another Crown pavilion)","Photo","BBQ table"];
+      if(S.cab!=="none") return ["../../assets/img/h18-cab.webp","Timber side cabinet with wine shelves and space for a wine cooler","Photo","Side cabinet"]; return [I+"heat-h02.webp","Infrared heater with built-in spotlight, under the redwood ceiling","Photo","Heat & extras"] }
     if(S.tab===5){ var f=$("[data-hp=found][data-v="+S.found+"]"); return [f.getAttribute("data-stage"),f.getAttribute("data-cap"),"Photo",L.found[S.found]] }
-    return [I+"h01.webp","","Photo",""] }
+    return [I+"h03.webp","","Photo",""] }
   function fabric(){
     var orig=S.cushion==="burgundy"&&S.piping==="ivory";
     var lc=$("[data-hpl=cushion]"), lp=$("[data-hpl=piping]");
