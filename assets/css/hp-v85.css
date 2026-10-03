@@ -1,0 +1,72 @@
+/* v8.5: Hampton page only (loaded by gazebos/hampton/index.html). Selectors are scoped to #hero, .hpcfg and html.hpv85-*. */
+.hpcfg .hpplanw.hps-root{display:block;padding:8px 6px 10px;background:var(--rf-cr,#fbf8f1)!important}
+.hpcfg .hpplanw[hidden]{display:none!important}
+.hpcfg .hpplanw.hps-root .hps-card{background:transparent;padding:0}
+.hpcfg #bp2{padding-top:4px}
+.hpcfg #bp2 .hps-leg{margin-top:4px}
+@media (min-width:1000px){.hpcfg .hpplanw.hps-root{display:flex;flex-direction:column;justify-content:center}.hpcfg .hpplanw.hps-root .hps-planw{width:100%;max-width:640px;margin:0 auto}}
+/* Plan | 3D toggle */
+.hpcfg .hpplanw.hps-root{position:relative;padding-top:52px}
+.hpcfg .hpv85-vt{position:absolute;top:6px;left:6px;z-index:4;display:inline-grid;grid-template-columns:1fr 1fr;padding:0;border:.5px solid rgba(18,54,39,.35);border-radius:22px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hpcfg .hpv85-vt button{min-width:56px;min-height:44px;padding:0 14px;border:0;border-radius:22px;background:transparent;color:#123627;font:600 11.5px Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background-color 200ms ease,color 200ms ease,box-shadow 200ms ease}
+.hpcfg .hpv85-vt button[aria-checked=true]{background:#123627;color:#fff;box-shadow:inset 0 0 0 1px #123627,0 0 0 .5px #c9a86b}
+.hpcfg .hpv85-vt button:focus-visible{outline:2px solid #c9a86b;outline-offset:1px}
+.hpcfg .hpv85-3d,.hpcfg .hpv85-cap{display:none}
+.hpcfg .hpplanw[data-v85view="3d"] .hps-planw,.hpcfg .hpplanw[data-v85view="3d"] .hps-size{display:none}
+.hpcfg .hpplanw[data-v85view="3d"] .hpv85-3d{display:block;animation:hpv85in 200ms ease}
+.hpcfg .hpplanw[data-v85view="3d"] .hpv85-cap{display:block;margin:6px 0 0;text-align:center;font-size:11.5px;color:#8a8270}
+.hpcfg .hpplanw[data-v85view="plan"] .hps-planw{animation:hpv85in 200ms ease}
+@keyframes hpv85in{from{opacity:0}to{opacity:1}}
+.hpcfg .hpv85-3d .rf3d{margin:0!important;border:0!important;background:none!important;padding:0!important}
+.hpcfg .hpv85-3d .rf3d>summary{display:none!important}
+.hpcfg .hpv85-3d .rf3dbody{display:block!important;padding:0!important;margin:0!important}
+.hpcfg .hpv85-3d .rf3dw{width:100%;max-width:640px;margin:0 auto}
+.hpcfg .hpv85-3d .rf3dw svg{width:100%;height:auto;display:block}
+.hpcfg .hpv85-3d .rf3dt{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hpcfg .hpv85-3d .rf3dn{display:none!important}
+.hpcfg .hpv85-ld{display:flex;align-items:center;justify-content:center;gap:10px;min-height:220px;font-size:12px;color:#8a8270}
+.hpcfg .hpv85-ld i{width:18px;height:18px;border-radius:50%;border:1.2px solid rgba(201,168,107,.35);border-top-color:#c9a86b;animation:hpv85spin .9s linear infinite}
+@keyframes hpv85spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hpcfg .hpv85-vt button{transition:none}.hpcfg .hpplanw .hpv85-3d,.hpcfg .hpplanw .hps-planw,.hpcfg .hpv85-ld i{animation:none!important}}
+/* Summary tab ("Your Hampton") */
+.hpcfg #bp7 .hplines li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;padding:12px 0;line-height:1.5}
+.hpcfg #bp7 .hplines small{line-height:1.5;margin-top:2px}
+.hpcfg #bp7 .hplines .lp{text-align:right;white-space:nowrap;line-height:1.5}
+.hpcfg #bp7 .hplines li:last-child{border-bottom:0}
+.hpcfg #bp7 .hptot{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:12px 0 24px!important;padding:24px 0;border-top:1px solid #e6dfcf;border-bottom:1px solid #e6dfcf}
+.hpcfg #bp7 .hplead{margin:0 0 16px;line-height:1.5;font-size:13px}
+.hpcfg #bp7 .hpsee2{margin:0 0 24px;display:flex;flex-wrap:wrap;align-items:center;column-gap:2px;line-height:1.5;font-size:13px}
+.hpcfg #bp7 .hpsee2 a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+.hpcfg #bp7 .hpcta{display:flex!important;gap:12px;margin:0}
+@media (max-width:999px){
+ html.hpv85-sum .hpcfg .bfoot{display:none!important}
+ html.hpv85-sum .hpcfg .bsend{display:none!important}
+ html.hpv85-incfg:not(.hpv85-sum) .hp-stk{transform:translateY(110%)!important;visibility:hidden!important}
+ .hpcfg #bp7 .hpcta{flex-direction:column}
+ .hpcfg #bp7 .hpcta .btn{width:100%;min-height:48px;justify-content:center}
+ .hpcfg #bp7 .hpcta .ghl{background:transparent}
+ .hpcfg #bp7{padding-bottom:32px}
+ .hpcfg .ie1{margin-top:32px!important}
+ /* hero price block: 16/24 rhythm */
+ #hero .info .story{margin:16px 0 0}
+ #hero .prc{margin-top:24px!important;padding-top:24px!important;row-gap:4px!important}
+ #hero .prc .pctx{font-size:13px!important;line-height:1.5}
+ #hero .prc .pfn{flex-basis:100%;font-size:12px;line-height:1.5;color:#6b6455}
+ #hero .info{min-width:0;max-width:100%}
+ #hero .rftrust{max-width:100%;margin:16px 0 0!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:min(12.5px,3.1vw)!important;letter-spacing:-.005em}
+ #hero .rftrust .gst{letter-spacing:0;font-size:11.5px}
+ #hero .rfcta{margin-top:24px!important}
+ #hero .stc{margin-top:24px!important}
+ #hero .stc,#hero .stc>summary{max-width:100%;min-width:0}
+ #hero .stc>summary{flex-wrap:nowrap!important;overflow:hidden;align-items:center!important;gap:8px!important;padding-right:20px!important;white-space:nowrap;min-height:44px}
+ #hero .stc>summary b{font-size:14px!important}
+ #hero .stc>summary span{overflow:hidden;text-overflow:ellipsis;font-size:min(12.5px,3.05vw)!important}
+ #hero .stc>summary span .pl{display:none}
+ #hero .stc>summary:after{top:50%!important;transform:translateY(-50%);right:0!important}
+ #hero .rfsee{margin:24px 0 0!important;line-height:1.5}
+}
+@media (min-width:1000px){#hero .prc .pfn{flex-basis:100%;font-size:12.5px;color:#6b6455}}
+@media (max-width:999px){
+ .hpcfg .hpstage:has(>.hpplanw:not([hidden])){aspect-ratio:auto}
+ .hpcfg .hpstage>.hpplanw.hps-root{position:relative;inset:auto}
+}
