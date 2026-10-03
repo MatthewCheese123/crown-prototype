@@ -49,7 +49,7 @@
  .hpcfg .ie1{margin-top:32px!important}
  /* hero price block: 16/24 rhythm */
  #hero .info .story{margin:16px 0 0}
- #hero .prc{margin-top:24px!important;padding-top:24px!important;row-gap:4px!important}
+ #hero .prc{margin-top:8px!important;padding-top:0!important;border-top:0!important;row-gap:4px!important}
  #hero .prc .pctx{font-size:13px!important;line-height:1.5}
  #hero .prc .pfn{flex-basis:100%;font-size:12px;line-height:1.5;color:#6b6455}
  #hero .info{min-width:0;max-width:100%}
@@ -70,3 +70,29 @@
  .hpcfg .hpstage:has(>.hpplanw:not([hidden])){aspect-ratio:auto}
  .hpcfg .hpstage>.hpplanw.hps-root{position:relative;inset:auto}
 }
+/* v8.5.1: top of page. Breadcrumb merged into the eyebrow; price under the h1; tighter gallery; "More Classic gazebos" row before the footer */
+#hero .hpcrumb a{color:inherit;text-decoration:none;display:inline-block;padding:14px 0;margin:-14px 0;border-bottom:0}
+#hero .hpcrumb a:hover{color:var(--f)}
+#hero .hpcrumb a:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+@media (min-width:1000px){#hero .prc{margin-top:14px}#hero .story{margin-top:18px}}
+@media (max-width:999px){
+ #hero>.wrap{padding-top:12px!important;row-gap:0!important}
+ #hero .gmain img{aspect-ratio:4/3!important;height:auto!important;object-fit:cover}
+ #hero .thumbs{margin-top:8px!important;gap:6px!important}
+ #hero .thumbs button{height:48px!important;flex:0 0 64px!important;width:64px!important}
+ #hero .thumbs img{height:48px!important;width:64px!important;object-fit:cover}
+ #hero .info{padding-top:0!important;margin-top:14px!important}
+ #hero .hpcrumb{margin:0!important;line-height:1.3}
+ #hero h1{margin:2px 0 0!important;line-height:1.05}
+ #hero .prc b{font-size:34px!important}
+}
+.hpmore .hpmc{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.hpmore .hpmc a{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--ln);height:100%;transition:border-color .2s}
+.hpmore .hpmc a:hover{border-color:var(--g)}
+.hpmore .hpmc a:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.hpmore .hpmc img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:cover}
+.hpmore .mcn{display:block;padding:12px 14px 0;font-family:Optima,Georgia,serif;font-size:18px;color:var(--f);line-height:1.25}
+.hpmore .mcf{display:block;padding:2px 14px 0;font-size:12px;color:var(--mu)}
+.hpmore .mcp{display:block;padding:6px 14px 14px;font-size:12.5px;color:var(--mu)}
+.hpmore .mcp b{font-family:Optima,Georgia,serif;font-weight:400;font-size:18px;color:var(--f);margin-left:2px}
+@media (max-width:999px){.hpmore .hpmc{grid-template-columns:1fr 1fr;gap:12px}.hpmore .mcn{font-size:16px;padding:10px 12px 0}.hpmore .mcf{padding:2px 12px 0;font-size:11.5px}.hpmore .mcp{padding:4px 12px 12px}}
