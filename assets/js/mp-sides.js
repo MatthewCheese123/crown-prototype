@@ -1,7 +1,7 @@
 /* v8.7 model pages: Sides step for any gazebo shape (generalised from hp-sides.js, the approved Hampton bay sheet).
    MPSides.mount(el,{geom:{shape,w,h,slots,entr,tables}, initial, presets, name, size, img, onChange, priceBar, header, planHost}) -> {get,set,name}
    Shapes: round, oval, octagon, octagon-long, stadium, rect, rrect. The entrance is centred at the front; bays are numbered clockwise from the front left.
-   Same .hps-* classes and markup as the Hampton, so hp-sides.css styles it unchanged. No 3D: only the Hampton has a 3D model. */
+   Same .hps-* classes and markup as the Hampton, so hp-sides.css styles it unchanged. v8.7.2: the mount also exposes the geometry (geom/gm/idx/entr) for mp-3d.js. */
 (function(){
 "use strict";
 var T={B:["Balustrade & blind","Open rail with a roll-down marine-grade blind","opt-balustrade.jpg"],
@@ -200,6 +200,6 @@ function mount(root,o){o=o||{};if(o.types){["B","F","H"].forEach(function(k){if(
       swiped=Date.now()}}
   sh.addEventListener("pointerup",pend);sh.addEventListener("pointercancel",function(e){if(P&&P.ax==="y"){sh.classList.remove("hps-drag");sh.style.transform=""}if(P&&P.ax==="x"){optsIn.style.transition="";optsIn.style.transform="";optsIn.style.opacity=""}P=null});
   render();
-  return {name:function(){var n=presetName();return n===PRN.std?"Standard":(n||"Bespoke")},get:function(){return b.slice()},set:function(arr){b=arr.slice();render()},open:open,close:close,undo:undo,el:root,thumb:function(lay){var gt=G(gm,75,48,120,76),s='<svg viewBox="0 0 150 96" aria-hidden="true" focusable="false">';IDX.forEach(function(i){s+=lines(gt,i,lay[i],0)});return s+'</svg>'}}}
+  return {geom:function(cx,cy,MW,MH){return G(gm,cx,cy,MW,MH)},gm:gm,idx:IDX.slice(),entr:E.slice(),name:function(){var n=presetName();return n===PRN.std?"Standard":(n||"Bespoke")},get:function(){return b.slice()},set:function(arr){b=arr.slice();render()},open:open,close:close,undo:undo,el:root,thumb:function(lay){var gt=G(gm,75,48,120,76),s='<svg viewBox="0 0 150 96" aria-hidden="true" focusable="false">';IDX.forEach(function(i){s+=lines(gt,i,lay[i],0)});return s+'</svg>'}}}
 window.MPSides={mount:mount,presets:presets,T:T,PRN:PRN,ST:ST};
 })();

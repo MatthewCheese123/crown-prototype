@@ -38,8 +38,11 @@ if(stage){
   new MutationObserver(function(){if(html.classList.contains("hps-open")&&stage.getAttribute("data-v85view")==="3d")view("plan")}).observe(html,{attributes:true,attributeFilter:["class"]});
   /* first switch to 3D only: a gentle one-off turn (out to ~24° and back, 1.2s), then it stops. Skipped with reduced motion. */
   var spin=function(){var w=pane.querySelector(".rf3dw");if(!w||rm.matches)return;var T0=performance.now(),D=1200,A=24;
-    (function f(now){var k=Math.min(1,(now-T0)/D),e=Math.sin(Math.PI*k)*(k<.5?1:1);w.innerHTML=svg3(S.bays.join(""),A*Math.sin(Math.PI*k)*(1-.15*k));
+    (function f(now){var k=Math.min(1,(now-T0)/D),e=Math.sin(Math.PI*k)*(k<.5?1:1);w.innerHTML=svg3(S.bays.join(""),A*Math.sin(Math.PI*k)*(1-.15*k));fz(w);
       if(k<1)requestAnimationFrame(f);else document.body.dispatchEvent(new MouseEvent("click",{bubbles:true}))})(T0)};
+  /* v8.7.2: keep the 3D labels at the same on-screen size as hp-refine's repaint while the turn redraws the SVG (the 3D is larger on desktop) */
+  var fz=function(w){var sv=w.querySelector("svg");if(!sv)return;var bb=sv.getBoundingClientRect(),k=Math.min(bb.width/420,bb.height/262)||1;
+    [].forEach.call(sv.querySelectorAll(".t3"),function(t){t.style.fontSize=(11/Math.min(k,1.4)).toFixed(2)+"px"})};
   window.__hpv85view=view;
 }
 function P3(cx,cy,rx,ry,a){a=a*Math.PI/180;return [cx+rx*Math.cos(a),cy+ry*Math.sin(a)]}

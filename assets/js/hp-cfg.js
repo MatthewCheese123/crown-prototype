@@ -10,10 +10,10 @@
   var I="../../assets/img/hampton/";
   var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
   var gbp=function(n){return "£"+Math.round(n).toLocaleString("en-GB")};
-  var BASE=41400, PR={h3:1150,h36:1950,L:1250,T:1250,bbq1:6450,bbq2:7850,ecogrid:6500,tanalised:11400,composite:13110,survey:460};
+  var BASE=41400, PR={h3:1150,h36:1950,T:1250,bbq1:6450,bbq2:7850,ecogrid:6500,tanalised:11400,composite:13110,survey:460};
   var COL={green:"Green",burgundy:"Burgundy",beige:"Beige",ivory:"Ivory",navy:"Navy",taupe:"Taupe"};
   var HEX={green:"#005224",burgundy:"#850f1b",beige:"#eae4cc",ivory:"#dee6ed",navy:"#191f54",taupe:"#7b7e77"};
-  var L={roof:{cedar:"Cedar shingles",thatch:"Thatch"},heater:{none:"None",h3:"3kW infrared heater",h36:"3/6kW infrared heater"},cab:{none:"None",L:"L-shape side cabinet",T:"T-shape side cabinet"},
+  var L={roof:{cedar:"Cedar shingles",thatch:"Thatch"},heater:{none:"None",h3:"3kW infrared heater",h36:"3/6kW infrared heater"},cab:{none:"None",T:"T-shape side cabinet"} /* v8.7.2: no L-shape on the Hampton (Matthew, 3 Oct) */,
     found:{own:"Your own base",ecogrid:"Crown EcoGrid",tanalised:"Redwood deck",composite:"Composite deck"}};
   var BAY={E:"Entrance",B:"Balustrade & blind",F:"Full clad",H:"½ clad & ½ plexiglass"};
   var PRE={std:"EBHHFFFHHB",open:"EBBBHFHBBB",shel:"EBHFFFFFHB"};
@@ -62,7 +62,7 @@
     put("sidesv",c.B+" · "+c.F+" · "+c.H); put("roofv",L.roof[S.roof]); put("colv",COL[S.cushion]+" · "+COL[S.piping]);
     put("extv",extrasN()?extrasN()+" added":"None yet"); put("fndv",S.found==="own"?"Own base":L.found[S.found]);
     put("hq",S.hq); put("bays",bayText());
-    put("pnote","Premium Package · "+L.roof[S.roof]+" · "+COL[S.cushion]+" cushions"+(extrasN()?" · "+extrasN()+" extra"+(extrasN()>1?"s":""):"")+" · installation included");
+    put("pnote","Premium Package · "+L.roof[S.roof]+" · "+COL[S.cushion]+" cushions"+(extrasN()?" · "+extrasN()+" extra"+(extrasN()>1?"s":""):"")+" · installation included"+(S.found==="own"?" · groundworks excluded":"")); /* v8.7.2 */
     put("chip",[L.roof[S.roof],c.B+" open · "+c.F+" clad · "+c.H+" half-glazed",COL[S.cushion]+"/"+COL[S.piping]].concat(S.heater!=="none"?[S.hq+" heater"+(S.hq>1?"s":"")]:[]).join(" · "));
     put("stkchip",L.roof[S.roof]+" · "+COL[S.cushion]+" cushions"+(extrasN()?" · "+extrasN()+" extra"+(extrasN()>1?"s":""):""));
     $$("[data-hpo=lines]").forEach(function(ul){ ul.innerHTML=lines().map(function(l){ return "<li><span><b>"+l[0]+"</b><small>"+l[1]+"</small></span><span class=\"lp\">"+l[2]+"</span></li>" }).join("") });

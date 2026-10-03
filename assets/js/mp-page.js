@@ -1,6 +1,6 @@
 /* v8.7 model pages (every gazebo except the Hampton): mounts the any-shape Sides sheet (mp-sides.js), words for the Sides
    subtitle and summary, one price bar per context (as hp-v85.js), the phone swipe gallery and the price ⓘ sheet (as hp-v852.js).
-   No Plan | 3D toggle: only the Hampton has a 3D model, so the toggle is not shown at all. */
+   v8.7.2: the Plan | 3D toggle and a 3D drawing generated from each model's shape are added by mp-3d.js. */
 (function(){
 "use strict";
 var H=window.__mpcfg, html=document.documentElement, root=document.querySelector("[data-hpcfg]");

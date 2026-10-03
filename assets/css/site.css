@@ -854,3 +854,15 @@ body.cmp-on{padding-bottom:84px}
 /* r3 contrast: text links on white/light cards */
 a.lnk,button.lnk{color:#123627}
 a.lnk{text-decoration:underline;text-decoration-color:#C9A86B;text-underline-offset:4px}
+/* v8.7.2: the whole gazebo model card (photo, name, size, price) opens its model page. Stretched-link pattern on the card's
+   main link (hub: "See details"; range pages: "Design & price" / "See prices"); Compare, Book a visit and the brochure link stay
+   independently clickable above it. */
+article.card:has(.cfoot>a.lnk[href*="gazebos/"]),article.card[data-model]:has(a.mpgo){position:relative;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+article.card:has(.cfoot>a.lnk[href*="gazebos/"]) .tx,article.card:has(.cfoot>a.lnk[href*="gazebos/"]) .cfoot,article.card[data-model]:has(a.mpgo) .tx,article.card[data-model]:has(a.mpgo) .mcta{position:static}
+article.card .cfoot>a.lnk[href*="gazebos/"],article.card[data-model] a.mpgo{position:static}
+article.card .cfoot>a.lnk[href*="gazebos/"]::after,article.card[data-model] a.mpgo::after{content:"";position:absolute;inset:0;z-index:1}
+article.card:has(.cfoot>a.lnk[href*="gazebos/"]) .cmpk,article.card:has(.cfoot>a.lnk[href*="gazebos/"]) h4 a,article.card:has(.cfoot>a.lnk[href*="gazebos/"]) .mlink,
+article.card[data-model]:has(a.mpgo) h4 a,article.card[data-model]:has(a.mpgo) .mcta a:not(.mpgo),article.card[data-model] .rtc{position:relative;z-index:2}
+@media (hover:hover){article.card:has(.cfoot>a.lnk[href*="gazebos/"]):hover,article.card[data-model]:has(a.mpgo):hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(18,54,39,.45)}}
+article.card:has(.cfoot>a.lnk[href*="gazebos/"]):focus-within,article.card[data-model]:has(a.mpgo):focus-within{box-shadow:0 0 0 2px #c9a86b}
+@media (prefers-reduced-motion:reduce){article.card:has(.cfoot>a.lnk[href*="gazebos/"]),article.card[data-model]:has(a.mpgo){transition:none}article.card:hover{transform:none!important}}

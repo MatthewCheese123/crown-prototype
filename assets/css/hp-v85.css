@@ -128,3 +128,80 @@
  .hpwhy-strip{font-size:12px;letter-spacing:.06em;gap:4px 0}
  .hpwhy-strip span{padding:0 8px}
 }
+/* v8.7.2 (desktop only, >=1000px): the Plan | 3D views share one stage. The drawing frame (.hpplanw) fills the whole stage
+   (no beige box under it), the plan stays in the flow but invisible while 3D shows (so the stage keeps the plan's height
+   and nothing below jumps), and the 3D drawing is laid over the same area, scaled up to the plan's width and centred.
+   Phones (<1000px) are unchanged. */
+@media (min-width:1000px){
+ .hpcfg .hpstage:has(>.hpplanw.hps-root:not([hidden])){display:flex;flex-direction:column}
+ .hpcfg .hpstage>.hpplanw.hps-root{flex:1 0 auto}
+ .hpcfg .hpplanw.hps-root[data-v85view="3d"] .hps-planw,.hpcfg .hpplanw.hps-root[data-v85view="3d"] .hps-size{display:block;visibility:hidden;animation:none}
+ .hpcfg .hpplanw.hps-root[data-v85view="3d"] .hpv85-3d{position:absolute;inset:52px 16px 36px;display:flex;align-items:center;justify-content:center}
+ .hpcfg .hpv85-3d .rf3d,.hpcfg .hpv85-3d .rf3dbody{width:100%;height:100%}
+ .hpcfg .hpv85-3d .rf3dbody{display:flex!important;align-items:center;justify-content:center}
+ .hpcfg .hpv85-3d .rf3dw{height:100%;max-width:640px}
+ .hpcfg .hpv85-3d .rf3dw svg.rf3dsvg{width:100%;height:100%;max-height:none}
+ .hpcfg .hpv85-3d .hpv85-ld{min-height:0;height:100%;width:100%}
+ .hpcfg .hpplanw.hps-root[data-v85view="3d"] .hpv85-cap{position:absolute;left:0;right:0;bottom:10px;margin:0}
+}
+/* v8.7.2: extras and foundation without thumbnails; a quiet "See photo" link (44px target) opens the full photo */
+.hpcfg .hprow{grid-template-columns:1fr!important}
+.hpcfg .hprow>img{display:none!important}
+.hpcfg .hpfdc{position:relative}
+.hpcfg .hpfd .hpfdc>.hpo{width:100%;grid-template-columns:1fr!important}
+.hpcfg .hpfd .hpfdc>.hpo img{display:none!important}
+.hpcfg .hpfd .hpfdc:has(>.hpsee)>.hpo{padding-right:104px!important}
+.hpcfg .hpsee{display:inline-flex;align-items:center;min-height:44px;padding:0;margin:0 0 2px;border:0;background:none;cursor:pointer;
+ font:500 12.5px/1 Montserrat,Arial,sans-serif;letter-spacing:.04em;color:#123627;text-decoration:underline;text-decoration-color:rgba(201,168,107,.75);text-decoration-thickness:1px;text-underline-offset:4px}
+.hpcfg .hpsee:hover{color:#0b2a1d;text-decoration-color:#a8843f}
+.hpcfg .hpsee:focus-visible{outline:2px solid #c9a86b;outline-offset:2px;border-radius:2px}
+.hpcfg .hprow .hpsee{margin:-4px 0 4px}
+.hpcfg .hpfdc>.hpsee{position:absolute;top:50%;right:16px;transform:translateY(-50%);z-index:1;padding:0 2px}
+.hpcfg .hpfdc>.hpo[aria-checked=true]~.hpsee{right:18px}
+html.hpph-open{overflow:hidden}
+.hpph{padding:0;border:0;background:transparent;max-width:min(1100px,94vw);max-height:92vh;overflow:visible}
+.hpph::backdrop{background:rgba(12,22,17,.82)}
+.hpph-i{position:relative;background:#fbf8f1;padding:12px;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.hpph figure{margin:0}
+.hpph img{display:block;max-width:100%;max-height:calc(92vh - 90px);width:auto;height:auto;margin:0 auto;border-radius:2px}
+.hpph figcaption{padding:10px 48px 2px 2px;font:400 13.5px/1.5 Montserrat,Arial,sans-serif;color:#4a463c}
+.hpph-x{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,168,107,.8);background:#123627;color:#fff;font-size:16px;cursor:pointer}
+.hpph-x:focus-visible{outline:2px solid #c9a86b;outline-offset:2px}
+@media (max-width:599px){.hpph-x{top:6px;right:6px}.hpph figcaption{padding-right:4px}}
+/* v8.7.2 (desktop, >=1000px, Hampton and model pages): the left visual column is sticky below the header and step tabs and
+   always shows the building photo on top (about 60%) with the Plan | 3D drawing beneath (about 40%), on every step.
+   It fits the viewport (between the tabs and the price bar) with no inner scrollbars; the empty beige block is gone.
+   Phones keep the stacked flow. */
+@media (min-width:1000px){
+ .hpcfg .ccfg{--tbx:calc(var(--hdrvis,0px) + var(--btabsh,62px));align-items:start}
+ .hpcfg .ccfg>.btabs{position:sticky;top:var(--hdrvis,0px);z-index:7;transition:top .3s ease}
+ .hpcfg .ccfg .bpanel,.hpcfg .ccfg .bpanel *{scroll-margin-top:calc(var(--tbx) + 12px);scroll-margin-bottom:calc(var(--bfh,64px) + 12px)}
+ /* a fixed height (allowing for the site header even while it is hidden), so the column never resizes as the header slides */
+ .hpcfg .ccfg>.stg{position:sticky;top:var(--tbx);align-self:start;transition:top .3s ease;height:calc(100vh - var(--btabsh,62px) - var(--bfh,64px) - 80px);min-height:400px;max-height:780px;overflow:hidden}
+ .hpcfg .ccfg>.stg>.hpstage{flex:1 1 auto;min-height:0!important;height:100%;display:grid!important;grid-template-rows:minmax(0,60fr) minmax(0,40fr);grid-template-columns:minmax(0,1fr)}
+ .hpcfg .ccfg>.stg>.hpstage>*{position:relative!important;inset:auto!important;min-height:0;height:auto!important}
+ /* top: the photo, or the live recolour on Colours / Summary */
+ .hpcfg .ccfg>.stg>.hpstage>.ctimg{grid-row:1;display:block!important}
+ .hpcfg .ccfg>.stg>.hpstage:has(>.hpfab:not([hidden]))>.ctimg{display:none!important}
+ .hpcfg .ccfg>.stg>.hpstage>.hpfab{grid-row:1}
+ .hpcfg .ccfg>.stg>.hpstage>.hpfab[hidden]{display:none!important}
+ .hpcfg .ccfg>.stg>.hpstage>.ctimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+ .hpcfg .ccfg>.stg>.hpstage .rcs{min-height:0!important}
+ .hpcfg .ccfg>.stg>.hpstage .rcs img{left:0;top:0;width:100%;height:100%;transform:none;object-fit:cover;object-position:58% 62%}
+ .hpcfg .ccfg>.stg>.hpstage .rcn{padding:6px 12px;font-size:12.5px}
+ /* beneath: the plan (with Plan | 3D), always shown */
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root,.hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root[hidden]{grid-row:2;display:flex!important;flex:none;padding-top:46px;padding-bottom:8px;border-top:1px solid var(--rf-ln,#e3dac6);overflow:hidden}
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root .hps-planw{height:100%;max-width:none;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0}
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root .hps-card{height:100%;min-height:0;display:flex;justify-content:center;width:100%}
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root svg.hps-plan{width:auto!important;height:100%!important;max-width:100%;max-height:100%}
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root .hps-size{display:none!important}
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root .hpv85-vt{top:4px}
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root[data-v85view="3d"] .hpv85-3d{inset:46px 16px 26px}
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root[data-v85view="3d"] .hpv85-cap{bottom:6px}
+ /* the 3D sits in <details>, where % heights don't resolve: size it from the stage height (40% row, less the toggle and caption) */
+ .hpcfg .ccfg>.stg>.hpstage .hpv85-3d .rf3dw{height:auto}
+ .hpcfg .ccfg>.stg>.hpstage .hpv85-3d .rf3dw svg.rf3dsvg{height:auto;width:100%;max-height:calc(min(max(100vh - var(--btabsh,62px) - var(--bfh,64px) - 80px, 400px), 780px) * .4 - 76px)}
+ /* with no plan on this model, the photo takes the whole column */
+ .hpcfg .ccfg>.stg>.hpstage:not(:has(>.hpplanw.hps-root)){grid-template-rows:minmax(0,1fr)}
+ .hpcfg .ccfg>.stg>.hpstage>.hpplanw:not(.hps-root){display:none!important}
+}

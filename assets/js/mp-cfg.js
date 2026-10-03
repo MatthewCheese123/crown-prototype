@@ -40,7 +40,7 @@
   function put(k,v){ $$("[data-hpo="+k+"]").forEach(function(e){ e.textContent=v }) }
   function say(m){ var l=$("[data-hpo=live]"); if(l){ l.textContent=""; setTimeout(function(){ l.textContent=m },30) } }
   function step(){ return STEPS[S.tab] }
-  function view(){ var s=step(); if(s==="sides") return "plan"; if(s==="colours") return "fabric"; if(s==="summary") return D.colours&&furnished()?"fabric":"photo"; return "photo" }
+  function view(){ var s=step(); if(s==="sides") return "plan"; if(s==="colours") return "fabric"; if(s==="summary") return "photo"; /* v8.7.2: the summary shows this model's own photo (was the Hampton recolour backdrop) */ return "photo" }
   function stagePhoto(){ var s=step(), P=D.stage;
     if(s==="roof"){ var b=$("[data-hp=roof][data-v="+S.roof+"]"); return [b.getAttribute("data-stage"),b.getAttribute("data-cap"),"Photo",L.roof[S.roof]] }
     if(s==="package"&&D.pkgKind==="furnish"){ var pb=$("[data-hp=pkg][data-v="+S.pkg+"]"); return [pb.getAttribute("data-stage"),pb.getAttribute("data-cap"),"Photo",L.pkg[S.pkg]] }
@@ -64,7 +64,7 @@
     put("roofv",L.roof[S.roof]||""); put("colv",furnished()?COL[S.cushion]+(D.piping?" · "+COL[S.piping]:""):"With furniture");
     put("extv",extrasN()?extrasN()+" added":"None yet"); put("fndv",S.found==="own"?"Own base":L.found[S.found]);
     put("hq",S.hq);
-    var pn=[D.pkgKind==="roof"?L.roof[S.roof]:L.pkg[S.pkg]]; if(D.pkgKind==="premium") pn.push(L.roof[S.roof]); if(D.colours&&furnished()) pn.push(COL[S.cushion]+" cushions"); if(extrasN()) pn.push(extrasN()+" extra"+(extrasN()>1?"s":"")); pn.push("installation included");
+    var pn=[D.pkgKind==="roof"?L.roof[S.roof]:L.pkg[S.pkg]]; if(D.pkgKind==="premium") pn.push(L.roof[S.roof]); if(D.colours&&furnished()) pn.push(COL[S.cushion]+" cushions"); if(extrasN()) pn.push(extrasN()+" extra"+(extrasN()>1?"s":"")); pn.push("installation included"); if(S.found==="own") pn.push("groundworks excluded"); /* v8.7.2 */
     put("pnote",pn.join(" · "));
     var ch=[]; if(D.pkgKind!=="premium") ch.push(D.pkgKind==="roof"?L.roof[S.roof]:L.pkg[S.pkg]); else ch.push(L.roof[S.roof]); if(D.sides) ch.push(D.sides.types?c.F+" clad · "+c.H+" half · "+c.B+" "+(D.range==="shelters"?"open":"windows"):c.B+" open · "+c.F+" clad · "+c.H+" half-glazed"); if(D.colours&&furnished()) ch.push(COL[S.cushion]+"/"+COL[S.piping]); if(S.heater!=="none") ch.push(S.hq+" heater"+(S.hq>1?"s":""));
     put("chip",ch.join(" · "));
