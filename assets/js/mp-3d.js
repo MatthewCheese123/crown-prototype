@@ -29,7 +29,8 @@ function ring(z,d,rot){var o="";for(var i=0;i<N;i++){var n=seg(i);for(var k=0;k<
 function svg3(lay,rot){
   var o='<svg class="rf3dsvg" viewBox="'+VX+' '+VY+' '+VW+' '+VH+'" aria-hidden="true" focusable="false">';
   o+='<path class="f3" d="'+ring(0,0,rot)+'"/><path class="r3" d="'+ring(HF+10,12,rot)+'"/>';
-  var num={};IDX.forEach(function(i,k){num[i]=gm.numberAll?i+1:k+1});if(gm.numberAll&&E[1]!=null)num[E[1]]=(E[1]+1)+' · ENTRANCE';
+  var NA=!!gm.numberAll,SN=function(i){return (i-(gm.numStart||0)+N)%N+1},EF=NA&&E.indexOf(0)<0,num={};IDX.forEach(function(i,k){num[i]=NA?SN(i):k+1});
+  if(NA)E.forEach(function(i,j){if(EF||j)num[i]=SN(i)+' · ENTRANCE'});
   var ord=[];for(var i=0;i<N;i++)ord.push(i);
   ord.sort(function(a,b){return ptp(a,0,.5,rot)[2]-ptp(b,0,.5,rot)[2]});
   ord.forEach(function(i){var t=E.indexOf(i)>=0?"E":(lay[i]||"B"),st=ST[t]||t,gq='<g class="b3" data-t="'+t+'">',mid=ptp(i,0,.5,rot),front=mid[2]>0;
@@ -42,7 +43,7 @@ function svg3(lay,rot){
     var p0=ptp(i,0,0,rot);gq+='<path class="po3" d="M'+p0[0].toFixed(1)+' '+p0[1].toFixed(1)+'v-'+HF.toFixed(1)+'"/>';
     if(num[i]){var pn=ptp(i,14,.5,rot);gq+='<text class="t3" x="'+pn[0].toFixed(1)+'" y="'+(front?pn[1]+12:pn[1]-HF-6).toFixed(1)+'">'+num[i]+'</text>'}
     o+=gq+'</g>'});
-  if(E.length){var e=ptp(E[0],0,.5,rot);o+='<text class="t3" x="'+e[0].toFixed(1)+'" y="'+Math.min(H3-4,e[1]+20).toFixed(1)+'">'+(gm.numberAll?(E[0]+1)+' · ENTRANCE':'ENTRANCE')+'</text>'}
+  if(EF){}else if(E.length){var e=ptp(E[0],0,.5,rot);o+='<text class="t3" x="'+e[0].toFixed(1)+'" y="'+Math.min(H3-4,e[1]+20).toFixed(1)+'">'+(NA?SN(E[0])+' · ENTRANCE':'ENTRANCE')+'</text>'}
   else{var fr=ptp(0,0,.5,rot);o+='<text class="t3" x="'+fr[0].toFixed(1)+'" y="'+Math.min(H3-4,fr[1]+20).toFixed(1)+'">FRONT</text>'}
   return o+'</svg>'}
 /* toggle, pane and caption: the same markup as the Hampton (hp-v85.js), so hp-v85.css lays it out and fills the stage */

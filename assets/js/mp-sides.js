@@ -78,11 +78,13 @@ function posNames(g,gm){var E=gm.entr||[0],N=gm.slots,out=[];
 function mount(root,o){o=o||{};if(o.types){["B","F","H"].forEach(function(k){if(o.types[k])T[k]=o.types[k]})}if(o.styles){for(var sk in o.styles)ST[sk]=o.styles[sk]}var gm=o.geom,N=gm.slots,E=gm.entr||[0],img=o.img||"assets/img/",PRE=o.presets,name=o.name||"gazebo";
   var b=(o.initial||PRE.std).split(""),hist=[],cur=1,opened=false,back=null,hl=null;
   var IDX=[];for(var z=0;z<N;z++)if(E.indexOf(z)<0)IDX.push(z);var NB=IDX.length;
-  /* v8.7.3: gm.numberAll numbers every side 1..N clockwise from the front (entrances included, as on the Tudor: 1 and 6), else bays only */
-  var NA=!!gm.numberAll, DN=function(k){return NA?IDX[k-1]+1:k};
+  /* v8.7.3: gm.numberAll numbers every side 1..N clockwise from side gm.numStart (entrances included; Tudor, Guinevere, Wolsey:
+     entrances on the two angled front sides, 1 lower left and 7 lower right), else bays only, from the front left */
+  var NA=!!gm.numberAll, NS=gm.numStart||0, SN=function(i){return (i-NS+N)%N+1}, DN=function(k){return NA?SN(IDX[k-1]):k};
+  if(NA)IDX.sort(function(x,y){return SN(x)-SN(y)});
   var uid="mps"+Math.random().toString(36).slice(2,7);
   var g=G(gm,210,140,340,216),POS=posNames(g,gm);
-  function planSVG(){var s='<svg class="hps-plan" viewBox="0 0 420 300" role="group" aria-label="Plan of the '+esc(name)+': '+NB+' bays, entrance'+(E.length?(E.length>1?"s":"")+(NA?' at sides '+E.map(function(i){return i+1}).join(" and "):' at the front'+(E.length>1?" and back":"")):", open at the front")+'. Tap a bay to choose its panel.">';
+  function planSVG(){var s='<svg class="hps-plan" viewBox="0 0 420 300" role="group" aria-label="Plan of the '+esc(name)+': '+NB+' bays, entrance'+(E.length?(E.length>1?"s":"")+(NA?' at sides '+E.map(SN).join(" and "):' at the front'+(E.length>1?" and back":"")):", open at the front")+'. Tap a bay to choose its panel.">';
     s+='<path class="hps-roof" d="'+g.outline(gm.shape==="rrect"?14:12)+'" fill="none" stroke="#c9a86b" stroke-dasharray="4 4" stroke-width=".8"'+(gm.shape==="rrect"?' stroke-linejoin="round"':'')+'/>';
     IDX.forEach(function(i,k){var pn=g.pt(g.sl[i],26,.5);
       s+='<g class="hps-bay" data-i="'+(k+1)+'" data-t="B" tabindex="0" role="button"><path class="hps-hit" d="'+g.band(i,-36,40,0,1)+'"/>';
@@ -91,8 +93,10 @@ function mount(root,o){o=o||{};if(o.types){["B","F","H"].forEach(function(k){if(
       s+='</g><circle class="hps-bnc" cx="'+pn[0].toFixed(1)+'" cy="'+pn[1].toFixed(1)+'" r="10"/><text class="hps-bn" x="'+pn[0].toFixed(1)+'" y="'+(pn[1]+4).toFixed(1)+'">'+DN(k+1)+'</text></g>'});
     for(var i=0;i<N;i++){var q=g.pt(g.sl[i],0,0);s+='<circle class="hps-post" cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="2.6"/>'}
     s+=tables(g,gm);
-    s+='<text class="hps-entl" x="210" y="270">'+(E.length?(NA?(E[0]+1)+" · ENTRANCE":"ENTRANCE"):"FRONT")+'</text><path class="hps-enta" d="M210 292V278M205 283l5-5 5 5"/>';
-    if(E.length>1){var bq=NA?g.pt(g.sl[E[1]],54,.5):g.pt(g.sl[E[1]],0,.5);s+='<text class="hps-entl" x="'+bq[0].toFixed(1)+'" y="'+(NA?bq[1]+4:bq[1]-12).toFixed(1)+'">'+(NA?(E[1]+1)+" · ENTRANCE":"ENTRANCE")+'</text>'}
+    if(NA&&E.indexOf(0)<0){E.forEach(function(i){var m=g.pt(g.sl[i],0,.5),o=g.pt(g.sl[i],30,.5),t=g.pt(g.sl[i],58,.5),dx=m[0]-o[0],dy=m[1]-o[1],l=Math.hypot(dx,dy)||1,ux=dx/l,uy=dy/l,tip=g.pt(g.sl[i],8,.5),bx=o[0],by=o[1];
+      s+='<text class="hps-entl" x="'+t[0].toFixed(1)+'" y="'+(t[1]+4).toFixed(1)+'">'+SN(i)+' · ENTRANCE</text><path class="hps-enta" d="M'+bx.toFixed(1)+' '+by.toFixed(1)+'L'+tip[0].toFixed(1)+' '+tip[1].toFixed(1)+'M'+(tip[0]-5*ux-5*uy).toFixed(1)+' '+(tip[1]-5*uy+5*ux).toFixed(1)+'L'+tip[0].toFixed(1)+' '+tip[1].toFixed(1)+'L'+(tip[0]-5*ux+5*uy).toFixed(1)+' '+(tip[1]-5*uy-5*ux).toFixed(1)+'"/>'})}
+    else s+='<text class="hps-entl" x="210" y="270">'+(E.length?(NA?SN(E[0])+" · ENTRANCE":"ENTRANCE"):"FRONT")+'</text><path class="hps-enta" d="M210 292V278M205 283l5-5 5 5"/>';
+    if(E.length>1&&!(NA&&E.indexOf(0)<0)){var bq=NA?g.pt(g.sl[E[1]],54,.5):g.pt(g.sl[E[1]],0,.5);s+='<text class="hps-entl" x="'+bq[0].toFixed(1)+'" y="'+(NA?bq[1]+4:bq[1]-12).toFixed(1)+'">'+(NA?SN(E[1])+" · ENTRANCE":"ENTRANCE")+'</text>'}
     return s+'</svg>'}
   var gmi=G(gm,100,60,164,92);
   function miniSVG(lay){var s='<svg viewBox="8 6 184 108" aria-hidden="true" focusable="false">';IDX.forEach(function(i){s+=lines(gmi,i,lay[i],0)});return s+'</svg>'}
