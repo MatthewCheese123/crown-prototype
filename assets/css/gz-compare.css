@@ -40,3 +40,23 @@
 /* v8.3: absolutely-positioned .sr text in the off-screen columns escaped the swipe scroller (no positioned ancestor),
    so mobile pages could pan sideways (scrollWidth 770 at 390). Make the scroller the containing block. */
 .gz-grid{position:relative}
+
+/* v8.2.2 hotfix: compare card photo + name go to that range's group in the finder (#range-x, same page). Photo reads as clickable. */
+.gz-ph{position:relative;cursor:pointer}
+.gz-ph img{transition:transform .45s cubic-bezier(.2,.6,.2,1)}
+.gz-ph:hover img{transform:scale(1.04)}
+.gz-ph:active img{transform:scale(1.02)}
+.gz-pill,.gz-shl .gz-pill{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 11px 6px 12px;border-radius:999px;background:rgba(13,42,30,.8);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:#fff;font:600 11.5px/1.2 Montserrat,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.18);pointer-events:none;transition:background .2s,transform .2s}
+.gz-pill i{font-style:normal;font-size:15px;line-height:1;margin-top:-2px;transition:transform .2s}
+.gz-ph:hover .gz-pill,.gz-shl:hover .gz-pill,.gz-shl:focus-visible .gz-pill{background:rgba(13,42,30,.94)}
+.gz-ph:hover .gz-pill i,.gz-shl:hover .gz-pill i,.gz-shl:focus-visible .gz-pill i{transform:translateX(2px)}
+.gz-ph:focus-visible{outline:2px solid var(--f);outline-offset:3px}
+.gz-nm a:focus-visible,.gz-shl:focus-visible{outline:2px solid var(--f);outline-offset:3px;border-radius:1px}
+.gz-ar{display:inline-block;margin-left:7px;font:500 .8em/1 Montserrat,Arial,sans-serif;color:var(--f);opacity:.75;transition:transform .2s,opacity .2s}
+.gz-nm a:hover .gz-ar,.gz-shl:hover .gz-ar{opacity:1}
+.gz-nm a:hover .gz-ar,.gz-nm a:focus-visible .gz-ar,.gz-shl:hover .gz-ar,.gz-shl:focus-visible .gz-ar{transform:translateX(3px)}
+.gz-shl{cursor:pointer}
+.gz-shl .gim img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gz-shl .gz-pill{right:6px;bottom:6px;padding:5px 8px 5px 9px;font-size:10px;letter-spacing:.04em}
+.gz-shl:active img{transform:scale(1.02)}
+@media (prefers-reduced-motion:reduce){.gz-ph img,.gz-pill,.gz-pill i,.gz-ar,.gz-shl img{transition:none}.gz-ph:hover img,.gz-ph:active img,.gz-shl:hover img,.gz-shl:focus-visible img,.gz-shl:active img{transform:none}}

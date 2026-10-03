@@ -84,6 +84,10 @@
       document.body.style.overflow=open?"hidden":"";
     });
     mnav.addEventListener("keydown",function(e){ if(e.key==="Escape"){burger.click();burger.focus()} });
+    /* v8.2.2: a link inside the open menu (e.g. same-page #compare) must release the scroll lock */
+    mnav.addEventListener("click",function(e){ var l=e.target.closest&&e.target.closest("a[href]"); if(l && mnav.classList.contains("open")) burger.click() });
+    function unlock(){ if(!mnav.classList.contains("open") && !document.body.classList.contains("sov-on") && !document.querySelector("#lightbox:not([hidden])")) document.body.style.overflow="" }
+    window.addEventListener("hashchange",unlock); window.addEventListener("pageshow",function(){ if(mnav.classList.contains("open")) burger.click(); unlock() });
     desktop.addEventListener && desktop.addEventListener("change",function(){ if(desktop.matches && mnav.classList.contains("open")) burger.click() });
   }
 
@@ -398,6 +402,8 @@
     sq.addEventListener("input",sRun);
     sov.addEventListener("keydown",function(e){ if(e.key==="Escape"){ e.stopPropagation(); sClose() } trap(sov,e) });
     sov.addEventListener("click",function(e){ if(e.target===sov) sClose() });
+    /* v8.2.2: a result link (same-page anchors such as gazebos/index.html#models) closes the overlay and releases its scroll lock */
+    sov.addEventListener("click",function(e){ var l=e.target.closest&&e.target.closest("a[href]"); if(l) sClose() });
     document.addEventListener("keydown",function(e){ if(e.key==="/" && sov.hidden && !/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||"")){ e.preventDefault(); sOpen(sopen[0]) } });
   }
 
