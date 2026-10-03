@@ -31,7 +31,7 @@
       idle(function(){ PARTS.forEach(function(p){ COLS.forEach(function(c){ var u=src(p,c); if(!cache[u]){ cache[u]=new Image(); cache[u].src=u } }) }) }) }
     if(base.complete) rest(); else base.addEventListener("load",rest,{once:true}) }
   /* lazy: start when the configurator is near, or as soon as Colours/summary opens */
-  if("IntersectionObserver" in window){ var io=new IntersectionObserver(function(es){ if(es.some(function(e){ return e.isIntersecting })){ start(); io.disconnect() } },{rootMargin:"600px 0px"}); io.observe(root) } else start();
+  if("IntersectionObserver" in window){ var io=new IntersectionObserver(function(es){ if(es.some(function(e){ return e.isIntersecting })){ start(); io.disconnect() } },{rootMargin:"300px 0px"}); io.observe(root) } else start();
   new MutationObserver(function(){ var t=root.getAttribute("data-hptab"); if(t==="3"||t==="6") start(); paint() })
     .observe(root,{attributes:true,subtree:true,attributeFilter:["aria-checked","data-hptab"]});
   paint();
