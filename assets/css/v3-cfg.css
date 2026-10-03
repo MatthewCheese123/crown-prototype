@@ -140,3 +140,12 @@ body.v3cfg-in.stk-on,body.v3cfg-in.mbar-on{padding-bottom:0}
 .ctsvg .gls{fill:#cfdde0;stroke:#1d2124;stroke-width:.7}
 .ctsvg .hdl{stroke:#1d2124;stroke-width:1.6}
 .ctsvg .pdoor{fill:#8a6d36}.ctsvg .pwin{fill:#cfdde0;stroke:#123627;stroke-width:.6}
+/* v8.1 (3 Oct 2026): sticky step tabs. Solid background, hairline, above the panel content (and below the site header / price bar
+   layers), and panel content that is scrolled or focused into view stops below the tabs and above the price bar. The tabs are sticky
+   only inside .ccfg (their containing block), so they leave with the configurator. */
+.ccfg .btabs{background-color:#fbf8f1;border-bottom:1px solid #e3dac6;background-clip:padding-box}
+@media (max-width:999px){
+ .ccfg .bfoot{z-index:8} /* at the very end of the configurator the docked price bar stays above the tabs */
+ .ccfg .btabs{z-index:7;box-shadow:0 1px 0 #e3dac6,0 6px 12px -8px rgba(13,42,30,.18)}
+ .ccfg .bpanel *,.ccfg .bpanel{scroll-margin-top:calc(var(--hdrvis,0px) + var(--btabsh,62px) + 12px);scroll-margin-bottom:calc(var(--bfh,64px) + 12px)}
+}

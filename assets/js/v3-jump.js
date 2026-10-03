@@ -30,8 +30,11 @@
     if(er.top+scrollY <= fr.top+scrollY+1) return 0;
     return f.offsetHeight||0;
   }
-  function topH(el){ return baseTop(el)+extraPin(el) }
-  function botH(){ var h=0; [".mbar.show",".pabar.show",".stk.show"].forEach(function(s){ var e=q(s); if(e && vis(e)){ var r=e.getBoundingClientRect(); if(r.bottom>=innerHeight-2) h=Math.max(h,innerHeight-r.top) } }); return h }
+  // v8.1: on phones the configurator's step tabs stay pinned over the options panel, so panel targets land below them too
+  function tabsH(el){ var p=el && el.closest && el.closest(".ccfg .bpanel"); if(!p) return 0; var bt=p.closest(".ccfg").querySelector(".btabs");
+    return (bt && getComputedStyle(bt).position==="sticky")?bt.offsetHeight:0 }
+  function topH(el){ return baseTop(el)+extraPin(el)+tabsH(el) }
+  function botH(){ var h=0; [".mbar.show",".pabar.show",".stk.show",".ccfg .bfoot"].forEach(function(s){ var e=q(s); if(e && vis(e)){ var r=e.getBoundingClientRect(); if(r.bottom>=innerHeight-2) h=Math.max(h,innerHeight-r.top) } }); return h }
   function land(el){
     if(!el) return el;
     if(el.hasAttribute("data-land-self")) return el;
@@ -58,7 +61,7 @@
   function go(el,opt){
     opt=opt||{}; var L=land(el), m=topMode(L), th, bh=botH(), r=L.getBoundingClientRect(), y, block=opt.block||"start", pin;
     // the slim .stk bar only shows once the hero CTA has scrolled away and the form/footer are off screen: if it will not, keep the header
-    pin=extraPin(L); th=baseTop(L)+pin;
+    pin=extraPin(L)+tabsH(L); th=baseTop(L)+pin;
     if(m==="stk" && !stkWill(r.top+scrollY-th-GAP)){ m="hdr"; th=(hdr?hdr.offsetHeight:0)+pin }
     if(block==="center"){ var avail=innerHeight-th-bh; y=r.top+scrollY-th-Math.max(GAP,(avail-r.height)/2) }
     else if(block==="nearest"||block==="end"){ if(r.top>=th && r.bottom<=innerHeight-bh) return; y=(r.top<th||block==="nearest"&&r.height>innerHeight-th-bh)?r.top+scrollY-th-GAP:r.bottom+scrollY-(innerHeight-bh)+GAP }

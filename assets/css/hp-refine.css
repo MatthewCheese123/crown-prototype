@@ -258,7 +258,7 @@
  .hpcfg .bfoot .pk{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
  .hpcfg .bfoot .bfl{flex-wrap:nowrap!important}
  .hpcfg .bfoot .kctas{display:flex;gap:6px;flex-wrap:nowrap}
- .bpanel{padding-bottom:calc(var(--rf-bar,64px) + 20px)!important}
+ /* v8.1: no bar-height padding here: the price bar is sticky inside the configurator, so it never covers the panel (the padding left a dead gap) */
  body{padding-bottom:var(--rf-stk,0px)}
  .hp-stk .wrap{flex-wrap:nowrap!important;white-space:nowrap}
 }
@@ -299,3 +299,18 @@
 /* iter-17: keep "View in 3D" on one line; the hint wraps underneath on narrow screens */
 .rf3d summary{white-space:nowrap;flex-wrap:wrap;row-gap:0}
 .rf3d summary small{white-space:normal}
+
+/* v8.1 (3 Oct 2026): sticky step tabs on the Hampton. Solid background + hairline so panel content never shows through
+   (the direction-A port made them transparent and faded their edges with a mask, which also faded the background). */
+.hpcfg .ccfg .btabs{background-color:var(--rf-cr)!important;border-bottom:1px solid var(--rf-ln)!important}
+@media (max-width:999px){
+ .hpcfg .ccfg .btabs{-webkit-mask-image:none!important;mask-image:none!important;
+   /* scroll shadows instead of the mask: a soft edge only where more tabs are hidden, over a solid background */
+   background:linear-gradient(90deg,var(--rf-cr) 30%,rgba(247,245,242,0)) 0 0/36px 100% no-repeat local,
+              linear-gradient(270deg,var(--rf-cr) 30%,rgba(247,245,242,0)) 100% 0/36px 100% no-repeat local,
+              linear-gradient(90deg,rgba(18,54,39,.16),rgba(18,54,39,0)) 0 0/14px 100% no-repeat scroll,
+              linear-gradient(270deg,rgba(18,54,39,.16),rgba(18,54,39,0)) 100% 0/14px 100% no-repeat scroll,
+              var(--rf-cr)!important}
+}
+/* the send button strip matches the cream panel (was a white band) */
+@media (max-width:999px){.hpcfg .ccfg .bsend{background:var(--rf-cr)!important}}

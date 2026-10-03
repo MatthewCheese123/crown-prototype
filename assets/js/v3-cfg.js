@@ -43,8 +43,18 @@
   if(pr){ new MutationObserver(px).observe(pr,{childList:true,characterData:true,subtree:true}); px() }
   /* one bar at a time: while the configurator is on screen, hide the site's sticky bars (its footer takes over) */
   if("IntersectionObserver" in window){
-    new IntersectionObserver(function(es){ es.forEach(function(e){ document.body.classList.toggle("v3cfg-in",e.isIntersecting) }) },{rootMargin:"0px 0px -90px 0px"}).observe(cfg);
+    new IntersectionObserver(function(es){ es.forEach(function(e){ inView=e.isIntersecting; bars() }) },{rootMargin:"0px 0px -90px 0px"}).observe(cfg);
   }
+  /* v8.1: on phones the price footer is sticky to the bottom of the screen only while the configurator runs past it; once the
+     configurator's end is on screen the footer docks there (as its closing row) and the site's own bottom bar comes back, so the
+     bottom of the screen is never left empty with the price bar floating mid-page. Desktop keeps "hidden while in view". */
+  var inView=false, mob=window.matchMedia("(max-width:999px)"), ft=host.querySelector(".bfoot"), tb=host.querySelector(".btabs"), raf=0;
+  function bars(){ var on=inView;
+    if(on && mob.matches && ft){ var r=cfg.getBoundingClientRect(); on=r.bottom>innerHeight+2 }
+    document.body.classList.toggle("v3cfg-in",on) }
+  function sizes(){ var R=document.documentElement.style; if(tb) R.setProperty("--btabsh",tb.offsetHeight+"px"); if(ft) R.setProperty("--bfh",ft.offsetHeight+"px") }
+  window.addEventListener("scroll",function(){ if(!raf) raf=requestAnimationFrame(function(){ raf=0; bars() }) },{passive:true});
+  window.addEventListener("resize",function(){ sizes(); bars() }); sizes();
   /* mobile: the sticky tab row sits under the site header while the header is showing */
   var hdr=document.querySelector(".site-h");
   function hv(){ document.documentElement.style.setProperty("--hdrvis",(hdr && !hdr.classList.contains("hid"))?hdr.offsetHeight+"px":"0px") }
