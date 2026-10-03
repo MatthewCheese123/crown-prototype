@@ -1,0 +1,88 @@
+/* v8.3 hero videos, round 2 (home, gazebos hub, garden rooms hub).
+   One text block ([data-hero-overlay]) for every width:
+   - below 900px: the video sits on top (38svh, landscape clip) and the text sits below it on Crown green;
+   - 900px and up: the text sits bottom-left over the video, which fills the right ~78% (subject in the right two-thirds).
+   The hero is sized (hero-video.js) so the first product tiles peek above the fold at 390x844 and 1280x800.
+   Content that used to live in or under the hero is in .hrel, directly after the products section. */
+
+.hero.hv2{--hvm:38svh;display:block;min-height:0;padding:0;background:#123627;color:#fff;overflow:hidden}
+.hero.hv2>img,.hero.hv2>video.hv{position:absolute;left:0;top:0;width:100%;height:var(--hvm);object-fit:cover}
+.hero.hv2>video.hv{opacity:1;transition:opacity .6s}
+.hero.hv2>.ov{position:absolute;left:0;right:0;top:0;height:var(--hvm);background:linear-gradient(0deg,rgba(18,54,39,.55) 0%,rgba(18,54,39,0) 30%)}
+.hero.hv2 .vctl{position:absolute;z-index:3;top:calc(var(--hvm) - 56px);right:12px;min-height:44px;min-width:44px;padding:10px 16px;background:rgba(0,0,0,.72);color:#fff;border:0;border-radius:22px;font:500 14px/24px Montserrat,Arial,sans-serif;cursor:pointer}
+.hero.hv2 .vctl[hidden]{display:none}
+.hero.hv2 .vctl:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.hero.hv2 .hvx{position:relative;z-index:2;margin-top:var(--hvm);padding:18px 20px 20px}
+.hero.hv2 .hvh{margin:0;color:#fff;font:400 32px/1.1 Optima,Georgia,serif;text-wrap:balance}
+.hero.hv2 .hvs{margin:6px 0 0;max-width:none;font:400 14px/20px Montserrat,Arial,sans-serif;color:rgba(255,255,255,.9)}
+.hero.hv2 .hvc{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;margin-top:14px}
+.hero.hv2 .hvc2{gap:10px}
+.hero.hv2 .hvc2 .hvp{flex:1 1 0;padding:0 10px}
+.hero.hv2 .hvp{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;background:#F7F5F2;color:#123627;border:2px solid #F7F5F2;border-radius:2px;font:600 15px/1.2 Montserrat,Arial,sans-serif;letter-spacing:.02em;text-decoration:none;box-sizing:border-box}
+.hero.hv2 .hvp:hover{background:#fff;border-color:#fff}
+.hero.hv2 .hvo{background:transparent;color:#fff;border-color:rgba(247,245,242,.85)}
+.hero.hv2 .hvo:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.hero.hv2 .hvl{display:inline-flex;align-items:center;min-height:48px;color:#fff;font:600 15px/1.2 Montserrat,Arial,sans-serif;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.7)}
+.hero.hv2 .hvl:hover{text-decoration-color:#fff}
+.hero.hv2 .hvp:focus-visible,.hero.hv2 .hvl:focus-visible,.hero.hv2 .hvcue:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.hero.hv2 .hv-d{display:none}
+.hero.hv2 .hvcue{display:none}
+@media (prefers-reduced-motion:reduce){.hero.hv2>video.hv{transition:none}.hero.hv2 .hvcue{display:none!important}}
+/* home: override the v8.2 photo-on-top rules in pa.css */
+html body[data-pa-page=home] .hero.hv2>img{position:absolute;height:var(--hvm);aspect-ratio:auto;object-position:50% 50%}
+html body[data-pa-page=home] .hero.hv2 .ov{display:block}
+@media (max-width:899px){html body[data-pa-page=home] .hero.hv2 .vctl{top:calc(var(--hvm) - 56px);right:12px;font-size:14px}
+html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
+/* garden rooms hub: a shorter video band so the first collection card reaches screen one */
+.hero.hv2[aria-labelledby=gr-h]{--hvm:30svh}
+@media (max-width:899px){.psec .lead.psx{display:none}} /* phones: the Signature band right below names the collections */
+.psec .sigband{padding-top:8px;margin-bottom:12px;font-size:13px;line-height:1.45}
+
+/* products straight after the hero: a compact heading so the tiles reach screen one */
+.sec.psec{padding-top:22px}
+.psec .center{text-align:left}
+.psec .center .kick{font-size:12px}
+.psec .center h2{margin-top:4px!important;font-size:24px;line-height:1.2}
+.psec .center .lead{margin:6px 0 0;font-size:14px;line-height:1.5;max-width:760px}
+.psec .center+*{margin-top:16px!important}
+
+/* the relocated hero content */
+.hrel{background:#F7F5F2;padding:26px 0 28px;border-top:1px solid #e6dfd1;border-bottom:1px solid #e6dfd1}
+.hrel .wrap>*{max-width:760px}
+.hrel .kick{color:#7d6230}
+.hrel p{margin:8px 0 0;font-size:16px;line-height:1.6;color:#2f3833}
+.hrel .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-top:16px}
+.hrel .ctas .tl{color:#123627;display:inline-flex;align-items:center;min-height:44px}
+.hrel .paproof{margin-top:14px;color:#2f3833;display:flex;flex-wrap:wrap;gap:6px 12px;font-size:14px}
+.hrel .paproof .s{color:#7d6230}
+.hrel .hsec{margin-top:12px;font-size:15px;color:#2f3833}
+.hrel .hsec a{color:#123627;text-decoration-color:rgba(18,54,39,.5);display:inline-block;padding:12px 0}
+
+@media (min-width:900px){
+ .hero.hv2{display:flex;align-items:flex-end;height:calc(100svh - 245px);min-height:520px}
+ .hero.hv2>img,.hero.hv2>video.hv,html body[data-pa-page=home] .hero.hv2>img{left:22%;width:78%;height:100%}
+ .hero.hv2>.ov{inset:0;height:auto;background:linear-gradient(90deg,#123627 0%,#123627 22%,rgba(18,54,39,.7) 32%,rgba(18,54,39,0) 56%),linear-gradient(0deg,rgba(18,54,39,.85) 0%,rgba(18,54,39,.4) 36%,rgba(18,54,39,0) 62%)}
+ .hero.hv2::before{content:"";position:absolute;left:0;right:0;top:0;height:120px;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,0));pointer-events:none}
+ .hero.hv2 .hvx{margin:0;box-sizing:content-box;width:calc(100% - 128px);max-width:520px;padding:0 64px 80px}
+ .hero.hv2 .hvh,html body[data-pa-page=home] .hero.hv2 .hvh{margin:0;font-size:clamp(36px,4.4vw,56px);line-height:1.05;text-shadow:0 1px 18px rgba(0,0,0,.25)}
+ .hero.hv2 .hvs{margin-top:12px;font-size:18px;line-height:28px;text-shadow:0 1px 10px rgba(0,0,0,.3)}
+ .hero.hv2 .hvc{gap:12px 24px;margin-top:24px}
+ .hero.hv2 .hvc2 .hvp{flex:0 0 auto;padding:0 24px}
+ .hero.hv2 .hv-d{display:inline}
+ .hero.hv2 .hvl.hv-d{display:inline-flex}
+ .hero.hv2 .hv-m{display:none}
+ .hero.hv2 .vctl,html body[data-pa-page=home] .hero.hv2 .vctl{top:auto;right:24px;bottom:24px;background:rgba(0,0,0,.6)}
+ .hero.hv2 .hvcue{position:absolute;z-index:2;left:61%;bottom:16px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:64px;min-height:44px;color:#fff;text-decoration:none;font:600 12px/1 Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;animation:hvcue 2s ease-in-out infinite alternate}
+ .hero.hv2 .hvcue svg{width:22px;height:22px;margin-top:2px}
+ .hero.hv2[data-min="460"]{min-height:460px}
+ .sec.psec{padding-top:28px}
+ .psec .center{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:end}
+ .psec .center .kick{grid-column:1}
+ .psec .center h2{grid-column:1;font-size:30px}
+ .psec .center .lead{grid-column:2;grid-row:1/span 2;margin:0;font-size:15px}
+ .psec .center+*{margin-top:18px!important}
+ .hrel{padding:32px 0 34px}
+}
+@keyframes hvcue{from{opacity:.55}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero.hv2 .hvcue{animation:none;display:none!important}}
+.pac.pacx{outline:3px solid #b4893a;outline-offset:4px}

@@ -101,13 +101,14 @@
     var h=decodeURIComponent(a.hash.slice(1)); if(!h || h==="main" || special(h)) return;
     var el=D.getElementById(h); if(!el) return;
     e.preventDefault(); if(history.pushState && location.hash!=="#"+h) history.pushState(null,"","#"+h);
-    go(el,{behavior:"smooth"});
+    /* v8.3 B2: instant same-page jumps — smooth + header-hide was overshooting headings by 50–300px */
+    go(el,{behavior:"instant"});
   });
   // arriving with a #hash (cross-page links such as "Compare all collections"): re-align once layout has settled
   function arrive(){ var h=decodeURIComponent(location.hash.slice(1)); if(!h || h==="main" || /^(range|seats)-/.test(h)) return; var el=D.getElementById(h);
     var t=q('[role=tab][data-hash="'+h+'"]'); if(t) el=t.closest("section");
     if(el) go(el,{block:/^model-/.test(h)?"center":"start"}) }
-  window.addEventListener("load",function(){ setTimeout(arrive,140) });
+  window.addEventListener("load",function(){ setTimeout(arrive,140); setTimeout(arrive,900) }); /* v8.3 B2: re-land after lazy images */
   // main nav (desktop, mouse): hovering "Gazebos & Pavilions" / "Garden Rooms" opens the ribbon as before; clicking goes to
   // that ribbon's "View all" page. Keyboard (Enter/Space) and touch keep the disclosure behaviour.
   var fine=window.matchMedia("(hover:hover) and (pointer:fine)");

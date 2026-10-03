@@ -6,7 +6,7 @@
   var root=document.querySelector("[data-ctcfg]"); if(!root) return;
   var P=JSON.parse(root.querySelector("[data-ct-prices]").textContent);
   var INT={melamine:"White melamine",maple:"Acoustic panelling: maple veneer",teak:"Acoustic panelling: teak veneer",whitewash:"White wash redwood"};
-  var S={w:"5",d:"3",int:"melamine",view:"front"};
+  var S={w:"5",d:"3",int:"melamine",view:"front"}; /* views: front, plan, photo */
   var $=function(s){return root.querySelector(s)}, $$=function(s){return [].slice.call(root.querySelectorAll(s))};
   var NS="http://www.w3.org/2000/svg", svg=$("#ct-svg");
   function gbp(n){return "£"+Math.round(n).toLocaleString("en-GB")}
@@ -82,7 +82,7 @@
     put("pnote",p?sz+" · from the live price guide (1 Oct 2026), including installation and the standard specification":"Not in the live price guide: ask our team");
     put("viewt",({front:"Front outline",plan:"Plan",draw:"Technical drawing (5m wide)",photo:"Photo"})[S.view]+" · "+sz);
     var kk=$(".stagebar .kick"); if(kk) kk.textContent=({front:"Outline drawing · to scale",plan:"Outline drawing · to scale",draw:"Crown's technical drawing",photo:"Photo"})[S.view];
-    var isSvg=S.view==="front"||S.view==="plan"; $(".svgw").hidden=!isSvg; $("[data-ctview=draw]").hidden=S.view!=="draw"; $("[data-ctview=photo]").hidden=S.view!=="photo";
+    var isSvg=S.view==="front"||S.view==="plan"; $(".svgw").hidden=!isSvg; var dv=$("[data-ctview=draw]"); if(dv) dv.hidden=S.view!=="draw"; /* v8.3: Drawing tab removed (Matthew, 03:31) */ $("[data-ctview=photo]").hidden=S.view!=="photo";
     if(isSvg){ draw(); svg.setAttribute("aria-label","Contemporary "+sz+", "+(S.view==="front"?"front outline, 2.5 m overall height":"plan, "+area+" m²")) }
     var t=document.getElementById("ctsend-spec"); if(t) t.value=spec();
   }

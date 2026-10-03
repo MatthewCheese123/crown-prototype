@@ -14,6 +14,8 @@
       if(hdr && !anyOpen()){
         if(y>lastY && y>140) hdr.classList.add("hid"); else if(y<lastY-4 || y<140) hdr.classList.remove("hid");
       }
+      /* v8.3: compact single-row header once scrolled (CSS applies it from 1180px); hysteresis stops it flickering */
+      if(hdr && !anyOpen()){ if(y>240) hdr.classList.add("cmp"); else if(y<120) hdr.classList.remove("cmp") }
       lastY=y; ticking=false;
     });
   },{passive:true});
@@ -212,7 +214,7 @@
   });
 
   /* ---------- video placeholder pause toggle ---------- */
-  $$(".vctl").forEach(function(b){ b.addEventListener("click",function(){
+  $$(".vctl").forEach(function(b){ if(b.closest(".hero")&&b.closest(".hero").querySelector("video[data-hv]")) return; /* v8.3: real video handled by hero-video.js */ b.addEventListener("click",function(){
     var p=b.getAttribute("aria-pressed")==="true"; b.setAttribute("aria-pressed",p?"false":"true");
     b.textContent=p?"❚❚  Pause video":"▶  Play video";
   })});

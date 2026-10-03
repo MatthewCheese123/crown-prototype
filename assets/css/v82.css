@@ -41,3 +41,33 @@ button.sdagain{background:none;border:0;padding:0;font:inherit;font-size:15px;co
 .bsph{margin:22px 0 0;max-width:880px}.bsph img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;display:block}
 /* v8.2 (a11y): utility-bar link stands alone since EN·FR went; On-display link on site pages */
 .util .wrap>span>a,.sdl dd>a{display:inline-block;min-height:24px;line-height:24px}
+
+/* v8.3 desktop header (1080px+): utility bar folded away; "Find a show site" sits by the phone, the trust line
+   moves into the slim prototype strip; slimmer rows (header ~120px). From 1180px the header becomes a single
+   64px row once you scroll (site.js adds .cmp). */
+.proto .ptrust{display:none}
+.hside .hfind{display:none}
+@media (min-width:1080px){
+ .util{display:none!important}
+ .proto{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 24px;padding:3px 24px;font-size:12px;line-height:15px}
+ .proto .pnt,.proto .ptrust{white-space:nowrap}
+ .proto .ptrust{display:inline}
+ .proto .ustar{color:#a77a1f;margin-right:4px;letter-spacing:.05em}
+ .hrow{height:62px}
+ .logo img{height:40px}
+ .hside{display:flex;align-items:center;gap:18px;width:auto;min-width:260px}
+ .hside .hfind{display:inline-flex;align-items:center;min-height:44px;color:#d8d0bd;font-size:14px;text-underline-offset:4px}
+ .hside .hfind:hover{color:#fff}
+ .nav>li>a,.nav>li>button{padding:10px 18px}
+}
+@media (min-width:1180px){
+ .site-h.cmp>.wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:20px;height:64px;position:relative}
+ .site-h.cmp .hrow{display:contents}
+ .site-h.cmp .hside{display:none}
+ .site-h.cmp .logo{grid-column:1;grid-row:1}
+ .site-h.cmp .logo img{height:34px}
+ .site-h.cmp .hact{grid-column:3;grid-row:1}
+ .site-h.cmp .wrap>nav{grid-column:2;grid-row:1;min-width:0}
+ .site-h.cmp .nav{border-top:0;position:static;gap:0}
+ .site-h.cmp .nav>li>a,.site-h.cmp .nav>li>button{padding:21px 11px 19px;font-size:14px;white-space:nowrap}
+}

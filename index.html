@@ -9,12 +9,13 @@
 <link rel="stylesheet" href="assets/css/pa.css"><link rel="stylesheet" href="assets/css/v3.css"><link rel="stylesheet" href="assets/css/v4.css">
 <link rel="stylesheet" href="assets/css/v7.css">
 <link rel="stylesheet" href="assets/css/v82.css">
+<link rel="stylesheet" href="assets/css/hero-video.css">
 </head><body data-pa-page="home">
 <a class="skip" href="#main">Skip to content</a>
-<div class="proto" role="note">Concept prototype (proto-awesomeo) – not a live site · nothing you enter is sent anywhere</div>
+<div class="proto" role="note"><span class="pnt">Concept prototype (proto-awesomeo) – not a live site · nothing you enter is sent anywhere</span><span class="ptrust"><span class="ustar" aria-hidden="true">★★★★★</span><b>5.0</b> on Trustpilot · 348 reviews · Handmade in Oxfordshire since 2006 · 8,000+ buildings in 28 countries</span></div>
 <div class="util"><div class="wrap"><span><span class="ustar" aria-hidden="true">★★★★★</span><b>5.0</b> on Trustpilot · 348 reviews</span><span>Handmade in Oxfordshire since 2006 · 8,000+ buildings in 28 countries</span><span><a href="visit-us/index.html">Find a show site</a></span></div></div>
 <header class="site-h"><div class="wrap"><div class="hrow">
- <div class="hside"><a class="hcall" href="tel:01491612820"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>01491 612820</span></a></div>
+ <div class="hside"><a class="hcall" href="tel:01491612820"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>01491 612820</span></a><a class="hfind" href="visit-us/index.html">Find a show site</a></div>
  <a class="logo" href="index.html"><img src="assets/img/crown-logo.svg" alt="Crown Pavilions home" width="220" height="50"></a>
  <div class="hact"><a class="hcall hcm" href="tel:01491612820" aria-label="Call 01491 612820"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></a><button type="button" class="srch" aria-label="Search the site" aria-expanded="false" aria-controls="site-search" data-search-open><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.4 15.4 21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button><a class="hbro" href="brochure/index.html">Brochure</a><a class="btn hbook" href="visit-us/index.html#book">Book a visit</a><button type="button" class="burger" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">☰</button></div>
 </div>
@@ -32,16 +33,18 @@
 </header>
 <main id="main">
 
-<section class="hero" aria-labelledby="hero-h"><img src="assets/img/gazebo-hero.webp" alt="A Crown gazebo set in a landscaped garden" loading="eager" decoding="async"><div class="ov"></div>
- <button type="button" class="vctl" aria-pressed="false">❚❚&nbsp; Pause video</button>
- <div class="wrap in"><div class="kick" style="color:var(--g)">Handmade in Oxfordshire since 2006</div>
- <h1 id="hero-h">The World's Finest<br>Garden Buildings</h1>
- <p>Luxury gazebos, pavilions and garden rooms, made to order and installed by our own teams.</p>
- <div class="ctas"><a class="btn big" href="visit-us/index.html#book">Book a show-site visit</a><a class="tl" href="#collections">or explore our buildings</a></div>
- <div class="paproof" style="color:#f1ede4"><span><span class="s" aria-hidden="true">★★★★★</span> <b>5.0</b> on Trustpilot · 348 reviews</span><span class="sep" aria-hidden="true">|</span><span>8,000+ buildings in 28 countries since 2006</span></div></div>
+<section class="hero hv2" aria-labelledby="hero-h"><img src="assets/img/gazebo-hero.webp" alt="A Crown gazebo set in a landscaped garden" loading="eager" decoding="async"><video class="hv" data-hv autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="assets/video/home-1600-poster.webp" data-src="assets/video/home-1600.mp4" data-src-m="assets/video/home-960.mp4" data-poster-m="assets/video/home-960-poster.webp" data-m="narrow"></video><div class="ov"></div>
+ <button type="button" class="vctl" hidden>Pause video</button>
+ <!-- hero-overlay:start (home) — the hero text: below the video on phones, over it from 900px. Swap this block only. -->
+ <div class="hvx" data-hero-overlay="home">
+  <h1 id="hero-h" class="hvh">The World's Finest<br> Garden Buildings</h1>
+  <div class="hvc hvc2"><a class="hvp" href="#collections" data-explore="gazebos"><span class="hv-d">Explore gazebos</span><span class="hv-m">Gazebos</span><span aria-hidden="true">&nbsp;↓</span></a><a class="hvp hvo" href="#collections" data-explore="garden-rooms"><span class="hv-d">Explore garden rooms</span><span class="hv-m">Garden rooms</span><span aria-hidden="true">&nbsp;↓</span></a><a class="hvl hv-d" href="visit-us/index.html#book">Book a visit</a></div>
+ </div>
+ <a class="hvcue" href="#collections"><span>Explore</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+ <!-- hero-overlay:end -->
 </section>
 
-<section class="sec" id="collections" aria-labelledby="col-h"><div class="wrap">
+<section class="sec psec" id="collections" aria-labelledby="col-h"><div class="wrap">
  <div class="center"><div class="kick">Our buildings</div><h2 id="col-h" style="margin-top:10px">What would you like to build?</h2><p class="lead">Three families, each made to order in our Oxfordshire workshops.</p></div>
  <div class="pachoose">
   <a class="pac" href="gazebos/index.html"><img src="assets/img/m-windsor.webp" alt="Crown Windsor gazebo in a garden" loading="lazy" decoding="async"><span class="ov"></span><span class="t"><h3>Gazebos &amp; pavilions</h3><span class="pr">Open, glazed or insulated · From <b>£13,300</b></span><span class="go">Explore gazebos</span></span></a>
@@ -51,9 +54,16 @@
  <div class="pahome-more"><a class="lnk" href="visit-us/index.html?type=consultation#book">Bespoke buildings →</a><a class="lnk" href="gazebos/index.html#compare">Compare gazebo ranges →</a><a class="lnk" href="garden-rooms/index.html#compare">Compare garden rooms →</a></div>
  <p class="note" style="text-align:center;margin-top:18px">"From" prices from crownpavilions.com, checked 1 Oct 2026 (all prices include VAT).</p>
 </div></section>
+<!-- hero-relocated: content that used to sit in or under the hero (v8.3), below the products so they peek on screen 1. Nothing removed. -->
+<section class="hrel" aria-label="About Crown Pavilions"><div class="wrap">
+ <div class="kick">Handmade in Oxfordshire since 2006</div>
+ <p>Luxury gazebos, pavilions and garden rooms, made to order and installed by our own teams.</p>
+ <div class="ctas"><a class="btn" href="visit-us/index.html#book">Book a show-site visit</a></div>
+ <div class="paproof"><span><span class="s" aria-hidden="true">★★★★★</span> <b>5.0</b> on Trustpilot · 348 reviews</span><span class="sep" aria-hidden="true">|</span><span>8,000+ buildings in 28 countries since 2006</span></div>
+</div></section>
 <section class="quote" aria-label="Customer quote"><div class="wrap g"><img src="assets/img/lord-alan-sugar.webp" alt="Lord Alan Sugar" loading="lazy" decoding="async">
  <div><div class="kick" style="color:var(--g)">Our delighted customer</div><blockquote style="margin-top:14px">“Crown Pavilions’ buildings are undoubtedly the best that money can buy, they exceeded our expectations at every stage.”</blockquote><cite>Lord Alan Sugar · Entrepreneur</cite>
- <div class="tline"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Trustpilot · based on 348 reviews <span class="acc2">Marque of Excellence</span><span class="acc2">FSC® certified timber · licence code TBC</span><span class="acc2">10-year guarantee</span></div></div>
+ <div class="tline"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Trustpilot · based on 348 reviews <span class="acc2">Marque of Excellence</span><span class="acc2">FSC® certified timber</span><span class="acc2">10-year guarantee</span></div></div>
 </div></section>
 
 <section class="sec" id="visit" aria-labelledby="vis-h"><div class="wrap">
@@ -107,4 +117,5 @@
 <script src="assets/js/search-index.js"></script>
 <script src="assets/js/site.js"></script><script src="assets/js/v7-nav.js"></script><script src="assets/js/v4.js"></script>
 <script src="assets/js/pa.js"></script>
+<script src="assets/js/hero-video.js" defer></script>
 </body></html>

@@ -21,14 +21,18 @@
   var qs=new URLSearchParams(location.search); if(qs.get("from")!=="nav") return;
   qs.delete("from"); var q=qs.toString(); if(history.replaceState) history.replaceState(history.state,"",location.pathname+(q?"?"+q:"")+location.hash);
   if(location.hash) return;
-  var hero=document.querySelector("main .hero"), facts=hero&&hero.nextElementSibling&&hero.nextElementSibling.classList.contains("facts")?hero.nextElementSibling:null;
+  var hero=document.querySelector("main .hero"), facts=null;
+  if(hero){ var n=hero.nextElementSibling; while(n && !n.classList.contains("facts")) n=n.nextElementSibling; facts=n }
   if(!hero) return;
+  /* v8.3 round 2: the video hero is sized to the viewport with the first products peeking and the stats band moved below
+     the products, so the hub frames itself at the top; nothing to scroll. */
+  if(hero.classList.contains("hv2")){ document.documentElement.setAttribute("data-v7framed","1"); return }
   if("scrollRestoration" in history) history.scrollRestoration="manual";
   function frame(){
     var top=hero.getBoundingClientRect().top+scrollY, end=(facts||hero).getBoundingClientRect().bottom+scrollY;
-    // stats band sits on the bottom edge; if the hero is shorter than the view, its top goes to the top edge instead.
-    // On very short windows keep the headline in view (at most 120px of the hero scrolls away).
-    var y=Math.max(0,Math.max(top,Math.min(end-innerHeight,top+120)));
+    // stats band sits on the bottom edge. v8.3 hero-video: hero is taller, so prefer facts-on-bottom when present
+    // (the old top+120 clamp left the band ~100px below the fold once .hrel was inserted).
+    var y=facts?Math.max(0,end-innerHeight):Math.max(0,Math.max(top,Math.min(end-innerHeight,top+120)));
     var h=document.querySelector(".site-h");
     window.scrollTo({top:Math.round(y),behavior:"instant"});
     if(h && y>0) h.classList.add("hid");
