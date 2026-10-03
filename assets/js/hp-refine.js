@@ -147,7 +147,7 @@ function v3paint(){ var H=window.__hpcfg; if(!H) return; var lay=H.state.bays.jo
   w.innerHTML=v3svg(lay,v3lit); tx.textContent=v3text(lay);
   $$(".rf3d .t3").forEach(function(t){ var sv=t.ownerSVGElement, bb=sv.getBoundingClientRect(), k=Math.min(bb.width/420,bb.height/262)||1; t.style.fontSize=(11/Math.min(k,1.4)).toFixed(2)+"px" }) }
 (function(){ var bp2=$("#bp2"); if(!bp2&&!$(".hpplanw")) return; var d=document.createElement("details"); d.className="rf3d"; d.open=true;
-  d.innerHTML='<summary>View in 3D <small>preview · updates as you design</small></summary><div class="rf3dbody"><div class="rf3dw" role="img" aria-label="3D preview of your Hampton (read-only)"></div><div><p class="rf3dt" aria-live="polite"></p><p class="rf3dn">Preview only: edit the bays on the plan.</p></div></div>';
+  d.innerHTML='<summary><span class="rf3dp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2 3 7v10l9 5 9-5V7z M3 7l9 5 9-5 M12 12v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>View in 3D</span><small>Updates as you design</small></summary><div class="rf3dbody"><div class="rf3dw" role="img" aria-label="3D preview of your Hampton (read-only)"></div><div><p class="rf3dt" aria-live="polite"></p><p class="rf3dn">Preview only: edit the bays on the plan.</p></div></div>';
   var mob=window.matchMedia("(max-width:999px)").matches, st=$(".hpplanw"); if(st&&!mob) st.appendChild(d); else { d.open=false; (bp2||st).appendChild(d) }
   d.addEventListener("toggle",v3paint) })();
 document.addEventListener("click",function(e){ var bay=e.target.closest(".hpplan .bay"); if(bay) v3lit=+bay.getAttribute("data-i"); if(e.target.closest("[data-hppre]")) v3lit=-1; setTimeout(v3paint,10) });

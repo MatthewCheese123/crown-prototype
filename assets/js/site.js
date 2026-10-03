@@ -21,6 +21,11 @@
   },{passive:true});
   if(hdr) hdr.addEventListener("focusin",function(){hdr.classList.remove("hid")});
 
+  /* v8.4: "Menu" in the mobile bottom bar opens the same menu as the header's burger, from anywhere on the page */
+  document.querySelectorAll("[data-mbar-menu]").forEach(function(b){ b.addEventListener("click",function(){
+    var bg=$(".burger"); if(hdr) hdr.classList.remove("hid"); if(bg) bg.click();
+    var open=bg&&bg.getAttribute("aria-expanded")==="true"; b.setAttribute("aria-expanded",open?"true":"false") }) });
+
   /* ---------- disclosure helpers (mega menus + brochure dropdown) ---------- */
   function closeAll(except){
     $$("[data-disclose]").forEach(function(b){

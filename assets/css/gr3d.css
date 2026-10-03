@@ -1,23 +1,10 @@
-/* v8.3 garden-room 3D preview */
-.g3db{display:inline-flex;align-items:center;gap:8px;min-height:44px;min-width:44px;padding:0 16px;margin:6px 0 0;border:1.5px solid #1d3b2e;border-radius:22px;background:#fff;color:#1d3b2e;font:600 14px/1 Montserrat,system-ui,sans-serif;cursor:pointer}
-.g3db svg{width:20px;height:20px}
-.g3db:hover,.g3db.on{background:#1d3b2e;color:#fff}
-.g3db:focus-visible,.g3dx:focus-visible,.g3dr:focus-visible{outline:3px solid #b4893a;outline-offset:2px}
-.stagebar{flex-wrap:wrap}
-.g3d{margin-top:12px;border:1px solid #d9d1bf;background:#fbf8f1;border-radius:6px;padding:12px}
-.g3d:focus{outline:none}.g3d:focus-visible{outline:3px solid #b4893a}
-.g3d[hidden]{display:none}
-.g3dh{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.g3dh h3{margin:0;font-size:18px}
-.g3dl{margin:2px 0 0;font-size:13px;color:#5a5446}
-.g3dx{flex:none;min-height:44px;min-width:44px;padding:0 14px;border:1px solid #bdb39e;border-radius:22px;background:#fff;color:#1d3b2e;font:600 14px Montserrat,system-ui,sans-serif;cursor:pointer}
-.g3dv{position:relative;margin-top:8px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
-.g3dv svg{display:block;width:100%;height:auto}
-.g3dv .t{font:600 13px Montserrat,system-ui,sans-serif;fill:#1f2a24;paint-order:stroke;stroke:#fbf8f1;stroke-width:3px}
-.g3dv .ts{font:500 12px Montserrat,system-ui,sans-serif;fill:#3d4640;paint-order:stroke;stroke:#fbf8f1;stroke-width:3px}
-.g3dload,.g3dfb{margin:12px 0;font-size:14px;color:#3d4640}
-.g3dc{display:flex;justify-content:center;gap:8px;margin-top:6px}
-.g3dc[hidden]{display:none}
-.g3dr{min-height:44px;min-width:44px;padding:0 12px;border:1px solid #bdb39e;border-radius:22px;background:#fff;color:#1d3b2e;font:600 18px/1 Montserrat,system-ui,sans-serif;cursor:pointer}
-.g3df{font-size:14px}
-.g3ds{margin:8px 0 0;font-size:14px;line-height:1.45;color:#2f3833}
+/* v8.4 "View in 3D": compact link in the drawing panel's top bar, level with the view tabs (40px visual, 44px hit area).
+   Opens Crown's 3D configurator in a new tab. */
+.stagebar.g3dbar{flex-wrap:wrap;row-gap:6px}
+.g3db{position:relative;margin-left:auto;margin-right:8px;display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;flex:0 0 auto;
+  background:#fff;color:#123627;border:1px solid #c9bfa8;border-radius:20px;font:600 13px/1 Montserrat,Arial,sans-serif;text-decoration:none;white-space:nowrap}
+.g3db::before{content:"";position:absolute;inset:-2px}
+.g3db svg{width:16px;height:16px}
+.g3db .g3da{font-size:12px;color:#7d6230}
+.g3db:hover{border-color:#123627}
+.g3db:focus-visible{outline:3px solid #123627;outline-offset:2px}

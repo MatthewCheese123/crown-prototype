@@ -35,11 +35,11 @@
       c.classList.add("pacx"); c.focus({preventScroll:true}); setTimeout(function(){ c.classList.remove("pacx") },2600) },450) }) });
 
   /* v8.3 round 2: from 900px, size the hero so the first product tile peeks ~48px above the fold
-     (never taller than viewport - header - 72px, never shorter than 520px). Below 900px the CSS layout already does it. */
+     (never taller than viewport - header - 72px, never shorter than 460px; v8.4: viewport - header - 180px). Below 900px the CSS layout already does it. */
   var hero=document.querySelector(".hero.hv2"), prod=hero&&hero.parentNode.querySelector(".psec");
   function fit(){ if(!hero) return; if(window.innerWidth<900){ hero.style.height=""; return }
     var tile=prod&&prod.querySelector(".pac,.card"), top=hero.getBoundingClientRect().top+window.scrollY;
-    var gap=tile? (tile.getBoundingClientRect().top - hero.getBoundingClientRect().bottom) : 0;
-    var vh=window.innerHeight, h=Math.min(vh-top-72, vh-top-gap-48); hero.style.height=Math.max(+(hero.getAttribute("data-min")||520),Math.round(h))+"px" }
+    var vh=window.innerHeight, h=vh-top-180; /* v8.4 decided: viewport - header - 180px, min 460px */
+    hero.style.height=Math.max(460,Math.round(h))+"px" }
   if(hero){ fit(); window.addEventListener("resize",fit); window.addEventListener("load",fit) }
 })();

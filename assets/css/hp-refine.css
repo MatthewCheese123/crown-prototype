@@ -317,3 +317,13 @@
 
 /* v8.2 F6: TBC marker floor 11px */
 .tbc{font-size:max(11px,.8em)}
+
+/* v8.4 (Matthew 04:08): "View in 3D" as a clear outlined pill (40px visual, 44px hit area), matching the garden-room button */
+.rf3d summary,.hpplanw .rf3d summary{min-height:44px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;white-space:normal}
+.rf3d summary::before{display:none}
+.rf3d .rf3dp{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px;border:1.5px solid #123627;border-radius:20px;background:#fff;color:#123627;font:600 14px/1 Montserrat,Arial,sans-serif}
+.rf3d .rf3dp svg{width:17px;height:17px}
+.rf3d summary:hover .rf3dp{background:#f3efe6}
+.rf3d[open] .rf3dp{background:#123627;color:#fff}
+.rf3d summary:focus-visible{outline:none}.rf3d summary:focus-visible .rf3dp{outline:3px solid #123627;outline-offset:2px}
+.rf3d summary small{font:500 12px Montserrat,Arial,sans-serif;color:#5f5a4f}

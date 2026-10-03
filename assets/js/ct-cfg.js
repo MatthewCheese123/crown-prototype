@@ -34,7 +34,7 @@
     var W=+S.w*1000, Dp=+S.d*1000, cw=B.w, ch=B.h, nar=cw<560;
     var L=layout(W);
     if(S.view==="front"){
-      var note=S.w==="5"?["Standard doors and windows, included","layout as the live 5m drawing"]:["Standard doors and windows, included","same pattern as the live 5m drawing; exact positions TBC"];
+      var note=S.w==="5"?["Standard doors and windows, included","layout as the live 5m drawing"]:["Standard doors and windows, included","same pattern as the live 5m drawing; exact positions confirmed on your quote"];
       if(!nar) note=[note.join(" · ")];
       var lh=nar?14:14, mL=nar?44:50, mT=12+note.length*lh, mB=52, FG=nar?450:800;
       var mR=nar?42:48, s=Math.min((cw-mL-mR)/(W+FG),(ch-mT-mB)/2500);
@@ -78,15 +78,15 @@
     var p=P[S.w+"x"+S.d], area=+(+S.w*+S.d).toFixed(2), sz=S.w+"m × "+S.d+"m";
     var put=function(k,v){ $$("[data-cp="+k+"]").forEach(function(e){e.textContent=v}) };
     put("size",sz); put("area",area+" m² floor area"); put("sizev",sz+" · "+area+" m²"); put("intv",INT[S.int]);
-    put("price",p?gbp(p):"Price TBC");
-    put("pnote",p?sz+" · from the live price guide (1 Oct 2026), including installation and the standard specification":"Not in the live price guide: ask our team");
+    put("price",p?gbp(p):"Price on request");
+    put("pnote",p?sz+" · including installation and the standard specification":"Ask our team for a price at this size");
     put("viewt",({front:"Front outline",plan:"Plan",draw:"Technical drawing (5m wide)",photo:"Photo"})[S.view]+" · "+sz);
     var kk=$(".stagebar .kick"); if(kk) kk.textContent=({front:"Outline drawing · to scale",plan:"Outline drawing · to scale",draw:"Crown's technical drawing",photo:"Photo"})[S.view];
     var isSvg=S.view==="front"||S.view==="plan"; $(".svgw").hidden=!isSvg; var dv=$("[data-ctview=draw]"); if(dv) dv.hidden=S.view!=="draw"; /* v8.3: Drawing tab removed (Matthew, 03:31) */ $("[data-ctview=photo]").hidden=S.view!=="photo";
     if(isSvg){ draw(); svg.setAttribute("aria-label","Contemporary "+sz+", "+(S.view==="front"?"front outline, 2.5 m overall height":"plan, "+area+" m²")) }
     var t=document.getElementById("ctsend-spec"); if(t) t.value=spec();
   }
-  function spec(){ var p=P[S.w+"x"+S.d]; return "Contemporary · "+S.w+"m × "+S.d+"m · interior: "+INT[S.int]+" · "+(p?"from "+gbp(p)+" (live price guide)":"price TBC") }
+  function spec(){ var p=P[S.w+"x"+S.d]; return "Contemporary · "+S.w+"m × "+S.d+"m · interior: "+INT[S.int]+" · "+(p?"from "+gbp(p)+"":"price on request") }
   function radios(attr,key){ var bs=$$("[data-"+attr+"]");
     bs.forEach(function(b,i){ b.addEventListener("click",function(){ S[key]=b.getAttribute("data-"+attr); upd() });
       b.addEventListener("keydown",function(e){ var n=null; if(e.key==="ArrowRight"||e.key==="ArrowDown") n=bs[(i+1)%bs.length]; if(e.key==="ArrowLeft"||e.key==="ArrowUp") n=bs[(i-1+bs.length)%bs.length]; if(n){e.preventDefault(); n.click(); n.focus()} }) }) }

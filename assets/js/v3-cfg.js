@@ -25,8 +25,8 @@
       put("extras",ex.length?ex.join(" · "):"No extras");
       put("chip",[mm(S.w)+" × "+mm(S.d)+" m",S.roof==="flat"?"Flat roof":"Pitched",find(D.clad,S.clad).n,ex.length?ex.join(" · "):"No extras"].join(" · "));
       put("pflat",gbp(D.flat[S.w+"x"+S.d])); put("ppitched",gbp(D.pitched[S.w+"x"+S.d]));
-      var v=opt("veranda"); put("pver",v!==null?"+"+gbp(v):"price TBC");
-      var z=opt("mezz"); put("pmezz",S.roof!=="pitched"?"pitched roof only":(z!==null?"+"+gbp(z):"price TBC"));
+      var v=opt("veranda"); put("pver",v!==null?"+"+gbp(v):"priced on your quote");
+      var z=opt("mezz"); put("pmezz",S.roof!=="pitched"?"pitched roof only":(z!==null?"+"+gbp(z):"priced on your quote"));
     };
     cfg.addEventListener("click",function(){ setTimeout(fire,0) }); cfg.addEventListener("change",function(){ setTimeout(fire,0) }); fire();
     // every "Send me this design" button (footer and the mobile one) pre-fills the real send panel with this design
@@ -37,7 +37,7 @@
   host.querySelectorAll(".vtabs [role=tab]").forEach(function(t){ function show(){ var p=document.getElementById(t.getAttribute("aria-controls")); if(p) p.hidden=false }
     t.addEventListener("click",show); t.addEventListener("keydown",function(){ setTimeout(show,0) }) });
   host.querySelectorAll(".vtabs [role=tab]").forEach(function(t){ var p=document.getElementById(t.getAttribute("aria-controls")); if(p) p.hidden=false });
-  /* footer price: the generator appends "+ options TBC"; set that part smaller so the price stays on one line */
+  /* footer price: the generator appends "+ options priced on your quote"; set that part smaller so the price stays on one line */
   var pr=host.querySelector(".bfoot [data-s=price]");
   function px(){ if(!pr) return; var t=pr.textContent, m=t.match(/^(£[\d,]+)\s*(\+.*)$/); if(m && !pr.querySelector(".px")){ pr.textContent=m[1]; var e=document.createElement("small"); e.className="px"; e.textContent=" "+m[2]; pr.appendChild(e) } }
   if(pr){ new MutationObserver(px).observe(pr,{childList:true,characterData:true,subtree:true}); px() }

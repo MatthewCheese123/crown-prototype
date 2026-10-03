@@ -14,7 +14,11 @@
   function inCfg(el){ return !!(el && el.closest && el.closest(".ccfg")) }
   function topMode(el){ // "stk" (collection page, desktop), "none" (configurator hides the bars) or "hdr"
     stk=stk||q(".stk"); if(stk && desk.matches) return inCfg(el)?"none":"stk"; return "hdr" }
-  function baseTop(el){ hdr=hdr||q(".site-h"); var m=topMode(el); if(m==="none") return 0; if(m==="stk") return stk.offsetHeight||58; return hdr?hdr.offsetHeight:0 }
+  function chipsH(el){ /* v8.4: a sticky jump-chip row in the same section also covers the top */
+    var sec=el&&el.closest&&el.closest(".psec"), c=sec&&sec.querySelector(".gzchips,.grchips");
+    if(!c||c===el||c.contains(el)||!c.offsetHeight||getComputedStyle(c).position!=="sticky") return 0; return c.offsetHeight }
+  function baseTop0(el){ hdr=hdr||q(".site-h"); var m=topMode(el); if(m==="none") return 0; if(m==="stk") return stk.offsetHeight||58; return hdr?hdr.offsetHeight:0 }
+  function baseTop(el){ var m=topMode(el), b=baseTop0(el); return (m==="none"?0:b)+chipsH(el) }
   // Sticky toolbars that sit under the site header (finder filters, etc.) and will pin above the target
   function extraPin(el){
     if(!el || !el.closest) return 0;
@@ -71,7 +75,7 @@
     else y=r.top+scrollY-th-(m==="none"?0:GAP);
     // v7: a jump down the page slides the header away (scroll up to bring it back); close to the top the header stays.
     // Keep sticky toolbars (filters) in the offset even when the site header hides.
-    if(m==="hdr" && topMode(L)==="hdr" && hdr && block==="start"){ var yh=r.top+scrollY-pin-GAP; if(yh>hdr.offsetHeight+160){ y=yh; m="hide" } }
+    if(m==="hdr" && topMode(L)==="hdr" && hdr && block==="start"){ var yh=r.top+scrollY-pin-chipsH(L)-GAP; if(yh>hdr.offsetHeight+160){ y=yh; m="hide" } }
     y=Math.max(0,Math.round(y)); setHeader(m);
     window.scrollTo({top:y,behavior:(opt.behavior==="smooth"&&!reduce.matches)?"smooth":"instant"});
     if(opt.inline && opt.inline!=="nearest") try{ orig.call(el,{block:"nearest",inline:opt.inline,behavior:"auto"}) }catch(e){}

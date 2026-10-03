@@ -110,7 +110,7 @@
     if(S.door===st.t) S.door=null;
     radio("sgw",S.w); radio("sgd",S.d); radio("sgpkg",S.pkg); radio("sgdoor",dt); radio("sgroof",S.roof); radio("sgint",S.int);
     var sk=$("[data-sgsky]"); if(sk) sk.checked=S.sky;
-    $$("[data-sgdoor]").forEach(function(b){ var tg=$("small",b); if(tg) tg.textContent=b.getAttribute("data-sgdoor")===st.t?"standard at "+S.w+"m":(b.hasAttribute("data-tbc")?"to confirm":"tailored") });
+    $$("[data-sgdoor]").forEach(function(b){ var tg=$("small",b); if(tg) tg.textContent=b.getAttribute("data-sgdoor")===st.t?"standard at "+S.w+"m":(b.hasAttribute("data-tbc")?"confirmed on your quote":"tailored") });
     $$("[data-sgpkgp]").forEach(function(e){ var v=price(e.getAttribute("data-sgpkgp")); e.textContent=v?gbp(v)+" at "+sz:"Price on request" });
     $$("[data-sgint=plasterboard]").forEach(function(b){ b.classList.toggle("pkonly",S.pkg!=="premium") });
     put("size",sz); put("sizev",sz+" · "+area+" m² footprint"); put("pkg",PK[S.pkg]); put("int",INT[S.int]);
@@ -127,7 +127,7 @@
     var t=document.getElementById("sgsend-spec"); if(t) t.value=spec();
     guide();
   }
-  function spec(){ var p=price(), tl=tailored(); return D.name+" · "+S.w+"m × "+S.d+"m · "+PK[S.pkg]+" package · "+DOOR[door()]+" · "+(S.roof==="pitched"?"pitched cedar roof":"flat EPDM roof")+(S.sky?" · skylights":"")+" · interior: "+INT[S.int]+" · "+(p?"from "+gbp(p)+" (live price guide)":"price on request")+(tl.length?" · tailored items priced by your designer":"") }
+  function spec(){ var p=price(), tl=tailored(); return D.name+" · "+S.w+"m × "+S.d+"m · "+PK[S.pkg]+" package · "+DOOR[door()]+" · "+(S.roof==="pitched"?"pitched cedar roof":"flat EPDM roof")+(S.sky?" · skylights":"")+" · interior: "+INT[S.int]+" · "+(p?"from "+gbp(p)+"":"price on request")+(tl.length?" · tailored items priced by your designer":"") }
   /* ---------- inputs ---------- */
   function radios(attr,fn){ var bs=$$("[data-"+attr+"]");
     bs.forEach(function(b,i){ b.addEventListener("click",function(){ fn(b.getAttribute("data-"+attr),b); upd() });

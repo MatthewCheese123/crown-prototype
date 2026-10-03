@@ -5,14 +5,14 @@
    The hero is sized (hero-video.js) so the first product tiles peek above the fold at 390x844 and 1280x800.
    Content that used to live in or under the hero is in .hrel, directly after the products section. */
 
-.hero.hv2{--hvm:38svh;display:block;min-height:0;padding:0;background:#123627;color:#fff;overflow:hidden}
+.hero.hv2{--hvm:240px;display:block;min-height:0;padding:0;background:#123627;color:#fff;overflow:hidden}
 .hero.hv2>img,.hero.hv2>video.hv{position:absolute;left:0;top:0;width:100%;height:var(--hvm);object-fit:cover}
 .hero.hv2>video.hv{opacity:1;transition:opacity .6s}
 .hero.hv2>.ov{position:absolute;left:0;right:0;top:0;height:var(--hvm);background:linear-gradient(0deg,rgba(18,54,39,.55) 0%,rgba(18,54,39,0) 30%)}
 .hero.hv2 .vctl{position:absolute;z-index:3;top:calc(var(--hvm) - 56px);right:12px;min-height:44px;min-width:44px;padding:10px 16px;background:rgba(0,0,0,.72);color:#fff;border:0;border-radius:22px;font:500 14px/24px Montserrat,Arial,sans-serif;cursor:pointer}
 .hero.hv2 .vctl[hidden]{display:none}
 .hero.hv2 .vctl:focus-visible{outline:3px solid #fff;outline-offset:2px}
-.hero.hv2 .hvx{position:relative;z-index:2;margin-top:var(--hvm);padding:18px 20px 20px}
+.hero.hv2 .hvx{position:relative;z-index:2;margin-top:var(--hvm);padding:14px 20px 16px}
 .hero.hv2 .hvh{margin:0;color:#fff;font:400 32px/1.1 Optima,Georgia,serif;text-wrap:balance}
 .hero.hv2 .hvs{margin:6px 0 0;max-width:none;font:400 14px/20px Montserrat,Arial,sans-serif;color:rgba(255,255,255,.9)}
 .hero.hv2 .hvc{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;margin-top:14px}
@@ -34,12 +34,11 @@ html body[data-pa-page=home] .hero.hv2 .ov{display:block}
 @media (max-width:899px){html body[data-pa-page=home] .hero.hv2 .vctl{top:calc(var(--hvm) - 56px);right:12px;font-size:14px}
 html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 /* garden rooms hub: a shorter video band so the first collection card reaches screen one */
-.hero.hv2[aria-labelledby=gr-h]{--hvm:30svh}
 @media (max-width:899px){.psec .lead.psx{display:none}} /* phones: the Signature band right below names the collections */
 .psec .sigband{padding-top:8px;margin-bottom:12px;font-size:13px;line-height:1.45}
 
 /* products straight after the hero: a compact heading so the tiles reach screen one */
-.sec.psec{padding-top:22px}
+.sec.psec{padding-top:16px}
 .psec .center{text-align:left}
 .psec .center .kick{font-size:12px}
 .psec .center h2{margin-top:4px!important;font-size:24px;line-height:1.2}
@@ -59,22 +58,24 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 .hrel .hsec a{color:#123627;text-decoration-color:rgba(18,54,39,.5);display:inline-block;padding:12px 0}
 
 @media (min-width:900px){
- .hero.hv2{display:flex;align-items:flex-end;height:calc(100svh - 245px);min-height:520px}
- .hero.hv2>img,.hero.hv2>video.hv,html body[data-pa-page=home] .hero.hv2>img{left:22%;width:78%;height:100%}
- .hero.hv2>.ov{inset:0;height:auto;background:linear-gradient(90deg,#123627 0%,#123627 22%,rgba(18,54,39,.7) 32%,rgba(18,54,39,0) 56%),linear-gradient(0deg,rgba(18,54,39,.85) 0%,rgba(18,54,39,.4) 36%,rgba(18,54,39,0) 62%)}
- .hero.hv2::before{content:"";position:absolute;left:0;right:0;top:0;height:120px;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,0));pointer-events:none}
- .hero.hv2 .hvx{margin:0;box-sizing:content-box;width:calc(100% - 128px);max-width:520px;padding:0 64px 80px}
- .hero.hv2 .hvh,html body[data-pa-page=home] .hero.hv2 .hvh{margin:0;font-size:clamp(36px,4.4vw,56px);line-height:1.05;text-shadow:0 1px 18px rgba(0,0,0,.25)}
+ .hero.hv2{display:flex;align-items:flex-end;height:calc(100svh - 305px);min-height:460px}
+ .hero.hv2>img,.hero.hv2>video.hv,html body[data-pa-page=home] .hero.hv2>img{left:0;width:100%;height:100%;object-position:70% 50%}
+ .hero.hv2>.ov{inset:0;height:auto;background:linear-gradient(to top right,rgba(11,26,19,.88) 0%,rgba(11,26,19,.55) 28%,rgba(11,26,19,.22) 48%,transparent 68%),linear-gradient(0deg,rgba(11,26,19,.55) 0%,rgba(11,26,19,.15) 28%,transparent 52%)}
+ .hero.hv2::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;z-index:1;background:linear-gradient(180deg,rgba(11,26,19,.35),rgba(11,26,19,0));pointer-events:none}
+ .hero.hv2 .hvx{margin:0;box-sizing:content-box;width:calc(100% - 128px);max-width:480px;padding:0 64px 64px}
+ .hero.hv2 .hvh,html body[data-pa-page=home] .hero.hv2 .hvh{margin:0;font-size:clamp(36px,4.1vw,52px);line-height:1.05;text-shadow:0 1px 18px rgba(0,0,0,.25)}
  .hero.hv2 .hvs{margin-top:12px;font-size:18px;line-height:28px;text-shadow:0 1px 10px rgba(0,0,0,.3)}
  .hero.hv2 .hvc{gap:12px 24px;margin-top:24px}
  .hero.hv2 .hvc2 .hvp{flex:0 0 auto;padding:0 24px}
+ /* one button system: cream primary + text link */
+ .hero.hv2 .hvc2 .hvo{background:none;border:0;padding:0;min-height:48px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.7)}
+ .hero.hv2 .hvc2 .hvo:hover{background:none;text-decoration-color:#fff}
  .hero.hv2 .hv-d{display:inline}
  .hero.hv2 .hvl.hv-d{display:inline-flex}
  .hero.hv2 .hv-m{display:none}
  .hero.hv2 .vctl,html body[data-pa-page=home] .hero.hv2 .vctl{top:auto;right:24px;bottom:24px;background:rgba(0,0,0,.6)}
  .hero.hv2 .hvcue{position:absolute;z-index:2;left:61%;bottom:16px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:64px;min-height:44px;color:#fff;text-decoration:none;font:600 12px/1 Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;animation:hvcue 2s ease-in-out infinite alternate}
  .hero.hv2 .hvcue svg{width:22px;height:22px;margin-top:2px}
- .hero.hv2[data-min="460"]{min-height:460px}
  .sec.psec{padding-top:28px}
  .psec .center{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:end}
  .psec .center .kick{grid-column:1}
@@ -86,3 +87,79 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 @keyframes hvcue{from{opacity:.55}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.hero.hv2 .hvcue{animation:none;display:none!important}}
 .pac.pacx{outline:3px solid #b4893a;outline-offset:4px}
+
+/* v8.4: mobile pause/play is a round icon (36px visual, 44px hit area) */
+@media (max-width:899px){
+ .hero.hv2 .vctl,html body[data-pa-page=home] .hero.hv2 .vctl{top:calc(var(--hvm) - 48px);right:12px;width:44px;height:44px;min-width:44px;padding:0;background:none;border-radius:50%;overflow:hidden;text-indent:200%;white-space:nowrap;color:transparent}
+ .hero.hv2 .vctl::before{content:"";position:absolute;left:4px;top:4px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.6);box-shadow:0 0 0 1px rgba(255,255,255,.35)}
+ .hero.hv2 .vctl::after{content:"";position:absolute;left:17px;top:15px;width:3px;height:14px;border-left:3px solid #fff;border-right:3px solid #fff;width:4px;text-indent:0}
+ .hero.hv2 .vctl[aria-label^="Play"]::after{left:18px;top:14px;width:0;height:0;border-style:solid;border-width:8px 0 8px 12px;border-color:transparent transparent transparent #fff;border-right:0}
+}
+
+/* ---------- v8.4: compact product tiles on phones ---------- */
+.grchips{display:none}
+@media (max-width:699px){
+ /* gazebos hub: 2x2 range tiles, name + From price + link over the image */
+ #ranges .grid.g4{grid-template-columns:1fr 1fr;gap:10px}
+ #ranges .card.rc{position:relative;display:grid;overflow:hidden;border-radius:4px}
+ #ranges .card.rc>img{grid-area:1/1;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+ #ranges .card.rc::before{content:"";grid-area:1/1;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(11,26,19,.92) 0%,rgba(11,26,19,.6) 42%,rgba(11,26,19,0) 70%)}
+ #ranges .card.rc .tx{grid-area:1/1;align-self:end;z-index:2;display:flex;flex-direction:column;padding:0 10px 6px;background:none}
+ #ranges .card.rc .tag2,#ranges .card.rc .tx>p{display:none}
+ #ranges .card.rc h3{margin:0;color:#fff;font-size:17px;line-height:1.15}
+ #ranges .card.rc .fp{margin:3px 0 0;color:#F7F5F2;font-size:12.5px;line-height:1.3}
+ #ranges .card.rc .fp b{color:#fff}
+ #ranges .card.rc .rcl{gap:0;margin-top:2px}
+ #ranges .card.rc .rcl .lnk{font-size:12.5px;min-height:34px;display:inline-flex;align-items:center;margin:0;color:#F7F5F2;text-decoration-color:#c9a86b}
+ /* garden rooms hub: chip row (sticky) + compact horizontal cards */
+ .grchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;position:sticky;top:var(--hdrvis,0px);z-index:20;margin:14px -20px 0!important;padding:8px 20px;background:#fff;box-shadow:0 6px 10px -10px rgba(0,0,0,.35)}
+ .grchips::-webkit-scrollbar{display:none}
+ .grchips a{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid #d9cfba;border-radius:22px;color:#123627;font-size:14px;font-weight:600;text-decoration:none;background:#F7F5F2;white-space:nowrap}
+ .grchips a b{font-weight:500;color:#5f5a4f;font-size:12.5px}
+ #gc-signature,#gc-heritage,#gc-contemporary{scroll-margin-top:calc(var(--hdrvis,0px) + 76px)}
+ #collections .grid.sigg,#collections .grid.pair{grid-template-columns:1fr;gap:10px}
+ #collections .card{display:grid;grid-template-columns:118px 1fr;align-items:stretch}
+ #collections .card>img{width:118px;height:100%;min-height:118px;aspect-ratio:auto;object-fit:cover}
+ #collections .card .tx{padding:10px 12px}
+ #collections .card .tx>p,#collections .card .kv{display:none}
+ #collections .card h3{font-size:18px;margin:0}
+ #collections .card .fp{margin-top:2px;font-size:13px}
+ #collections .card .fp small{display:block}
+ #collections .card .lnk.foot{display:inline-flex;align-items:center;min-height:40px;margin-top:2px;font-size:13px}
+}
+
+@media (max-width:899px){.hero.hv2 .hv-mhide{display:none!important}}
+@media (min-width:900px) and (max-height:720px){.hero.hv2 .hvcue{display:none!important}}
+
+/* v8.3 r3: mobile reach chips (gazebos + garden rooms) */
+.gzchips,.grchips{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:14px 0 4px;padding:2px 0 8px;scroll-snap-type:x proximity}
+.gzchips::-webkit-scrollbar,.grchips::-webkit-scrollbar{display:none}
+.gzchips a,.grchips a{flex:0 0 auto;scroll-snap-align:start;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;border:1px solid #d6cdb9;border-radius:999px;background:#fff;color:#123627;font:600 13px/1.2 Montserrat,Arial,sans-serif;text-decoration:none;white-space:nowrap}
+.gzchips a b,.grchips a b{font-weight:600;color:#5f5a4f;font-size:12px}
+.gzchips a:hover,.grchips a:hover,.gzchips a:focus-visible,.grchips a:focus-visible{border-color:#123627;outline:none}
+@media (max-width:899px){
+ .gzchips,.grchips{margin:12px 0 8px;padding:0 0 4px} /* non-sticky: sticky chips landed under the chip bar in framing */
+ .psec .grid.g4 .card.rc > .tx > p,.psec .grid.g4 .card.rc .rcl .more{display:none}
+ .psec .grid.g4 .card.rc > img{aspect-ratio:4/3;max-height:120px;height:120px;object-fit:cover;width:100%}
+ .psec .grid.g4{grid-template-columns:1fr 1fr;gap:12px;margin-top:12px!important}
+ .psec .grid.g4 .card.rc .tx{padding:10px 12px 12px}
+ .psec .grid.g4 .card.rc h3{font-size:16px;margin:4px 0}
+ .psec .grid.g4 .card.rc .fp{font-size:13px}
+}
+@media (min-width:900px){
+ .gzchips,.grchips{flex-wrap:wrap;overflow:visible;margin-top:18px}
+}
+@media (min-width:700px){.grchips{display:none!important}}
+/* v8.4: desktop shows every range/collection at once, so the jump chips are phone-only */
+@media (min-width:900px){.gzchips{display:none!important} .sec.psec{padding-top:20px} .psec .sigband{margin-top:12px!important}}
+@media (max-width:699px){#ranges .card.rc .rcl .more{display:none}}
+
+/* chip targets: clear sticky chip row on mobile (~52px) + a little air */
+@media (max-width:899px){
+ #rc-classic,#rc-glazed,#rc-insulated,#rc-shelters,
+ #gc-signature,#gc-heritage,#gc-contemporary{scroll-margin-top:64px}
+}
+@media (min-width:900px){
+ #rc-classic,#rc-glazed,#rc-insulated,#rc-shelters,
+ #gc-signature,#gc-heritage,#gc-contemporary{scroll-margin-top:24px}
+}

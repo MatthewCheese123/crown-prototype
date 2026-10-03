@@ -307,3 +307,11 @@ body[data-pa-page=thanks].mbar-on,body[data-pa-page=brochure].mbar-on{padding-bo
 .paf .paopt{display:flex;align-items:center;font-weight:500;margin-bottom:0}
 .pachips .paopt>span:last-child{font-size:15px}
 .paty .lead{margin-left:0;text-align:left;max-width:720px}
+
+/* r3 contrast (Felix #5): gold as link text on light → green + gold underline.
+   .pac .go sits on dark photo wash → cream + gold underline. */
+.lnk,.card .lnk,.rcl .lnk{color:#123627;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:#C9A86B}
+.lnk:hover,.card .lnk:hover{text-decoration-color:#123627}
+.papb .lnk{color:#123627;text-decoration-color:#C9A86B}
+.pac .go{color:#F7F5F2;text-decoration:underline;text-decoration-color:#C9A86B;text-underline-offset:4px}
+.pac:hover .go{color:#fff;text-decoration-color:#C9A86B}

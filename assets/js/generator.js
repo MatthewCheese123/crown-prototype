@@ -27,7 +27,7 @@
   // Pitched heights from the live Heritage drawings, by overall footprint depth (room + veranda).
   var PH=[[3000,2200,3000],[4000,2250,3250],[5500,2250,3500]];
   function heights(d,roof,ver){
-    if(roof==="flat") return {e:2250,r:2500,ok:true,src:"2,500 mm overall, per Crown's 3D planner"};
+    if(roof==="flat") return {e:2250,r:2500,ok:true,src:"2,500 mm overall"};
     var T=d+(ver?1000:0), i, a, b;
     for(i=0;i<PH.length;i++) if(Math.abs(PH[i][0]-T)<1) return {e:PH[i][1],r:PH[i][2],ok:true,src:fmt(PH[i][2])+" mm overall, as drawn on Crown's live "+(PH[i][0]/1000)+"m-deep Heritage drawing"};
     if(T<PH[0][0]){a=PH[0];b=PH[1]} else if(T>PH[2][0]){a=PH[1];b=PH[2]} else {for(i=0;i<PH.length-1;i++) if(T>PH[i][0]&&T<PH[i+1][0]){a=PH[i];b=PH[i+1]}}
@@ -213,12 +213,12 @@
       el("line",{x1:X(mx1),y1:Y(my),x2:X(mx2),y2:Y(my),class:"mezz"});
       el("line",{x1:X(mx1),y1:Y(my-120),x2:X(mx2),y2:Y(my-120),class:"mezz2"});
       if(NAR) tx(X((mx1+mx2)/2),Y(my)-5,"Mezzanine",{class:"ct","text-anchor":"middle"});
-      else callout(X(mx2-200),Y(my),X(W+200)+12,Y((h.e+h.r)/2)+6,"Mezzanine","internal floor · position TBC","start");
+      else callout(X(mx2-200),Y(my),X(W+200)+12,Y((h.e+h.r)/2)+6,"Mezzanine","internal floor · position agreed with you","start");
     }
     // dimensions
     var topH=S.roof==="flat"?2500:h.r;
     dimH(X(front?0:0),X(W),G+30,fmt(W)+" mm",G+4);
-    dimV(x0-(S.roof==="pitched"?62:40),Y(0),Y(topH),(h.ok?"":"≈ ")+fmt(topH)+" mm"+(h.ok?"":" · TBC"),x0-4);
+    dimV(x0-(S.roof==="pitched"?62:40),Y(0),Y(topH),(h.ok?"":"≈ ")+fmt(topH)+" mm"+(h.ok?"":" · approx."),x0-4);
     if(S.roof==="pitched") dimV(x0-26,Y(0),Y(h.e),(h.ok?"":"≈ ")+fmt(h.e),x0-4);
     figure(figX,G,s);
   }
@@ -244,7 +244,7 @@
     [[0,1],[W-t,1]].forEach(function(p){ el("rect",{x:X(p[0]),y:Y(A.d-479-300),width:t*s,height:600*s,fill:CREAM,stroke:"none"}); [0.25,0.5,0.75].forEach(function(f){ el("line",{x1:X(p[0]+t*f),y1:Y(A.d-779),x2:X(p[0]+t*f),y2:Y(A.d-179),class:"thin"}) }) });
     if(S.veranda){ el("rect",{x:X(0),y:Y(A.d),width:W*s,height:1000*s,class:"deck"}); boards(X(0),Y(A.d),W*s,1000*s,"#6b5a45",140,s,true); el("rect",{x:X(0),y:Y(A.d),width:W*s,height:1000*s,class:"thin",fill:"none"}); [210,W-310].forEach(function(px){ el("rect",{x:X(px),y:Y(A.d+1000-160),width:100*s,height:100*s,class:"ol",fill:"#fff"}) }); tx(X(W/2),Y(A.d+620),"Veranda · timber decking",{class:"fl","text-anchor":"middle"}) }
     if(S.roof==="pitched"){ el("rect",{x:X(W/2-490),y:Y(400),width:980*s,height:1200*s,class:"dash"}); tx(X(W/2),Y(400)-6,"Rooflight (rear slope)",{class:"fl","text-anchor":"middle"}); el("line",{x1:X(-200),y1:Y(A.d/2),x2:X(W+200),y2:Y(A.d/2),class:"ridge"}); tx(X(W+200)+4,Y(A.d/2)+4,"ridge",{class:"fl"}) }
-    if(S.mezz&&S.roof==="pitched"){ el("rect",{x:X(t),y:Y(t),width:(W-2*t)*s,height:(A.d*0.42)*s,class:"mezzA"}); tx(X(W/2),Y(t+A.d*0.21)+20,"Mezzanine above (extent TBC)",{class:"ct","text-anchor":"middle"}) }
+    if(S.mezz&&S.roof==="pitched"){ el("rect",{x:X(t),y:Y(t),width:(W-2*t)*s,height:(A.d*0.42)*s,class:"mezzA"}); tx(X(W/2),Y(t+A.d*0.21)+20,"Mezzanine above (size agreed with you)",{class:"ct","text-anchor":"middle"}) }
     tx(X(W/2),Y(A.d*0.62),"Floor: "+fl.n,{class:"cs","text-anchor":"middle"});
     var yb=Y(S.veranda?Dp:A.d+650); dimH(X(0),X(W),yb+24,fmt(W)+" mm",yb+2);
     dimV(x0-30,Y(0),Y(A.d),fmt(A.d)+" mm",x0-4);
@@ -260,20 +260,20 @@
     var area=(S.w*S.d/1e6), P=price(), sz=m(S.w)+" m × "+m(S.d)+" m";
     setOut("sizeline",sz+" · "+area.toFixed(area%1?2:0).replace(/\.?0+$/,"")+" m² floor area");
     setOut("pflat","From "+gbp(base("flat"))+" at this size"); setOut("ppitched","From "+gbp(base("pitched"))+" at this size");
-    var c=opt("cedar"); setOut("rfnote",S.rf==="cedar"?(c!==null?"Cedar shingles: +"+gbp(c)+" at this size in Crown's planner.":"Cedar shingles: price at this size TBC (+£2,070 at 3m × 3m, +£6,210 at 6m × 4.5m in Crown's planner)."):"Asphalt black or brown: no price difference seen in Crown's planner (checked at 3m × 3m).");
+    var c=opt("cedar"); setOut("rfnote",S.rf==="cedar"?(c!==null?"Cedar shingles: +"+gbp(c)+" at this size.":"Cedar shingles: priced on your quote at this size."):"Asphalt shingles in black or brown are the same price.");
     var mz=$("[data-mezz]"); mz.disabled=S.roof!=="pitched"; if(mz.disabled) mz.checked=false;
     var z=opt("mezz");
-    setOut("mezznote",S.roof!=="pitched"?"Pitched roof only, as offered in Crown's 3D planner. Choose the pitched roof to add one.":(z!==null?"+"+gbp(z)+" at this size, per Crown's 3D planner. Final layout to confirm with Crown.":"Offered on the pitched roof in Crown's 3D planner. Price and availability at this size: TBC, to confirm with Crown (the planner adds £600 at 5m × 3m and 5m × 4m and £800 at 6m × 4.5m; in our checks it didn't apply below 5m wide)."));
-    var v=opt("veranda"); setOut("vernote",v!==null?"(+"+gbp(v)+" at this size in Crown's planner)":"(price at this size TBC; +£650 at 3m × 3m and +£1,100 at 6m × 4.5m in Crown's planner)");
-    var f=opt("floor",S.floor); setOut("flnote",S.floor==="plywood"?"Plywood is the planner's base floor; SPC flooring in Walnut, Grey Oak or Natural Oak is an option.":(f!==null?find(D.floor,S.floor).n+": +"+gbp(f)+" at this size in Crown's planner.":find(D.floor,S.floor).n+": price at this size TBC (Walnut is +£675 at 3m × 3m flat in Crown's planner)."));
+    setOut("mezznote",S.roof!=="pitched"?"Available with the pitched roof. Choose the pitched roof to add one.":(z!==null?"+"+gbp(z)+" at this size. We confirm the final layout with you.":"Available with the pitched roof. Price and availability at this size are confirmed on your quote."));
+    var v=opt("veranda"); setOut("vernote",v!==null?"(+"+gbp(v)+" at this size)":"(priced on your quote at this size)");
+    var f=opt("floor",S.floor); setOut("flnote",S.floor==="plywood"?"Plywood flooring is standard; SPC flooring in Walnut, Grey Oak or Natural Oak is an option.":(f!==null?find(D.floor,S.floor).n+": +"+gbp(f)+" at this size.":find(D.floor,S.floor).n+": priced on your quote."));
     setOut("dw",dwText());
     setOut("title",title());
     var h=heights(S.d,S.roof,S.veranda); setOut("hnote","Height: "+h.src+".");
     setS("size",sz); setS("area",(+area.toFixed(2))+" m²"); setS("roof",roofName());
     setS("mezz",S.roof==="pitched"&&S.mezz?"Yes":"None"); setS("ver",S.veranda?"Yes, up to 1,000 mm":"None");
     setS("clad",profName()+" · "+find(D.clad,S.clad).n); setS("int","V-groove matchboard · "+find(D.floor,S.floor).n+" floor"); setS("dw","French doors ×1 · "+(nWin(S.w)+2)+" windows");
-    setS("price",gbp(P.total)+(P.tbc.length?" + options TBC":""));
-    setS("pnote",(P.parts.length?"Size & roof "+gbp(P.base)+" · "+P.parts.join(" · "):"Live price for this size and roof")+(P.tbc.length?" · TBC: "+P.tbc.join(", "):"")+" · Cladding profile: price TBC");
+    setS("price",gbp(P.total)+(P.tbc.length?" + options priced on your quote":""));
+    setS("pnote",(P.parts.length?"Size & roof "+gbp(P.base)+" · "+P.parts.join(" · "):"Live price for this size and roof")+(P.tbc.length?" · priced on your quote: "+P.tbc.join(", "):"")+" · Cladding profile priced on your quote");
     $$("[data-pitched-only]").forEach(function(e){e.hidden=S.roof!=="pitched"});
     svg.setAttribute("aria-label",title()+". "+dwText()+".");
   }
@@ -307,7 +307,7 @@
     b.addEventListener("keydown",function(e){ var n=null; if(e.key==="ArrowRight") n=vt[(i+1)%vt.length]; if(e.key==="ArrowLeft") n=vt[(i-1+vt.length)%vt.length]; if(n){e.preventDefault(); n.focus(); n.click()} });
   });
   // "Send me this design" (pick 2 B): opens the inline send panel (site.js) and fills it with this spec. Nothing is sent in the prototype.
-  function spec(){var P=price(); return "Heritage · "+m(S.w)+" m × "+m(S.d)+" m · "+roofName()+" · mezzanine: "+(S.roof==="pitched"&&S.mezz?"yes":"no")+" · veranda: "+(S.veranda?"yes":"no")+" · cladding: "+profName()+", "+find(D.clad,S.clad).n+" (profile price TBC) · floor: "+find(D.floor,S.floor).n+" · "+dwText()+" · from "+gbp(P.total)+(P.tbc.length?" + options TBC":"")}
+  function spec(){var P=price(); return "Heritage · "+m(S.w)+" m × "+m(S.d)+" m · "+roofName()+" · mezzanine: "+(S.roof==="pitched"&&S.mezz?"yes":"no")+" · veranda: "+(S.veranda?"yes":"no")+" · cladding: "+profName()+", "+find(D.clad,S.clad).n+" (profile priced on your quote) · floor: "+find(D.floor,S.floor).n+" · "+dwText()+" · from "+gbp(P.total)+(P.tbc.length?" + options priced on your quote":"")}
   var sd=$("[data-send-design]");
   if(sd) sd.addEventListener("click",function(){
     var t=document.getElementById("hgsend-spec"); if(t) t.value=spec();

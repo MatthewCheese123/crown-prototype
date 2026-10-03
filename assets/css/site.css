@@ -850,3 +850,7 @@ body.cmp-on{padding-bottom:84px}
 .cmpt thead th img{width:100%;max-width:220px;aspect-ratio:4/3;object-fit:cover;margin-bottom:6px}
 .cmpt thead th b{font-family:Optima,Georgia,serif;font-weight:500;font-size:19px;color:var(--f)}
 .cmpt tbody th{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);width:120px}
+
+/* r3 contrast: text links on white/light cards */
+a.lnk,button.lnk{color:#123627}
+a.lnk{text-decoration:underline;text-decoration-color:#C9A86B;text-underline-offset:4px}
