@@ -217,7 +217,7 @@
   $$("[data-gallery]").forEach(function(g){
     var main=$(".gmain img",g), cnt=$(".cnt",g), th=$$(".thumbs button",g);
     th.forEach(function(b,i){ b.addEventListener("click",function(){
-      main.src=b.getAttribute("data-src"); main.alt=b.getAttribute("data-alt");
+      main.removeAttribute("srcset"); main.removeAttribute("sizes"); main.src=b.getAttribute("data-src"); main.alt=b.getAttribute("data-alt");
       th.forEach(function(x){x.removeAttribute("aria-current")}); b.setAttribute("aria-current","true");
       if(cnt) cnt.textContent=(i+1)+" / "+th.length;
     })});
