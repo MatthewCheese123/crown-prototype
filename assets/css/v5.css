@@ -21,7 +21,7 @@
 /* configurator extras */
 .sgsvg{width:100%;display:block}
 .sgsvg .bg{fill:#f6f1e6}
-.sgsvg .wall{fill:#cdb48a;stroke:#8a6d36;stroke-width:1.2}
+.sgsvg .wall{fill:#cdb48a;stroke:#7d6230;stroke-width:1.2}
 .sgsvg .inner{fill:#fffdf7;stroke:#b89555;stroke-width:.8}
 .sgsvg .gap{fill:#fffdf7}
 .sgsvg .leaf{fill:none;stroke:#123627;stroke-width:2.2;stroke-linejoin:round}
@@ -30,11 +30,11 @@
 .sgsvg .slide{fill:#dfe9ee;stroke:#123627;stroke-width:1.4}
 .sgsvg .pwin{fill:#dfe9ee;stroke:#123627;stroke-width:1.4}
 .sgsvg .sky{fill:rgba(160,196,214,.35);stroke:#3c6b80;stroke-width:1.2;stroke-dasharray:5 3}
-.sgsvg .ridge{fill:none;stroke:#8a6d36;stroke-width:1.4;stroke-dasharray:7 4}
+.sgsvg .ridge{fill:none;stroke:#7d6230;stroke-width:1.4;stroke-dasharray:7 4}
 .sgsvg .dim{stroke:#9a9384;stroke-width:1;fill:none}
 .sgsvg .dl{font:600 25px Montserrat,Arial,sans-serif;fill:#4b4a43}
 .sgsvg .fl{font:500 23px Montserrat,Arial,sans-serif;fill:#5f5a4f}
-.sgsvg .vl{font:600 17px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;fill:#8a6d36}
+.sgsvg .vl{font:600 17px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;fill:#7d6230}
 .sgsvg .ct{font:500 32px Optima,Georgia,serif;fill:#123627}
 .bp .sgstd{font-size:13.5px;color:#4b4a43;margin-top:10px;padding:8px 10px;background:#f6f2ea;border-left:3px solid var(--g)}
 .pkcards{display:grid;gap:10px}
@@ -44,14 +44,14 @@
 .pkcard ul{margin:2px 0 0 18px;font-size:13px;color:#555;line-height:1.45}
 .pkcard[aria-checked=true]{border-color:var(--f);box-shadow:inset 0 0 0 2px var(--f);background:#fbfaf6}
 .pkcard:hover{border-color:var(--gd)}
-.seg>button small{display:block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gd);font-weight:600;margin-top:2px}
+.seg>button small{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gd);font-weight:600;margin-top:2px}
 .seg>button[aria-checked=true] small{color:var(--g)}
 .bp .tog small{display:block}
 .icard.pkonly .ot{background:#efe6d2;color:#6b5a35}
 .icard.pkonly::after{content:"Selecting this switches you to Premium";display:block;font-size:11.5px;color:var(--gd);margin-top:4px}
 .bfoot [data-sgo=price]{font-family:Optima,Georgia,serif;font-size:34px;color:#fff;line-height:1.1;display:block}
 .bfoot [data-sgo=pnote]{display:block;font-size:12.5px;color:#cfd8d2;margin-top:4px;max-width:420px}
-.bfoot .sgtl{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fd);background:var(--g);padding:2px 8px}
+.bfoot .sgtl{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fd);background:var(--g);padding:2px 8px}
 .bfoot .sgtl[hidden]{display:none}
 @media (max-width:999px){.bfoot [data-sgo=price]{font-size:26px}.bfoot [data-sgo=pnote]{display:none}}
 /* price guide */
@@ -81,10 +81,10 @@
 .pkt thead .btn{min-height:40px;padding:8px 16px}
 .pkt thead th.pm{background:#fbf7ee}
 .pkt tbody td.pm{background:#fdfbf6}
-.pkt th[scope=row]{width:190px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);font-weight:700}
+.pkt th[scope=row]{width:190px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);font-weight:700}
 .pkt td.same{color:#555}
-.pkt td .same-l{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7a7364;font-weight:600;margin-left:6px}
-.pkt td small{display:block;color:#7a7364;font-size:12.5px}
+.pkt td .same-l{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#6b6455;font-weight:600;margin-left:6px}
+.pkt td small{display:block;color:#6b6455;font-size:12.5px}
 .pkt td.up b{color:var(--f)}
 .pkt tr.span td{text-align:center;background:#f6f2ea;color:#3d4a40}
 .pkfoot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;margin-top:14px;font-size:14px;color:#555}

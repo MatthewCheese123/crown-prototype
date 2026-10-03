@@ -164,7 +164,7 @@
         card.hidden=!ok; if(ok) n++;
       });
       fgroups.forEach(function(g){ g.hidden=!$$("[data-range]:not([hidden])",g).length });
-      fcnt.textContent=(n===0 && soonN)?"Insulated models coming soon":n+" model"+(n===1?"":"s")+" shown";
+      fcnt.textContent=(n===0 && soonN)?"2 insulated models: see the Insulated page":n+" model"+(n===1?"":"s")+" shown";
       fempty.hidden=(n>0 || soonN>0);
     };
     var fsync=function(){ // keep the address shareable: #range-x (or #seats-x), without jumping
@@ -181,7 +181,7 @@
         // range-*: frame that group under the sticky filters; seats-*: frame the filters themselves
         var tgt=null;
         if(m[1]==="range") tgt=document.getElementById("range-"+m[2]);
-        if(!tgt || tgt.hidden) tgt=fnd.querySelector(".filters")||fh||fsec;
+        if(!tgt || tgt.hidden) tgt=fh||fsec||fnd.querySelector(".filters"); /* v8.3 (Felix N5): not the sticky .filters, whose rect is wherever it is stuck */
         var J=window.__v3jump;
         if(J&&J.go) J.go(tgt,{behavior:"instant",block:"start"});
         else tgt.scrollIntoView({behavior:"instant",block:"start"});
@@ -383,7 +383,7 @@
     var q=sq.value.trim().toLowerCase(), data=window.CP_SEARCH||[]; sres.textContent="";
     if(!q) return;
     var toks=q.split(/\s+/), hits=data.filter(function(d){ var h=(d.t+" "+d.s+" "+d.k).toLowerCase(); return toks.every(function(t){return h.indexOf(t)>-1}) });
-    if(!hits.length){ sres.appendChild(mk("p","sovnone","No results for “"+sq.value.trim()+"”. Try a model name, a use such as hot tub, or a town.")); return }
+    if(!hits.length){ sres.appendChild(mk("p","sovnone","No results for “"+sq.value.trim()+"”. Try a model name, a use such as hot tub, or a town.")); var nx=mk("p","sovnext"); nx.innerHTML='Or: <a href="tel:01491612820">Call 01491 612820</a> · <a href="'+base+'visit-us/index.html#book">Book a visit</a> · <a href="'+base+'brochure/index.html">Request a brochure</a> · <a href="'+base+'contact/index.html">Contact us</a>'; sres.appendChild(nx); return }
     ["Buildings","Guides","Show sites"].forEach(function(g){
       var hs=hits.filter(function(d){return d.g===g}); if(!hs.length) return;
       var sec=mk("section","sovg"); sec.setAttribute("data-group",g); var h=mk("h3",null,g+" ("+hs.length+")"); sec.appendChild(h);
@@ -407,7 +407,7 @@
     mbar.classList.toggle("show",show); document.body.classList.toggle("mbar-on",show); if(show) mbar.removeAttribute("inert"); else mbar.setAttribute("inert","") }
   if(mbar){
     window.addEventListener("scroll",function(){ requestAnimationFrame(syncBar) },{passive:true});
-    if("IntersectionObserver" in window){ var bv=new Set(), bo=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) bv.add(e.target); else bv.delete(e.target) }); barEnd=bv.size>0; syncBar() }); $$(".formsec, footer.foot").forEach(function(x){ bo.observe(x) }) }
+    if("IntersectionObserver" in window){ var bv=new Set(), bo=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) bv.add(e.target); else bv.delete(e.target) }); barEnd=bv.size>0; syncBar() }); $$(".formsec, footer.foot, [data-pabook]").forEach(function(x){ bo.observe(x) }) }
     if(burger) burger.addEventListener("click",function(){ setTimeout(syncBar,0) });
     desktop.addEventListener && desktop.addEventListener("change",syncBar); syncBar();
   }

@@ -25,7 +25,7 @@ body{font-size:17px}
 .hbook.btn{min-height:46px;padding:10px 14px;font-size:12px;letter-spacing:.05em}
 .hbro{display:none;color:#f1ede4;font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(201,168,107,.6);padding:12px 6px}
 .burger{flex-direction:column;gap:1px;font-size:18px;line-height:1;width:50px;height:46px}
-.burger .bl{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-family:Montserrat,Arial,sans-serif}
+.burger .bl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-family:Montserrat,Arial,sans-serif}
 .logo img{height:26px}
 @media (min-width:1080px){
  .logo img{height:50px}
@@ -100,7 +100,7 @@ body{font-size:17px}
 .pasite .gc{font-size:14.5px;color:#4f4a40}
 .pasite .hrs{font-size:14px;color:#4f4a40;margin-top:4px}
 .pasite .hrs b{color:var(--f);font-weight:600}
-.pasite .tag{align-self:flex-start;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--gd);border:1px solid var(--g);padding:2px 8px}
+.pasite .tag{align-self:flex-start;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--gd);border:1px solid var(--g);padding:2px 8px}
 .pasite .act{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:auto;padding-top:14px}
 .pasite .act .btn{min-height:46px;padding:10px 18px;font-size:12.5px}
 /* next-step band (replaces the long form on every page) */
@@ -143,7 +143,7 @@ body.pahasbar .foot{padding-bottom:90px}
 .ct thead th{position:sticky;top:0;background:#fff;z-index:2}
 .ct tbody tr:nth-child(odd) td,.ct tbody tr:nth-child(odd) th{background:#faf8f3}
 .ct tbody th{font-size:12.5px}
-.ct td .tbc,.ct td>.tbc{color:#8b8576}
+.ct td .tbc,.ct td>.tbc{color:#6b6455}
 .pacmpcta{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;margin-top:26px;padding:22px 26px;background:var(--al);border:1px solid var(--ln)}
 .pacmpcta p{font-size:16px;color:#3d3a33;max-width:620px}
 .pacmpcta .s{color:var(--gd);letter-spacing:2px}
@@ -189,7 +189,8 @@ body.pahasbar .foot{padding-bottom:90px}
 .pastep>h3{display:flex;align-items:center;gap:14px;font-size:26px}
 .pastep>h3 .n{flex:none;display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--f);color:var(--g);font:600 16px Montserrat,Arial,sans-serif;align-items:center;justify-content:center}
 .pastep.done>h3 .n{background:var(--ok);color:#fff}
-.pastep.locked{opacity:.5}
+.pastep.locked{opacity:1} /* v8.2: was .5, failed WCAG 1.4.3 on headings/hints */
+.pastep.locked .padays,.pastep.locked .paslots{opacity:.45}
 .pastep.locked .pagrid,.pastep.locked .padays,.pastep.locked .paslots{pointer-events:none}
 .pastep .why{font-size:14.5px;color:#5f5a4f;margin:6px 0 0 50px}
 .pagrid{display:grid;gap:10px;margin-top:18px}
@@ -200,7 +201,7 @@ body.pahasbar .foot{padding-bottom:90px}
 .padays,.paslots{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .padays button,.paslots button{min-width:78px;min-height:64px;border:1.5px solid #c9c2b1;background:#fff;border-radius:3px;font:inherit;cursor:pointer;padding:8px 10px;line-height:1.2;color:var(--f)}
 .paslots button{min-height:52px;min-width:96px;font-weight:600}
-.padays button small{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#5f5a4f}
+.padays button small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5f5a4f}
 .padays button b{display:block;font-size:20px;font-weight:600}
 .padays button span{display:block;font-size:12px;color:#5f5a4f}
 .padays button:hover,.paslots button:hover{border-color:#5e584b}
@@ -258,7 +259,7 @@ body.pahasbar .foot{padding-bottom:90px}
 @media (max-width:599px){.hbook{display:none!important}}
 @media (max-width:420px){.hact{gap:6px}.hcall,.hact .srch{min-width:44px;width:44px;height:44px;min-height:44px}.burger{width:46px}}
 @media (min-width:1080px){.hcm{display:none!important}}
-.sdl dd .src{display:block;font-size:12px;color:#7a7364;margin-top:2px}
+.sdl dd .src{display:block;font-size:12px;color:#6b6455;margin-top:2px}
 .sdl dd b{font-weight:600;color:var(--f)}
 .pasitehrs{font-size:14px;line-height:1.55}
 .kv dd .h{display:block}
@@ -286,7 +287,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
  body[data-pa-page=home] .hero>img{position:relative;display:block;height:auto;aspect-ratio:4/3;object-position:45% 70%}
  body[data-pa-page=home] .hero .ov{display:none}
  body[data-pa-page=home] .hero .in{position:static;padding:24px 0 36px}
- body[data-pa-page=home] .hero .vlabel{position:absolute;left:12px;top:calc(75vw - 40px);margin:0;background:rgba(0,0,0,.45);font-size:11px}
+ body[data-pa-page=home] .hero .vlabel{position:absolute;left:12px;top:calc(75vw - 40px);margin:0;background:rgba(0,0,0,.45);font-size:12px}
  body[data-pa-page=home] .hero .vctl{top:12px;right:12px;font-size:12px}
  body[data-pa-page=home] .hero h1{font-size:40px;margin-top:8px}
  body[data-pa-page=home] .hero p{font-size:17px}

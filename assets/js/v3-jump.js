@@ -26,8 +26,9 @@
     // Only when filters actually pin (desktop sticky); on mobile they are static
     var pos=getComputedStyle(f).position; if(pos!=="sticky" && pos!=="fixed") return 0;
     // Only count filters when the target is below them in the finder
-    var fr=f.getBoundingClientRect(), er=el.getBoundingClientRect();
-    if(er.top+scrollY <= fr.top+scrollY+1) return 0;
+    // v8.2: use document order, not geometry. When the jump starts below the finder the filters are stuck at the finder's end,
+    // so their on-screen position said "below the target" and the group header landed under them.
+    if(!(f.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)) return 0;
     return f.offsetHeight||0;
   }
   // v8.1: on phones the configurator's step tabs stay pinned over the options panel, so panel targets land below them too
@@ -60,6 +61,8 @@
   function apply(){ if(!hdr||!want||Date.now()>lockUntil) return; var h=hdr.classList.contains("hid"); if(want==="hide" && !h) hdr.classList.add("hid"); else if(want==="show" && h) hdr.classList.remove("hid") }
   function go(el,opt){
     opt=opt||{}; var L=land(el), m=topMode(L), th, bh=botH(), r=L.getBoundingClientRect(), y, block=opt.block||"start", pin;
+    /* v8.3 (Felix N5): a sticky landing target (finder .filters) reports where it is stuck, not where it sits; measure it unstuck */
+    if(getComputedStyle(L).position==="sticky"){ var ps=L.style.position; L.style.position="static"; r=L.getBoundingClientRect(); L.style.position=ps }
     // the slim .stk bar only shows once the hero CTA has scrolled away and the form/footer are off screen: if it will not, keep the header
     pin=extraPin(L)+tabsH(L); th=baseTop(L)+pin;
     if(m==="stk" && !stkWill(r.top+scrollY-th-GAP)){ m="hdr"; th=(hdr?hdr.offsetHeight:0)+pin }

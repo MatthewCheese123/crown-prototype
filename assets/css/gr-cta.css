@@ -12,7 +12,7 @@
 .facts.fx .fxt{display:flex;flex-direction:column;align-items:flex-start;min-height:44px;padding:18px 0 18px;color:inherit;text-decoration:none;position:relative}
 .facts.fx .fxt b{display:block;font-family:Optima,Georgia,serif;font-weight:400;font-size:21px;line-height:1.25;color:#fff}
 .facts.fx .fxt span{display:block;font-size:13px;line-height:1.4;color:#d8d0bd;margin-top:4px}
-.facts.fx .fxt em{display:block;width:fit-content;max-width:100%;margin-top:auto;padding-top:12px;font:600 11.5px/1.35 Montserrat,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:#fff}
+.facts.fx .fxt em{display:block;width:fit-content;max-width:100%;margin-top:auto;padding-top:12px;font:600 12px/1.35 Montserrat,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:#fff}
 .facts.fx .fxt em{text-decoration:underline;text-decoration-color:var(--g);text-decoration-thickness:1px;text-underline-offset:5px}
 .facts.fx .fxt em i{display:inline-block;margin-left:6px;font-size:14px;line-height:1;font-style:normal;color:var(--g);transition:transform .2s}
 .facts.fx .fxt:hover em{text-decoration-thickness:2px}
@@ -31,7 +31,7 @@
  .facts.fx .fxt{padding:16px 0 18px;border-top:1px solid rgba(255,255,255,.12)}
  .facts.fx .fxt:nth-child(-n+2){border-top:0}
  .facts.fx .fxt b{font-size:19px}
- .facts.fx .fxt em{font-size:10.5px;letter-spacing:.05em}
+ .facts.fx .fxt em{font-size:12px;letter-spacing:.05em}
 }
 /* ---------- 2) garden room pages: jump cards (desktop) + chip row (mobile) ---------- */
 .grj{margin:18px 0 6px}
@@ -39,7 +39,7 @@
 .jcard{position:relative;display:flex;flex-direction:column;border:1px solid #d9d0bd;border-radius:8px;padding:18px 20px 16px;background:transparent;transition:border-color .2s}
 .jcard:hover{border-color:var(--f)}
 .jcard:focus-within{border-color:var(--f)}
-.jcard .jk{display:block;font:600 11px Montserrat,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5a5448}
+.jcard .jk{display:block;font:600 12px Montserrat,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5a5448}
 .jcard .jt{font:400 21px/1.25 Optima,Georgia,serif;color:var(--f);margin:6px 0 10px}
 .jcard .jl{margin:0 0 12px;padding:0;list-style:none;font-size:14px;line-height:1.5;color:#333}
 .jcard .jl li{padding-left:20px;position:relative;margin:2px 0}
@@ -59,7 +59,7 @@
  .jrow{display:flex;align-items:center;gap:10px;margin:16px -16px 4px 0;
    /* never parked under the sticky bottom bar: jumps/focus keep bar height + safe-area inset clear */
    scroll-margin-bottom:calc(max(var(--both,0px),76px) + 12px + env(safe-area-inset-bottom));padding-bottom:4px}
- .jrow .jnx{flex:none;font:600 11px Montserrat,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5a5448}
+ .jrow .jnx{flex:none;font:600 12px Montserrat,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5a5448}
  .jrow .jsc{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px 16px 2px 2px;min-width:0;
    -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
  .jrow .jsc::-webkit-scrollbar{display:none}

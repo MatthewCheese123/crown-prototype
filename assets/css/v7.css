@@ -2,7 +2,7 @@
 .pkone{display:grid;gap:10px}
 .pkone .pkcard{cursor:default;border-color:var(--f);box-shadow:inset 0 0 0 2px var(--f);background:#fbfaf6}
 .pkone .pkcard:hover{border-color:var(--f)}
-.pkstd{font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gd);margin-left:6px;vertical-align:3px}
+.pkstd{font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gd);margin-left:6px;vertical-align:3px}
 .pktail{font-size:13.5px;color:#555;line-height:1.5;margin:0}
 .pktail b{color:var(--f)}
 .pkfrom{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -42,7 +42,7 @@
 .rib5 .ribl .rd{margin-top:4px;font-size:12.5px;min-height:2.8em}
 .rib5 .ribl .rp{padding-top:4px}
 .rib5 .ribf{margin-top:16px;padding-top:16px}
-.rib5 .ribl .rsi{font-size:10px;padding:2px 6px}
+.rib5 .ribl .rsi{font-size:12px;padding:2px 6px}
 
 /* iter 3d-link */
 .lnk3d{display:inline-flex;align-items:center;min-height:32px;margin-top:4px;font-size:13px;font-weight:600;color:var(--f);text-decoration:underline;text-decoration-color:var(--g);text-underline-offset:4px}

@@ -1,0 +1,43 @@
+/* v8.2 (3 Oct 2026): UX audit batch (review/ux-audit/AUDIT.md). F1 tokens are in the source CSS; this file holds F7/F8 and the F2 finder line. */
+/* F7: keyboard-scrollable regions get a visible focus ring */
+.fstrip:focus-visible,.tscroll:focus-visible{outline:2px solid var(--f);outline-offset:3px}
+/* F8: stand-alone link targets at least 24px tall without moving text (WCAG 2.5.8) */
+a.lnk,a.lnk3d{padding-top:4px;padding-bottom:4px}
+.rcl.foot a.lnk,.cfoot a.lnk,.lgh a.lnk,.soonln a.lnk,.sl a.lnk{margin-top:-4px;margin-bottom:-4px}
+@media(min-width:1080px){details.fcol>summary{min-height:24px;align-items:center}}
+p.proof a{padding-top:2px;padding-bottom:2px}
+h3>a:only-child,h4>a:only-child,.sl b>a{padding-top:3px;padding-bottom:3px}
+/* F2: Insulated finder line on the gazebos hub, now confirmed models (no longer a dashed "coming soon" box) */
+.v4f .soonln[data-range=insulated]{display:grid;grid-template-columns:1fr;gap:2px;border:1px solid var(--ln);padding:14px 16px;color:#4a463d}
+.v4f .soonln[data-range=insulated] span b{font-family:inherit;font-size:inherit;font-weight:600;color:var(--f)}
+.v4f .soonln[data-range=insulated] span{margin-bottom:8px}
+.v4f .soonln[data-range=insulated] .lnk{margin-left:0;justify-self:start}
+/* F1: TBC markers on dark green */
+.dark .tbc,.panext .tbc,.visitb .tbc,[class*=dark] .note .tbc{color:#e3c98f;border-bottom-color:#e3c98f}
+.wg .w>a{padding-top:1px;padding-bottom:1px}
+.sl b>a{display:inline-block;padding-top:2px;padding-bottom:2px}
+.paf input[type=file]{min-height:24px;padding:2px 0}
+/* v8.3 Arthur #1/#2/#6: grouped booking list, display line, wrong-site warning, provisional thank-you */
+.pagrp .pagh{grid-column:1/-1;margin:14px 0 2px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#123627}
+.pagrp .pagh:first-child{margin-top:0}
+.pagrp .pagh span{text-transform:none;letter-spacing:0;font-weight:400;color:#6b6455}
+.paopt .pashow{display:block;font-size:13px;color:#123627;margin-top:2px}
+.pawarn{margin:12px 0 0;padding:10px 14px;border-left:4px solid #b5541c;background:#fbf1e8;color:#3a2a1c;font-size:15px;line-height:1.45}
+.tyno{display:block;margin-top:8px;padding:8px 12px;border-left:4px solid #b5541c;background:#fbf1e8;font-size:15px}
+.tyconf{margin:0 0 12px;font-weight:600}
+.sld{font-weight:400;color:#3d3a33}
+/* v8.3 H5: model cards = Book a visit (primary text link) + Request a brochure (quiet) */
+.mcta{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;margin-top:auto;padding-top:12px}
+.mcta .lnk2{font-size:15px;color:#3d3a33;text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center}
+.card[id^="model-"]:target{outline:2px solid #c6a15b;outline-offset:3px}
+.mgrp .card .cfoot{flex-wrap:wrap!important;row-gap:6px}
+.mgrp .card .cfoot>.lnk{white-space:normal;min-width:0}
+.sovnext{margin-top:10px;font-size:15px}.sovnext a{display:inline-block;min-height:44px;line-height:44px}
+.kv dd a,.pasite dd a{display:inline-block;min-height:24px;line-height:24px}
+.sld a{display:inline-block;min-height:24px;line-height:24px}
+@media (max-width:420px){.hp-stk .sb .btn.mob{padding-left:12px;padding-right:12px}}
+.sdnext{margin:14px 0 6px}
+button.sdagain{background:none;border:0;padding:0;font:inherit;font-size:15px;color:#3d3a33;text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:44px}
+.bsph{margin:22px 0 0;max-width:880px}.bsph img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;display:block}
+/* v8.2 (a11y): utility-bar link stands alone since EN·FR went; On-display link on site pages */
+.util .wrap>span>a,.sdl dd>a{display:inline-block;min-height:24px;line-height:24px}

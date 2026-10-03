@@ -18,7 +18,7 @@
   var BAY={E:"Entrance",B:"Balustrade & blind",F:"Full clad",H:"½ clad & ½ plexiglass"};
   var PRE={std:"EBHHFFFHHB",open:"EBBBHFHBBB",shel:"EBHFFFFFHB"};
   var RECOLOUR=false;
-  var S={roof:"cedar",cushion:"burgundy",piping:"ivory",blind:"beige",heater:"none",hq:1,cab:"none",bbq:"no",found:"own",gravel:"Cotswold",deck:"Burnt Oak",brush:"B",bays:PRE.std.split(""),tab:0};
+  var S={roof:"cedar",cushion:"beige",piping:"navy",blind:"beige",heater:"none",hq:1,cab:"none",bbq:"no",found:"own",gravel:"Cotswold",deck:"Burnt Oak",brush:"B",bays:PRE.std.split(""),tab:0};
   /* the photo is burgundy cushions with ivory piping: show it untouched for that pair, otherwise layer the recolours */
   function counts(){ var c={B:0,F:0,H:0}; S.bays.forEach(function(b){ if(c[b]!=null) c[b]++ }); return c }
   function bayText(){ var c=counts(); return c.B+" balustrade & blind · "+c.F+" full clad · "+c.H+" half clad & plexiglass" }
