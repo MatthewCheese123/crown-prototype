@@ -149,3 +149,28 @@
   .fsm4 .row{min-height:50px;padding:3px 0}
 }
 @media (max-width:1023px){.fsm4 .mlinks{padding:3px 0 0}.fsm4 .mlinks a{min-width:44px;justify-content:center}}
+
+/* ---- v8.7.6 header trims (Matthew, 15:42): header = logo · Gazebos · Garden rooms · Menu · phone icon · Book a visit ---- */
+@media (min-width:1024px){
+  /* search lives in the panel, top right beside the VAT note */
+  .mmD .dh .dtr{margin-left:auto;display:flex;align-items:center;gap:18px}
+  .mmD .dh .dtr .vat{margin-left:0}
+  .mmD .dsrch{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 12px;background:transparent;border:1px solid rgba(243,238,228,.28);border-radius:22px;color:#f3eee4;font:500 13.5px/1 Montserrat,Arial,sans-serif;cursor:pointer}
+  .mmD .dsrch svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7}
+  .mmD .dsrch:hover{border-color:rgba(243,238,228,.6);color:#fff}
+  .mmD .dsrch:focus-visible{outline:2px solid #f3eee4;outline-offset:2px}
+}
+@media (min-width:900px){
+  /* phone: 44px icon; the number slides out as a tip on hover / keyboard focus; still a tel: link */
+  .site-h.navc.hx .htel{position:relative;justify-content:center;width:44px;height:44px;padding:0!important;gap:0;border-radius:50%}
+  .site-h.navc.hx .htel svg{width:20px;height:20px;opacity:1}
+  .site-h.navc.hx .htel:hover{text-decoration:none;background:rgba(243,238,228,.08)}
+  .site-h.navc.hx .htel:focus-visible{outline:2px solid #f3eee4;outline-offset:2px}
+  .site-h.navc.hx .htel span,.site-h.navc.hxA .htel span{display:block;position:absolute;top:calc(100% + 8px);right:50%;transform:translate(50%,-4px);
+    padding:9px 13px;background:#f3eee4;color:#14301f;border-radius:3px;font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:.03em;white-space:nowrap;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:5}
+  .site-h.navc.hx .htel span::before{content:"";position:absolute;top:-5px;left:50%;margin-left:-5px;border:5px solid transparent;border-top:0;border-bottom-color:#f3eee4}
+  .site-h.navc.hx .htel:hover span,.site-h.navc.hx .htel:focus-visible span{opacity:1;transform:translate(50%,0)}
+  @media (prefers-reduced-motion:reduce){.site-h.navc.hx .htel span{transition:none}}
+  .site-h.navc.hxA .hbook{margin-left:14px}
+}
