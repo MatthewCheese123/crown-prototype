@@ -6,7 +6,7 @@
 
   /* ---------- header: hide on scroll down, show on scroll up ---------- */
   var hdr=$(".site-h"), lastY=window.scrollY, ticking=false;
-  function anyOpen(){return !!$(".mega.open, .dd.open, .mnav.open")}
+  function anyOpen(){return !!$(".mega.open, .dd.open, .mnav.open, .fsmenu.is-open")}
   window.addEventListener("scroll",function(){
     if(ticking) return; ticking=true;
     requestAnimationFrame(function(){
@@ -389,7 +389,7 @@
   /* ---------- 10 B: full-width search overlay, grouped results over the site's own data ---------- */
   var sov=$("#site-search"), sq=$("#sov-q"), sres=$(".sovres"), sopen=$$("[data-search-open]"), sback=null;
   function sOpen(btn){ if(!sov) return; closeAll(); if(mnav && mnav.classList.contains("open")) burger.click(); sback=btn||document.activeElement; sov.hidden=false; document.body.classList.add("sov-on"); document.body.style.overflow="hidden"; sopen.forEach(function(b){b.setAttribute("aria-expanded","true")}); setTimeout(function(){ sq.focus() },20); syncBar() }
-  function sClose(){ if(!sov || sov.hidden) return; sov.hidden=true; document.body.classList.remove("sov-on"); document.body.style.overflow=""; sopen.forEach(function(b){b.setAttribute("aria-expanded","false")}); if(sback && sback.focus) sback.focus(); syncBar() }
+  function sClose(){ if(!sov || sov.hidden) return; sov.hidden=true; document.body.classList.remove("sov-on"); var fsmOpen=document.body.classList.contains("fsm-on"); if(!fsmOpen) document.body.style.overflow=""; sopen.forEach(function(b){b.setAttribute("aria-expanded","false")}); var back=sback; if(back && back.closest && back.closest(".fsmenu[hidden]")) back=$(".hmenu")||back; if(back && back.focus) back.focus(); syncBar() }
   function sRun(){
     var q=sq.value.trim().toLowerCase(), data=window.CP_SEARCH||[]; sres.textContent="";
     if(!q) return;
