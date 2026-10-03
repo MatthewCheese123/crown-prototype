@@ -5,7 +5,9 @@
 (function(){
   var fab=document.querySelector(".hpfab"), root=document.getElementById("design");
   if(!fab||!root) return;
-  var P="../../assets/img/hampton/recolour/", PARTS=["cushion","piping","blind"],
+  /* v8.7.3: also drives model pages. A model sets data-rc="<folder>" (and data-rc-name) on .hpfab; the base is base-1400.webp. */
+  var mdl=fab.getAttribute("data-rc"), NAME=fab.getAttribute("data-rc-name")||"Hampton", CFG=function(){return window.__hpcfg||window.__mpcfg||{}};
+  var P=mdl?"../../assets/img/models/"+mdl+"/recolour/":"../../assets/img/hampton/recolour/", BASE=mdl?"base-1400.webp":"h03-base-1400.webp", PARTS=["cushion","piping","blind"],
       COLS=["green","burgundy","beige","ivory","navy","taupe"],
       NM={green:"Green",burgundy:"Burgundy",beige:"Beige",ivory:"Ivory",navy:"Navy",taupe:"Taupe"};
   function src(p,c){ return P+p+"-"+c+"-1400.webp" }
@@ -22,10 +24,10 @@
     function sw(){ if(im.getAttribute("data-want")===u) im.setAttribute("src",u) }
     if(pre.complete&&pre.naturalWidth) sw(); else pre.addEventListener("load",sw,{once:true}) }
   function paint(){
-    var S=(window.__hpcfg||{}).state; if(!S) return;
+    var S=CFG().state; if(!S) return;
     if(started) PARTS.forEach(function(p){ if(S[p]) want(p,S[p]) });
-    box.setAttribute("aria-label","A real Crown Hampton shown in "+NM[S.cushion]+" cushions, "+NM[S.piping]+" piping and "+NM[S.blind]+" blinds. Colours are indicative.") }
-  function start(){ if(started) return; started=true; base.src=P+"h03-base-1400.webp"; paint();
+    box.setAttribute("aria-label","A real Crown "+NAME+" shown in "+NM[S.cushion]+" cushions, "+NM[S.piping]+" piping and "+NM[S.blind]+" blinds. Colours are indicative.") }
+  function start(){ if(started) return; started=true; base.src=P+BASE; paint();
     /* the other 15 layers (~6-36 KB each) once the photo is in and the browser is idle */
     function rest(){ var idle=window.requestIdleCallback||function(f){ setTimeout(f,400) };
       idle(function(){ PARTS.forEach(function(p){ COLS.forEach(function(c){ var u=src(p,c); if(!cache[u]){ cache[u]=new Image(); cache[u].src=u } }) }) }) }

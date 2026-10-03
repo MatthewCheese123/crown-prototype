@@ -78,19 +78,21 @@ function posNames(g,gm){var E=gm.entr||[0],N=gm.slots,out=[];
 function mount(root,o){o=o||{};if(o.types){["B","F","H"].forEach(function(k){if(o.types[k])T[k]=o.types[k]})}if(o.styles){for(var sk in o.styles)ST[sk]=o.styles[sk]}var gm=o.geom,N=gm.slots,E=gm.entr||[0],img=o.img||"assets/img/",PRE=o.presets,name=o.name||"gazebo";
   var b=(o.initial||PRE.std).split(""),hist=[],cur=1,opened=false,back=null,hl=null;
   var IDX=[];for(var z=0;z<N;z++)if(E.indexOf(z)<0)IDX.push(z);var NB=IDX.length;
+  /* v8.7.3: gm.numberAll numbers every side 1..N clockwise from the front (entrances included, as on the Tudor: 1 and 6), else bays only */
+  var NA=!!gm.numberAll, DN=function(k){return NA?IDX[k-1]+1:k};
   var uid="mps"+Math.random().toString(36).slice(2,7);
   var g=G(gm,210,140,340,216),POS=posNames(g,gm);
-  function planSVG(){var s='<svg class="hps-plan" viewBox="0 0 420 300" role="group" aria-label="Plan of the '+esc(name)+': '+NB+' bays, entrance'+(E.length?(E.length>1?"s":"")+' at the front'+(E.length>1?" and back":""):", open at the front")+'. Tap a bay to choose its panel.">';
+  function planSVG(){var s='<svg class="hps-plan" viewBox="0 0 420 300" role="group" aria-label="Plan of the '+esc(name)+': '+NB+' bays, entrance'+(E.length?(E.length>1?"s":"")+(NA?' at sides '+E.map(function(i){return i+1}).join(" and "):' at the front'+(E.length>1?" and back":"")):", open at the front")+'. Tap a bay to choose its panel.">';
     s+='<path class="hps-roof" d="'+g.outline(gm.shape==="rrect"?14:12)+'" fill="none" stroke="#c9a86b" stroke-dasharray="4 4" stroke-width=".8"'+(gm.shape==="rrect"?' stroke-linejoin="round"':'')+'/>';
     IDX.forEach(function(i,k){var pn=g.pt(g.sl[i],26,.5);
       s+='<g class="hps-bay" data-i="'+(k+1)+'" data-t="B" tabindex="0" role="button"><path class="hps-hit" d="'+g.band(i,-36,40,0,1)+'"/>';
       s+='<path class="hps-halo" d="'+g.arc(i,0,.08,.92,1)+'"/><g class="hps-mv">';
       O.forEach(function(t){s+='<g class="hps-s'+t+'">'+lines(g,i,t,1)+'</g>'});
-      s+='</g><circle class="hps-bnc" cx="'+pn[0].toFixed(1)+'" cy="'+pn[1].toFixed(1)+'" r="10"/><text class="hps-bn" x="'+pn[0].toFixed(1)+'" y="'+(pn[1]+4).toFixed(1)+'">'+(k+1)+'</text></g>'});
+      s+='</g><circle class="hps-bnc" cx="'+pn[0].toFixed(1)+'" cy="'+pn[1].toFixed(1)+'" r="10"/><text class="hps-bn" x="'+pn[0].toFixed(1)+'" y="'+(pn[1]+4).toFixed(1)+'">'+DN(k+1)+'</text></g>'});
     for(var i=0;i<N;i++){var q=g.pt(g.sl[i],0,0);s+='<circle class="hps-post" cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="2.6"/>'}
     s+=tables(g,gm);
-    s+='<text class="hps-entl" x="210" y="270">'+(E.length?"ENTRANCE":"FRONT")+'</text><path class="hps-enta" d="M210 292V278M205 283l5-5 5 5"/>';
-    if(E.length>1){var bq=g.pt(g.sl[E[1]],0,.5);s+='<text class="hps-entl" x="'+bq[0].toFixed(1)+'" y="'+(bq[1]-12).toFixed(1)+'">ENTRANCE</text>'}
+    s+='<text class="hps-entl" x="210" y="270">'+(E.length?(NA?(E[0]+1)+" · ENTRANCE":"ENTRANCE"):"FRONT")+'</text><path class="hps-enta" d="M210 292V278M205 283l5-5 5 5"/>';
+    if(E.length>1){var bq=NA?g.pt(g.sl[E[1]],54,.5):g.pt(g.sl[E[1]],0,.5);s+='<text class="hps-entl" x="'+bq[0].toFixed(1)+'" y="'+(NA?bq[1]+4:bq[1]-12).toFixed(1)+'">'+(NA?(E[1]+1)+" · ENTRANCE":"ENTRANCE")+'</text>'}
     return s+'</svg>'}
   var gmi=G(gm,100,60,164,92);
   function miniSVG(lay){var s='<svg viewBox="8 6 184 108" aria-hidden="true" focusable="false">';IDX.forEach(function(i){s+=lines(gmi,i,lay[i],0)});return s+'</svg>'}
@@ -126,7 +128,7 @@ function mount(root,o){o=o||{};if(o.types){["B","F","H"].forEach(function(k){if(
   function preset(key){var p=str();if(p===PRE[key])return;b=PRE[key].split("");var ch=[];for(var k=1;k<=NB;k++)if(p[IDX[k-1]]!==b[IDX[k-1]])ch.push(k);commit(p,PRN[key]+" layout",ch)}
   function undo(){if(!hist.length)return;b=hist.pop().split("");render();if(o.onChange)o.onChange(b.slice());hideToast();say("Undone")}
   function pop(gg){if(!gg||RM.matches)return;gg.classList.remove("hps-pop");void gg.getBBox();gg.classList.add("hps-pop")}
-  function label(k){return "Bay "+k+", "+POS[IDX[k-1]].toLowerCase()+": "+T[at(k)][0]+", tap to change"}
+  function label(k){return (NA?"Side ":"Bay ")+DN(k)+", "+POS[IDX[k-1]].toLowerCase()+": "+T[at(k)][0]+", tap to change"}
   function render(){var c=counts(),pn=presetName();
     bays.forEach(function(gg){var k=+gg.getAttribute("data-i");gg.setAttribute("data-t",at(k));gg.setAttribute("aria-label",label(k));gg.classList.toggle("hps-hl",hl===at(k))});
     O.forEach(function(t){q('[data-c="'+t+'"]').textContent="×"+c[t];var n=sh.querySelector('[data-n="'+t+'"]');n.textContent=c[t]+(c[t]===1?" side":" sides")+" now"});
@@ -149,12 +151,12 @@ function mount(root,o){o=o||{};if(o.types){["B","F","H"].forEach(function(k){if(
   function pinPlan(){var top=headerBottom()+8,sb=sh.getBoundingClientRect().height||innerHeight*.6,h=Math.max(130,innerHeight-sb-top-10-58);
     if(!card.classList.contains("hps-pinned")){planw.style.height=planw.offsetHeight+"px";pinHost.appendChild(card)}card.classList.add("hps-pinned");card.style.top=top+"px";card.style.height=h+"px"}
   function unpin(){card.classList.remove("hps-pinned");card.style.top="";card.style.height="";if(card.parentNode===pinHost)planw.appendChild(card);planw.style.height=""}
-  function show(k,keep){cur=k;var t=at(k);sh.querySelector("h2").textContent="Bay "+k+" of "+NB;sh.querySelector("[data-pos]").textContent=POS[IDX[k-1]];
+  function show(k,keep){cur=k;var t=at(k);sh.querySelector("h2").textContent=NA?"Side "+DN(k)+" of "+N:"Bay "+k+" of "+NB;sh.querySelector("[data-pos]").textContent=POS[IDX[k-1]];
     opts.forEach(function(x){var on=x.getAttribute("data-o")===t;x.setAttribute("aria-checked",on);x.tabIndex=on?0:-1});
     dots.forEach(function(d,j){d.classList.toggle("hps-on",j===k-1)});
     bays.forEach(function(gg){gg.classList.toggle("hps-sel",+gg.getAttribute("data-i")===k)});
     sh.querySelector("[data-all]").setAttribute("aria-label","Make all "+NB+" sides "+T[t][0]);
-    if(!keep)say("Bay "+k+", "+POS[IDX[k-1]].toLowerCase()+", currently "+T[t][0])}
+    if(!keep)say((NA?"Side ":"Bay ")+DN(k)+", "+POS[IDX[k-1]].toLowerCase()+", currently "+T[t][0])}
   function open(k,from){if(opened){show(k);pop(bays[k-1]);return}opened=true;back=from||document.activeElement;show(k);
     if(o.priceBar)[].forEach.call(document.querySelectorAll(o.priceBar),function(x){x.classList.add("hps-hide")});document.documentElement.classList.add("hps-open");
     sh.style.transform="";sh.classList.add("hps-on");scrim.classList.add("hps-on");

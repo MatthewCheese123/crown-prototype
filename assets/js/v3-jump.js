@@ -15,8 +15,10 @@
   function topMode(el){ // "stk" (collection page, desktop), "none" (configurator hides the bars) or "hdr"
     stk=stk||q(".stk"); if(stk && desk.matches) return inCfg(el)?"none":"stk"; return "hdr" }
   function chipsH(el){ /* v8.4: a sticky jump-chip row in the same section also covers the top */
-    var sec=el&&el.closest&&el.closest(".psec"), c=sec&&sec.querySelector(".gzchips,.grchips");
-    if(!c||c===el||c.contains(el)||!c.offsetHeight||getComputedStyle(c).position!=="sticky") return 0; return c.offsetHeight }
+    var sec=el&&el.closest&&el.closest(".psec"), c=sec&&sec.querySelector(".gzchips,.grchips,.grc3");
+    if(!c||c===el||c.contains(el)||!c.offsetHeight||getComputedStyle(c).position!=="sticky") return 0;
+    /* v8.7.3: only when the chip row comes before the target (a heading above the row is not covered by it) */
+    if(!(c.compareDocumentPosition(el)&Node.DOCUMENT_POSITION_FOLLOWING)) return 0; return c.offsetHeight }
   function baseTop0(el){ hdr=hdr||q(".site-h"); var m=topMode(el); if(m==="none") return 0; if(m==="stk") return stk.offsetHeight||58; return hdr?hdr.offsetHeight:0 }
   function baseTop(el){ var m=topMode(el), b=baseTop0(el); return (m==="none"?0:b)+chipsH(el) }
   // Sticky toolbars that sit under the site header (finder filters, etc.) and will pin above the target

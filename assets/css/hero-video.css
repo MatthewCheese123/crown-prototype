@@ -213,3 +213,14 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
  html.gz-sheet-open{overflow:hidden}
  @media (prefers-reduced-motion:reduce){#models .gzsheet,#models .gzscrim{transition:none}}
 }
+
+/* v8.7.3 home hero (approved by Matthew): the headline, one gold "Book a visit" and a small "Explore ↓" cue to the tiles below.
+   Gold #C9A86B with green #123627 text is 5.9:1; the cream cue on the green band / dark wash is 12:1. Both 48px tall. */
+.hero.hv2 .hvc3{gap:6px 22px;align-items:center}
+.hero.hv2 .hvc3 .hvbk{flex:0 0 auto;min-height:48px;padding:0 26px;background:#C9A86B;border-color:#C9A86B;color:#123627;font:600 13.5px/1 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.hero.hv2 .hvc3 .hvbk:hover{background:#d6b87e;border-color:#d6b87e;color:#0b2a1d}
+.hero.hv2 .hvex{display:inline-flex;align-items:center;min-height:48px;padding:0 4px;color:#F7F5F2;font:500 12.5px/1 Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:underline;text-decoration-color:rgba(201,168,107,.8);text-decoration-thickness:1px;text-underline-offset:6px}
+.hero.hv2 .hvex:hover{color:#fff;text-decoration-color:#C9A86B}
+.hero.hv2 .hvex:focus-visible,.hero.hv2 .hvc3 .hvbk:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.hero.hv2 .hvex .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#collections:focus{outline:none}

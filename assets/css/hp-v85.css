@@ -168,40 +168,9 @@ html.hpph-open{overflow:hidden}
 .hpph-x{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,168,107,.8);background:#123627;color:#fff;font-size:16px;cursor:pointer}
 .hpph-x:focus-visible{outline:2px solid #c9a86b;outline-offset:2px}
 @media (max-width:599px){.hpph-x{top:6px;right:6px}.hpph figcaption{padding-right:4px}}
-/* v8.7.2 (desktop, >=1000px, Hampton and model pages): the left visual column is sticky below the header and step tabs and
-   always shows the building photo on top (about 60%) with the Plan | 3D drawing beneath (about 40%), on every step.
-   It fits the viewport (between the tabs and the price bar) with no inner scrollbars; the empty beige block is gone.
-   Phones keep the stacked flow. */
-@media (min-width:1000px){
- .hpcfg .ccfg{--tbx:calc(var(--hdrvis,0px) + var(--btabsh,62px));align-items:start}
- .hpcfg .ccfg>.btabs{position:sticky;top:var(--hdrvis,0px);z-index:7;transition:top .3s ease}
- .hpcfg .ccfg .bpanel,.hpcfg .ccfg .bpanel *{scroll-margin-top:calc(var(--tbx) + 12px);scroll-margin-bottom:calc(var(--bfh,64px) + 12px)}
- /* a fixed height (allowing for the site header even while it is hidden), so the column never resizes as the header slides */
- .hpcfg .ccfg>.stg{position:sticky;top:var(--tbx);align-self:start;transition:top .3s ease;height:calc(100vh - var(--btabsh,62px) - var(--bfh,64px) - 80px);min-height:400px;max-height:780px;overflow:hidden}
- .hpcfg .ccfg>.stg>.hpstage{flex:1 1 auto;min-height:0!important;height:100%;display:grid!important;grid-template-rows:minmax(0,60fr) minmax(0,40fr);grid-template-columns:minmax(0,1fr)}
- .hpcfg .ccfg>.stg>.hpstage>*{position:relative!important;inset:auto!important;min-height:0;height:auto!important}
- /* top: the photo, or the live recolour on Colours / Summary */
- .hpcfg .ccfg>.stg>.hpstage>.ctimg{grid-row:1;display:block!important}
- .hpcfg .ccfg>.stg>.hpstage:has(>.hpfab:not([hidden]))>.ctimg{display:none!important}
- .hpcfg .ccfg>.stg>.hpstage>.hpfab{grid-row:1}
- .hpcfg .ccfg>.stg>.hpstage>.hpfab[hidden]{display:none!important}
- .hpcfg .ccfg>.stg>.hpstage>.ctimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
- .hpcfg .ccfg>.stg>.hpstage .rcs{min-height:0!important}
- .hpcfg .ccfg>.stg>.hpstage .rcs img{left:0;top:0;width:100%;height:100%;transform:none;object-fit:cover;object-position:58% 62%}
- .hpcfg .ccfg>.stg>.hpstage .rcn{padding:6px 12px;font-size:12.5px}
- /* beneath: the plan (with Plan | 3D), always shown */
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root,.hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root[hidden]{grid-row:2;display:flex!important;flex:none;padding-top:46px;padding-bottom:8px;border-top:1px solid var(--rf-ln,#e3dac6);overflow:hidden}
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root .hps-planw{height:100%;max-width:none;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0}
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root .hps-card{height:100%;min-height:0;display:flex;justify-content:center;width:100%}
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root svg.hps-plan{width:auto!important;height:100%!important;max-width:100%;max-height:100%}
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root .hps-size{display:none!important}
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root .hpv85-vt{top:4px}
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root[data-v85view="3d"] .hpv85-3d{inset:46px 16px 26px}
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw.hps-root[data-v85view="3d"] .hpv85-cap{bottom:6px}
- /* the 3D sits in <details>, where % heights don't resolve: size it from the stage height (40% row, less the toggle and caption) */
- .hpcfg .ccfg>.stg>.hpstage .hpv85-3d .rf3dw{height:auto}
- .hpcfg .ccfg>.stg>.hpstage .hpv85-3d .rf3dw svg.rf3dsvg{height:auto;width:100%;max-height:calc(min(max(100vh - var(--btabsh,62px) - var(--bfh,64px) - 80px, 400px), 780px) * .4 - 76px)}
- /* with no plan on this model, the photo takes the whole column */
- .hpcfg .ccfg>.stg>.hpstage:not(:has(>.hpplanw.hps-root)){grid-template-rows:minmax(0,1fr)}
- .hpcfg .ccfg>.stg>.hpstage>.hpplanw:not(.hps-root){display:none!important}
-}
+/* v8.7.3: the v8.7.2 stacked desktop column (photo above Plan | 3D on every step) is removed; one step's visual at a time again, as v8.7.1. */
+
+/* v8.7.3 (desktop): the step's visual takes its own height (no stretched beige block on long steps such as the summary)
+   and stays in view beside a long options panel. */
+@media (min-width:1000px){.hpcfg .ccfg>.stg{align-self:start;position:sticky;top:calc(var(--hdrvis,0px) + 12px);transition:top .3s ease}}
+@media (min-width:1000px) and (prefers-reduced-motion:reduce){.hpcfg .ccfg>.stg{transition:none}}

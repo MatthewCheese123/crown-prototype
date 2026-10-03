@@ -1,0 +1,106 @@
+{
+ "model": "tudor",
+ "source_photo": "/workspace/crown-website/review/recolour-models/_sources/tudor/9f74f85bb620.jpg",
+ "source_size": [
+  4096,
+  2731
+ ],
+ "source_crop": null,
+ "parts_present": [
+  "cushion",
+  "piping",
+  "blind"
+ ],
+ "parts_missing": [],
+ "colours": [
+  "green",
+  "burgundy",
+  "beige",
+  "ivory",
+  "navy",
+  "taupe"
+ ],
+ "base": "base-1400.webp",
+ "size": [
+  1400,
+  933
+ ],
+ "layers": {
+  "cushion": {
+   "green": "cushion-green-1400.webp",
+   "burgundy": "cushion-burgundy-1400.webp",
+   "beige": "cushion-beige-1400.webp",
+   "ivory": "cushion-ivory-1400.webp",
+   "navy": "cushion-navy-1400.webp",
+   "taupe": "cushion-taupe-1400.webp"
+  },
+  "piping": {
+   "green": "piping-green-1400.webp",
+   "burgundy": "piping-burgundy-1400.webp",
+   "beige": "piping-beige-1400.webp",
+   "ivory": "piping-ivory-1400.webp",
+   "navy": "piping-navy-1400.webp",
+   "taupe": "piping-taupe-1400.webp"
+  },
+  "blind": {
+   "green": "blind-green-1400.webp",
+   "burgundy": "blind-burgundy-1400.webp",
+   "beige": "blind-beige-1400.webp",
+   "ivory": "blind-ivory-1400.webp",
+   "navy": "blind-navy-1400.webp",
+   "taupe": "blind-taupe-1400.webp"
+  }
+ },
+ "base_2400": "base-2400.webp",
+ "size_2400": [
+  2400,
+  1600
+ ],
+ "layers_2400": {
+  "cushion": {
+   "green": "layers-2400/cushion-green.webp",
+   "burgundy": "layers-2400/cushion-burgundy.webp",
+   "beige": "layers-2400/cushion-beige.webp",
+   "ivory": "layers-2400/cushion-ivory.webp",
+   "navy": "layers-2400/cushion-navy.webp",
+   "taupe": "layers-2400/cushion-taupe.webp"
+  },
+  "piping": {
+   "green": "layers-2400/piping-green.webp",
+   "burgundy": "layers-2400/piping-burgundy.webp",
+   "beige": "layers-2400/piping-beige.webp",
+   "ivory": "layers-2400/piping-ivory.webp",
+   "navy": "layers-2400/piping-navy.webp",
+   "taupe": "layers-2400/piping-taupe.webp"
+  },
+  "blind": {
+   "green": "layers-2400/blind-green.webp",
+   "burgundy": "layers-2400/blind-burgundy.webp",
+   "beige": "layers-2400/blind-beige.webp",
+   "ivory": "layers-2400/blind-ivory.webp",
+   "navy": "layers-2400/blind-navy.webp",
+   "taupe": "layers-2400/blind-taupe.webp"
+  }
+ },
+ "order": [
+  "base",
+  "cushion",
+  "piping",
+  "blind"
+ ],
+ "masks": {
+  "cushion": "masks/cushions.png",
+  "piping": "masks/piping.png",
+  "blind": "masks/blinds.png"
+ },
+ "js_contract": "hp-recolour.js pattern: P+part+\"-\"+colour+\"-1400.webp\", base \"base-1400.webp\" (Hampton used \"h03-base-1400.webp\"); stack base -> cushion -> piping -> blind",
+ "encode": {
+  "base_1400": "webp q82 m6",
+  "layers_1400": "webp RGBA q85 alpha_quality100 m6, LANCZOS from 2400",
+  "layers_2400": "webp RGBA q90 alpha_quality100 m6",
+  "base_2400": "webp q92 m6"
+ },
+ "calibration": "/workspace/crown-website/review/hampton-recolour/work/calib.json (unchanged, same as Hampton)",
+ "piping_style": "v2 fine: snapped centreline of the real cord, width capped to measured cord (cap_half px in work/mask_stats.json), alpha from cord darkness, 85% peak opacity",
+ "flags": []
+}
