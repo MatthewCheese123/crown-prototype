@@ -70,7 +70,12 @@ words();
 /* one price bar: inside the configurator the green bar carries the price; on the summary tab the page bar does */
 function tab(){html.classList.toggle("hpv85-sum",root.getAttribute("data-hptab")==="6")}
 new MutationObserver(tab).observe(root,{attributes:true,attributeFilter:["data-hptab"]});tab();
-var ds=document.getElementById("design");
-if(ds&&"IntersectionObserver" in window) new IntersectionObserver(function(es){es.forEach(function(e){html.classList.toggle("hpv85-incfg",e.isIntersecting)})},{rootMargin:"-30% 0px -30% 0px"}).observe(ds);
+/* v8.5.2: hide the page bar only while the green bar is pinned to the screen bottom; once the configurator's end is on screen (green bar docked) the page bar comes back */
+var cc=root,stk=document.querySelector(".hp-stk"),raf=0;function incfg(){raf=0;var r=cc.getBoundingClientRect(),vh=window.innerHeight,h=stk?stk.offsetHeight:0,on=r.top<vh*0.7&&r.bottom>=vh,rise=!on&&r.top<vh*0.7&&r.bottom>vh-h&&r.bottom<vh;
+ html.classList.toggle("hpv85-incfg",on);html.classList.toggle("hpv85-rise",rise);
+ /* while the configurator's end crosses the page bar's band, the page bar rises with it, so it never covers the docked green bar */
+ if(rise)html.style.setProperty("--hpv85-rise",Math.round(r.bottom-(vh-h))+"px");else html.style.removeProperty("--hpv85-rise")}
+function qi(){if(!raf)raf=requestAnimationFrame(incfg)}
+if(cc){window.addEventListener("scroll",qi,{passive:true});window.addEventListener("resize",qi);if(window.ResizeObserver)new ResizeObserver(qi).observe(cc);incfg()}
 window.__hpsides=api;
 })();

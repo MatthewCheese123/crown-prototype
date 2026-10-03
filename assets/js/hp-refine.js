@@ -87,7 +87,7 @@ function build(){
   /* 3 real installs before the configurator (Arthur) */
   var ds=$("#design"); if(ds){ var st=document.createElement("section"); st.className="rfreal"; st.setAttribute("aria-label","Real Hampton installs");
     st.innerHTML='<div class="wrap"><div class="rk">Real Hampton installs</div><ul>'+
-      [["../../assets/img/hampton/h03-1400.webp","Beside the house, cedar roof","Location TBC"],["../../assets/img/hampton/h07.webp","Lakeside, on a raised deck","Location TBC"],["../../assets/img/hampton/h13.webp","On the lawn of a country house","Location TBC"]].map(function(x){ return '<li><img src="'+x[0]+'" alt="'+x[1]+'" loading="lazy"><span><b>'+x[1]+'</b><small>'+x[2]+'</small></span></li>' }).join("")+'</ul><a class="lnk" href="#installs">All Hampton photos →</a></div>';
+      [["../../assets/img/hampton/h03-1400.webp","Beside the house, cedar roof",""],["../../assets/img/hampton/h07.webp","Lakeside, on a raised deck",""],["../../assets/img/hampton/h13.webp","On the lawn of a country house",""]].map(function(x){ return '<li><img src="'+x[0]+'" alt="'+x[1]+'" loading="lazy"><span><b>'+x[1]+'</b>'+(x[2]?'<small>'+x[2]+'</small>':'')+'</span></li>' }).join("")+'</ul><a class="lnk" href="#installs">All Hampton photos →</a></div>';
     ds.parentNode.insertBefore(st,ds) }
 }
 var FAB={green:"fab-green",burgundy:"fab-burgundy",beige:"fab-beige",navy:"fab-navy",taupe:"fab-taupe"};

@@ -1,0 +1,32 @@
+/* v8.5.4 · Hampton only · "Look closer" Why Crown detail carousel (Matthew's pick: option C). Scoped to #why-crown. */
+#why-crown{background:var(--al,#f7f5f2)}
+#why-crown .wcz-wch{display:block}
+#why-crown .wcz-wch h2{margin-top:6px}
+#why-crown .wcz-wch p{font-size:16px;color:#555;max-width:680px;margin-top:10px}
+#why-crown .wcz-wcar{position:relative;margin-top:26px}
+#why-crown .wcz-wtrk{list-style:none;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 0 4px;margin:0;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+#why-crown .wcz-wtrk::-webkit-scrollbar{display:none}
+#why-crown .wcz-wtrk:focus-visible{outline:2px solid var(--gd,#7d6230);outline-offset:4px}
+#why-crown .wcz-wcd{flex:0 0 82%;scroll-snap-align:start;margin:0}
+#why-crown figure{margin:0;background:#fff;border:1px solid var(--pl,#e5d9be);height:100%}
+#why-crown .wcz-wph{position:relative;aspect-ratio:4/3;overflow:hidden;background:#efe9dd}
+#why-crown .wcz-wph img{width:100%;height:100%;object-fit:cover;display:block}
+#why-crown .wcz-wchip{position:absolute;left:10px;bottom:10px;background:rgba(13,42,30,.86);color:#f3e6c8;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:4px 9px;line-height:1.4}
+#why-crown figcaption{padding:14px 16px 18px}
+#why-crown .wcz-wno{font-family:Optima,Georgia,serif;font-size:13px;color:var(--gd,#7d6230);letter-spacing:.1em}
+#why-crown figcaption h3{font-size:22px;margin-top:2px}
+#why-crown figcaption p{font-size:14px;color:var(--mu,#5f5a4f);margin-top:6px;line-height:1.55}
+#why-crown .wcz-wctl{display:flex;align-items:center;gap:10px;margin-top:16px}
+#why-crown .wcz-warw{flex:none;width:44px;height:44px;border:1px solid var(--f,#123627);background:transparent;color:var(--f,#123627);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;font:inherit}
+#why-crown .wcz-warw:hover:not(:disabled){background:#fff}
+#why-crown .wcz-warw:disabled{opacity:.3;cursor:default}
+#why-crown .wcz-wbar{flex:1;height:1px;background:var(--pl,#e5d9be);position:relative;margin:0 6px}
+#why-crown .wcz-wbar i{position:absolute;left:0;top:-1px;height:3px;background:var(--gd,#7d6230);width:20%;transition:left .25s ease,width .25s ease}
+#why-crown .wcz-wcnt{font-size:12px;letter-spacing:.14em;color:var(--mu,#5f5a4f);font-weight:600;min-width:58px;text-align:right}
+#why-crown .wcz-wft{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;margin-top:20px;font-size:13px;color:var(--mu,#5f5a4f);letter-spacing:.04em}
+#why-crown .wcz-wft .lnk{min-height:44px;display:inline-flex;align-items:center}
+@media(min-width:900px){#why-crown .wcz-wcd{flex-basis:calc((100% - 42px)/3.3)}}
+@media(max-width:380px){#why-crown .wcz-wcd{flex-basis:86%}#why-crown figcaption h3{font-size:20px}}
+@media(prefers-reduced-motion:reduce){#why-crown .wcz-wtrk{scroll-behavior:auto}#why-crown .wcz-wbar i{transition:none}}
+/* Our own 44px arrows + counter replace the generic scroll-cue chevrons for this one row (edge fade kept). */
+.scq.wcz-off{display:none!important}
