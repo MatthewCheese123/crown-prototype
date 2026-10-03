@@ -99,18 +99,6 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 /* ---------- v8.4: compact product tiles on phones ---------- */
 .grchips{display:none}
 @media (max-width:699px){
- /* gazebos hub: 2x2 range tiles, name + From price + link over the image */
- #ranges .grid.g4{grid-template-columns:1fr 1fr;gap:10px}
- #ranges .card.rc{position:relative;display:grid;overflow:hidden;border-radius:4px}
- #ranges .card.rc>img{grid-area:1/1;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
- #ranges .card.rc::before{content:"";grid-area:1/1;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(11,26,19,.92) 0%,rgba(11,26,19,.6) 42%,rgba(11,26,19,0) 70%)}
- #ranges .card.rc .tx{grid-area:1/1;align-self:end;z-index:2;display:flex;flex-direction:column;padding:0 10px 6px;background:none}
- #ranges .card.rc .tag2,#ranges .card.rc .tx>p{display:none}
- #ranges .card.rc h3{margin:0;color:#fff;font-size:17px;line-height:1.15}
- #ranges .card.rc .fp{margin:3px 0 0;color:#F7F5F2;font-size:12.5px;line-height:1.3}
- #ranges .card.rc .fp b{color:#fff}
- #ranges .card.rc .rcl{gap:0;margin-top:2px}
- #ranges .card.rc .rcl .lnk{font-size:12.5px;min-height:34px;display:inline-flex;align-items:center;margin:0;color:#F7F5F2;text-decoration-color:#c9a86b}
  /* garden rooms hub: chip row (sticky) + compact horizontal cards */
  .grchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;position:sticky;top:var(--hdrvis,0px);z-index:20;margin:14px -20px 0!important;padding:8px 20px;background:#fff;box-shadow:0 6px 10px -10px rgba(0,0,0,.35)}
  .grchips::-webkit-scrollbar{display:none}
@@ -152,7 +140,6 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 @media (min-width:700px){.grchips{display:none!important}}
 /* v8.4: desktop shows every range/collection at once, so the jump chips are phone-only */
 @media (min-width:900px){.gzchips{display:none!important} .sec.psec{padding-top:20px} .psec .sigband{margin-top:12px!important}}
-@media (max-width:699px){#ranges .card.rc .rcl .more{display:none}}
 
 /* chip targets: clear sticky chip row on mobile (~52px) + a little air */
 @media (max-width:899px){
@@ -162,4 +149,67 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 @media (min-width:900px){
  #rc-classic,#rc-glazed,#rc-insulated,#rc-shelters,
  #gc-signature,#gc-heritage,#gc-contemporary{scroll-margin-top:24px}
+}
+
+/* ---------- v8.4.1 gazebos hub, phones: a clean product grid (Matthew: "Looks poor").
+   Photo (4:3, 12px radius) with the name and From price BELOW it on cream; the whole tile is one link
+   (the existing "Show the N models" link, stretched; its text stays for screen readers). No on-photo text, no chips. ---------- */
+@media (max-width:699px){
+ #ranges{background:#F7F5F2}
+ #ranges .gzchips{display:none!important}
+ #ranges .grid.g4{grid-template-columns:1fr 1fr;gap:20px 14px;margin-top:18px!important}
+ #ranges .grid.g4 .card.rc{position:relative;display:block;background:none;border:0;box-shadow:none;border-radius:0;overflow:visible;padding:0}
+ #ranges .grid.g4 .card.rc::before{content:none}
+ #ranges .grid.g4 .card.rc>img{display:block;width:100%;height:auto;max-height:none;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#e9e4d8}
+ #ranges .grid.g4 .card.rc .tx{display:block;padding:10px 2px 0;background:none}
+ #ranges .grid.g4 .card.rc .tag2,#ranges .grid.g4 .card.rc .tx>p,#ranges .grid.g4 .card.rc .rcl .more{display:none}
+ #ranges .grid.g4 .card.rc h3{margin:0;color:#123627;font:400 18px/1.25 Optima,Georgia,serif}
+ #ranges .grid.g4 .card.rc h3::after{content:"\00a0›";color:#7d6230}
+ #ranges .grid.g4 .card.rc .fp{margin:3px 0 0;color:#4f5f55;font-size:14px;line-height:1.4}
+ #ranges .grid.g4 .card.rc .fp b{color:#4f5f55;font-weight:600}
+ #ranges .grid.g4 .card.rc .fpn{display:block}
+ #ranges .grid.g4 .card.rc .fpd{display:none}
+ #ranges .grid.g4 .card.rc .rcl{display:block;margin:0;padding:0;min-height:0;border:0}
+ #ranges .grid.g4 .card.rc .rcl .pick{position:absolute;inset:0;z-index:2;overflow:hidden;text-indent:-200vw;white-space:nowrap;font-size:14px;text-decoration:none;border-radius:12px;margin:0;padding:0;min-height:44px}
+ #ranges .grid.g4 .card.rc .rcl .pick::after{content:none}
+ #ranges .grid.g4 .card.rc .rcl .pick:focus-visible{outline:3px solid #123627;outline-offset:4px}
+ #ranges .grid.g4 .card.rc:active>img{opacity:.88}
+}
+
+/* v8.4.1 gazebos hub finder: condensed mobile filters (Option 1: Range scroller + Filters pill -> bottom sheet). Desktop unchanged. */
+#models .gzfbar,#models .gzsheet,#models .gzscrim{display:none}
+@media (max-width:699px){
+ #models .secthead{margin-bottom:10px}
+ #models .secthead p{display:none}
+ #models .secthead [data-count]{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ #models .filters{display:block;background:none;border:0;box-shadow:none;padding:0;margin:0}
+ #models .filters .fg .fl{display:none}
+ #models .filters .fg[aria-label="Filter by range"]{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;margin:0 -20px;padding:4px 20px;scroll-padding:0 20px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 28px),transparent)}
+ #models .filters .fg[aria-label="Filter by range"]::-webkit-scrollbar{display:none}
+ #models .filters .fg .chip{position:relative;flex:none;min-height:36px!important;height:36px;padding:0 14px;border-radius:18px;font-size:14px;line-height:1;white-space:nowrap;color:#2f3a33;background:#fff;border:1px solid #d9d2c3}
+ #models .filters .fg .chip::before{content:"";position:absolute;left:-4px;right:-4px;top:-4px;bottom:-4px}
+ #models .filters .fg .chip[aria-pressed=true]{background:#123627;border-color:#123627;color:#fff}
+ #models .gzfbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:0;min-height:44px}
+ #models .gzfbtn{position:relative;display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 14px;border-radius:18px;border:1px solid #d9d2c3;background:#fff;color:#123627;font:500 14px/1 Montserrat,Arial,sans-serif;cursor:pointer}
+ #models .gzfbtn::before{content:"";position:absolute;inset:-4px}
+ #models .gzfbtn[aria-expanded=true],#models .gzfbtn:has(.gzfb:not([hidden])){border-color:#123627}
+ #models .gzfb{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#123627;color:#fff;font-size:12px;font-weight:600}
+ #models .gzfb[hidden]{display:none}
+ #models .gzfcnt{font-size:14px;color:#4f5f55;text-align:right}
+ #models .gzscrim{display:block;position:fixed;inset:0;z-index:300;background:rgba(10,24,17,.42);opacity:0;transition:opacity .2s}
+ #models .gzscrim.on{opacity:1}
+ #models .gzsheet{display:block;position:fixed;left:0;right:0;bottom:0;z-index:301;background:#F7F5F2;border-radius:16px 16px 0 0;padding:8px 20px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(0,0,0,.25);transform:translateY(100%);transition:transform .25s ease;max-height:85vh;overflow:auto;outline:none}
+ #models .gzsheet.on{transform:none}
+ #models .gzsheet[hidden],#models .gzscrim[hidden]{display:none}
+ #models .gzsheet::before{content:"";display:block;width:36px;height:5px;border-radius:3px;background:#cfc8b8;margin:0 auto 10px}
+ #models .gzshh{display:flex;align-items:center;justify-content:space-between}
+ #models .gzshh h3{margin:0;font:400 20px/1.2 Optima,Georgia,serif;color:#123627}
+ #models .gzclr{min-height:44px;padding:0 4px;background:none;border:0;color:#123627;font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+ #models .gzshb .fg{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+ #models .gzshb .fg .fl{display:block;flex-basis:100%;margin:0 0 2px;font-size:13px;letter-spacing:0;text-transform:none;font-weight:600;color:#4f5f55}
+ #models .gzshb .fg .chip{min-height:44px;height:44px;border-radius:22px;padding:0 16px}
+ #models .gzshb .fg .chip::before{content:none}
+ #models .gzdone{display:flex;width:100%;justify-content:center;margin-top:20px;min-height:48px}
+ html.gz-sheet-open{overflow:hidden}
+ @media (prefers-reduced-motion:reduce){#models .gzsheet,#models .gzscrim{transition:none}}
 }
