@@ -1,0 +1,54 @@
+/* v9.5.2 homepage C: original branding first screen (Leo option C). Homepage only. */
+/* dark green header on the homepage; Book a visit stays the one gold button */
+html body.v952home .site-h:not(#z1):not(#z2){background:#123627!important;border-bottom:1px solid rgba(247,245,242,.12)!important;box-shadow:none!important}
+html body.v952home .site-h:not(#z1):not(#z2) :is(.htab,.hmenu,.v94tel,.hmenu .car){color:#F7F5F2!important;border-color:transparent}
+html body.v952home .site-h:not(#z1):not(#z2) .htab[aria-expanded=true],html body.v952home .site-h:not(#z1):not(#z2) .hmenu[aria-expanded=true]{box-shadow:inset 0 -2px 0 #F7F5F2!important}
+html body.v952home .site-h:not(#z1):not(#z2) :is(.htab,.hmenu):hover{text-decoration:underline;text-underline-offset:6px}
+html body.v952home .site-h:not(#z1):not(#z2) svg{stroke:currentColor}
+html body.v952home .site-h :focus-visible{outline:2px solid #F7F5F2!important;outline-offset:3px}
+/* hero */
+.v952hero{position:relative;isolation:isolate;color:#fff;background:#123627;overflow:hidden}
+.v952bg,.v952bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.v952bg img{object-position:50% 60%}
+.v952hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(90deg,rgba(9,28,19,.86) 0%,rgba(9,28,19,.7) 40%,rgba(9,28,19,.22) 70%,rgba(9,28,19,0) 100%),linear-gradient(0deg,rgba(9,28,19,.55),rgba(9,28,19,0) 30%)}
+.v952in{display:flex;flex-direction:column;justify-content:center;min-height:min(78vh,760px);padding-top:56px;padding-bottom:40px}
+html body main .v952hero h1:not(#z1):not(#z2):not(#z3):not(#z4){margin:0;max-width:640px;font:400 56px/1.08 Optima,"Linux Biolinum",Candara,Georgia,serif!important;color:#fff!important;letter-spacing:-.3px;text-shadow:0 1px 18px rgba(0,0,0,.25)}
+.v952sub{margin:18px 0 0;max-width:520px;font-size:18px;line-height:1.5;color:#f3eee4}
+html body main .v952hero h2.v952q:not(#z1):not(#z2):not(#z3):not(#z4){width:fit-content;max-width:100%;margin:36px 0 14px!important;font:600 16px/1.4 Montserrat,Arial,sans-serif!important;color:#fff!important;letter-spacing:0}
+.v952q span{font-weight:400;color:#f3eee4}
+.v952tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:1040px}
+.v952tiles a{position:relative;display:flex;flex-direction:column;height:100%;background:#F7F5F2;color:#123627;text-decoration:none;border-radius:0;box-shadow:0 10px 30px -12px rgba(0,0,0,.45);transition:transform .15s ease}
+.v952tiles a:hover{transform:translateY(-2px)}
+.v952tiles a:focus-visible{outline:3px solid #F7F5F2;outline-offset:3px}
+.v952tiles img{display:block;width:100%;aspect-ratio:16/10;height:auto;object-fit:cover;border-radius:0}
+.v952tiles .tx{display:flex;flex-direction:column;gap:2px;padding:12px 40px 14px 14px}
+.v952tiles b{font:400 20px/1.2 Optima,"Linux Biolinum",Candara,Georgia,serif;color:#123627}
+.v952tiles small{font-size:14px;line-height:1.35;color:#3d463f}
+.v952tiles i{position:absolute;right:14px;bottom:16px;font-style:normal;font-size:22px;line-height:1;color:#123627}
+/* proof strip (v9.2) */
+html body .v952proof.v9trust:not(#z1){position:relative;display:flex;justify-content:center;flex-wrap:wrap;margin:0;padding:0;list-style:none;background:#0f2f22;font-size:14px;color:#f3eee4}
+html body .v952proof.v9trust:not(#z1) li{padding:10px 22px;align-items:center;flex-direction:row;gap:6px;white-space:nowrap}
+html body .v952proof.v9trust:not(#z1) a{color:#f3eee4;text-decoration:none;gap:6px}
+html body .v952proof.v9trust:not(#z1) a:hover{text-decoration:underline;text-underline-offset:4px}
+@media (max-width:1100px){.v952tiles{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px}}
+/* phone: headline at the top, photo tiles in the first screen (as the sheet) */
+@media (max-width:700px){
+ .v952hero::before{background:linear-gradient(180deg,rgba(9,28,19,.84) 0%,rgba(9,28,19,.7) 16%,rgba(9,28,19,.42) 22%,rgba(9,28,19,.7) 29%,rgba(9,28,19,.8) 33%,rgba(9,28,19,.92) 100%)}
+ .v952in{min-height:0;justify-content:flex-start;padding-top:22px;padding-bottom:16px}
+ html body main .v952hero h1:not(#z1):not(#z2):not(#z3):not(#z4){font-size:36px!important;line-height:1.12}
+ .v952sub{display:none}
+ html body main .v952hero h2.v952q:not(#z1):not(#z2):not(#z3):not(#z4){margin:150px 0 10px!important;font-size:16px!important}
+ .v952q span{display:none}
+ .v952tiles{grid-template-columns:1fr;gap:8px}
+ .v952tiles a{flex-direction:row;align-items:center;min-height:68px;box-shadow:none}
+ .v952tiles img{width:96px;height:60px;aspect-ratio:auto;flex:none;margin:4px 0 4px 6px}
+ .v952tiles .tx{padding:6px 40px 6px 14px}
+ .v952tiles b{font-size:19px}
+ .v952tiles i{top:50%;bottom:auto;transform:translateY(-50%)}
+ html body .v952proof.v9trust:not(#z1){display:grid;grid-template-columns:1fr 1fr;justify-content:stretch}
+ html body .v952proof.v9trust:not(#z1) li{padding:8px 10px;white-space:normal;justify-content:center;text-align:center;border-left:0!important;border-top:1px solid rgba(243,238,228,.14)}
+ html body .v952proof.v9trust:not(#z1) li:first-child{grid-column:1/-1}
+}
+@media (max-width:370px){html body main .v952hero h1:not(#z1):not(#z2):not(#z3):not(#z4){font-size:33px!important}html body main .v952hero h2.v952q:not(#z1):not(#z2):not(#z3):not(#z4){margin-top:120px!important}}
+@media (max-width:700px){html body .v952proof.v9trust:not(#z1) li{display:block}}
