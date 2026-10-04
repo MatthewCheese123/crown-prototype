@@ -21,7 +21,7 @@
     var upd=function(){ if(!pk) return; var r=$('.chip[data-key="range"][aria-pressed="true"]',fnd), k=r?r.getAttribute("data-f"):"all", g=k!=="all"&&$('[data-group="'+k+'"] .pk',fnd);
       pk.textContent=(g?g.textContent+" · ":"")+"prices inc. VAT" };
     new MutationObserver(upd).observe(fnd,{attributes:true,attributeFilter:["aria-pressed"],subtree:true});
-    if(!/^#(range|seats)-/.test(location.hash)){ var c=$('.chip[data-key="range"][data-f="'+(location.hash==="#models"?"all":"classic")+'"]',fnd), url=location.href; /* v9.1: View all gazebos opens on All */
+    if(!/^#(range|seats)-/.test(location.hash)){ var c=$('.chip[data-key="range"][data-f="'+"all"+'"]',fnd), url=location.href; /* v9.1: View all gazebos opens on All */
       if(c&&c.getAttribute("aria-pressed")!=="true"){ c.click(); if(history.replaceState) history.replaceState(null,"",url) } }
     upd();
   }

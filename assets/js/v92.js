@@ -13,15 +13,17 @@ function murl(n){ return ROOT+(GR.indexOf(n)>=0?"garden-rooms/":"gazebos/")+n.re
 function key(n){ return String(n||"").toLowerCase().replace(/\s+/g," ").trim() }
 function at(model){ var k=key(model); return SITES.filter(function(s){ return (s.models||[]).some(function(m){return key(m)===k}) }).sort(function(a,b){return a.town<b.town?-1:1}) }
 function links(s){ return (s.models||[]).map(function(n){return '<a href="'+murl(n)+'">'+esc(n)+'</a>'}).join(", ") }
+/* v9.6.0: main pages show On display names as plain text (no text-only product links) */
+var V96TXT=!!document.querySelector("[data-v96txt]"); function names(s){ return (s.models||[]).map(esc).join(", ") }
 /* site pages: the On display row */
 $$("[data-v92disp]").forEach(function(dd){ var s=SITES.filter(function(x){return x.id===dd.getAttribute("data-v92disp")})[0]; if(!s) return;
   var h=links(s); if(h){ dd.innerHTML=h } else { var row=dd.parentNode; if(row) row.hidden=true } });
 /* show-sites table and gazebos hub: same list, as links */
 $$("[data-ss-disp]").forEach(function(el){ var s=SITES.filter(function(x){return x.id===el.getAttribute("data-ss-disp")})[0]; if(!s||!(s.models||[]).length) return;
-  el.innerHTML=links(s)+(s.note?' <span class="v92sn">· '+esc(s.note)+'</span>':""); el.hidden=false });
+  el.innerHTML=(V96TXT?names(s):links(s))+(s.note?' <span class="v92sn">· '+esc(s.note)+'</span>':""); el.hidden=false });
 /* home: the On display line under each site */
 $$("[data-v92dl]").forEach(function(el){ var s=SITES.filter(function(x){return x.id===el.getAttribute("data-v92dl")})[0]; if(!s) return;
-  if((s.models||[]).length){ el.innerHTML="On display: "+links(s); el.hidden=false } else el.hidden=true });
+  if((s.models||[]).length){ el.innerHTML="On display: "+(V96TXT?names(s):links(s)); el.hidden=false } else el.hidden=true });
 /* model pages: "See the Tudor at Bagshot" under the hero actions */
 (function(){
   var m=/\/(gazebos|garden-rooms)\/([a-z-]+)\/(index\.html)?$/.exec(location.pathname); if(!m||/^(shelters|classic|glazed|insulated)$/.test(m[2])) return;
