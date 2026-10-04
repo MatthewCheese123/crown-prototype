@@ -131,7 +131,7 @@ if(bk){
     return '<label class="paopt'+(s.id==="video"&&MM&&!showsAt(MM)?' v9vid':'')+'"><input type="radio" name="site" value="'+s.id+'"><span class="dot" aria-hidden="true"></span><span><b>'+s.town+'</b><small>'+s.gc+(s.county?", "+s.county:"")+(s.note?" · "+s.note:"")+'</small>'+mlab(s)+(s.display&&!(MM&&s.display===s.names.join(", "))?'<span class="pashow">On display: <strong>'+s.display+'</strong></span>':'')+'<span class="hr">'+hr+'</span></span></label>';
   }
   var GR=/sandringham|clarence|buckingham|heritage|contemporary|garden room/i.test(st.model||"");
-  var pool=SITES.filter(function(s){return (!fixed||s.id===fixed)&&!(GR&&!fixed&&s.display==="Gazebos only")}), has=MM?showsAt(MM):null;
+  var pool=SITES.filter(function(s){return (!fixed||s.id===fixed)&&!(GR&&!fixed&&(s.gazebosOnly||s.display==="Gazebos only"))}), has=MM?showsAt(MM):null;
   if(MM){
     var meta=SS.models&&SS.models[MM];
     var ml=document.createElement("p"); ml.className="v9model"; ml.setAttribute("role","note");
@@ -148,10 +148,12 @@ if(bk){
   } else if(nonePhys){
     var phys=pool.filter(function(s){return !s.remote}), rem2=pool.filter(function(s){return s.remote});
     grid.classList.add("pagrp");
-    grid.innerHTML='<div class="v9none"><p><b>The '+esc(MM)+' isn’t on display yet.</b> Every site shows our craftsmanship, and your consultant can bring samples. You can also see it on a video call (our video showcase was filmed at Chessington).</p><button type="button" class="btn gh v9vbtn">See it by video</button></div>'+
-      '<p class="pagh">Or meet a design consultant</p>'+rem2.map(opt).join("")+
-      '<p class="pagh">Show sites</p>'+phys.map(opt).join("");
-    var vb=grid.querySelector(".v9vbtn"); if(vb) vb.addEventListener("click",function(){ var r=$("input[value='video']",grid); if(r){ r.checked=true; r.dispatchEvent(new Event("change",{bubbles:true})) } });
+    /* v9.2 (deck r3B): a model that isn't on display leads with a home visit (the consultant brings samples); show sites come second */
+    var shortM=esc(MM.replace(/^Crown /,""));
+    grid.innerHTML='<div class="v92home"><h4>See the '+shortM+' at your place</h4><p>A design consultant visits and brings samples: cladding, roofs and floors.</p><button type="button" class="btn v92hv">Book a home visit</button></div>'+
+      '<p class="pagh">Or visit a show site</p><p class="v92hn">See Crown craftsmanship and finishes in person. Six sites, open seven days.</p>'+phys.map(opt).join("")+
+      '<p class="pagh">Or by video call</p>'+rem2.map(opt).join("");
+    var vb=grid.querySelector(".v92hv"); if(vb) vb.addEventListener("click",function(){ var r=$("input[value='home']",grid); if(r){ r.checked=true; r.dispatchEvent(new Event("change",{bubbles:true})) } });
   } else grid.innerHTML=pool.map(opt).join("");
   var warn=document.createElement("p"); warn.className="pawarn"; warn.setAttribute("role","status"); warn.hidden=true; grid.after(warn);
   function checkWarn(){
