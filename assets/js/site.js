@@ -151,7 +151,7 @@
         card.hidden=!ok; if(ok && !card.classList.contains("ph")) n++;
       });
       $$("[data-group]",target).forEach(function(gr){ gr.hidden=!$$("[data-range]:not([hidden])",gr).length });
-      var cnt=$("[data-count]",g.parentNode)||$("[data-count]"); if(cnt) cnt.textContent=(n===0 && $$(".ph[data-range]:not([hidden])",target).length)?"Models to be confirmed":n+" model"+(n===1?"":"s")+" shown";
+      var cnt=$("[data-count]",g.parentNode)||$("[data-count]"); if(cnt) cnt.textContent=(n===0 && $$(".ph[data-range]:not([hidden])",target).length)?"Models to be confirmed":" model"+((n+soonN)===1?"":"s")+" shown";
     }
   });
 
@@ -175,7 +175,7 @@
         card.hidden=!ok; if(ok) n++;
       });
       fgroups.forEach(function(g){ g.hidden=!$$("[data-range]:not([hidden])",g).length });
-      fcnt.textContent=(n===0 && soonN)?"2 insulated models: see the Insulated page":n+" model"+(n===1?"":"s")+" shown";
+      fcnt.textContent=n+" model"+(n===1?"":"s")+" shown";
       fempty.hidden=(n>0 || soonN>0);
     };
     var fsync=function(){ // keep the address shareable: #range-x (or #seats-x), without jumping
