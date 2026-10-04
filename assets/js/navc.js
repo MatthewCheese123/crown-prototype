@@ -225,10 +225,12 @@
   if(!pairs.length) return;
   var dim=document.createElement("div"); dim.className="mm-dim"; dim.hidden=true; document.body.appendChild(dim);
   var cur=null, openT=0, closeT=0, openedAt=0, pushed=false;
-  function prep(){ pairs.forEach(function(x){ if(mq.matches){ x.t.setAttribute("aria-expanded",x.p.hidden?"false":"true"); if(x.t.tagName==="A") x.t.setAttribute("aria-controls",x.p.id); } else if(x.t!==mb){ x.t.removeAttribute("aria-expanded"); x.t.removeAttribute("aria-controls"); } }); }
+  function prep(){ pairs.forEach(function(x){ if(mq.matches){ x.t.setAttribute("aria-expanded",x.p.hidden?"false":"true"); x.t.setAttribute("aria-controls",x.p.id); } }); }
   function place(x){
     var b=hdr.getBoundingClientRect().bottom; document.documentElement.style.setProperty("--mmtop",Math.round(b)+"px");
   }
+  /* v9.0 sliver fix: keep the open panel glued to the header while the page scrolls (banner, compact and hidden header states) */
+  addEventListener("scroll",function(){ if(cur) place(cur); },{passive:true});
   var lbl=mb&&mb.firstChild&&mb.firstChild.nodeType===3?mb.firstChild:null;
   function mark(p,on){ pairs.forEach(function(y){ if(y.p===p) y.t.setAttribute("aria-expanded",on?"true":"false"); }); if(lbl&&p===mp) lbl.nodeValue=on?"Close":"Menu"; }
   function open(x,how){
@@ -263,7 +265,9 @@
     window.addEventListener("click",function(e){
       if(!mq.matches || !(e.target.closest&&e.target.closest("[data-mm],.hmenu")===x.t)) return;
       /* v8.7.5 link check: a tab link whose panel is already open (hover, or a first click/tap/Enter) goes to its page */
-      if(x.t.tagName==="A"&&cur&&cur.p===x.p&&!(e.metaKey||e.ctrlKey||e.shiftKey)){ e.stopPropagation(); closeAll("link"); return; }
+      /* v9.0: Gazebos / Garden rooms are buttons that only open their panel; a click or tap toggles it (no navigation).
+         A click on a panel that hover opened keeps it open (it then stays until dismissed). */
+      if(cur&&cur.p===x.p&&cur.how==="hover"){ e.preventDefault(); e.stopPropagation(); clearTimeout(closeT); cur.how=e.detail===0?"key":"click"; return; }
       e.preventDefault(); e.stopPropagation();
       if(cur&&cur.p===x.p){ shut(cur,false,"user"); }
       else open(x,e.detail===0?"key":"click");

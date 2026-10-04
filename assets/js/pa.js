@@ -42,7 +42,11 @@ if(bd && !document.querySelector(".stk")){
    '<a class="btn b3" href="tel:01491612820" aria-label="Call 01491 612820">'+PHONE+'<span>01491 612820</span></a></div>';
   document.body.appendChild(bar); document.body.classList.add("pahasbar");
   var trig=$("main .ctas")||$("h1"), past=false, end=false;
-  function sync(){ var on=past&&!end; bar.classList.toggle("show",on); if(on) bar.removeAttribute("inert"); else bar.setAttribute("inert","") }
+  /* v9.0: one gold CTA per screen: the bar stays hidden while another gold button (header Book a visit, a gold .btn) is in view */
+  var golds=[].slice.call(document.querySelectorAll(".site-h .hbook, main a.btn, main button.btn")).filter(function(b){ return /201, 168, 107/.test(getComputedStyle(b).backgroundColor) });
+  function goldIn(){ return golds.some(function(b){ if(b.offsetParent===null) return false; var r=b.getBoundingClientRect(); return r.bottom>0&&r.top<innerHeight&&r.width>0&&!(b.closest(".site-h.hid")) }) }
+  var gr=0; addEventListener("scroll",function(){ if(!gr) gr=requestAnimationFrame(function(){ gr=0; sync() }) },{passive:true}); addEventListener("resize",function(){ sync() });
+  function sync(){ var on=past&&!end&&!goldIn(); bar.classList.toggle("show",on); if(on) bar.removeAttribute("inert"); else bar.setAttribute("inert","") }
   if("IntersectionObserver" in window){
     new IntersectionObserver(function(es){es.forEach(function(e){past=!e.isIntersecting&&e.boundingClientRect.top<0;sync()})}).observe(trig);
     var vis=new Set(); var eo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)vis.add(e.target);else vis.delete(e.target)});end=vis.size>0;sync()});

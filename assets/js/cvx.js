@@ -33,7 +33,7 @@
     function can(){ if(!MQ.matches) return false; var r=hero.getBoundingClientRect(); return r.top>-60&&r.bottom<=window.innerHeight+8 }
     function expand(){ if(x||!can()) return;
       var r=sec.getBoundingClientRect(), cs=getComputedStyle(sec), strip=parseFloat(cs.getPropertyValue("--cvx-strip"))||64,
-          total=Math.max(r.height, window.innerHeight-Math.max(r.top,0));
+          total=window.innerHeight-Math.max(r.top,0) /* v9.0: the film and its strip fit the screen (the A3v2 block is taller than the old cards) */;
       sec.style.setProperty("--cvx-hx",Math.round(total-strip-6)+"px"); sec.classList.add("is-x"); x=true;
       body.setAttribute("data-strip",""); sec.dispatchEvent(new CustomEvent("cvx:change",{detail:{expanded:true}})) }
     function restore(){ if(!x) return; sec.classList.remove("is-x"); body.removeAttribute("data-strip"); x=false;

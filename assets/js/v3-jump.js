@@ -113,6 +113,8 @@
   // arriving with a #hash (cross-page links such as "Compare all collections"): re-align once layout has settled
   function arrive(){ var h=decodeURIComponent(location.hash.slice(1)); if(!h || h==="main" || /^(range|seats)-/.test(h)) return; var el=D.getElementById(h);
     var t=q('[role=tab][data-hash="'+h+'"]'); if(t) el=t.closest("section");
+    /* v9.0: a hub's video-hero section (#ranges, #collections) is the top of the page: no re-align past the film */
+    if(el && el.hasAttribute("data-cvx")) return;
     if(el) go(el,{block:/^model-/.test(h)?"center":"start"}) }
   window.addEventListener("load",function(){ setTimeout(arrive,140); setTimeout(arrive,900) }); /* v8.3 B2: re-land after lazy images */
   // main nav (desktop, mouse): hovering "Gazebos & Pavilions" / "Garden Rooms" opens the ribbon as before; clicking goes to
