@@ -27,7 +27,7 @@
     var a=[[D.name,(D.pkgKind==="roof"?L.roof[S.roof]:L.pkg[S.pkg])+", "+D.sizeShort+", installed",gbp(base())]];
     if(D.sides) a.push(["Sides",bayText(),"Included"]);
     if(D.pkgKind==="premium") a.push(["Roof",L.roof[S.roof]+", redwood-clad underside","Included"]);
-    if(D.colours&&furnished()) a.push(["Colours",COL[S.cushion]+" cushions"+(D.piping?" · "+COL[S.piping]+" piping":"")+(D.blinds?" · "+COL[S.blind]+" blinds":"")+(D.frame?" · "+D.frame:"")+(D.colourTBC?" (colours to be confirmed)":""),"Included"]);
+    if(D.colours&&furnished()) a.push(["Colours",COL[S.cushion]+" cushions"+(D.piping?" · "+COL[S.piping]+" piping":"")+(D.blinds?" · "+COL[S.blind]+" blinds":"")+(D.frame?" · "+D.frame:"")+"","Included"]);
     else if(D.frame) a.push(["Finish",D.frame,"Included"]);
     if(S.heater!=="none") a.push(["Heating",S.hq+" × "+L.heater[S.heater]+": supplied and hung by our team; electrical connection by your own electrician",gbp(PR[S.heater]*S.hq)]);
     if(S.cab!=="none") a.push(["Side cabinet",L.cab[S.cab],gbp(PR[S.cab])]);
@@ -51,7 +51,7 @@
     return [P.main[0],P.main[1],"Photo",""] }
   function fabric(){
     ["cushion","piping","blind"].forEach(function(g){ $$("[data-hpc="+g+"]").forEach(function(i){ i.style.background=HEX[S[g]] }); $$("[data-rf="+g+"]").forEach(function(i){ if(g==="cushion"&&FAB[S[g]]){ i.style.backgroundImage="url(../../assets/img/hampton/"+FAB[S[g]]+".webp)"; i.classList.remove("weave") } else { i.style.backgroundImage=""; i.classList.add("weave") } i.style.backgroundColor=HEX[S[g]] }); put(g+"n",COL[S[g]]) });
-    put("fabnote","Indicative; ask for a swatch. "+(FAB[S.cushion]?"The cushion is a close-up of a real Crown cushion in "+COL[S.cushion]+"; piping"+(D.blinds?" and blinds":"")+" are shown as swatches.":"Shown as swatches.")+(D.colourTBC?" Colour range for the "+D.short+" to be confirmed.":"")+" We’ll post fabric samples so you can see the true colours at home.") }
+    put("fabnote","Indicative; ask for a swatch. "+(FAB[S.cushion]?"The cushion is a close-up of a real Crown cushion in "+COL[S.cushion]+"; piping"+(D.blinds?" and blinds":"")+" are shown as swatches.":"Shown as swatches.")+""+" We’ll post fabric samples so you can see the true colours at home.") }
   function code(){ var s=S.bays.join("")+S.pkg+S.roof+S.cushion+S.piping+S.blind+S.heater+S.hq+S.cab+S.bbq+S.found+S.gravel+S.deck, h=5381;
     for(var i=0;i<s.length;i++) h=((h<<5)+h+s.charCodeAt(i))>>>0; var a="ABCDEFGHJKLMNPQRSTUVWXYZ23456789", o=""; for(var j=0;j<4;j++){ o+=a[h%32]; h=Math.floor(h/32) } return D.code+"-"+o }
   function spec(){ return D.name+" · "+lines().map(function(l){return l[0]+": "+l[1]+(/£/.test(l[2])?" ("+l[2]+")":"")}).join(" · ")+" · Total from "+gbp(total())+" inc. VAT · Typical lead time 6–8 weeks, depending on the season" }

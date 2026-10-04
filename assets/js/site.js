@@ -151,7 +151,7 @@
         card.hidden=!ok; if(ok && !card.classList.contains("ph")) n++;
       });
       $$("[data-group]",target).forEach(function(gr){ gr.hidden=!$$("[data-range]:not([hidden])",gr).length });
-      var cnt=$("[data-count]",g.parentNode)||$("[data-count]"); if(cnt) cnt.textContent=(n===0 && $$(".ph[data-range]:not([hidden])",target).length)?"Models to be confirmed":" model"+((n+soonN)===1?"":"s")+" shown";
+      var cnt=$("[data-count]",g.parentNode)||$("[data-count]"); if(cnt) cnt.textContent=(n===0 && $$(".ph[data-range]:not([hidden])",target).length)?"More models coming soon":" model"+((n+soonN)===1?"":"s")+" shown";
     }
   });
 
@@ -250,7 +250,7 @@
       out.area.textContent=(Math.round(parseFloat(w)*parseFloat(d)*100)/100)+"m² floor area";
       var p=grid[w+"x"+d];
       if(p){ out.price.textContent=fmt(p); out.note.textContent="From the live price guide, 1 Oct 2026"; }
-      else { out.price.textContent="TBC"; out.note.textContent="Not in the live price guide: ask our team"; }
+      else { out.price.textContent="On request"; out.note.textContent="Your design consultant will price this size"; }
     }
     function radios(attr){
       var cs=$$(".chip[data-"+attr+"]",s);
@@ -444,7 +444,7 @@
   $$("[data-send-open]").forEach(function(b){ b.addEventListener("click",function(){
     var p=document.getElementById(b.getAttribute("data-send-open")); if(!p) return;
     var sz=(b.closest("section")||document).querySelector("[data-sizer]"), t=$("[data-spec]",p);
-    if(sz && t){ var sv=$("[data-out=size]",sz).textContent, pv=$("[data-out=price]",sz).textContent; t.value=(p.getAttribute("data-model")||"Contemporary")+" · "+sv+" · "+(pv==="TBC"?"price TBC":"From "+pv+" (live price guide)") }
+    if(sz && t){ var sv=$("[data-out=size]",sz).textContent, pv=$("[data-out=price]",sz).textContent; t.value=(p.getAttribute("data-model")||"Contemporary")+" · "+sv+" · "+(pv==="On request"?"price on request":"From "+pv+" (live price guide)") }
     p.hidden=false; b.setAttribute("aria-expanded","true");
     var ok=$("[data-sendok]",p), fm=$("form[data-send]",p); if(ok && !ok.hidden){ ok.hidden=true; fm.hidden=false }
     p.scrollIntoView({behavior:"smooth",block:"start"}); setTimeout(function(){ var f=$("input",p); if(f) f.focus({preventScroll:true}) },350);

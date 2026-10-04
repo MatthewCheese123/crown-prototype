@@ -240,7 +240,7 @@ if(ty){
   var ics=$("[data-ics]");
   if(ics){ ics.addEventListener("click",function(e){ e.preventDefault();
     var d=rq.date.replace(/-/g,""), t=rq.slot.replace(":","")+"00", endM=mins(rq.slot)+60, t2=hhmm(endM).replace(":","")+"00";
-    var body=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Crown Pavilions//proto-awesomeo//EN","BEGIN:VEVENT","UID:pa-"+Date.now()+"@crownpavilions.example","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z","DTSTART;TZID=Europe/London:"+d+"T"+t,"DTEND;TZID=Europe/London:"+d+"T"+t2,"SUMMARY:Provisional: Crown Pavilions "+(s.remote?s.town.toLowerCase():"show-site visit, "+s.town),"LOCATION:"+(s.remote?"":s.gc+", "+s.addr),"DESCRIPTION:Requested on the prototype site. To be confirmed by Crown Pavilions. 01491 612820","END:VEVENT","END:VCALENDAR"].join("\r\n");
+    var body=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Crown Pavilions//proto-awesomeo//EN","BEGIN:VEVENT","UID:pa-"+Date.now()+"@crownpavilions.example","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z","DTSTART;TZID=Europe/London:"+d+"T"+t,"DTEND;TZID=Europe/London:"+d+"T"+t2,"SUMMARY:Provisional: Crown Pavilions "+(s.remote?s.town.toLowerCase():"show-site visit, "+s.town),"LOCATION:"+(s.remote?"":s.gc+", "+s.addr),"DESCRIPTION:Requested on the prototype site. Crown Pavilions will confirm your visit. 01491 612820","END:VEVENT","END:VCALENDAR"].join("\r\n");
     var a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([body],{type:"text/calendar"})); a.download="crown-pavilions-visit.ics"; document.body.appendChild(a); a.click(); a.remove();
     ics.textContent="Saved as provisional: check your downloads ✓";
   }) }

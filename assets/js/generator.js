@@ -31,7 +31,7 @@
     var T=d+(ver?1000:0), i, a, b;
     for(i=0;i<PH.length;i++) if(Math.abs(PH[i][0]-T)<1) return {e:PH[i][1],r:PH[i][2],ok:true,src:fmt(PH[i][2])+" mm overall, as drawn on Crown's live "+(PH[i][0]/1000)+"m-deep Heritage drawing"};
     if(T<PH[0][0]){a=PH[0];b=PH[1]} else if(T>PH[2][0]){a=PH[1];b=PH[2]} else {for(i=0;i<PH.length-1;i++) if(T>PH[i][0]&&T<PH[i+1][0]){a=PH[i];b=PH[i+1]}}
-    var f=(T-a[0])/(b[0]-a[0]); return {e:Math.round(a[1]+(b[1]-a[1])*f),r:Math.round((a[2]+(b[2]-a[2])*f)/5)*5,ok:false,src:"pitched height at this depth not on the live drawings: drawn approximately, TBC"};
+    var f=(T-a[0])/(b[0]-a[0]); return {e:Math.round(a[1]+(b[1]-a[1])*f),r:Math.round((a[2]+(b[2]-a[2])*f)/5)*5,ok:false,src:"pitched height at this depth not on the live drawings: drawn approximately"};
   }
   function opt(kind,sub){var t=D.opt[kind]||{}; var k=(sub?sub+"|":"")+key(); return t.hasOwnProperty(k)?t[k]:null}
   function price(){
