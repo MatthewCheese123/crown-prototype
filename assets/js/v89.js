@@ -42,7 +42,7 @@
     [].forEach.call(bv,function(a){ if(a.getAttribute("data-v")===v) a.setAttribute("aria-current","true"); else a.removeAttribute("aria-current"); });
     if(bh&&cfg){ bh.hidden=mine; cfg.hidden=!mine;
       var n=bh.querySelector("[data-v9bhn]"), ba=bh.querySelector("[data-v9bha]"); if(n) n.textContent="The "+d.name; if(ba){ ba.setAttribute("href",d.url+"?v="+v+"#design"); ba.textContent="Design the "+d.name.replace(/^Crown /,""); } }
-    document.title=document.title.replace(/^Crown \S+( Glazed| Insulated)?/,d.name);
+    document.title=document.title.replace(/^Crown \S+( Glazed| Insulated| All-season)?/,d.name);
     if(user){ live.textContent=d.name+", "+d.price+(d.fur?", "+d.fur:"");
       try{ var u=new URL(location.href); u.searchParams.set("v",v); history.replaceState(history.state,"",u.pathname+u.search+u.hash); }catch(e){} }
   }

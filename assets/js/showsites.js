@@ -31,7 +31,7 @@ window.CROWN_SHOWSITES={
     "Crown Ascot":"Classic · seats 8","Crown Eden":"Classic · seats 8-10","Crown Windsor":"Classic · seats 10","Crown Orangery":"Classic · seats 12",
     "Crown Hampton":"Classic · seats 8-14","Crown Versailles":"Classic · seats 12-15",
     "Crown Eden Glazed":"Glazed · seats 8-10 · unfurnished","Crown Orangery Glazed":"Glazed · seats 10-12 · unfurnished","St. Tropez":"Glazed · 4.5m × 3m · unfurnished",
-    "Crown Eden Insulated":"Insulated · seats 8-10 · unfurnished","Crown Orangery Insulated":"Insulated · seats 10-12 · unfurnished",
+    "Crown Eden All-season":"All-season · seats 8-10 · unfurnished","Crown Orangery All-season":"All-season · seats 10-12 · unfurnished",
     "Tranquility":"Garden shelter","Horizon":"Garden shelter","Sunrise Carport":"Garden shelter","Oceania":"Garden shelter",
     "Sandringham":"Signature garden room","Clarence":"Signature garden room","Buckingham":"Signature garden room","Heritage":"Garden room collection","Contemporary":"Garden room collection"
   }

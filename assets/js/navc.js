@@ -16,13 +16,16 @@
   var hdr=document.querySelector(".site-h");
   var savedY=0, pushed=false;
   var btnLabel=openBtn.firstChild&&openBtn.firstChild.nodeType===3?openBtn.firstChild:null;
-  function vis(el){ return el.offsetParent!==null || el===document.activeElement; }
+  function vis(el){ return (el.getClientRects().length>0 && getComputedStyle(el).visibility!=="hidden") || el===document.activeElement; }
   function focusables(){
     var l=Array.prototype.slice.call(menu.querySelectorAll("a[href],button:not([disabled])")).filter(vis);
-    if(desk.matches && vis(openBtn)) l.unshift(openBtn); /* desktop: the header's Close button is part of the loop */
+    /* v9.4: the live header (logo, phone, Book a visit, Close) leads the loop */
+    var hl=hdr?Array.prototype.slice.call(hdr.querySelectorAll(".hrow > a[href], .hrow > .hact > a[href], .hrow > .hact > button.hmenu")).filter(vis):[];
+    if(hl.indexOf(openBtn)<0 && desk.matches && vis(openBtn)) hl.push(openBtn);
+    l=hl.concat(l);
     return l;
   }
-  function inLoop(el){ return menu.contains(el) || (desk.matches && el===openBtn); }
+  function inLoop(el){ return menu.contains(el) || el===openBtn || focusables().indexOf(el)>=0; }
   /* v8.6.1: everything behind the open menu is inert, so screen readers and Tab can't reach it.
      v8.7.5: on desktop the header stays live (it sits above the panel and holds the Close button and search). */
   var inerted=[];
@@ -118,8 +121,7 @@
     var f=focusables(); if(!f.length) return;
     var i=f.indexOf(document.activeElement);
     if(i<0){ e.preventDefault(); (e.shiftKey?f[f.length-1]:f[0]).focus(); return; }
-    if(e.shiftKey && i===0){ e.preventDefault(); f[f.length-1].focus(); }
-    else if(!e.shiftKey && i===f.length-1){ e.preventDefault(); f[0].focus(); }
+    e.preventDefault(); f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus(); /* v9.4: always step within the loop */
   });
   document.addEventListener("focusin",function(e){
     if(!menu.hidden && !inLoop(e.target) && !(e.target.closest && e.target.closest(".sov,#site-search,.hsrch"))){

@@ -194,7 +194,7 @@
       if(scroll!==false){
         // range-*: frame that group under the sticky filters; seats-*: frame the filters themselves
         var tgt=null;
-        if(m[1]==="range") tgt=document.getElementById("range-"+m[2]);
+        if(m[1]==="range") tgt=fnd.querySelector(".secthead[data-land]")||document.getElementById("range-"+m[2]); /* v9.4 */
         if(!tgt || tgt.hidden) tgt=fh||fsec||fnd.querySelector(".filters"); /* v8.3 (Felix N5): not the sticky .filters, whose rect is wherever it is stuck */
         var J=window.__v3jump;
         if(J&&J.go) J.go(tgt,{behavior:"instant",block:"start"});
