@@ -26,7 +26,7 @@ window.CROWN_SHOWSITES={
   models:{
     "Crown Rose":"Classic · seats 2-4","Crown Chelsea":"Classic · seats 4-6","Crown Tudor":"Classic · seats 6-8","Crown Elizabeth":"Classic · seats 6-8",
     "Crown Guinevere":"Classic · seats 7-10","Crown Wolsey":"Classic · seats 8-10","Crown Edward":"Classic · seats 8-10","Crown Wentworth":"Classic · seats 11-14",
-    "Crown Ascot":"Classic · seats 8","Crown Eden":"Classic · seats 12","Crown Windsor":"Classic · seats 10","Crown Orangery":"Classic · seats 12",
+    "Crown Ascot":"Classic · seats 8","Crown Eden":"Classic · seats 8-10","Crown Windsor":"Classic · seats 10","Crown Orangery":"Classic · seats 12",
     "Crown Hampton":"Classic · seats 8-14","Crown Versailles":"Classic · seats 12-15",
     "Crown Eden Glazed":"Glazed · seats 8-10 · unfurnished","Crown Orangery Glazed":"Glazed · seats 10-12 · unfurnished","St. Tropez":"Glazed · 4.5m × 3m · unfurnished",
     "Crown Eden Insulated":"Insulated · seats 8-10 · unfurnished","Crown Orangery Insulated":"Insulated · seats 10-12 · unfurnished",

@@ -14,7 +14,7 @@ body{font-size:17px}
 /* Norman/NNg: one consistent, highly visible focus ring */
 :focus-visible{outline:3px solid #1b5fd6!important;outline-offset:3px!important;box-shadow:0 0 0 6px #fff!important}
 /* ---------- header ---------- */
-.util .wrap{font-size:13px}
+.util .wrap{font-size:14px}
 .util .ustar{color:var(--g);letter-spacing:2px;margin-right:6px}
 .util a:hover{text-decoration:underline}
 .hrow{gap:8px}
@@ -22,17 +22,17 @@ body{font-size:17px}
 .hcall{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:46px;min-height:46px;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);border-radius:2px;font-size:14px;font-weight:600}
 .hcall svg{width:20px;height:20px;fill:none;stroke:var(--g);stroke-width:2}
 .hcall span{display:none}
-.hbook.btn{min-height:46px;padding:10px 14px;font-size:12px;letter-spacing:.05em}
+.hbook.btn{min-height:46px;padding:10px 14px;font-size:14px;letter-spacing:.05em}
 .hbro{display:none;color:#f1ede4;font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(201,168,107,.6);padding:12px 6px}
 .burger{flex-direction:column;gap:1px;font-size:18px;line-height:1;width:50px;height:46px}
-.burger .bl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-family:Montserrat,Arial,sans-serif}
+.burger .bl{font-size:14px;letter-spacing:0;text-transform:none;font-family:Montserrat,Arial,sans-serif}
 .logo img{height:26px}
 @media (min-width:1080px){
  .logo img{height:50px}
  .hcall{border:0;min-width:0;padding:0 4px;justify-content:flex-start}.hcall span{display:inline}
  .hside{display:block}
  .hbro{display:inline-block}
- .hbook.btn{min-height:48px;padding:12px 24px;font-size:13px}
+ .hbook.btn{min-height:48px;padding:12px 24px;font-size:14px}
  .nav>li>button,.nav>li>a{padding:16px 20px}
  .nav>li>.cur{box-shadow:inset 0 -3px 0 var(--g)}
 }
@@ -42,7 +42,7 @@ body{font-size:17px}
 .mnav .mfoot.pa{display:grid;gap:10px;padding:20px}
 .mnav .mfoot.pa .btn{width:100%;min-height:54px}
 .mnav .mfoot.pa .btn.gh{border-color:rgba(255,255,255,.75);color:#fff}
-.mnav .mfoot.pa p{text-align:center;font-size:13px;color:#d8d0bd;margin-top:4px}
+.mnav .mfoot.pa p{text-align:center;font-size:14px;color:#d8d0bd;margin-top:4px}
 /* ---------- proof row (Cialdini: social proof + authority next to the ask) ---------- */
 .paproof{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:18px;font-size:14px}
 .paproof .s{color:var(--g);letter-spacing:2px}
@@ -68,7 +68,7 @@ body{font-size:17px}
 .pac .t{position:absolute;left:0;right:0;bottom:0;padding:26px}
 .pac h3{color:#fff;font-size:30px}
 .pac .pr{margin-top:6px;font-size:15px;color:#f1ede4}.pac .pr b{color:#fff;font-size:17px}
-.pac .go{display:inline-flex;align-items:center;gap:10px;margin-top:16px;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+.pac .go{display:inline-flex;align-items:center;gap:10px;margin-top:16px;font-weight:600;font-size:14px;letter-spacing:0;text-transform:none;color:var(--g)}
 .pac .go:after{content:"→";transition:transform .2s}.pac:hover .go:after{transform:translateX(4px)}
 .pasub{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;margin-top:26px;font-size:15px}
 /* proof band */
@@ -76,13 +76,13 @@ body{font-size:17px}
 .papb .g{display:grid;gap:40px;align-items:center}
 @media (min-width:960px){.papb .g{grid-template-columns:1.1fr 1fr}}
 .papb blockquote{font-family:Optima,Georgia,serif;font-size:clamp(24px,2.6vw,34px);line-height:1.3;color:#fff}
-.papb .who{display:flex;align-items:center;gap:14px;margin-top:20px;font-size:14px;color:var(--g);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.papb .who{display:flex;align-items:center;gap:14px;margin-top:20px;font-size:14px;color:var(--g);letter-spacing:0;text-transform:none;font-weight:600}
 .papb .who img{width:56px;height:56px;border-radius:50%;object-fit:cover;filter:grayscale(1)}
 .parv{display:grid;gap:14px}
 .parv .r{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:18px 20px}
 .parv .r .s{color:var(--g);letter-spacing:2px;font-size:14px}
 .parv .r p{margin-top:6px;font-size:15.5px;color:#f1ede4}
-.parv .r span{display:block;margin-top:6px;font-size:12.5px;color:#bfb7a3}
+.parv .r span{display:block;margin-top:6px;font-size:14px;color:#bfb7a3}
 .papb .lnk{color:var(--g)}
 /* steps */
 .pasteps{display:grid;gap:18px;margin-top:36px;counter-reset:s}
@@ -100,9 +100,9 @@ body{font-size:17px}
 .pasite .gc{font-size:14.5px;color:#4f4a40}
 .pasite .hrs{font-size:14px;color:#4f4a40;margin-top:4px}
 .pasite .hrs b{color:var(--f);font-weight:600}
-.pasite .tag{align-self:flex-start;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--gd);border:1px solid var(--g);padding:2px 8px}
+.pasite .tag{align-self:flex-start;font-size:14px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--gd);border:1px solid var(--g);padding:2px 8px}
 .pasite .act{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:auto;padding-top:14px}
-.pasite .act .btn{min-height:46px;padding:10px 18px;font-size:12.5px}
+.pasite .act .btn{min-height:46px;padding:10px 18px;font-size:14px}
 /* next-step band (replaces the long form on every page) */
 .panext{background:var(--f);color:#e8e2d4;padding:var(--pagap) 0}
 .panext .g{display:grid;gap:44px;align-items:center}
@@ -114,7 +114,7 @@ body{font-size:17px}
 .panext .call{margin-top:18px;font-size:15px}.panext .call a{color:#fff;font-weight:600}
 .panext figure{border-left:3px solid var(--g);padding:6px 0 6px 26px}
 .panext blockquote{font-family:Optima,Georgia,serif;font-size:clamp(21px,2vw,26px);line-height:1.35;color:#fff}
-.panext figcaption{margin-top:14px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:600}
+.panext figcaption{margin-top:14px;font-size:14px;letter-spacing:0;text-transform:none;color:var(--g);font-weight:600}
 .panext .paproof{color:#f1ede4}
 /* ---------- range pages ---------- */
 .rhead .ctas .tl{color:var(--f)}
@@ -126,7 +126,7 @@ body{font-size:17px}
 .pabar.show{transform:none}
 .pabar .in{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;max-width:1200px;margin:0 auto}
 .pabar .what{display:none}
-.pabar .btn{min-height:52px;padding:10px 12px;font-size:13px}
+.pabar .btn{min-height:52px;padding:10px 12px;font-size:14px}
 .pabar .b2{background:#fff;border:1px solid var(--f);color:var(--f)}
 .pabar .b3{background:#fff;border:1px solid var(--f);color:var(--f);width:52px;padding:0}
 .pabar .b3 svg{width:22px;height:22px;fill:none;stroke:var(--f);stroke-width:2}
@@ -142,7 +142,7 @@ body.pahasbar .foot{padding-bottom:90px}
 /* ---------- compare table ---------- */
 .ct thead th{position:sticky;top:0;background:#fff;z-index:2}
 .ct tbody tr:nth-child(odd) td,.ct tbody tr:nth-child(odd) th{background:#faf8f3}
-.ct tbody th{font-size:12.5px}
+.ct tbody th{font-size:14px}
 .ct td .tbc,.ct td>.tbc{color:#6b6455}
 .pacmpcta{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;margin-top:26px;padding:22px 26px;background:var(--al);border:1px solid var(--ln)}
 .pacmpcta p{font-size:16px;color:#3d3a33;max-width:620px}
@@ -152,7 +152,7 @@ body.pahasbar .foot{padding-bottom:90px}
 .paform h2{font-size:clamp(26px,3vw,34px)}
 .paf{margin-top:20px}
 .paf label,.paf .lab{display:block;font-weight:600;font-size:15px;color:#1e2a24;margin-bottom:6px}
-.paf .hint{display:block;font-weight:400;font-size:13.5px;color:#5f5a4f;margin:-2px 0 8px}
+.paf .hint{display:block;font-weight:400;font-size:14px;color:#5f5a4f;margin:-2px 0 8px}
 .paf input[type=text],.paf input[type=email],.paf input[type=tel],.paf textarea,.paf select{width:100%;min-height:52px;font:inherit;font-size:17px;padding:12px 14px;border:1.5px solid #8d8778;border-radius:3px;background:#fff;color:#1e2a24}
 .paf input:hover,.paf select:hover{border-color:#5e584b}
 .paf input:focus{border-color:var(--f)}
@@ -174,11 +174,11 @@ body.pahasbar .foot{padding-bottom:90px}
 .paopt input:focus-visible+.dot{outline:3px solid #1b5fd6;outline-offset:3px}
 .paopt:has(input:checked){border-color:var(--f);background:#f3f6f1;box-shadow:inset 0 0 0 1px var(--f)}
 .paopt b{display:block;color:var(--f);font-weight:600}
-.paopt small{display:block;font-size:13.5px;color:#5f5a4f}
+.paopt small{display:block;font-size:14px;color:#5f5a4f}
 .paerrsum{border:2px solid var(--bad);background:#fff8f7;padding:14px 16px;margin-top:18px;font-size:15px;color:#7a1a12}
 .paerrsum:empty{display:none}
 .paerrsum a{color:inherit;font-weight:600}
-.papriv{font-size:13.5px;color:#5f5a4f;margin-top:16px}
+.papriv{font-size:14px;color:#5f5a4f;margin-top:16px}
 .pasubmit{margin-top:24px;width:100%}
 @media (min-width:560px){.pasubmit{width:auto}}
 /* ---------- booking ---------- */
@@ -197,27 +197,27 @@ body.pahasbar .foot{padding-bottom:90px}
 @media (min-width:640px){.pagrid{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1280px){.pagrid{grid-template-columns:repeat(3,1fr)}}
 .pagrid .paopt{flex-direction:row}
-.pagrid .paopt .hr{font-size:12.5px;color:#5f5a4f;margin-top:4px}
+.pagrid .paopt .hr{font-size:14px;color:#5f5a4f;margin-top:4px}
 .padays,.paslots{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .padays button,.paslots button{min-width:78px;min-height:64px;border:1.5px solid #c9c2b1;background:#fff;border-radius:3px;font:inherit;cursor:pointer;padding:8px 10px;line-height:1.2;color:var(--f)}
 .paslots button{min-height:52px;min-width:96px;font-weight:600}
-.padays button small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5f5a4f}
+.padays button small{display:block;font-size:14px;letter-spacing:0;text-transform:none;color:#5f5a4f}
 .padays button b{display:block;font-size:20px;font-weight:600}
-.padays button span{display:block;font-size:12px;color:#5f5a4f}
+.padays button span{display:block;font-size:14px;color:#5f5a4f}
 .padays button:hover,.paslots button:hover{border-color:#5e584b}
 .padays button[aria-pressed=true],.paslots button[aria-pressed=true]{background:var(--f);border-color:var(--f);color:#fff}
 .padays button[aria-pressed=true] small,.padays button[aria-pressed=true] span{color:#e8e2d4}
 .padays button:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
-.pademo{display:inline-block;margin-top:10px;font-size:12.5px;color:#6b521f;background:#fff7e6;border:1px solid var(--pl);padding:3px 10px}
+.pademo{display:inline-block;margin-top:10px;font-size:14px;color:#6b521f;background:#fff7e6;border:1px solid var(--pl);padding:3px 10px}
 .pasum{background:var(--f);color:#e8e2d4;padding:26px;position:sticky;top:120px}
 .pasum h3{color:#fff;font-size:24px}
 .pasum dl{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:10px 14px;font-size:15px}
-.pasum dt{color:var(--g);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding-top:2px}
+.pasum dt{color:var(--g);font-size:14px;letter-spacing:0;text-transform:none;font-weight:600;padding-top:2px}
 .pasum dd{color:#fff}
 .pasum dd.empty{color:#9fa89f;font-style:italic}
 .pasum .paproof{color:#e8e2d4;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15)}
 .pasum blockquote{margin-top:14px;font-family:Optima,Georgia,serif;font-size:18px;line-height:1.4;color:#fff}
-.pasum cite{display:block;margin-top:8px;font-style:normal;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.pasum cite{display:block;margin-top:8px;font-style:normal;font-size:14px;letter-spacing:0;text-transform:none;color:var(--g)}
 .pavisitintro{display:grid;gap:30px;align-items:center}
 @media (min-width:960px){.pavisitintro{grid-template-columns:1.2fr 1fr}}
 .pavisitintro img{width:100%;height:100%;max-height:420px;object-fit:cover}
@@ -249,7 +249,7 @@ body.pahasbar .foot{padding-bottom:90px}
 /* Felix's mobile bottom bar, re-weighted: one primary (Book a visit), Brochure secondary, Call as an icon (Hick, Fitts) */
 @media (max-width:1079px){
  .mbar{grid-template-columns:56px 1fr 1.5fr!important;gap:8px}
- .mbar .btn{min-height:52px!important;font-size:12.5px!important}
+ .mbar .btn{min-height:52px!important;font-size:14px!important}
  .mbar .mc{padding:0!important}
  .mbar .mc svg{width:22px;height:22px;fill:none;stroke:var(--f);stroke-width:2}
  body.mbar-on{padding-bottom:82px}
@@ -259,7 +259,7 @@ body.pahasbar .foot{padding-bottom:90px}
 @media (max-width:599px){.hbook{display:none!important}}
 @media (max-width:420px){.hact{gap:6px}.hcall,.hact .srch{min-width:44px;width:44px;height:44px;min-height:44px}.burger{width:46px}}
 @media (min-width:1080px){.hcm{display:none!important}}
-.sdl dd .src{display:block;font-size:12px;color:#6b6455;margin-top:2px}
+.sdl dd .src{display:block;font-size:14px;color:#6b6455;margin-top:2px}
 .sdl dd b{font-weight:600;color:var(--f)}
 .pasitehrs{font-size:14px;line-height:1.55}
 .kv dd .h{display:block}
@@ -276,7 +276,7 @@ fieldset.pastep:first-child{padding-top:0}
 .pabrfig img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 .pabrfig figcaption{padding:24px 26px 26px}
 .pabrfig blockquote{font-family:Optima,Georgia,serif;font-size:21px;line-height:1.4;color:#fff}
-.pabrfig cite{display:block;margin-top:10px;font-style:normal;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:600}
+.pabrfig cite{display:block;margin-top:10px;font-style:normal;font-size:14px;letter-spacing:0;text-transform:none;color:var(--g);font-weight:600}
 .pabrfig .paproof{color:#f1ede4}
 @media (max-width:999px){.pabrfig{order:-1}.pabrfig img{aspect-ratio:16/9}.pabrfig figcaption{display:none}}
 fieldset{border:0;margin:0;padding:0;min-width:0}
@@ -287,8 +287,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
  body[data-pa-page=home] .hero>img{position:relative;display:block;height:auto;aspect-ratio:4/3;object-position:45% 70%}
  body[data-pa-page=home] .hero .ov{display:none}
  body[data-pa-page=home] .hero .in{position:static;padding:24px 0 36px}
- body[data-pa-page=home] .hero .vlabel{position:absolute;left:12px;top:calc(75vw - 40px);margin:0;background:rgba(0,0,0,.45);font-size:12px}
- body[data-pa-page=home] .hero .vctl{top:12px;right:12px;font-size:12px}
+ body[data-pa-page=home] .hero .vlabel{position:absolute;left:12px;top:calc(75vw - 40px);margin:0;background:rgba(0,0,0,.45);font-size:14px}
+ body[data-pa-page=home] .hero .vctl{top:12px;right:12px;font-size:14px}
  body[data-pa-page=home] .hero h1{font-size:40px;margin-top:8px}
  body[data-pa-page=home] .hero p{font-size:17px}
 }

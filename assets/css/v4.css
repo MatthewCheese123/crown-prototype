@@ -6,7 +6,7 @@
 .v4f .filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px 26px;padding:9px 16px;margin-top:0;z-index:20;transition:top .3s ease}
 .v4f .filters .frow{display:contents}
 .v4f .filters .fg{gap:6px}
-.v4f .filters .fg .fl{font-size:12px;margin-right:3px}
+.v4f .filters .fg .fl{font-size:14px;margin-right:3px}
 .v4f .filters .fg .chip{padding:4px 11px}
 @media (min-width:900px){
  .v4f .filters{position:sticky;top:var(--hdrvis,0px);box-shadow:0 6px 14px -12px rgba(13,42,30,.35)}
@@ -15,8 +15,8 @@
 .v4f .lgh{align-items:baseline;gap:4px 14px;padding-bottom:7px;margin-bottom:12px;justify-content:flex-start}
 .v4f .lgh>div{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
 .v4f .lgh h3{font-size:23px}
-.v4f .lgh .sub{display:inline;margin:0;font-size:13px}
-.v4f .lgh .pk{font-size:12.5px;line-height:1.4;color:#3d4a40;background:#f3f6f1;border-left:3px solid var(--f);padding:2px 8px}
+.v4f .lgh .sub{display:inline;margin:0;font-size:14px}
+.v4f .lgh .pk{font-size:14px;line-height:1.4;color:#3d4a40;background:#f3f6f1;border-left:3px solid var(--f);padding:2px 8px}
 .v4f .lgh>.lnk{margin-left:auto}
 .v4f .g6{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:640px){.v4f .g6{grid-template-columns:repeat(3,1fr)}}
@@ -26,17 +26,17 @@
 .v4f .g6 .card .tx{padding:9px 11px 6px}
 .v4f .g6 .card .tag2{display:none}
 .v4f .g6 .card h4{font-size:16.5px;margin:0 0 2px;line-height:1.2}
-.v4f .g6 .card .tx>p{font-size:12.5px!important;color:#666;margin:0 0 4px!important}
-.v4f .g6 .card .fp{font-size:13px}.v4f .g6 .card .fp b{font-size:15px}
-.v4f .g6 .card .inc{font-size:12px;padding:3px 7px;margin:4px 0 4px!important}
+.v4f .g6 .card .tx>p{font-size:14px!important;color:#666;margin:0 0 4px!important}
+.v4f .g6 .card .fp{font-size:14px}.v4f .g6 .card .fp b{font-size:15px}
+.v4f .g6 .card .inc{font-size:14px;padding:3px 7px;margin:4px 0 4px!important}
 .v4f .mgrp[data-pk] .g6 .card .inc{display:none}
 .v4f .g6 .cfoot{padding-bottom:0!important;padding-top:4px;margin-top:auto;border-top:1px solid #eee7d8;gap:4px;flex-wrap:nowrap}
-.v4f .g6 .cfoot .lnk{font-size:12px;white-space:nowrap}
-.v4f .g6 .cmpk{min-height:36px;font-size:12px;gap:6px;white-space:nowrap}
+.v4f .g6 .cfoot .lnk{font-size:14px;white-space:nowrap}
+.v4f .g6 .cmpk{min-height:36px;font-size:14px;gap:6px;white-space:nowrap}
 .v4f .g6 .cmpk input{width:17px;height:17px}
-.v4f .soonln{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:#fff;border:1px dashed var(--g);padding:10px 16px;font-size:13.5px;color:#555}
+.v4f .soonln{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:#fff;border:1px dashed var(--g);padding:10px 16px;font-size:14px;color:#555}
 .v4f .soonln b{font-family:Optima,Georgia,serif;font-weight:400;font-size:17px;color:var(--f)}
-.v4f .soonln .lnk{margin-left:auto;font-size:13px}
+.v4f .soonln .lnk{margin-left:auto;font-size:14px}
 .v4f .soonln[hidden]{display:none}
 
 /* ---------- 2. Compare opens as a sheet over the grid ---------- */
@@ -54,7 +54,7 @@ html.cmp-lock,html.cmp-lock body{overflow:hidden}
 /* ---------- 3. Gazebo range table: slim sticky header ---------- */
 .ct.v4slim thead th{padding-bottom:12px;padding-top:8px;vertical-align:bottom}
 .ct.v4slim thead th h4{margin-top:0}
-.ct.v4slim thead th h4 .csoon{display:block;font:600 11px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-top:4px}
+.ct.v4slim thead th h4 .csoon{display:block;font:600 14px Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;color:var(--gd);margin-top:4px}
 .ct.v4slim thead th,.ct.v4slim thead td{border-bottom:2px solid var(--f)}
 @media (min-width:900px){
  .tscroll.v4stick{overflow:visible}
@@ -66,7 +66,7 @@ html.cmp-lock,html.cmp-lock body{overflow:hidden}
 .ct a.gcol .gim{display:block;position:relative;overflow:hidden}
 .ct a.gcol img{display:block;transition:transform .35s ease}
 .ct a.gcol .gcue{position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--f);display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:all .25s ease}
-.ct a.gcol .gcue span{display:none;font:600 12px Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-right:6px}
+.ct a.gcol .gcue span{display:none;font:600 14px Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;margin-right:6px}
 .ct a.gcol:hover img,.ct a.gcol:focus-visible img{transform:scale(1.05)}
 .ct a.gcol:hover .gcue,.ct a.gcol:focus-visible .gcue{width:auto;padding:0 12px;border-radius:15px;background:var(--f);color:#fff}
 .ct a.gcol:hover .gcue span,.ct a.gcol:focus-visible .gcue span{display:inline}
@@ -74,7 +74,7 @@ html.cmp-lock,html.cmp-lock body{overflow:hidden}
 .ct a.gcol h4{margin-top:10px}
 .ct tr.allin th[scope=row]{color:var(--gd)}
 .ct tr.allin td{background:#f6f2ea!important;padding-top:10px;padding-bottom:10px}
-.ct tr.allin ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;color:#3d4a40}
+.ct tr.allin ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:#3d4a40}
 .ct tr.allin li i{font-style:normal;color:var(--gd);font-weight:700;margin-right:6px}
 
 /* ---------- 5. Configurators: shorter drawing, notes removed ---------- */

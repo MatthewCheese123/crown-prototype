@@ -18,10 +18,10 @@ h3>a:only-child,h4>a:only-child,.sl b>a{padding-top:3px;padding-bottom:3px}
 .sl b>a{display:inline-block;padding-top:2px;padding-bottom:2px}
 .paf input[type=file]{min-height:24px;padding:2px 0}
 /* v8.3 Arthur #1/#2/#6: grouped booking list, display line, wrong-site warning, provisional thank-you */
-.pagrp .pagh{grid-column:1/-1;margin:14px 0 2px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#123627}
+.pagrp .pagh{grid-column:1/-1;margin:14px 0 2px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#123627}
 .pagrp .pagh:first-child{margin-top:0}
 .pagrp .pagh span{text-transform:none;letter-spacing:0;font-weight:400;color:#6b6455}
-.paopt .pashow{display:block;font-size:13px;color:#123627;margin-top:2px}
+.paopt .pashow{display:block;font-size:14px;color:#123627;margin-top:2px}
 .pawarn{margin:12px 0 0;padding:10px 14px;border-left:4px solid #b5541c;background:#fbf1e8;color:#3a2a1c;font-size:15px;line-height:1.45}
 .tyno{display:block;margin-top:8px;padding:8px 12px;border-left:4px solid #b5541c;background:#fbf1e8;font-size:15px}
 .tyconf{margin:0 0 12px;font-weight:600}
@@ -49,7 +49,7 @@ button.sdagain{background:none;border:0;padding:0;font:inherit;font-size:15px;co
 .hside .hfind{display:none}
 @media (min-width:1080px){
  .util{display:none!important}
- .proto{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 24px;padding:3px 24px;font-size:12px;line-height:15px}
+ .proto{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 24px;padding:3px 24px;font-size:14px;line-height:15px}
  .proto .pnt,.proto .ptrust{white-space:nowrap}
  .proto .ptrust{display:inline}
  .proto .ustar{color:#a77a1f;margin-right:4px;letter-spacing:.05em}

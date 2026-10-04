@@ -29,7 +29,7 @@ button.htab{-webkit-appearance:none;appearance:none;background:none;border:0;mar
 }
 @media (min-width:1024px) and (max-width:1100px){
   html body .site-h.navc.hx .htabs{gap:16px!important;margin-left:22px!important}
-  html body .site-h.navc.hx .htab{font-size:13.5px!important;letter-spacing:0!important}
+  html body .site-h.navc.hx .htab{font-size:14px!important;letter-spacing:0!important}
 }
 
 /* ---------- panel links B: one bottom bar per panel ---------- */
@@ -42,7 +42,7 @@ button.htab{-webkit-appearance:none;appearance:none;background:none;border:0;mar
   text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px;text-decoration-color:rgba(247,245,242,.55)}
 .v9bar a:hover,.v9bar a:focus-visible,.v9mb a:hover{text-decoration-color:#c9a86b}
 .v9bar .v9all,.v9mb .v9all{font-weight:600;text-decoration-color:#f7f5f2}
-.v9bar .vt{font-size:12.5px;color:rgba(247,245,242,.72)}
+.v9bar .vt{font-size:14px;color:rgba(247,245,242,.72)}
 .v9mb{display:flex;gap:12px;align-items:center;margin:2px 0 8px}
 .v9mb i{color:rgba(247,245,242,.5);font-style:normal}
 
@@ -53,7 +53,7 @@ html body #models#models .mgrp .card:hover{border-color:#123627!important}
 html body #models#models .mgrp .card .tx{flex:1 1 auto}
 html body #models#models .mgrp .card .v9b{margin-top:auto!important}
 html body #models#models .mgrp .card .v9dp{background:transparent!important;color:#123627!important;border:1px solid #123627!important;min-height:44px!important;
-  font:600 12px/1 Montserrat,Arial,sans-serif!important;letter-spacing:.08em!important;transition:background .15s,color .15s}
+  font:600 14px/1 Montserrat,Arial,sans-serif!important;letter-spacing:.08em!important;transition:background .15s,color .15s}
 html body #models#models .mgrp .card .v9dp:hover,html body #models#models .mgrp .card .v9dp:focus-visible{background:#123627!important;color:#f7f5f2!important}
 
 /* ---------- gazebos hub hero: the garden rooms film band (grB), four ranges ---------- */
@@ -73,19 +73,19 @@ html body #models#models .mgrp .card .v9dp:hover,html body #models#models .mgrp 
 .g3w{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:24px;row-gap:0;align-items:stretch}
 @media (min-width:900px){.g3g,.g3row{display:contents!important}.g3oc .g3lab{grid-column:1/3;grid-row:1}.g3sg .g3lab{grid-column:3/6;grid-row:1}.g3{grid-row:2;height:100%}}
 .g3row{display:grid;gap:24px}.g3oc .g3row{grid-template-columns:repeat(2,minmax(0,1fr))}.g3sg .g3row{grid-template-columns:repeat(3,minmax(0,1fr))}
-.g3lab{font:600 12px/1.35 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#123627;margin:0 0 14px;padding-top:10px;border-top:1px solid #123627;min-height:58px;box-sizing:border-box}
+.g3lab{font:600 14px/1.35 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#123627;margin:0 0 14px;padding-top:10px;border-top:1px solid #123627;min-height:58px;box-sizing:border-box}
 .g3br{border-top:2px solid #123627;position:relative}.g3br::before,.g3br::after{content:"";position:absolute;top:-2px;width:2px;height:8px;background:#123627}.g3br::before{left:0}.g3br::after{right:0}
-.g3lab span{display:block;text-transform:none;letter-spacing:0;font-weight:500;font-size:13px;color:#3d463f;margin-top:4px}
+.g3lab span{display:block;text-transform:none;letter-spacing:0;font-weight:500;font-size:14px;color:#3d463f;margin-top:4px}
 .grB .g3.nz-c,.g3{display:flex!important;flex-direction:column;min-width:0;gap:0!important;grid-template-columns:none!important;font-size:inherit;color:inherit}
 .grB .g3.nz-c img{width:100%;height:auto!important;aspect-ratio:4/3;object-fit:cover;display:block;margin:0!important;grid-row:auto!important}
 .g3n{margin:12px 0 0}.g3n b{font:400 22px/1.1 Optima,Georgia,serif;color:#123627;font-weight:400}
-.g3l{list-style:none;margin:6px 0 12px;padding:0;font:400 13.5px/1.45 Montserrat,Arial,sans-serif;color:#3d463f}
-.g3l li+li{margin-top:3px}.g3l li:last-child{color:#5a655e;font-size:12.5px}
+.g3l{list-style:none;margin:6px 0 12px;padding:0;font:400 14px/1.45 Montserrat,Arial,sans-serif;color:#3d463f}
+.g3l li+li{margin-top:3px}.g3l li:last-child{color:#5a655e;font-size:14px}
 .g3f{margin:auto 0 0!important;padding-top:10px;display:flex;flex-direction:column;align-items:flex-start;gap:0;border-top:1px solid #e6dfcf}
 .g3f .nz-p{font:600 14.5px Montserrat,Arial,sans-serif;color:#123627}
-.g3f a{display:inline-flex;align-items:center;min-height:44px;margin-bottom:-8px;font:500 13px Montserrat,Arial,sans-serif;color:#123627;text-decoration:underline;text-decoration-color:#c9c2b2;text-underline-offset:4px}
+.g3f a{display:inline-flex;align-items:center;min-height:44px;margin-bottom:-8px;font:500 14px Montserrat,Arial,sans-serif;color:#123627;text-decoration:underline;text-decoration-color:#c9c2b2;text-underline-offset:4px}
 .g3f a:hover,.g3f a:focus-visible{text-decoration-color:#123627}
-.gx-quiet{display:flex;flex-wrap:wrap;gap:6px 26px;align-items:center;font-size:13.5px;color:#4a564f;margin:22px 0 0;padding:10px 0 0;border-top:1px solid #e6dfcf}
+.gx-quiet{display:flex;flex-wrap:wrap;gap:6px 26px;align-items:center;font-size:14px;color:#4a564f;margin:22px 0 0;padding:10px 0 0;border-top:1px solid #e6dfcf}
 .gx-quiet span{margin-right:auto}.gx-quiet a{display:inline-flex;align-items:center;min-height:44px;color:#123627;text-underline-offset:4px}
 /* the film's mouse-over strip folds the five cards into names and prices */
 .cvx.is-x .g3g,.cvx.is-x .g3row{display:contents!important}

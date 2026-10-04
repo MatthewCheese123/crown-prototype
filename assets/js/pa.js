@@ -124,7 +124,7 @@ if(bk){
   function mlab(s){
     if(!MM||s.remote) return "";
     var on=(s.models||[]).indexOf(mbase(MM))>=0;
-    return on?'<span class="v9on">✓ On display here</span>':'<span class="v9off">Not on display here</span>';
+    return on?'<span class="v9on">On display: '+esc(MM)+'</span>':''; /* v9.1: say it only where it is true */
   }
   function opt(s){
     var hr=s.remote?"Mon–Sat":("Mon–Sat "+s.wk.join("–")+"<br>Sun "+s.sun.join("–"));
@@ -143,21 +143,21 @@ if(bk){
     var ids=has.map(function(s){return s.id}), rest=pool.filter(function(s){return ids.indexOf(s.id)<0&&!s.remote}), rem=pool.filter(function(s){return s.remote});
     grid.classList.add("pagrp");
     grid.innerHTML='<p class="pagh">On display: '+esc(MM)+'</p>'+has.map(opt).join("")+
-      '<p class="pagh">Other show sites <span>('+esc(MM)+' not on display)</span></p>'+rest.map(opt).join("")+
+      '<p class="pagh">Other show sites</p>'+rest.map(opt).join("")+
       '<p class="pagh">Or meet a design consultant</p>'+rem.map(opt).join("");
   } else if(nonePhys){
     var phys=pool.filter(function(s){return !s.remote}), rem2=pool.filter(function(s){return s.remote});
     grid.classList.add("pagrp");
-    grid.innerHTML='<div class="v9none"><p><b>No show site has the '+esc(MM)+' on display at the moment.</b> See it on a video call instead (our video showcase was filmed at Chessington), or visit any site to see other Crown buildings.</p><button type="button" class="btn gh v9vbtn">See it by video</button></div>'+
+    grid.innerHTML='<div class="v9none"><p><b>The '+esc(MM)+' isn’t on display yet.</b> Every site shows our craftsmanship, and your consultant can bring samples. You can also see it on a video call (our video showcase was filmed at Chessington).</p><button type="button" class="btn gh v9vbtn">See it by video</button></div>'+
       '<p class="pagh">Or meet a design consultant</p>'+rem2.map(opt).join("")+
-      '<p class="pagh">Show sites <span>('+esc(MM)+' not on display)</span></p>'+phys.map(opt).join("");
+      '<p class="pagh">Show sites</p>'+phys.map(opt).join("");
     var vb=grid.querySelector(".v9vbtn"); if(vb) vb.addEventListener("click",function(){ var r=$("input[value='video']",grid); if(r){ r.checked=true; r.dispatchEvent(new Event("change",{bubbles:true})) } });
   } else grid.innerHTML=pool.map(opt).join("");
   var warn=document.createElement("p"); warn.className="pawarn"; warn.setAttribute("role","status"); warn.hidden=true; grid.after(warn);
   function checkWarn(){
     var s=site(st.site), m=(mdl&&mdl.value.trim())||st.model, at=showsAt(m), mb=String(m||"").split(",")[0].trim();
     var bad=!!(s&&!s.remote&&mb&&(!at||at.indexOf(s)<0));
-    warn.hidden=!bad; warn.innerHTML=bad?(at?'<b>The '+esc(mb)+' isn’t on display at '+s.town+'.</b> To see one, choose '+at.map(function(x){return x.town}).join(", ").replace(/, ([^,]*)$/," or $1")+'. You’re still welcome at '+s.town+' to see other models.':'<b>The '+esc(mb)+' isn’t on display at '+s.town+'.</b> You’re welcome to visit and see other Crown buildings, or choose <i>By video call</i> to see the '+esc(mb)+'. We’ll keep the '+esc(mb)+' on your request either way.'):"";
+    warn.hidden=!bad; warn.innerHTML=bad?(at?'<b>The '+esc(mb)+' isn’t on display at '+s.town+'.</b> To see one, choose '+at.map(function(x){return x.town}).join(", ").replace(/, ([^,]*)$/," or $1")+'. Every site shows our craftsmanship, and your consultant can bring samples.':'<b>The '+esc(mb)+' isn’t on display yet.</b> Every site shows our craftsmanship, and your consultant can bring samples. Or choose <i>By video call</i> to see the '+esc(mb)+'. We’ll keep the '+esc(mb)+' on your request either way.'):"";
   }
   var mdl=$("#bk-model"); if(mdl && st.model) mdl.value=st.model;
   function stepState(){

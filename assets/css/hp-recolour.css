@@ -6,5 +6,5 @@
 .rcs img{position:absolute;left:50%;top:50%;width:145%;height:auto;max-width:none;transform:translate(-58%,-60%)}
 @media (min-width:901px){ .rcs{min-height:340px} }
 .rcs img:not([src]){visibility:hidden}
-.rcn{margin:0;padding:8px 12px;font-size:13px;line-height:1.4;color:#5a5446;text-align:center;background:var(--rf-cr,#f6f1e7)}
+.rcn{margin:0;padding:8px 12px;font-size:14px;line-height:1.4;color:#5a5446;text-align:center;background:var(--rf-cr,#f6f1e7)}
 @media (max-width:900px){ .rcs{flex:none;aspect-ratio:3/2} .rcx{height:auto} }

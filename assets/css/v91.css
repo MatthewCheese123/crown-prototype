@@ -1,0 +1,294 @@
+/* v9.1 (4 Oct 2026): Sebastian's design review with Clara's picks. One button system, gold focus ring, 14px floor / 16px body,
+   capitals for eyebrows only, home hero A + trust B + show sites B, model page A (C under 4 photos), trust C, mobile bar A. */
+
+/* ---------- buttons A: one gold primary, green outline secondary, underlined text links; square corners, sentence case ---------- */
+.btn,a.btn,button.btn,.hvp,.hbook,.mbook,.fbook,.pac .go,.ypgo,.gz-btn,.rbtn,.cz-barnav .btn,.hpcfg .hpnav .hpnext,.v3c .nxt{border-radius:0!important;text-transform:none!important;letter-spacing:0!important}
+.btn{font-size:15px;font-weight:600;min-height:48px;padding:12px 24px}
+.btn.dk,#hero .hpv-go{background:#c9a86b!important;border:1px solid #c9a86b!important;color:#0d2a1e!important}
+.btn.dk:hover,#hero .hpv-go:hover{background:#d8bb83!important;border-color:#d8bb83!important}
+.btn.gh,a.btn.gh{background:transparent!important;border:1px solid #123627!important;color:#123627!important}
+.btn.gh:hover{background:#123627!important;color:#fbf8f1!important}
+.btn.ghl{background:transparent!important;border:1px solid rgba(251,248,241,.85)!important;color:#fbf8f1!important}
+.btn.ghl:hover{background:rgba(251,248,241,.12)!important}
+/* outline on light surfaces where the old markup used the on-dark ghost (e.g. summary 'Send me this design') */
+.sec .hpcta .btn.ghl,.hpsumm .btn.ghl,.sdp .btn.ghl,main .wrap>.ctas .btn.ghl{border-color:#123627!important;color:#123627!important}
+.pill,.chip,.gz-pill,.grchips a,.gzchips a,#models .filters .fg .chip,#models .gzfbtn,#models .gzshb .fg .chip,.fsm4 .chips a,.hps-pill,.hpcfg .hpv85-vt button{border-radius:0!important}
+.lnk{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- focus: a 2px gold ring with a 2px offset; the darker gold on light backgrounds so it passes contrast ---------- */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #7d6230!important;outline-offset:2px!important;box-shadow:none!important}
+:where(.site-h,.ft,footer,.hero,.v91pc,.v9trust,.pc.bfoot,.fsmenu,.mm,.panext,.v91tc-d,.pabar,.quote,.cvx-hero,.mmD):where(*) :focus-visible,
+:where(.site-h,footer,.pc.bfoot,.v91pc,.pabar,.fsmenu) :focus-visible{outline-color:#c9a86b!important}
+
+/* ---------- type: 16px body copy (the 14px floor itself is applied to every stylesheet at build time) ---------- */
+body{font-size:16px}
+main p:not([class]),main li:not([class]),.rv p,.story,.hpv-ov .story,.chead p,.secthead p,.hpv-cav,.stcb p:not(.small){font-size:16px;line-height:1.6}
+
+/* ---------- prototype bar: one line, so the logo has room ---------- */
+.proto{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1679px){.proto .ptrust{display:none!important}}
+
+/* ---------- home hero A ---------- */
+.hero.hv2 .v91eb{font:600 14px/1.3 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#e8d3a3;margin:0 0 12px}
+.hero.hv2 .v91pos{font:400 18px/1.55 Montserrat,Arial,sans-serif;color:#fbf8f1;max-width:520px;margin:14px 0 0}
+.hero.hv2 .hvc3{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero.hv2 .hvc3 .hvbk{border-radius:0!important;text-transform:none!important;letter-spacing:0!important;font-size:15px!important}
+.hero.hv2 .v91ex{min-height:48px}
+.v91band{flex-wrap:wrap}
+.v91band li a{color:inherit;text-decoration:none}
+.v91band li a:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:899px){
+  .hero.hv2 .v91eb{color:#7d6230}
+  .hero.hv2 .v91pos{color:#333;font-size:16px}
+  .hero.hv2 .v91ex{background:transparent!important;border-color:#123627!important;color:#123627!important}
+}
+
+/* ---------- home trust B: one quote, four linked proofs ---------- */
+.v91tb{background:#f4f1ea;padding:56px 0}
+.v91tb .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center}
+.v91tb figure{margin:0}
+.v91tb blockquote{margin:0;font:400 28px/1.3 Optima,"Linux Biolinum",Georgia,serif;color:#123627}
+.v91tb figcaption{margin-top:14px;font-size:14px;color:#5f5a4f}
+.v91tb ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.v91tb li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:18px 20px;background:#fff;border:1px solid #e6dfcf;color:#123627;text-decoration:none;min-height:44px}
+.v91tb li a b{font-weight:600;font-size:16px}
+.v91tb li a span{font-size:14px;color:#5f5a4f}
+.v91tb li a:hover{border-color:#c9a86b}
+.v91tb li a:hover span{text-decoration:underline;text-underline-offset:3px}
+.v91tb .st5{color:#00b67a;letter-spacing:1px}
+@media (max-width:899px){.v91tb .wrap{grid-template-columns:1fr;gap:24px}.v91tb blockquote{font-size:23px}.v91tb ul{grid-template-columns:1fr}}
+
+/* ---------- home show sites B: postcode first, then a tidy list ---------- */
+.v91ss{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;align-items:start;margin-top:28px}
+.v91pc{background:#123627;color:#fbf8f1;padding:28px}
+.v91pc h3{font:400 26px/1.2 Optima,"Linux Biolinum",Georgia,serif;color:#fbf8f1;margin:0 0 16px}
+.v91pc .pcin{display:flex;flex-direction:column;gap:10px;margin:0}
+.v91pc .pcin input{min-height:48px;border:0;border-radius:0;padding:0 14px;font-size:16px;width:100%;box-sizing:border-box}
+.v91pc .pcin .btn{width:100%;border-radius:0}
+.v91pc .note{color:#e9e2d2;margin:8px 0 0}
+.v91pc .v91far{font-size:14px;color:#e9e2d2;margin:14px 0 0}
+.v91sl{list-style:none;margin:0;padding:0}
+.v91sl li{display:grid;grid-template-columns:minmax(150px,1.1fr) minmax(0,2.4fr) auto;column-gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6dfcf}
+.v91sl li:first-child{border-top:1px solid #e6dfcf}
+.v91sl h3{grid-row:1/4;font:400 23px/1.2 Optima,"Linux Biolinum",Georgia,serif;margin:0}
+.v91sl h3 a{color:#123627;text-decoration:none}
+.v91sl h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+.v91sl p{margin:0;font-size:14px;color:#5f5a4f;grid-column:2}
+.v91sl .v91h{font-weight:400;color:#333}
+.v91sl .v91d{color:#123627}
+.v91sl .v91d a{color:#123627}
+.v91sl .v91bk{grid-column:3;grid-row:1;align-self:center;display:inline-flex;align-items:center;min-height:44px}
+@media (max-width:899px){.v91ss{grid-template-columns:1fr;gap:24px}.v91sl li{grid-template-columns:1fr auto}.v91sl h3{grid-row:auto;grid-column:1}.v91sl p{grid-column:1}.v91sl .v91bk{grid-column:2;grid-row:1}}
+@media (min-width:900px){
+  .v91band{flex-wrap:nowrap!important;justify-content:center}
+  .v91band li{padding:11px 18px!important}
+  .hero.hv2 .hvx{padding-bottom:88px!important;max-width:560px!important}
+}
+@media (max-width:899px){.v91band{grid-template-columns:repeat(2,1fr)!important}.v91band li:last-child{grid-column:1/-1}}
+
+/* ---------- model page A: a big gallery (about 60%) left, one action stack right ---------- */
+#hero .v91inc{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px}
+#hero .v91inc li{position:relative;padding-left:22px;font-size:15px;line-height:1.5;color:#333}
+#hero .v91inc li::before{content:"✓";position:absolute;left:0;top:0;color:#7d6230;font-weight:700}
+#hero .v91inc b{font-weight:600;color:#123627}
+#hero .hpv-price{font:400 30px/1.2 Optima,"Linux Biolinum",Georgia,serif!important;color:#123627}
+#hero .hpv-cta{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important;margin-top:18px!important}
+#hero .hpv-cta .btn{width:100%;justify-content:center;min-height:50px!important;padding:12px 24px!important;font-size:15px!important;border-radius:0!important}
+#hero .hpv-cta .hpv-bv{font:600 15px/1.2 Montserrat,Arial,sans-serif!important;text-decoration:none!important}
+#hero .v91lk{margin:10px 0 0;font-size:15px}
+#hero .v91lk a{color:#123627;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#c9a86b;display:inline-flex;min-height:44px;align-items:center}
+#hero .stc summary{font-size:15px}
+@media (min-width:1000px){
+  html body #hero.v91a .mh{grid-template-columns:minmax(0,62fr) minmax(0,38fr)!important;gap:44px!important;padding-top:24px!important;align-items:start}
+  html body #hero.v91a .gmain{height:auto!important;aspect-ratio:3/2!important}
+  html body #hero.v91a .gmain>img{height:100%!important;width:100%;object-fit:cover;aspect-ratio:auto!important}
+  html body #hero.v91a .thumbs{display:grid!important;grid-template-columns:1fr 1fr;gap:8px!important;margin-top:8px!important}
+  html body #hero.v91a .thumbs button{position:relative;height:auto!important;width:auto!important;flex:none!important;aspect-ratio:3/2;padding:0;border:0!important;overflow:hidden;cursor:pointer}
+  html body #hero.v91a .thumbs button:nth-child(1),html body #hero.v91a .thumbs button:nth-child(n+4){display:none}
+  html body #hero.v91a .thumbs button img{width:100%!important;height:100%!important;object-fit:cover}
+  html body #hero.v91a .gmain .cnt{display:none}
+}
+/* View all photos (built by v91.js) */
+.v91all{position:absolute;right:12px;bottom:12px;z-index:2;min-height:40px;padding:0 14px;border:0;background:#fffdf9;color:#123627;font:600 14px/1 Montserrat,Arial,sans-serif;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.v91all:hover{background:#fff;text-decoration:underline;text-underline-offset:3px}
+.v91pv{border:0;padding:0;width:min(1100px,94vw);max-height:92vh;background:#fffdf9}
+.v91pv::backdrop{background:rgba(13,42,30,.8)}
+.v91pv .v91pvh{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#fffdf9;border-bottom:1px solid #e6dfcf;z-index:1}
+.v91pv .v91pvh h2{margin:0;font:400 22px/1.2 Optima,"Linux Biolinum",Georgia,serif;color:#123627}
+.v91pv .v91pvx{min-height:44px;min-width:44px;border:1px solid #123627;background:none;color:#123627;font:600 14px Montserrat,Arial,sans-serif;cursor:pointer}
+.v91pv ul{list-style:none;margin:0;padding:18px;display:grid;gap:16px}
+.v91pv img{width:100%;height:auto;display:block}
+.v91pv figcaption{font-size:14px;color:#5f5a4f;margin-top:6px}
+
+/* ---------- model page C (under 4 photos): a full-bleed photo, a quiet sticky card ---------- */
+@media (min-width:1000px){
+  html body #hero.v91c{background:#f4f1ea}
+  html body #hero.v91c .mh{max-width:none!important;width:100%!important;margin:0!important;padding:0!important;grid-template-columns:minmax(0,1fr) minmax(380px,440px)!important;gap:0!important;align-items:stretch}
+  html body #hero.v91c [data-gallery]{margin:0!important;position:relative}
+  html body #hero.v91c .gmain{position:sticky;top:var(--hdrvis,72px);height:calc(100vh - var(--hdrvis,72px))!important;min-height:560px;aspect-ratio:auto!important}
+  html body #hero.v91c .gmain>img{height:100%!important;width:100%;object-fit:cover;aspect-ratio:auto!important}
+  html body #hero.v91c .gmain .cnt{display:none}
+  html body #hero.v91c .thumbs{display:flex!important;position:absolute;left:24px;bottom:24px;z-index:2;gap:8px!important;margin:0!important}
+  html body #hero.v91c .thumbs button{width:84px!important;height:60px!important;flex:0 0 84px!important;padding:0;border:2px solid #fffdf9!important;cursor:pointer}
+  html body #hero.v91c .thumbs button[aria-current=true]{border-color:#c9a86b!important}
+  html body #hero.v91c .thumbs img{width:100%!important;height:100%!important;object-fit:cover}
+  html body #hero.v91c[data-photos="1"] .thumbs{display:none!important}
+  html body #hero.v91c .hpv-info{padding:40px 40px 48px!important;align-self:start;position:sticky;top:var(--hdrvis,72px)}
+}
+/* phones: a bigger photo (3:2) */
+@media (max-width:999px){
+  html body.cz-mp #hero .gmain,html body .cz-mp #hero .gmain,html.cz-mp body #hero .gmain{height:auto!important}
+  html body #hero .gmain .hpv-sw,html body #hero .gmain .hpv-sw img,html body #hero .gmain>img{height:auto!important;aspect-ratio:3/2!important;object-fit:cover}
+}
+
+/* ---------- trust C: a slim strip under the hero (model pages) ---------- */
+.v91tc{border-top:1px solid #e6dfcf;border-bottom:1px solid #e6dfcf;background:#fffdf9}
+.v91tc ul{list-style:none;margin:0 auto;padding:14px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.v91tc li,.v91tc li a{display:flex;align-items:center;gap:12px;color:#123627;text-decoration:none;min-height:44px}
+.v91tc li a:hover b{text-decoration:underline;text-underline-offset:3px}
+.v91tc i{display:grid;place-items:center;width:44px;height:44px;border:1px solid #c9a86b;border-radius:50%;font:400 14px/1 Optima,"Linux Biolinum",Georgia,serif;font-style:normal;color:#7d6230;flex:0 0 44px}
+.v91tc span{display:flex;flex-direction:column;font-size:14px;line-height:1.35;color:#5f5a4f}
+.v91tc b{font-weight:600;color:#123627}
+@media (max-width:899px){.v91tc ul{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}.v91tc li:last-child{grid-column:1/-1}}
+html body #hero.v91a .thumbs{position:relative}
+
+/* ---------- configurator bar (Matthew, 4 Oct): Next is the one gold button; Book a visit only on the last step ---------- */
+html body #design .pc.bfoot .kctas [data-hpgo]{display:none!important}
+html body #design .pc.bfoot:not(.cz-step-last) .kctas .hpsendb,html body #design .pc.bfoot:not(.cz-step-last) .kctas>a.btn.ghl{display:none!important}
+html body #design .pc.bfoot.cz-step-last .cz-nx{display:none!important}
+html body #design .pc.bfoot .cz-nx{background:#c9a86b!important;border:1px solid #c9a86b!important;color:#0d2a1e!important;min-height:52px!important;min-width:240px;padding:12px 32px!important;font-size:17px!important;font-weight:600!important;justify-content:center;gap:0!important;white-space:nowrap;border-radius:0!important}
+html body #design .pc.bfoot .cz-nx:hover{background:#d8bb83!important;border-color:#d8bb83!important}
+html body #design .pc.bfoot .cz-nx .cz-nt{display:inline}
+html body #design .pc.bfoot .cz-bk{background:none!important;border:0!important;color:inherit;text-decoration:underline;text-underline-offset:4px;min-height:44px;padding:0 8px;font-size:15px}
+html body #design .pc.bfoot.cz-step-last .hpsendb{display:inline-flex!important;background:#c9a86b!important;border:1px solid #c9a86b!important;color:#0d2a1e!important;min-height:52px!important;padding:12px 28px!important;font-size:16px!important;white-space:nowrap}
+html body #design .pc.bfoot.cz-step-last .kctas>a.btn.ghl{display:inline-flex!important;background:transparent!important;border:1px solid #f6f0e2!important;color:#f6f0e2!important;min-height:52px!important;white-space:nowrap}
+html body #design .bsend{display:none!important}
+html body #design .hptot b{white-space:nowrap}
+.v91rv{margin:10px 0 0;font-size:15px;line-height:1.5;color:#3d463f}
+@media (max-width:760px){
+  html body #design .pc.bfoot .cz-nx{min-width:0;flex:1 1 auto;padding:12px 18px!important;font-size:16px!important}
+  html body #design .pc.bfoot.cz-step-last .kctas{flex-wrap:wrap}
+  html body #design .pc.bfoot.cz-step-last .hpsendb,html body #design .pc.bfoot.cz-step-last .kctas>a.btn.ghl{flex:1 1 100%;justify-content:center;min-height:48px!important;font-size:15px!important;padding:10px 14px!important}
+  html body #design .btabs [role=tab]{flex:0 0 33.333%!important;min-width:33.333%!important;max-width:33.333%!important}
+}
+/* fixed panels (Glazed, Insulated): the layout as a read-only plan on the Package step */
+.v91fixed{margin-top:22px;border-top:1px solid #e6dfcf;padding-top:18px}
+.v91fx{margin:0 0 10px;font-weight:600;color:#123627;font-size:16px}
+.v91fxp{max-width:440px;pointer-events:none}.v91fxp svg{display:block;width:100%;height:auto}
+.v91fixed .hps-acts,.v91fixed .hps-k,.v91fixed .hps-pre,.v91fixed .hps-ok,.v91fixed .hps-sr{display:none!important}
+.v91fixed .hps-leg button{pointer-events:none;cursor:default}
+/* own base: Base guidance link + dialog */
+.v91bgb{display:inline-flex;align-items:center;min-height:44px;background:none;border:0;padding:0 4px;color:#123627;text-decoration:underline;text-underline-offset:4px;font:inherit;font-size:15px;cursor:pointer}
+.v91dlg{border:0;padding:0;max-width:min(520px,92vw);background:#fffdf9;color:#123627;border-radius:0}
+.v91dlg::backdrop{background:rgba(10,24,18,.55)}
+.v91dlgi{padding:28px 28px 24px}
+.v91dlg h3{font:400 26px/1.2 Optima,"Linux Biolinum",Georgia,serif;margin:0 0 12px}
+.v91dlg p{font-size:16px;line-height:1.55;margin:0 0 10px;color:#3d463f}
+.v91dlg .btn{margin-top:8px}
+/* send form */
+.sdp .v91cb{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4;min-height:44px;cursor:pointer}
+.sdp .v91cb input{width:22px;height:22px;flex:0 0 22px;margin:1px 0 0;accent-color:#123627}
+.sdp label small{font-weight:400;color:#5f5a4f;font-size:14px}
+/* mobile bar A on model pages: price plus Design yours */
+.hp-stk .v91dy{display:none}
+@media (max-width:999px){
+  html body .hp-stk .sb .mob.rfm{display:none!important}
+  html body .hp-stk .sb .v91dy{display:inline-flex!important;background:#c9a86b!important;border:1px solid #c9a86b!important;color:#0d2a1e!important;min-height:48px;padding:10px 20px;white-space:nowrap}
+}
+html.hpv85-incfg .hp-stk{transform:translateY(110%)!important;visibility:hidden!important}
+
+/* ---------- garden rooms hub: gap mock-ups A ---------- */
+.v91gq{display:flex!important;flex-wrap:wrap;gap:4px 26px;align-items:center}
+.v91gq>a{display:inline-flex!important;align-items:center;min-height:44px}
+.v91gq a.v91d3{text-decoration:underline;text-underline-offset:4px;font-weight:600}
+.v91pl{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:0 4px;position:relative;font-size:15px;color:#3d463f}
+.v91i{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;color:#123627;font-size:18px;margin:-8px 0}
+.v91pan{position:absolute;left:0;top:calc(100% + 4px);z-index:6;background:#fff;border:1px solid #123627;padding:6px 18px;width:min(460px,90vw);box-shadow:0 12px 28px rgba(0,0,0,.12)}
+.v91pan dl{margin:0}.v91pan div{padding:10px 0;border-top:1px solid #e6dfcf}.v91pan div:first-child{border-top:0}
+.v91pan dt{font-weight:600;font-size:15px;color:#123627}.v91pan dd{margin:4px 0 0;font-size:15px;line-height:1.5;color:#3d463f}
+.v91why{background:#f7f5f2;padding:72px 0;scroll-margin-top:var(--hdrvis,80px)}
+.v91why .kick{margin-bottom:18px}
+.v91wr{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.v91wr h3{font:400 22px/1.2 Optima,"Linux Biolinum",Georgia,serif;color:#123627;margin:0;padding-top:14px;border-top:1px solid #123627}
+.v91wr p{margin:8px 0 0;font-size:16px;line-height:1.5;color:#3d463f}
+.v91wr p a{color:#123627;text-decoration:underline;text-underline-offset:3px;display:inline-block;margin-top:4px}
+.panext.v91grnx .btn.big{background:#f7f5f2!important;border-color:#f7f5f2!important;color:#123627!important}
+.panext.v91grnx .btn.big:hover{background:#fff!important}
+.v91bro{display:flex;gap:24px;align-items:flex-start;border-left:1px solid rgba(247,245,242,.25);padding-left:40px}
+.v91bro h3{color:#fff;font:400 24px/1.2 Optima,"Linux Biolinum",Georgia,serif;margin:0}
+.v91bro p{font-size:16px!important;margin:6px 0 0!important;color:rgba(247,245,242,.9)}
+.v91cov{position:relative;display:block;width:150px;aspect-ratio:3/4;flex:0 0 auto;box-shadow:0 10px 24px rgba(0,0,0,.28);background:#123627;overflow:hidden;outline:1px solid rgba(247,245,242,.2)}
+.v91cov img{width:100%;height:62%;object-fit:cover;display:block}
+.v91cov b{display:block;font:400 18px/1.15 Optima,"Linux Biolinum",Georgia,serif;color:#f7f5f2;padding:10px 10px 0}
+.v91cov i{display:block;font:600 14px/1.2 Montserrat,Arial,sans-serif;color:#c9a86b;padding:4px 10px;font-style:normal}
+.v91bf{display:grid;gap:10px;margin-top:14px;max-width:340px}
+.v91f{display:grid;gap:4px}.v91f label{font-size:14px;color:#f7f5f2}
+.v91f input{min-height:44px;border:1px solid rgba(247,245,242,.55);background:rgba(255,255,255,.06);color:#fff;padding:0 12px;font:16px Montserrat,Arial,sans-serif;width:100%;box-sizing:border-box;border-radius:0}
+.v91f .err{font-size:14px;color:#f3c9a0}.v91f .err:empty{display:none}
+.v91bf .btn{justify-self:start}
+.v91np{font-size:14px!important;opacity:.85}
+.v91bok h3{margin-top:14px}
+@media (max-width:899px){
+  .v91wr{grid-template-columns:1fr;gap:20px}.v91why{padding:48px 0}
+  .v91bro{border:0;padding:28px 0 0;border-top:1px solid rgba(247,245,242,.25);gap:16px}
+  .v91cov{width:120px}
+}
+@media (max-width:520px){.v91bro{flex-direction:column}.v91bf{max-width:none}.v91bf .btn{width:100%;justify-content:center}}
+@media (max-width:760px){
+  html body #design .pc.bfoot{grid-template-columns:minmax(0,1fr)!important;row-gap:6px!important;padding:8px 14px 10px!important}
+  html body #design .pc.bfoot .bfl{flex-direction:row!important;align-items:baseline;gap:8px}
+  html body #design .pc.bfoot .bfm{display:none!important}
+  html body #design .pc.bfoot .kctas{width:100%!important;max-width:none!important;justify-self:stretch}
+  html body #design .pc.bfoot .cz-barnav{width:100%;justify-content:space-between;gap:8px}
+  html body #design .pc.bfoot .cz-bk[style*="hidden"]{display:none!important}
+  html body #design .pc.bfoot .cz-nx{flex:1 1 auto;min-height:48px!important}
+}
+html body #design .pc.bfoot .kctas .btn,html body #design .pc.bfoot .cz-nx{border-radius:0!important}
+html body #design .pc.bfoot.cz-step-last .bfm{display:none!important}
+html body #design .pc.bfoot.cz-step-last .cz-barnav{flex:0 0 auto}
+html body #design .pc.bfoot.cz-step-last .kctas{display:flex!important;align-items:center;gap:12px!important;justify-content:flex-end}
+@media (max-width:760px){
+  html body #design #bp7 .hpcta .btn{flex:1 1 100%;justify-content:center;min-height:48px}
+  html body #design #bp7 .hpcta .btn.ghl{display:inline-flex!important}
+}
+html.v91indesign .hp-stk{transform:translateY(110%)!important;visibility:hidden!important}
+html body .hp-stk .sb a.btn.v91dy{border-radius:0!important;font-weight:600}
+html body #design .hpfd .hpo[data-v=own] .t small{display:block!important;font-size:15px!important;line-height:1.45;color:#3d463f;margin-top:4px}
+.v91bgb{margin-top:2px}
+#models,#collections-list{scroll-margin-top:calc(var(--toph,90px))}
+
+/* ---------- gazebos hub: finder cards B (3 per row, photo 260px+, Optima 24px names, fact chips) ---------- */
+html body #models#models .mgrp .grid.g6,html body #models#models .cz-grid{--cz-c:3;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important}
+@media (min-width:900px){
+  html body #models#models .card .mlink img{width:100%;aspect-ratio:4/3!important;height:auto!important;min-height:260px;object-fit:cover;display:block}
+  html body #models#models .card .tx{padding:16px 18px 18px!important}
+}
+@media (max-width:899px) and (min-width:640px){html body #models#models .mgrp .grid.g6,html body #models#models .cz-grid{--cz-c:2;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}}
+@media (max-width:639px){html body #models#models .mgrp .grid.g6,html body #models#models .cz-grid{--cz-c:1;grid-template-columns:1fr!important;gap:12px!important}}
+html body #models#models .card h3.v91cn{font:400 24px/1.2 Optima,"Linux Biolinum",Georgia,serif!important;margin:2px 0 10px!important;color:#123627;letter-spacing:0}
+@media (max-width:639px){html body #models#models .card h3.v91cn{font-size:22px!important}}
+html body #models#models .card h3.v91cn a{color:inherit;text-decoration:none}
+.v91fc{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.v91fc li{font-size:14px;line-height:1.2;padding:5px 9px;border:1px solid #e1d9c8;background:#fbf8f1;color:#123627}
+html body #models#models .card a.btn.v9dp,html body .v9b a.btn{letter-spacing:0!important}
+html body #models#models .chip{min-height:44px!important}
+.v91fu{font-weight:400}
+@media (min-width:900px){html body #models#models .card .mlink img{height:auto!important;aspect-ratio:4/3!important;min-height:260px!important}
+  html body #models#models .card .mlink{display:block;height:auto!important;aspect-ratio:auto!important}}
+@media (min-width:1000px){#models .cz-tabs{flex-wrap:nowrap!important}#models .cz-tabs .cz-pk{flex:1 1 auto;min-width:0;white-space:normal;text-align:right}}
+@media (min-width:1000px){html body #models .cz-tabs>.fg{flex:0 0 auto!important;flex-wrap:nowrap!important}html body #models .cz-tabs>.cz-pk{flex:1 1 0!important;min-width:0}}
+
+/* ---------- galleries: every tile clips its photo (Hampton 'real gardens' overlap) ---------- */
+.sggal ul li{overflow:hidden;min-width:0;min-height:0}
+#installs .sggal ul li>button{height:100%}
+#installs .sggal ul li img{width:100%;height:100%!important;aspect-ratio:auto!important;object-fit:cover;display:block}
+@media (min-width:1000px){html body #installs .sggal ul{grid-template-columns:2fr 1fr 1fr!important;grid-auto-rows:200px!important}html body #installs .sggal ul li:first-child{grid-row:span 2!important;grid-column:auto!important}}
+@media (max-width:999px){html body #installs .sggal ul{grid-template-columns:1fr 1fr!important;grid-auto-rows:130px!important}html body #installs .sggal ul li:first-child{grid-column:1/3!important;grid-row:span 2!important}}
+/* booking: every site option is one big tap target */
+.paopt{cursor:pointer;min-height:44px}
+.paopt .v9on{display:block;margin-top:4px;font-size:14px;font-weight:600;color:#1f5c3a}
+/* mobile menu: one short line, one price, 44px links */
+#fsmenu .tile.row .tx small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+#fsmenu a{min-height:44px}
+#fsmenu .tile.row .tx b+span,#fsmenu .tile.row .tx b .bdg{font-size:14px}
+h3.v91th{font:400 20px/24px Optima,"Linux Biolinum",Georgia,serif;margin:0;color:#123627;letter-spacing:0}

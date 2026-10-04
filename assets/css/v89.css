@@ -6,17 +6,17 @@
 .site-h.navc .htab-x{display:none}
 @media (min-width:1024px){
   .site-h.navc.hxA .htabs{gap:26px;margin-left:44px}
-  .site-h.navc.hx .htab{font:600 12.5px/1 Montserrat,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+  .site-h.navc.hx .htab{font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none}
   .site-h.navc .htab-x,.site-h.navc .htab-sv{display:inline-flex}
   .site-h.navc.hxA .hmenu{display:none!important}
-  .site-h.navc.hxA .htel{font:500 13.5px/1 Montserrat,Arial,sans-serif;letter-spacing:.02em}
+  .site-h.navc.hxA .htel{font:500 14px/1 Montserrat,Arial,sans-serif;letter-spacing:.02em}
   .site-h.navc.hxA .htel span{display:inline!important;position:static!important;width:auto!important;height:auto!important;clip:auto!important;overflow:visible!important;
     background:none!important;padding:0!important;box-shadow:none!important;opacity:1!important;visibility:visible!important;transform:none!important;color:inherit!important;white-space:nowrap}
   .site-h.navc.hxA .htel span::before,.site-h.navc.hxA .htel span::after{display:none!important}
 }
 @media (min-width:1024px) and (max-width:1199px){
   .site-h.navc.hxA .htabs{gap:12px!important;margin-left:18px!important}
-  .site-h.navc.hx .htab{font-size:11.5px;letter-spacing:.03em}
+  .site-h.navc.hx .htab{font-size:14px;letter-spacing:.03em}
   .site-h.navc.hxA .hbook{padding:0 16px!important;margin-left:14px!important}
   .site-h.navc.hxA .hsrch{margin-right:2px!important}
   .site-h.navc.hxA .htel span{display:none!important}
@@ -28,7 +28,7 @@
 .v9mm .dh h2{margin-right:auto!important}
 .v9pb{display:inline-flex;gap:10px}
 .v9ob{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1px solid rgba(247,245,242,.55);border-radius:2px;
-  font:600 12px/1 Montserrat,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#f7f5f2;text-decoration:none;white-space:nowrap}
+  font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;color:#f7f5f2;text-decoration:none;white-space:nowrap}
 .v9ob:hover,.v9ob:focus-visible{border-color:#f7f5f2;background:rgba(247,245,242,.08)}
 @media (min-width:1024px){
   .mmD.v9mm .cards-gr .sig{grid-column:1/4}
@@ -36,13 +36,13 @@
   .mmD.v9mm .dw{padding-bottom:16px}
 }
 .mmD .v9f,.fsm4 .v9f{color:var(--mu);font-weight:400}
-.mmD .v9f2,.fsm4 .v9f2{display:block;font-size:12px;font-weight:400;color:var(--mu)}
+.mmD .v9f2,.fsm4 .v9f2{display:block;font-size:14px;font-weight:400;color:var(--mu)}
 .fsm4 .v9ml{display:inline-flex;gap:16px}
-.fsm4 .pr .v9f{display:block;font-size:12px}
+.fsm4 .pr .v9f{display:block;font-size:14px}
 
 /* ---------- home: trust strip along the foot of the hero ---------- */
 .v9trust{list-style:none;margin:0;padding:0;display:flex;justify-content:center;gap:0;background:rgba(10,32,23,.82);color:#f3eee4;
-  font:400 13px/1.3 Montserrat,Arial,sans-serif;position:absolute;left:0;right:0;bottom:0;z-index:3;backdrop-filter:blur(3px)}
+  font:400 14px/1.3 Montserrat,Arial,sans-serif;position:absolute;left:0;right:0;bottom:0;z-index:3;backdrop-filter:blur(3px)}
 .v9trust li{padding:11px 26px;display:flex;gap:8px;align-items:baseline;white-space:nowrap}
 .v9trust li+li{border-left:1px solid rgba(243,238,228,.25)}
 .v9trust b{font-weight:600;color:#c9a86b;letter-spacing:.02em}
@@ -51,20 +51,20 @@ section:has(>.v9trust){position:relative}
 @media (min-width:900px){section:has(>.v9trust) .vctl{bottom:58px!important}
   .site-h.navc.hxA .hsrch{margin-right:14px!important}}
 @media (max-width:899px){
-  .v9trust{position:static;display:grid;grid-template-columns:repeat(3,1fr);background:#123627;font-size:11.5px}
+  .v9trust{position:static;display:grid;grid-template-columns:repeat(3,1fr);background:#123627;font-size:14px}
   .v9trust li{flex-direction:column;gap:2px;padding:9px 6px;white-space:normal;text-align:center;align-items:center}
-  .v9trust b{font-size:12.5px}
+  .v9trust b{font-size:14px}
 }
 
 /* ---------- 4. hub range cards (film band) ---------- */
 .nz-grid .v9rc{position:relative;display:flex;flex-direction:column;text-decoration:none}
 .nz-grid .v9rc .v9rca{display:flex;flex-direction:column;flex:1;color:inherit;text-decoration:none}
 .nz-grid .v9rc .v9rca:hover b,.nz-grid .v9rc .v9rca:focus-visible b{text-decoration:underline;text-underline-offset:4px}
-.nz-grid .v9rc .nz-go{display:inline-block;margin-top:6px;font:600 12.5px/1.3 Montserrat,Arial,sans-serif;color:#123627}
+.nz-grid .v9rc .nz-go{display:inline-block;margin-top:6px;font:600 14px/1.3 Montserrat,Arial,sans-serif;color:#123627}
 .nz-grid .v9rc .v9f{font-weight:600;font-style:normal}
-.nz-grid .v9rc .v9f2{display:block;font-size:12px;color:#5b6660}
+.nz-grid .v9rc .v9f2{display:block;font-size:14px;color:#5b6660}
 .v9cmp{display:flex;align-items:center;justify-content:center;min-height:44px;margin:8px 12px 12px;border:1px solid #123627;border-radius:2px;
-  font:600 12px/1 Montserrat,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#123627;text-decoration:none;background:transparent}
+  font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;color:#123627;text-decoration:none;background:transparent}
 .v9cmp:hover,.v9cmp:focus-visible{background:#123627;color:#f3eee4}
 .cvx.is-x .v9cmp,.cvx.is-x .nz-go,.cvx.is-x .v9f2{display:none}
 
@@ -78,21 +78,21 @@ html body #models#models .mgrp .card .tx{padding:8px 10px 10px!important;display
 html body #models#models .mgrp .card h4{font:400 16px/1.2 Optima,Georgia,serif!important;margin:0!important;white-space:normal!important}
 html body #models#models .mgrp .card h4 a{color:#123627;text-decoration:none;min-height:0}
 html body #models#models .mgrp .card h4 a:hover{text-decoration:underline}
-html body #models#models .mgrp .card .tx>p{display:block!important;font-size:12px!important;margin:2px 0 4px!important}
-html body #models#models .mgrp .card .fp,html body #models#models .mgrp .card .fp b{font-size:13px!important;white-space:normal!important}
-html body #models#models .mgrp .card .fp .v9f{font-size:12px;color:#4a564f}
-html body #models#models .mgrp .card .v9f2{font-size:12px;color:#4a564f;margin-top:1px}
-html body #models#models .mgrp .card .vsw{font-size:12px!important;margin:4px 0 0!important}
+html body #models#models .mgrp .card .tx>p{display:block!important;font-size:14px!important;margin:2px 0 4px!important}
+html body #models#models .mgrp .card .fp,html body #models#models .mgrp .card .fp b{font-size:14px!important;white-space:normal!important}
+html body #models#models .mgrp .card .fp .v9f{font-size:14px;color:#4a564f}
+html body #models#models .mgrp .card .v9f2{font-size:14px;color:#4a564f;margin-top:1px}
+html body #models#models .mgrp .card .vsw{font-size:14px!important;margin:4px 0 0!important}
 html body #models#models .mgrp .card .vsw a{color:#123627;display:inline-block;padding:4px 0}
 html body #models#models .mgrp .card .v9b{margin-top:auto;padding-top:8px}
 html body #models#models .mgrp .card .v9dp{display:flex!important;align-items:center;justify-content:center;width:100%;min-height:44px;margin:0;padding:0 8px;
-  background:#c9a86b;color:#0c2419;border:0;border-radius:2px;font:600 12.5px/1.1 Montserrat,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;text-align:center}
+  background:#c9a86b;color:#0c2419;border:0;border-radius:2px;font:600 14px/1.1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;text-align:center}
 html body #models#models .mgrp .card .v9dp:hover{background:#d8bb83}
 html body #models#models .mgrp .card .v9r{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:2px}
-html body #models#models .mgrp .card .v9bk{display:inline-flex;align-items:center;min-height:44px;font:600 13px/1.1 Montserrat,Arial,sans-serif;white-space:nowrap;color:#123627;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(18,54,39,.35);border:0;padding:0;position:static}
+html body #models#models .mgrp .card .v9bk{display:inline-flex;align-items:center;min-height:44px;font:600 14px/1.1 Montserrat,Arial,sans-serif;white-space:nowrap;color:#123627;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(18,54,39,.35);border:0;padding:0;position:static}
 html body #models#models .mgrp .card .v9bk::after{display:none!important}
 html body #models#models .mgrp .card .cmpk{position:static!important;display:inline-flex!important;align-items:center;gap:7px!important;min-height:44px!important;height:auto!important;width:auto!important;
-  padding:0!important;background:none!important;color:#123627!important;font:500 13px/1 Montserrat,Arial,sans-serif!important;overflow:visible!important;cursor:pointer;margin:0!important}
+  padding:0!important;background:none!important;color:#123627!important;font:500 14px/1 Montserrat,Arial,sans-serif!important;overflow:visible!important;cursor:pointer;margin:0!important}
 html body #models#models .mgrp .card .cmpk input{width:20px!important;height:20px!important;margin:0!important;accent-color:#123627;flex:none}
 @media (max-width:699px){
   html body #models#models .mgrp .grid.g6,html body #models#models .cz-grid{--cz-c:1;grid-template-columns:1fr!important;gap:10px!important}
@@ -102,31 +102,31 @@ html body #models#models .mgrp .card .cmpk input{width:20px!important;height:20p
   html body #models#models .mgrp .card .tx{padding:8px 10px 6px!important}
   html body #models#models .mgrp .card h4{font-size:16px!important}
   html body #models#models .mgrp .card .v9b{padding-top:6px}
-  #models .cz-tabs .count{display:block!important;font-size:12.5px}
+  #models .cz-tabs .count{display:block!important;font-size:14px}
 }
 
 /* ---------- 9. price labels ---------- */
 .v9f{font-weight:inherit}
 .v9f2{display:block;font-size:.92em;color:#4a564f}
-.hpmc .v9f2,.ocol .v9f2{font-size:12px}
-.v9fur{margin:2px 0 0;font:500 13.5px/1.35 Montserrat,Arial,sans-serif;color:#2c3a33}
-.gz-pr .gz-f2{display:block;margin:2px 0 0;font-size:13px;font-weight:400}
+.hpmc .v9f2,.ocol .v9f2{font-size:14px}
+.v9fur{margin:2px 0 0;font:500 14px/1.35 Montserrat,Arial,sans-serif;color:#2c3a33}
+.gz-pr .gz-f2{display:block;margin:2px 0 0;font-size:14px;font-weight:400}
 .cz-key .v9kf b{font-weight:600;margin-right:4px}
 
 /* ---------- 7. breadcrumb on gazebo model pages ---------- */
 .v9crumbs{padding-top:10px;padding-bottom:0}
-.v9crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;font:500 13px/1.2 Montserrat,Arial,sans-serif;color:#4a564f}
+.v9crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;font:500 14px/1.2 Montserrat,Arial,sans-serif;color:#4a564f}
 .v9crumbs li{display:flex;align-items:center}
 .v9crumbs li+li::before{content:"/";margin:0 9px;color:#9aa39e}
 .v9crumbs a{color:#123627;text-decoration:underline;text-decoration-color:rgba(18,54,39,.3);text-underline-offset:3px;display:inline-flex;align-items:center;min-height:32px}
 .v9crumbs a:hover{text-decoration-color:#123627}
 .v9crumbs [aria-current]{color:#4a564f}
-@media (max-width:899px){.v9crumbs{padding-top:6px}.v9crumbs ol{font-size:12.5px}.v9crumbs a{min-height:44px}}
+@media (max-width:899px){.v9crumbs{padding-top:6px}.v9crumbs ol{font-size:14px}.v9crumbs a{min-height:44px}}
 
 /* ---------- 14. Eden / Orangery version switch (option A) ---------- */
 .v9sw{display:flex;width:100%;max-width:420px;margin:10px 0 12px;padding:3px;background:#f3eee4;border:1px solid #e3d9c4;border-radius:3px;gap:3px}
 .v9seg{flex:1;min-height:40px;padding:0 10px;border:0;border-radius:2px;background:transparent;color:rgba(18,54,39,.78);cursor:pointer;
-  font:600 12.5px/1 Montserrat,Arial,sans-serif;letter-spacing:.04em}
+  font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:.04em}
 .v9seg:hover{color:#123627;background:rgba(18,54,39,.06)}
 .v9seg[aria-checked="true"]{background:#123627;color:#f3eee4}
 .v9seg:focus-visible{outline:2px solid #123627;outline-offset:2px}
@@ -143,10 +143,10 @@ html body #models#models .mgrp .card .cmpk input{width:20px!important;height:20p
 @media (prefers-reduced-motion:reduce){#hero .gmain .v9ai{transition:none}}
 /* builder step 1: the version */
 .v9bv{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px}
-.v9bvl{font:600 13px/1 Montserrat,Arial,sans-serif;color:#123627;margin-right:6px;display:inline-flex;align-items:center;gap:8px}
-.v9bvl i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#123627;color:#f3eee4;font-size:12px}
-.v9bvo{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px;padding:4px 14px;border:1px solid #cfc6b2;border-radius:2px;color:#123627;text-decoration:none;font:600 13px/1.2 Montserrat,Arial,sans-serif}
-.v9bvo small{font-weight:400;font-size:11.5px;color:#4a564f}
+.v9bvl{font:600 14px/1 Montserrat,Arial,sans-serif;color:#123627;margin-right:6px;display:inline-flex;align-items:center;gap:8px}
+.v9bvl i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#123627;color:#f3eee4;font-size:14px}
+.v9bvo{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px;padding:4px 14px;border:1px solid #cfc6b2;border-radius:2px;color:#123627;text-decoration:none;font:600 14px/1.2 Montserrat,Arial,sans-serif}
+.v9bvo small{font-weight:400;font-size:14px;color:#4a564f}
 .v9bvo[aria-current="true"]{border-color:#123627;box-shadow:inset 0 0 0 1px #123627;background:#f3eee4}
 .v9bh{padding:16px;border:1px solid #e3d9c4;background:#faf7f0;border-radius:3px;margin:0 0 14px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .v9bh[hidden]{display:none}
@@ -159,8 +159,8 @@ html body #models#models .mgrp .card .cmpk input{width:20px!important;height:20p
 
 /* ---------- 15. booking from a model ---------- */
 .v9model{margin:0 0 12px;padding:10px 14px;background:#f3eee4;border-left:3px solid #123627;font:400 14.5px/1.4 Montserrat,Arial,sans-serif;color:#123627}
-.v9model .v9mk{display:block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6b4f1d}
-.paopt .v9on,.paopt .v9off{display:block;margin-top:3px;font-size:12.5px;font-weight:600}
+.v9model .v9mk{display:block;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:#6b4f1d}
+.paopt .v9on,.paopt .v9off{display:block;margin-top:3px;font-size:14px;font-weight:600}
 .paopt .v9on{color:#1d5c3a}
 .paopt .v9off{color:#6a4a22;font-weight:500}
 .v9none{padding:12px 14px;border:1px solid #e3d9c4;background:#faf7f0;margin:0 0 10px;border-radius:3px;grid-column:1/-1}

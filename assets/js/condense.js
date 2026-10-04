@@ -14,12 +14,14 @@
 
   /* #3 gazebos hub finder: open on the Classic tab (7-across, two rows) unless a deep link picked something; package line follows the tab */
   var fnd=$("#models [data-finder]");
+  /* v9.1: 'View all gazebos' clicked on the hub itself: show All */
+  document.addEventListener("click",function(e){ var a=e.target.closest&&e.target.closest('a[href$="#models"]'); if(!a||!fnd||a.pathname!==location.pathname) return; var c=$('.chip[data-key="range"][data-f="all"]',fnd); if(c&&c.getAttribute("aria-pressed")!=="true") c.click() },true);
   if(fnd){
     var pk=$("[data-czpk]",fnd);
     var upd=function(){ if(!pk) return; var r=$('.chip[data-key="range"][aria-pressed="true"]',fnd), k=r?r.getAttribute("data-f"):"all", g=k!=="all"&&$('[data-group="'+k+'"] .pk',fnd);
       pk.textContent=(g?g.textContent+" · ":"")+"prices inc. VAT" };
     new MutationObserver(upd).observe(fnd,{attributes:true,attributeFilter:["aria-pressed"],subtree:true});
-    if(!/^#(range|seats)-/.test(location.hash)){ var c=$('.chip[data-key="range"][data-f="classic"]',fnd), url=location.href;
+    if(!/^#(range|seats)-/.test(location.hash)){ var c=$('.chip[data-key="range"][data-f="'+(location.hash==="#models"?"all":"classic")+'"]',fnd), url=location.href; /* v9.1: View all gazebos opens on All */
       if(c&&c.getAttribute("aria-pressed")!=="true"){ c.click(); if(history.replaceState) history.replaceState(null,"",url) } }
     upd();
   }
@@ -34,7 +36,7 @@
     var cur=function(){ return $$("#design .bp").filter(function(p){return !p.hidden})[0] };
     var nx=$(".cz-nx",nb), bkb=$(".cz-bk",nb), visit="../../visit-us/index.html?model="+encodeURIComponent(model)+"#book";
     var upd2=function(){ var p=cur(); if(!p) return; var n=$(".hpnext",p), b=$(".hpback",p);
-      if(n){ var t=n.textContent.replace("→","").trim(), m=t.match(/^(Next)(:.*)$/); nx.innerHTML=""; if(m){ nx.appendChild(document.createTextNode(m[1])); var sp=document.createElement("span"); sp.className="cz-nt"; sp.textContent=m[2]; nx.appendChild(sp) } else nx.textContent=t; nx.appendChild(document.createTextNode(" →")); nx.setAttribute("href","#design"); nx.classList.remove("cz-last") }
+      if(n){ var t=n.textContent.replace("→","").replace(/\s+/g," ").trim(); nx.textContent=t+" →"; /* v9.1: one text node, sentence case, no gap */ nx.setAttribute("href","#design"); nx.classList.remove("cz-last") }
       else { nx.textContent="Book a visit"; nx.setAttribute("href",visit); nx.classList.add("cz-last") }
       bkb.style.visibility=b?"visible":"hidden"; bar.classList.toggle("cz-step-last",!n) };
     nx.addEventListener("click",function(e){ var p=cur(), n=p&&$(".hpnext",p); if(n){ e.preventDefault(); n.click() } });

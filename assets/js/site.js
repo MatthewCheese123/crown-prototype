@@ -439,7 +439,7 @@
 
   /* ---------- 2 B: 'Send me this design' panels (email + spec PDF). Nothing is emailed. ---------- */
   function vfield(x){ var e=document.getElementById(x.getAttribute("aria-describedby")), m="";
-    if(!x.checkValidity()) m=x.validity.valueMissing?"Please fill in this field.":(x.type==="email"?"Please enter a valid email address, like name@example.com.":(x.getAttribute("data-msg")||"Please check this field."));
+    if(!x.checkValidity()) m=(x.type==="checkbox"&&x.validity.valueMissing)?"Please tick to let us contact you about this design.":x.validity.valueMissing?"Please fill in this field.":(x.type==="email"?"Please enter a valid email address, like name@example.com.":(x.getAttribute("data-msg")||"Please check this field."));
     if(m) x.setAttribute("aria-invalid","true"); else x.removeAttribute("aria-invalid"); if(e) e.textContent=m; return !m }
   $$("[data-send-open]").forEach(function(b){ b.addEventListener("click",function(){
     var p=document.getElementById(b.getAttribute("data-send-open")); if(!p) return;

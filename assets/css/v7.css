@@ -2,19 +2,19 @@
 .pkone{display:grid;gap:10px}
 .pkone .pkcard{cursor:default;border-color:var(--f);box-shadow:inset 0 0 0 2px var(--f);background:#fbfaf6}
 .pkone .pkcard:hover{border-color:var(--f)}
-.pkstd{font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gd);margin-left:6px;vertical-align:3px}
-.pktail{font-size:13.5px;color:#555;line-height:1.5;margin:0}
+.pkstd{font-family:Montserrat,Arial,sans-serif;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--gd);margin-left:6px;vertical-align:3px}
+.pktail{font-size:14px;color:#555;line-height:1.5;margin:0}
 .pktail b{color:var(--f)}
 .pkfrom{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.pkfrom span{font-size:13px;color:#555}
+.pkfrom span{font-size:14px;color:#555}
 .pkfrom b{font-family:Optima,Georgia,serif;font-weight:500;font-size:30px;color:var(--f)}
 .pspec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin:22px 0 0;background:#fff;border:1px solid var(--ln);padding:6px 22px}
 .pspec .r{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid #efe9dc}
-.pspec dt{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gd);padding-top:2px}
+.pspec dt{font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--gd);padding-top:2px}
 .pspec dd{margin:0;font-size:14.5px;line-height:1.5;color:var(--tx)}
 .pspec dd b{color:var(--f);font-weight:600}
-.pspec dd small{display:block;color:#666;font-size:12.5px;margin-top:2px}
-.pspec-f{font-size:13.5px;color:#555;margin:12px 0 0}
+.pspec dd small{display:block;color:#666;font-size:14px;margin-top:2px}
+.pspec-f{font-size:14px;color:#555;margin:12px 0 0}
 @media (max-width:760px){.pspec{grid-template-columns:1fr;padding:4px 14px}.pspec .r{grid-template-columns:1fr;gap:2px;padding:10px 0}.pkfrom b{font-size:26px}}
 /* v7: Hampton model page links from the range cards */
 .card>.mlink{display:block}
@@ -39,13 +39,13 @@
 .rib5 .ribs{height:20px;margin-bottom:14px}
 .mega.mega-gr .rib5 .ribl img{height:auto;aspect-ratio:16/9;object-position:center 60%;filter:brightness(1.02) saturate(.96)}
 .rib5 .ribl .rn{margin-top:10px;font-size:18px}
-.rib5 .ribl .rd{margin-top:4px;font-size:12.5px;min-height:2.8em}
+.rib5 .ribl .rd{margin-top:4px;font-size:14px;min-height:2.8em}
 .rib5 .ribl .rp{padding-top:4px}
 .rib5 .ribf{margin-top:16px;padding-top:16px}
-.rib5 .ribl .rsi{font-size:12px;padding:2px 6px}
+.rib5 .ribl .rsi{font-size:14px;padding:2px 6px}
 
 /* iter 3d-link */
-.lnk3d{display:inline-flex;align-items:center;min-height:32px;margin-top:4px;font-size:13px;font-weight:600;color:var(--f);text-decoration:underline;text-decoration-color:var(--g);text-underline-offset:4px}
+.lnk3d{display:inline-flex;align-items:center;min-height:32px;margin-top:4px;font-size:14px;font-weight:600;color:var(--f);text-decoration:underline;text-decoration-color:var(--g);text-underline-offset:4px}
 .lnk3d:hover{text-decoration-thickness:2px}
 .lnk3d:focus-visible{outline:2px solid var(--f);outline-offset:3px}
 /* iter-19: keep the 3D link on one line with its arrow (it wrapped at 390) */

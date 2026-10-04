@@ -14,7 +14,7 @@
   .site-h.navc.hx .hact{display:flex;align-items:center;gap:22px;margin-left:auto;padding:0}
   /* the ONE gold element: a solid button, dark-green text */
   .site-h.navc.hx .hbook{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin:0;padding:0 22px;
-    background:var(--g);color:var(--fd);border:0;border-radius:2px;font:600 13px/1 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+    background:var(--g);color:var(--fd);border:0;border-radius:2px;font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;white-space:nowrap}
   .site-h.navc.hx .hbook:hover{background:#d8bb83;color:var(--fd)}
   /* phone as readable text, cream */
   .site-h.navc.hx .htel{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#f3eee4;text-decoration:none;

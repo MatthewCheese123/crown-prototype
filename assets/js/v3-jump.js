@@ -77,7 +77,7 @@
     else y=r.top+scrollY-th-(m==="none"?0:GAP);
     // v7: a jump down the page slides the header away (scroll up to bring it back); close to the top the header stays.
     // Keep sticky toolbars (filters) in the offset even when the site header hides.
-    if(m==="hdr" && topMode(L)==="hdr" && hdr && block==="start"){ var yh=r.top+scrollY-pin-chipsH(L)-GAP; if(yh>hdr.offsetHeight+160){ y=yh; m="hide" } }
+    if(m==="hdr" && topMode(L)==="hdr" && hdr && block==="start" && !(L.hasAttribute&&L.hasAttribute("data-v91hdr"))){ /* v9.1: View all landings keep the header */ var yh=r.top+scrollY-pin-chipsH(L)-GAP; if(yh>hdr.offsetHeight+160){ y=yh; m="hide" } }
     y=Math.max(0,Math.round(y)); setHeader(m);
     window.scrollTo({top:y,behavior:(opt.behavior==="smooth"&&!reduce.matches)?"smooth":"instant"});
     if(opt.inline && opt.inline!=="nearest") try{ orig.call(el,{block:"nearest",inline:opt.inline,behavior:"auto"}) }catch(e){}

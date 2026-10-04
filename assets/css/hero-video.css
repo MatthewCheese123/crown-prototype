@@ -35,12 +35,12 @@ html body[data-pa-page=home] .hero.hv2 .ov{display:block}
 html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 /* garden rooms hub: a shorter video band so the first collection card reaches screen one */
 @media (max-width:899px){.psec .lead.psx{display:none}} /* phones: the Signature band right below names the collections */
-.psec .sigband{padding-top:8px;margin-bottom:12px;font-size:13px;line-height:1.45}
+.psec .sigband{padding-top:8px;margin-bottom:12px;font-size:14px;line-height:1.45}
 
 /* products straight after the hero: a compact heading so the tiles reach screen one */
 .sec.psec{padding-top:16px}
 .psec .center{text-align:left}
-.psec .center .kick{font-size:12px}
+.psec .center .kick{font-size:14px}
 .psec .center h2{margin-top:4px!important;font-size:24px;line-height:1.2}
 .psec .center .lead{margin:6px 0 0;font-size:14px;line-height:1.5;max-width:760px}
 .psec .center+*{margin-top:16px!important}
@@ -74,7 +74,7 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
  .hero.hv2 .hvl.hv-d{display:inline-flex}
  .hero.hv2 .hv-m{display:none}
  .hero.hv2 .vctl,html body[data-pa-page=home] .hero.hv2 .vctl{top:auto;right:24px;bottom:24px;background:rgba(0,0,0,.6)}
- .hero.hv2 .hvcue{position:absolute;z-index:2;left:61%;bottom:16px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:64px;min-height:44px;color:#fff;text-decoration:none;font:600 12px/1 Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;animation:hvcue 2s ease-in-out infinite alternate}
+ .hero.hv2 .hvcue{position:absolute;z-index:2;left:61%;bottom:16px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:64px;min-height:44px;color:#fff;text-decoration:none;font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;animation:hvcue 2s ease-in-out infinite alternate}
  .hero.hv2 .hvcue svg{width:22px;height:22px;margin-top:2px}
  .sec.psec{padding-top:28px}
  .psec .center{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:end}
@@ -103,7 +103,7 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
  .grchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;position:sticky;top:var(--hdrvis,0px);z-index:20;margin:14px -20px 0!important;padding:8px 20px;background:#fff;box-shadow:0 6px 10px -10px rgba(0,0,0,.35)}
  .grchips::-webkit-scrollbar{display:none}
  .grchips a{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid #d9cfba;border-radius:22px;color:#123627;font-size:14px;font-weight:600;text-decoration:none;background:#F7F5F2;white-space:nowrap}
- .grchips a b{font-weight:500;color:#5f5a4f;font-size:12.5px}
+ .grchips a b{font-weight:500;color:#5f5a4f;font-size:14px}
  #gc-signature,#gc-heritage,#gc-contemporary{scroll-margin-top:calc(var(--hdrvis,0px) + 76px)}
  #collections .grid.sigg,#collections .grid.pair{grid-template-columns:1fr;gap:10px}
  #collections .card{display:grid;grid-template-columns:118px 1fr;align-items:stretch}
@@ -111,9 +111,9 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
  #collections .card .tx{padding:10px 12px}
  #collections .card .tx>p,#collections .card .kv{display:none}
  #collections .card h3{font-size:18px;margin:0}
- #collections .card .fp{margin-top:2px;font-size:13px}
+ #collections .card .fp{margin-top:2px;font-size:14px}
  #collections .card .fp small{display:block}
- #collections .card .lnk.foot{display:inline-flex;align-items:center;min-height:40px;margin-top:2px;font-size:13px}
+ #collections .card .lnk.foot{display:inline-flex;align-items:center;min-height:40px;margin-top:2px;font-size:14px}
 }
 
 @media (max-width:899px){.hero.hv2 .hv-mhide{display:none!important}}
@@ -122,8 +122,8 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 /* v8.3 r3: mobile reach chips (gazebos + garden rooms) */
 .gzchips,.grchips{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:14px 0 4px;padding:2px 0 8px;scroll-snap-type:x proximity}
 .gzchips::-webkit-scrollbar,.grchips::-webkit-scrollbar{display:none}
-.gzchips a,.grchips a{flex:0 0 auto;scroll-snap-align:start;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;border:1px solid #d6cdb9;border-radius:999px;background:#fff;color:#123627;font:600 13px/1.2 Montserrat,Arial,sans-serif;text-decoration:none;white-space:nowrap}
-.gzchips a b,.grchips a b{font-weight:600;color:#5f5a4f;font-size:12px}
+.gzchips a,.grchips a{flex:0 0 auto;scroll-snap-align:start;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;border:1px solid #d6cdb9;border-radius:999px;background:#fff;color:#123627;font:600 14px/1.2 Montserrat,Arial,sans-serif;text-decoration:none;white-space:nowrap}
+.gzchips a b,.grchips a b{font-weight:600;color:#5f5a4f;font-size:14px}
 .gzchips a:hover,.grchips a:hover,.gzchips a:focus-visible,.grchips a:focus-visible{border-color:#123627;outline:none}
 @media (max-width:899px){
  .gzchips,.grchips{margin:12px 0 8px;padding:0 0 4px} /* non-sticky: sticky chips landed under the chip bar in framing */
@@ -132,7 +132,7 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
  .psec .grid.g4{grid-template-columns:1fr 1fr;gap:12px;margin-top:12px!important}
  .psec .grid.g4 .card.rc .tx{padding:10px 12px 12px}
  .psec .grid.g4 .card.rc h3{font-size:16px;margin:4px 0}
- .psec .grid.g4 .card.rc .fp{font-size:13px}
+ .psec .grid.g4 .card.rc .fp{font-size:14px}
 }
 @media (min-width:900px){
  .gzchips,.grchips{flex-wrap:wrap;overflow:visible;margin-top:18px}
@@ -193,7 +193,7 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
  #models .gzfbtn{position:relative;display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 14px;border-radius:18px;border:1px solid #d9d2c3;background:#fff;color:#123627;font:500 14px/1 Montserrat,Arial,sans-serif;cursor:pointer}
  #models .gzfbtn::before{content:"";position:absolute;inset:-4px}
  #models .gzfbtn[aria-expanded=true],#models .gzfbtn:has(.gzfb:not([hidden])){border-color:#123627}
- #models .gzfb{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#123627;color:#fff;font-size:12px;font-weight:600}
+ #models .gzfb{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#123627;color:#fff;font-size:14px;font-weight:600}
  #models .gzfb[hidden]{display:none}
  #models .gzfcnt{font-size:14px;color:#4f5f55;text-align:right}
  #models .gzscrim{display:block;position:fixed;inset:0;z-index:300;background:rgba(10,24,17,.42);opacity:0;transition:opacity .2s}
@@ -206,7 +206,7 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
  #models .gzshh h3{margin:0;font:400 20px/1.2 Optima,Georgia,serif;color:#123627}
  #models .gzclr{min-height:44px;padding:0 4px;background:none;border:0;color:#123627;font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
  #models .gzshb .fg{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
- #models .gzshb .fg .fl{display:block;flex-basis:100%;margin:0 0 2px;font-size:13px;letter-spacing:0;text-transform:none;font-weight:600;color:#4f5f55}
+ #models .gzshb .fg .fl{display:block;flex-basis:100%;margin:0 0 2px;font-size:14px;letter-spacing:0;text-transform:none;font-weight:600;color:#4f5f55}
  #models .gzshb .fg .chip{min-height:44px;height:44px;border-radius:22px;padding:0 16px}
  #models .gzshb .fg .chip::before{content:none}
  #models .gzdone{display:flex;width:100%;justify-content:center;margin-top:20px;min-height:48px}
@@ -217,9 +217,9 @@ html body[data-pa-page=home] .hero.hv2 .hvh{font-size:32px;margin:0}}
 /* v8.7.3 home hero (approved by Matthew): the headline, one gold "Book a visit" and a small "Explore ↓" cue to the tiles below.
    Gold #C9A86B with green #123627 text is 5.9:1; the cream cue on the green band / dark wash is 12:1. Both 48px tall. */
 .hero.hv2 .hvc3{gap:6px 22px;align-items:center}
-.hero.hv2 .hvc3 .hvbk{flex:0 0 auto;min-height:48px;padding:0 26px;background:#C9A86B;border-color:#C9A86B;color:#123627;font:600 13.5px/1 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.hero.hv2 .hvc3 .hvbk{flex:0 0 auto;min-height:48px;padding:0 26px;background:#C9A86B;border-color:#C9A86B;color:#123627;font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none}
 .hero.hv2 .hvc3 .hvbk:hover{background:#d6b87e;border-color:#d6b87e;color:#0b2a1d}
-.hero.hv2 .hvex{display:inline-flex;align-items:center;min-height:48px;padding:0 4px;color:#F7F5F2;font:500 12.5px/1 Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:underline;text-decoration-color:rgba(201,168,107,.8);text-decoration-thickness:1px;text-underline-offset:6px}
+.hero.hv2 .hvex{display:inline-flex;align-items:center;min-height:48px;padding:0 4px;color:#F7F5F2;font:500 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;text-decoration:underline;text-decoration-color:rgba(201,168,107,.8);text-decoration-thickness:1px;text-underline-offset:6px}
 .hero.hv2 .hvex:hover{color:#fff;text-decoration-color:#C9A86B}
 .hero.hv2 .hvex:focus-visible,.hero.hv2 .hvc3 .hvbk:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .hero.hv2 .hvex .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

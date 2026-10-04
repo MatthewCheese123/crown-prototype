@@ -29,7 +29,7 @@
     if(S.cab!=="none") a.push(["Side cabinet",L.cab[S.cab],gbp(PR[S.cab])]);
     if(S.bbq==="single") a.push(["BBQ table, single grill","Smokeless electric grill in your dining table",gbp(PR.bbq1)]); if(S.bbq==="double") a.push(["BBQ table, double grill","Larger smokeless electric grill, for hosting",gbp(PR.bbq2)]);
     if(S.found!=="own"){ a.push(["Base",L.found[S.found]+(S.found==="ecogrid"?" · "+S.gravel+" gravel":S.found==="composite"?" · "+S.deck:"")+(S.found==="ecogrid"?" · no site survey needed":" · priced after an optional site survey"),"from "+gbp(PR[S.found])]); if(S.found!=="ecogrid") a.push(["Site survey (optional)","Survey and ground-screw test, before your deck is priced","Optional, "+gbp(PR.survey)]) }
-    else a.push(["Base","Your own level base, prepared to our specification","Not supplied by Crown"]);
+    else a.push(["Base","Your own hard, level standing: a concrete pad, paving or decking","Not supplied by Crown"]);
     return a }
   function total(){ var t=BASE; if(S.heater!=="none") t+=PR[S.heater]*S.hq; if(S.cab!=="none") t+=PR[S.cab]; if(S.bbq==="single") t+=PR.bbq1; if(S.bbq==="double") t+=PR.bbq2; if(S.found!=="own") t+=PR[S.found]; return t }
   function extrasN(){ return (S.heater!=="none"?1:0)+(S.cab!=="none"?1:0)+(S.bbq!=="no"?1:0) }
