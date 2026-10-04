@@ -208,6 +208,7 @@
   window.addEventListener("pageshow",function(){ if(!menu.hidden) closeMenu(false,"pop"); syncBook(); });
 })();
 
+/* v8.9 desktop photo panels (>=1024px), built on the v8.7.6 panel code. */
 /* v8.7.6 desktop menu panel (>=1024px): the Menu button toggles it on click, Enter or Space (it reads Close while open); no hover.
    (v8.7.5 also opened it on hover over Gazebos / Garden rooms; removed at Matthew's request.) Menu opens a small drop-down of secondary links.
    Disclosure pattern, not a modal: no scroll lock, the page stays visible under a light dim. Esc closes and returns focus;
@@ -216,10 +217,10 @@
   "use strict";
   var mq=window.matchMedia("(min-width:1024px)"), hdr=document.querySelector(".site-h");
   if(!hdr) return;
-  /* v8.7.6: only the Menu button opens the panel, on click / Enter / Space (no hover). Gazebos and Garden rooms are plain links. */
-  var pairs=[];
-  var mb=hdr.querySelector(".hmenu"), mp=document.getElementById("mm-d");
-  if(mb&&mp){ pairs.push({t:mb,p:mp,hover:false}); }
+  /* v8.9: Gazebos and Garden rooms each open their own photo panel, on hover (250ms) and on click / Enter / Space; a second click goes to the page.
+     The Menu button is phones/tablets only (the bar shows every section from 1024px). */
+  var pairs=[].slice.call(hdr.querySelectorAll("[data-mm]")).map(function(t){ return {t:t,p:document.getElementById(t.getAttribute("data-mm")),hover:true}; });
+  var mb=null, mp=null;
   pairs=pairs.filter(function(x){ return x.p; });
   if(!pairs.length) return;
   var dim=document.createElement("div"); dim.className="mm-dim"; dim.hidden=true; document.body.appendChild(dim);
@@ -260,7 +261,7 @@
     }
     /* window capture: runs before hub-nav's same-page smooth scroll */
     window.addEventListener("click",function(e){
-      if(!mq.matches || !(e.target.closest&&e.target.closest(".hmenu")===x.t)) return;
+      if(!mq.matches || !(e.target.closest&&e.target.closest("[data-mm],.hmenu")===x.t)) return;
       /* v8.7.5 link check: a tab link whose panel is already open (hover, or a first click/tap/Enter) goes to its page */
       if(x.t.tagName==="A"&&cur&&cur.p===x.p&&!(e.metaKey||e.ctrlKey||e.shiftKey)){ e.stopPropagation(); closeAll("link"); return; }
       e.preventDefault(); e.stopPropagation();

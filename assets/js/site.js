@@ -175,7 +175,10 @@
         card.hidden=!ok; if(ok) n++;
       });
       fgroups.forEach(function(g){ g.hidden=!$$("[data-range]:not([hidden])",g).length });
-      fcnt.textContent=n+" model"+(n===1?"":"s")+" shown";
+      /* v8.9: say what a seat filter leaves out, next to the count (no footnote) */
+      var ex=[]; if(s!=="all"){ if(r==="all"||r==="shelters") ex.push("Garden shelters"); if(r==="all"||r==="glazed") ex.push("St Tropez (unfurnished)"); }
+      fcnt.textContent=n+" model"+(n===1?"":"s")+" shown"+(ex.length?" · "+ex.join(" and ")+" excluded":"");
+      var fx=document.querySelector("[data-v9ex]"); if(fx){ fx.textContent=ex.length?fcnt.textContent:""; fx.hidden=!ex.length }
       fempty.hidden=(n>0 || soonN>0);
     };
     var fsync=function(){ // keep the address shareable: #range-x (or #seats-x), without jumping

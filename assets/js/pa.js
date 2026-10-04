@@ -5,20 +5,19 @@ var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){retu
 var ROOT=(document.querySelector('a.logo')||{getAttribute:function(){return "index.html"}}).getAttribute("href").replace(/index\.html$/,"");
 var PHONE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>';
 /* Show-site facts: names, addresses and opening hours as listed on crownpavilions.com/showsites (checked 1 Oct 2026). */
-var SITES=[
- {id:"bridgemere",town:"Bridgemere",county:"Cheshire",gc:"Bridgemere Garden Centre",addr:"Bridgemere, Nantwich, Cheshire CW5 7QB",pc:"CW5 7QB",wk:["09:00","17:00"],sun:["10:00","16:30"],display:"Gazebos only"},
- {id:"woburn-sands",town:"Woburn Sands",county:"Bucks",gc:"Frosts Garden Centre",addr:"Newport Road, Woburn Sands, Buckinghamshire MK17 8UE",pc:"MK17 8UE",wk:["09:00","17:30"],sun:["10:30","16:30"],display:"Crown Hampton",models:["crown hampton"]},
- {id:"ware",town:"Ware",county:"Herts",gc:"Van Hage Garden Centre",addr:"Great Amwell, Ware, Hertfordshire SG12 9RP",pc:"SG12 9RP",wk:["09:00","17:30"],sun:["10:00","16:30"]},
- {id:"wickford",town:"Wickford",county:"Essex",gc:"Alton Garden Centre",addr:"Arterial Road, Wickford, Essex SS12 9JG",pc:"SS12 9JG",wk:["09:00","17:00"],sun:["10:00","16:30"],display:"Crown Hampton",models:["crown hampton"]},
- {id:"chessington",town:"Chessington",county:"Surrey",gc:"Chessington Garden Centre",addr:"Leatherhead Road, Chessington, Surrey KT9 2NG",pc:"KT9 2NG",wk:["09:00","18:00"],sun:["09:30","16:30"],note:"Video showcase filmed here"},
- {id:"bagshot",town:"Bagshot",county:"Surrey",gc:"Longacres Garden Centre",addr:"London Road, Bagshot, Surrey GU19 5JB",pc:"GU19 5JB",wk:["08:30","17:30"],sun:["10:00","16:30"],display:"Crown Hampton",models:["crown hampton"]},
- {id:"home",town:"At your home",gc:"A design consultant visits your garden",addr:"",remote:true,wk:["10:00","16:00"],sun:null},
- {id:"video",town:"By video call",gc:"For 100+ miles from a site · filmed at Chessington",addr:"",remote:true,wk:["10:00","17:00"],sun:null}];
+/* v8.9: the sites and what's on display come from ONE editable list, assets/js/showsites.js (window.CROWN_SHOWSITES). */
+var SS=window.CROWN_SHOWSITES||{sites:[],models:{}};
+var SITES=SS.sites.map(function(x){ var o={}; for(var k in x) o[k]=x[k]; o.names=(x.models||[]).slice(); o.models=o.names.map(function(m){return String(m).toLowerCase()});
+  o.display=x.display||(o.names.length?o.names.join(", "):""); return o });
 window.PASITES=SITES;
 /* v8.3 (Arthur #1/#2): one "On display" field per site. Unknown = no field (never "TBC").
    models[] = models we know are on show there; a model with any known site is "tracked". */
 function mkey(m){return String(m||"").toLowerCase().replace(/\s+/g," ").trim()}
-function showsAt(m){var k=mkey(m); if(!k) return null; var a=SITES.filter(function(s){return (s.models||[]).some(function(x){return k.indexOf(x)>=0||x.indexOf(k)>=0&&k.length>5})}); return a.length?a.sort(function(x,y){return x.town<y.town?-1:1}):null}
+function mbase(m){return mkey(String(m||"").split(",")[0])}
+function showsAt(m){var k=mbase(m); if(!k) return null; var a=SITES.filter(function(s){return (s.models||[]).indexOf(k)>=0}); return a.length?a.sort(function(x,y){return x.town<y.town?-1:1}):null}
+/* v8.9: show-site notes elsewhere on the site (table, site pages, gazebos hub) come from the same list */
+$$("[data-ss-disp]").forEach(function(el){ var s=SITES.filter(function(x){return x.id===el.getAttribute("data-ss-disp")})[0]; if(!s) return;
+  var t=[s.display,s.note].filter(Boolean).join(" · "); el.textContent=t||(el.hasAttribute("data-ss-blank")?"":"—"); if(el.hasAttribute("data-ss-blank")) el.hidden=!t });
 function siteName(s){return s.town+" · "+s.gc.replace(/ Garden Centre$/,"")}
 var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],MON=["January","February","March","April","May","June","July","August","September","October","November","December"];
 function site(id){return SITES.filter(function(s){return s.id===id})[0]}
@@ -115,24 +114,46 @@ if(bk){
   if(qs.get("type")==="consultation" && !st.site) st.site="home";
   var grid=$("[data-sites]",bk), days=$("[data-days]",bk), slots=$("[data-slots]",bk), sum=$("[data-sum]");
   var fixed=bk.getAttribute("data-site"); if(fixed) st.site=fixed;
+  /* v8.9: arriving from a model, name it before the first choice, then label every site honestly from the one list */
+  var MM=st.model?String(st.model).split(",")[0].trim():"";
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function mlab(s){
+    if(!MM||s.remote) return "";
+    var on=(s.models||[]).indexOf(mbase(MM))>=0;
+    return on?'<span class="v9on">✓ On display here</span>':'<span class="v9off">Not on display here</span>';
+  }
   function opt(s){
     var hr=s.remote?"Mon–Sat":("Mon–Sat "+s.wk.join("–")+"<br>Sun "+s.sun.join("–"));
-    return '<label class="paopt"><input type="radio" name="site" value="'+s.id+'"><span class="dot" aria-hidden="true"></span><span><b>'+s.town+'</b><small>'+s.gc+(s.county?", "+s.county:"")+(s.note?" · "+s.note:"")+'</small>'+(s.display?'<span class="pashow">On display: <strong>'+s.display+'</strong></span>':'')+'<span class="hr">'+hr+'</span></span></label>';
+    return '<label class="paopt'+(s.id==="video"&&MM&&!showsAt(MM)?' v9vid':'')+'"><input type="radio" name="site" value="'+s.id+'"><span class="dot" aria-hidden="true"></span><span><b>'+s.town+'</b><small>'+s.gc+(s.county?", "+s.county:"")+(s.note?" · "+s.note:"")+'</small>'+mlab(s)+(s.display&&!(MM&&s.display===s.names.join(", "))?'<span class="pashow">On display: <strong>'+s.display+'</strong></span>':'')+'<span class="hr">'+hr+'</span></span></label>';
   }
   var GR=/sandringham|clarence|buckingham|heritage|contemporary|garden room/i.test(st.model||"");
-  var pool=SITES.filter(function(s){return (!fixed||s.id===fixed)&&!(GR&&!fixed&&s.display==="Gazebos only")}), has=!fixed&&showsAt(st.model);
-  if(has){
+  var pool=SITES.filter(function(s){return (!fixed||s.id===fixed)&&!(GR&&!fixed&&s.display==="Gazebos only")}), has=MM?showsAt(MM):null;
+  if(MM){
+    var meta=SS.models&&SS.models[MM];
+    var ml=document.createElement("p"); ml.className="v9model"; ml.setAttribute("role","note");
+    ml.innerHTML='<span class="v9mk">You’re booking to see</span> <b>'+esc(MM)+'</b>'+(meta?' · '+esc(meta):'');
+    var s1=$("[data-step='1']",bk)||bk; s1.insertBefore(ml,s1.firstChild);
+  }
+  var nonePhys=MM&&!has&&!fixed;
+  if(has&&!fixed){
     var ids=has.map(function(s){return s.id}), rest=pool.filter(function(s){return ids.indexOf(s.id)<0&&!s.remote}), rem=pool.filter(function(s){return s.remote});
     grid.classList.add("pagrp");
-    grid.innerHTML='<p class="pagh">On display: '+st.model+'</p>'+has.map(opt).join("")+
-      '<p class="pagh">Other show sites <span>('+st.model+' not on display)</span></p>'+rest.map(opt).join("")+
+    grid.innerHTML='<p class="pagh">On display: '+esc(MM)+'</p>'+has.map(opt).join("")+
+      '<p class="pagh">Other show sites <span>('+esc(MM)+' not on display)</span></p>'+rest.map(opt).join("")+
       '<p class="pagh">Or meet a design consultant</p>'+rem.map(opt).join("");
+  } else if(nonePhys){
+    var phys=pool.filter(function(s){return !s.remote}), rem2=pool.filter(function(s){return s.remote});
+    grid.classList.add("pagrp");
+    grid.innerHTML='<div class="v9none"><p><b>No show site has the '+esc(MM)+' on display at the moment.</b> See it on a video call instead (our video showcase was filmed at Chessington), or visit any site to see other Crown buildings.</p><button type="button" class="btn gh v9vbtn">See it by video</button></div>'+
+      '<p class="pagh">Or meet a design consultant</p>'+rem2.map(opt).join("")+
+      '<p class="pagh">Show sites <span>('+esc(MM)+' not on display)</span></p>'+phys.map(opt).join("");
+    var vb=grid.querySelector(".v9vbtn"); if(vb) vb.addEventListener("click",function(){ var r=$("input[value='video']",grid); if(r){ r.checked=true; r.dispatchEvent(new Event("change",{bubbles:true})) } });
   } else grid.innerHTML=pool.map(opt).join("");
   var warn=document.createElement("p"); warn.className="pawarn"; warn.setAttribute("role","status"); warn.hidden=true; grid.after(warn);
   function checkWarn(){
-    var s=site(st.site), m=(mdl&&mdl.value.trim())||st.model, at=showsAt(m);
-    var bad=!!(s&&!s.remote&&at&&at.indexOf(s)<0);
-    warn.hidden=!bad; warn.innerHTML=bad?'<b>The '+m+' isn’t on display at '+s.town+'.</b> To see one, choose '+at.map(function(x){return x.town}).join(", ").replace(/, ([^,]*)$/," or $1")+'. You’re still welcome at '+s.town+' to see other models.':"";
+    var s=site(st.site), m=(mdl&&mdl.value.trim())||st.model, at=showsAt(m), mb=String(m||"").split(",")[0].trim();
+    var bad=!!(s&&!s.remote&&mb&&(!at||at.indexOf(s)<0));
+    warn.hidden=!bad; warn.innerHTML=bad?(at?'<b>The '+esc(mb)+' isn’t on display at '+s.town+'.</b> To see one, choose '+at.map(function(x){return x.town}).join(", ").replace(/, ([^,]*)$/," or $1")+'. You’re still welcome at '+s.town+' to see other models.':'<b>The '+esc(mb)+' isn’t on display at '+s.town+'.</b> You’re welcome to visit and see other Crown buildings, or choose <i>By video call</i> to see the '+esc(mb)+'. We’ll keep the '+esc(mb)+' on your request either way.'):"";
   }
   var mdl=$("#bk-model"); if(mdl && st.model) mdl.value=st.model;
   function stepState(){

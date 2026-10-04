@@ -75,7 +75,7 @@ function posNames(g,gm){var E=gm.entr||[0],N=gm.slots,out=[];
     s=v==="side"?(h==="left"?"Left side":h==="right"?"Right side":"Side"):(v==="front"?"Front":"Back")+(h==="centre"?", centre":" "+h);
     if(E.indexOf((i+1)%N)>=0||E.indexOf((i+N-1)%N)>=0)s+=", beside the entrance";out.push(s)}return out}
 /* ---------- mount ---------- */
-function mount(root,o){o=o||{};if(o.types){["B","F","H"].forEach(function(k){if(o.types[k])T[k]=o.types[k]})}if(o.styles){for(var sk in o.styles)ST[sk]=o.styles[sk]}var gm=o.geom,N=gm.slots,E=gm.entr||[0],img=o.img||"assets/img/",PRE=o.presets,name=o.name||"gazebo";
+function mount(root,o){o=o||{};if(o.types){["B","F","H"].forEach(function(k){if(o.types[k])T[k]=o.types[k]})}if(o.styles){for(var sk in o.styles)ST[sk]=o.styles[sk]}var gm=o.geom,N=gm.slots,E=gm.entr||[0],img=(o.img!=null?o.img:"assets/img/"),PRE=o.presets,name=o.name||"gazebo";
   var b=(o.initial||PRE.std).split(""),hist=[],cur=1,opened=false,back=null,hl=null;
   var IDX=[];for(var z=0;z<N;z++)if(E.indexOf(z)<0)IDX.push(z);var NB=IDX.length;
   /* v8.7.3: gm.numberAll numbers every side 1..N clockwise from side gm.numStart (entrances included; Tudor, Guinevere, Wolsey:
