@@ -1,0 +1,11 @@
+/* proto-awesomeo v3: landing positions and section rhythm (all pages). Loaded after site.css / pa.css. */
+html{scroll-padding-top:0;scroll-padding-bottom:var(--both,0px)}
+[id]{scroll-margin-top:var(--toph,76px)}
+:root{--pagap:clamp(40px,5vw,72px)}
+.secthead{margin-bottom:20px}
+.secthead p{margin-top:8px}
+/* compare: the "Garden rooms / Gazebos & pavilions" row is now a pair of links styled like the tabs */
+.tabs.tlinks a{display:inline-flex;align-items:center;padding:12px 22px;font:600 14.5px Montserrat,Arial,sans-serif;color:#5f5a4f;background:#f0ebe0;text-decoration:none;white-space:nowrap;min-height:46px}
+.tabs.tlinks a:hover{background:#e6dfcf;color:var(--f)}
+.tabs.tlinks a[aria-current]{background:var(--f);color:#fff}
+.tabs.tlinks a:focus-visible{outline:2px solid var(--g);outline-offset:2px}

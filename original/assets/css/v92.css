@@ -1,0 +1,136 @@
+/* v9.2 (4 Oct 2026): Header A utility bar, About Crown, Bespoke A, what's on display, hubs jump links, hero 85vh */
+
+/* ---------- 1. Header A: 32px utility bar above the main nav. It scrolls away; only .site-h is sticky. ---------- */
+.v92u{display:none}
+@media (min-width:900px){
+  .v92u{display:block;background:var(--fd,#0d2a1e);border-bottom:1px solid rgba(247,245,242,.08);position:relative;z-index:101}
+  .v92u .wrap{display:flex;justify-content:flex-end;align-items:center;gap:0;height:32px}
+  .v92u a{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;font:400 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;color:rgba(247,245,242,.8);text-decoration:none;white-space:nowrap}
+  .v92u a:last-child{padding-right:0}
+  .v92u a+a{border-left:1px solid rgba(247,245,242,.16)}
+  .v92u a:hover,.v92u a:focus-visible{color:#f7f5f2;text-decoration:underline;text-underline-offset:4px}
+  .v92u a[aria-current="page"]{color:#f7f5f2}
+  .v92u svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7}
+  .v92u .v92tel{font-weight:500}
+}
+/* burger sheet: footer group with the same links and the number (the only phone number in the sheet) */
+.v92mf{display:flex;flex-wrap:wrap;gap:0 18px;margin:10px 0 0;padding:10px 0 4px;border-top:1px solid rgba(247,245,242,.14)}
+.v92mf a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:400 14px/1 Montserrat,Arial,sans-serif;color:rgba(247,245,242,.8);text-decoration:none}
+.v92mf a:hover{color:#f7f5f2;text-decoration:underline}
+.v92mf a[aria-current="page"]{color:#f7f5f2;text-decoration:underline;text-underline-offset:4px}
+.v92mf svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7}
+.v92mf .v92tel{font-weight:500;color:rgba(247,245,242,.9)}
+
+/* ---------- 3. Homepage hero: the video fills about 85% of the viewport, proof band on its bottom edge ---------- */
+@media (min-width:900px){
+  html body[data-pa-page=home] .hero.hv2{height:max(460px,min(85svh,calc(100svh - 128px)));min-height:460px}
+}
+
+/* ---------- shared eyebrows ---------- */
+.v92eb,.v92eb2{margin:0 0 10px;font:600 14px/1.3 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.v92eb{color:#e8d3a3}
+.v92eb2{color:#7d6230}
+
+/* ---------- 2a. About Crown ---------- */
+.v92ab-hd{background:#123627;color:#f7f5f2;padding:64px 0 60px}
+.v92ab-hd h1{margin:0;color:#f7f5f2;font-size:clamp(34px,4.4vw,52px);line-height:1.08;max-width:18em}
+.v92ab-sub{margin:16px 0 0;max-width:34em;font-size:18px;line-height:1.55;color:rgba(247,245,242,.86)}
+.v92ab-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.v92ab-tx h2{margin:0 0 16px}
+.v92ab-tx p{margin:0 0 14px;line-height:1.65;max-width:36em}
+.v92ab-ph{margin:0}.v92ab-ph img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.v92ab-g3{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.v92ab-g3 figure{margin:0}.v92ab-g3 img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.v92ab-g3 h3{margin:14px 0 6px;font-size:21px}.v92ab-g3 p{margin:0;color:#4f4a40;line-height:1.55}
+.v92ab-cards{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.v92ab-cards li{padding:22px 22px 24px;background:#fff;border:1px solid #e6dfcf}
+.v92ab-cards h3{margin:0 0 8px;font-size:20px}.v92ab-cards p{margin:0;color:#4f4a40;line-height:1.55}
+.v92ab-team{background:#faf8f3}
+.v92ab-cta{background:#f4f1ea;padding:36px 0}
+.v92ab-cta .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.v92ab-cta .v92eb2{margin-bottom:6px}
+.v92ab-ct{margin:0;font-size:17px;color:#123627}
+.v92ab-ct a{color:#123627;text-decoration:none;white-space:nowrap}.v92ab-ct a:hover{text-decoration:underline}
+.v92ab-ct .st5{color:#00b67a;letter-spacing:1px}
+.v92ab-btns{display:flex;align-items:center;gap:24px}
+@media (max-width:899px){
+  .v92ab-hd{padding:40px 0 36px}
+  .v92ab-two{grid-template-columns:1fr;gap:24px}
+  .v92ab-g3,.v92ab-cards{grid-template-columns:1fr;gap:18px}
+  .v92ab-btns{flex-wrap:wrap;gap:12px 20px}
+}
+@media (min-width:600px) and (max-width:899px){.v92ab-cards{grid-template-columns:1fr 1fr}}
+
+/* home: Who we are strip (replaces the quote column of the trust strip) */
+.v92who .v92who-s{margin:0 0 12px;font:400 26px/1.3 Optima,"Linux Biolinum",Georgia,serif;color:#123627}
+.v92who figure{margin:22px 0 0;padding-top:18px;border-top:1px solid #e3dccb}
+.v92who blockquote{font-size:18px!important;line-height:1.45!important}
+.v92who figcaption{margin-top:8px!important}
+@media (max-width:899px){.v92who .v92who-s{font-size:22px}}
+
+/* ---------- 2e. Bespoke A ---------- */
+.v92bs-hd{padding:48px 0 8px}
+.v92bs-hd h1{margin:0;font-size:clamp(32px,4vw,46px);line-height:1.1}
+.v92bs-in{margin:14px 0 0;max-width:40em;font-size:18px;line-height:1.55;color:#4f4a40}
+.v92bs-pj{padding:28px 0 8px}
+.v92bs-h2{margin:0 0 16px;font-size:clamp(26px,3vw,34px)}
+.v92bs-h3{margin:0 0 14px;font-size:26px}
+.v92bs-g4{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.v92bs-g4 img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.v92bs-how{padding:36px 0 72px}
+.v92bs-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.v92bs-steps{list-style:none;margin:0 0 14px;padding:0}
+.v92bs-steps li{padding:12px 0;border-bottom:1px solid #e6dfcf;line-height:1.5}
+.v92bs-steps b{color:#123627}
+.v92bs-alt{margin-top:18px;color:#4f4a40}
+.v92bs-form{background:#f4f1ea;padding:24px 24px 20px}
+.v92bs-form .paf{margin-bottom:14px}
+.v92bs-form label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#123627}
+.v92bs-form textarea,.v92bs-form input[type=text],.v92bs-form input[type=email]{width:100%;min-height:46px;padding:10px 12px;border:1px solid #b9b2a3;background:#fff;font:inherit;font-size:16px}
+.v92bs-form input[type=file]{font-size:14px;min-height:44px}
+.v92bs-form .err{display:block;color:#a3261b;font-size:14px;margin-top:4px}
+.v92bs-form .err:empty{display:none}
+.v92bs-form [aria-invalid=true]{border-color:#a3261b}
+.v92bs-ok:focus{outline:2px solid #123627;outline-offset:4px}
+@media (max-width:899px){
+  .v92bs-hd{padding:28px 0 4px}
+  .v92bs-g4{grid-template-columns:1fr 1fr;gap:10px}
+  .v92bs-two{grid-template-columns:1fr;gap:28px}
+  .v92bs-form{padding:20px 16px}
+}
+
+/* ---------- 2d. what's on display ---------- */
+.v92ond{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:12px 0 0;font-size:15px;color:#2b4a3c}
+.v92ond a{color:#123627;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(18,54,39,.4);min-height:24px;display:inline-flex;align-items:center}
+.v92ond a:hover{text-decoration-color:#123627}
+.v92dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3d8b5f;margin-right:6px}
+.v92sn{color:#6b6455}
+/* booking step 1, a model not on display: home visit first */
+.v92home{grid-column:1/-1;padding:20px 22px 22px;border:2px solid #123627;background:#fff;margin:0 0 6px;border-radius:2px}
+.v92home h4{margin:0 0 8px;font:400 24px/1.2 Optima,"Linux Biolinum",Georgia,serif;color:#123627}
+.v92home p{margin:0 0 14px;font-size:16px;line-height:1.5}
+.v92home .btn{min-height:48px}
+.pagrp .v92hn{grid-column:1/-1;margin:-2px 0 4px;font-size:14px;color:#5f5a4f}
+
+/* ---------- 2c. Quote me on this design ---------- */
+.v92q .v91cb b{color:#123627}
+.v92qok{margin:6px 0 10px;padding:10px 12px;background:#f4f1ea;border-left:3px solid #123627;font-size:15px}
+
+/* ---------- 2g. hubs: jump links under the hero (phones), Show all ---------- */
+.v92jump{display:none}
+@media (max-width:899px){
+  .v92jump{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;padding:0 20px;background:#fff;border-bottom:1px solid #e6dfcf;z-index:60;position:relative}
+  .v92jump::-webkit-scrollbar{display:none}
+  .v92jump a{flex:none;display:inline-flex;align-items:center;min-height:48px;font:600 15px/1 Montserrat,Arial,sans-serif;color:#123627;text-decoration:none;border-bottom:2px solid transparent}
+  .v92jump a[aria-current]{border-bottom-color:#123627}
+  .v92jump.v92fix{position:fixed;left:0;right:0;top:0;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:top .3s ease}
+  html body #models#models #mlist[data-v92more] .mgrp .grid>.card.v92cut{display:none!important}
+  .v92all{display:flex;margin:14px auto 0;min-height:48px}
+}
+.v92all{display:none}
+@media (max-width:899px){.v92all:not([hidden]){display:flex}}
+/* phones: the hero text sits on the green band below the video, so it needs light text (v9.1 had dark text there) */
+@media (max-width:899px){
+  html body .hero.hv2 .v91pos{color:rgba(247,245,242,.88)}
+  html body .hero.hv2 .v91eb{color:#e8d3a3}
+}

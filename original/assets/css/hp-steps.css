@@ -1,0 +1,41 @@
+/* v8.7.2: configurator step tabs as a gold stepper (option B, approved by Matthew 3 Oct 2026), on the Hampton and all model pages.
+   Numbered gold-hairline circles joined by a thin line; a tick when a step is done; the active step a filled green circle;
+   label and current choice underneath; a subtle chevron on hover. Every step stays a clickable tab (44px+ targets).
+   Phones keep the horizontal scroll with the edge fade and scroll cue. Plus "Next: … →" / "← Back" at the end of each step. */
+html.hpst .hpcfg .ccfg .btabs [role=tab]{position:relative;min-height:44px!important;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
+html.hpst .hpcfg .ccfg .btabs [role=tab]:focus-visible{outline:2px solid #123627!important;outline-offset:-2px;box-shadow:0 0 0 4px rgba(201,168,107,.55)!important}
+html.hpst .hpcfg .ccfg .btabs .tb-dn{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* ---------- B: gold stepper ---------- */
+html.hpst .hpcfg .ccfg .btabs{padding:12px 4px 10px!important;align-items:flex-start}
+html.hpst .hpcfg .ccfg .btabs [role=tab]{flex:1 0 auto;flex-direction:column;align-items:center!important;text-align:center;gap:6px!important;padding:2px 12px 6px!important;border:0!important;background:none!important;max-width:none;min-width:104px}
+/* the thin joining line, drawn from each circle to the next */
+html.hpst .hpcfg .ccfg .btabs [role=tab]:not(:last-child)::before{content:"";position:absolute;top:17px;left:calc(50% + 19px);width:calc(100% - 38px);height:1px;background:#c9a86b;opacity:.7}
+html.hpst .hpcfg .ccfg .btabs [role=tab] i{display:grid!important;place-items:center;width:30px!important;height:30px!important;flex:0 0 30px!important;margin:0!important;align-self:center!important;border:1px solid #c9a86b!important;border-radius:50%!important;background:#fffdf9!important;font:600 14px/1 Montserrat,Arial,sans-serif!important;color:#7d6230!important;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+html.hpst .hpcfg .ccfg .btabs [role=tab]>span{display:flex;flex-direction:column;align-items:center}
+html.hpst .hpcfg .ccfg .btabs [role=tab] b{font-size:15px!important;position:relative}
+html.hpst .hpcfg .ccfg .btabs [role=tab] .v{font-size:14px!important;color:#6b6455!important;max-width:150px}
+html.hpst .hpcfg .ccfg .btabs [role=tab]:hover i{border-color:#7d6230!important;background:#fff!important}
+html.hpst .hpcfg .ccfg .btabs [role=tab]:hover b::after{content:"›";position:absolute;right:-12px;top:-1px;color:#7d6230;font:400 15px/1.2 Montserrat,Arial,sans-serif}
+html.hpst .hpcfg .ccfg .btabs [data-done] i{font-size:0!important;background:#fbf3e2!important;border-color:#c9a86b!important}
+html.hpst .hpcfg .ccfg .btabs [data-done] i::before{content:"✓";font:700 13px/1 Montserrat,Arial,sans-serif;color:#7d6230}
+html.hpst .hpcfg .ccfg .btabs [aria-selected=true] i{background:#123627!important;border-color:#123627!important;color:#fbf8f1!important;box-shadow:0 0 0 3px #fbf8f1,0 0 0 4px #c9a86b}
+html.hpst .hpcfg .ccfg .btabs [aria-selected=true][data-done] i{font-size:14px!important}
+html.hpst .hpcfg .ccfg .btabs [aria-selected=true][data-done] i::before{content:none}
+html.hpst .hpcfg .ccfg .btabs [aria-selected=true]{border-bottom:0!important}
+html.hpst .hpcfg .ccfg .btabs [aria-selected=true] b{font-weight:600!important}
+html.hpst .hpcfg .ccfg .btabs .hpsum i{font-size:0!important;background:#c9a86b!important;border-color:#c9a86b!important}
+html.hpst .hpcfg .ccfg .btabs .hpsum i::before{content:"★";font:400 13px/1 Georgia,serif;color:#123627}
+html.hpst .hpcfg .ccfg .btabs .hpsum[aria-selected=true] i{background:#123627!important;border-color:#123627!important}
+html.hpst .hpcfg .ccfg .btabs .hpsum[aria-selected=true] i::before{content:"★";color:#e8d3a3}
+@media (max-width:999px){html.hpst .hpcfg .ccfg .btabs [role=tab]{min-width:96px;padding:2px 8px 4px!important}html.hpst .hpcfg .ccfg .btabs [role=tab] .v{max-width:120px}}
+
+/* Next / Back at the end of each step's options (in the panel flow on phones too: no extra sticky bar) */
+.hpcfg .hpnav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin:24px 0 4px;padding-top:16px;border-top:1px solid rgba(201,168,107,.45)}
+.hpcfg .hpnav .hpnext{order:2;margin-left:auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid #c9a86b;border-radius:22px;background:#fffdf9;color:#123627;font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;cursor:pointer;transition:background-color .2s ease,border-color .2s ease}
+.hpcfg .hpnav .hpnext:hover{background:#123627;border-color:#123627;color:#fbf8f1}
+.hpcfg .hpnav .hpback{order:1;display:inline-flex;align-items:center;min-height:44px;padding:0 2px;border:0;background:none;color:#5f5a4f;font:500 14px/1 Montserrat,Arial,sans-serif;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(201,168,107,.7);text-underline-offset:4px}
+.hpcfg .hpnav .hpback:hover{color:#123627}
+.hpcfg .hpnav button:focus-visible{outline:2px solid #123627;outline-offset:2px;box-shadow:0 0 0 4px rgba(201,168,107,.45)}
+.hpcfg .hpnav.hpnav-last{justify-content:flex-start;margin-top:16px}
+@media (max-width:599px){.hpcfg .hpnav .hpnext{flex:1 1 100%;justify-content:center;order:1}.hpcfg .hpnav .hpback{order:2}}
+@media (prefers-reduced-motion:reduce){html.hpst .hpcfg .ccfg .btabs [role=tab],html.hpst .btabs i,.hpcfg .hpnav .hpnext{transition:none!important}}

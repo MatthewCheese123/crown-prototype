@@ -1,0 +1,2 @@
+/* Garden Rooms comparison: carousel dots (mockup B2) */
+(function(){var c=document.querySelector("[data-b2cards]"),d=document.querySelectorAll("[data-b2dots] i");if(!c||!d.length)return;c.addEventListener("scroll",function(){var cs=c.querySelectorAll(".gc"),best=0,bd=1e9;cs.forEach(function(e,i){var x=Math.abs(e.getBoundingClientRect().left-c.getBoundingClientRect().left);if(x<bd){bd=x;best=i}});d.forEach(function(e,i){e.classList.toggle("on",i===best)})},{passive:true})})();

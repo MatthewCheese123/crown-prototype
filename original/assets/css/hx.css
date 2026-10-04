@@ -1,0 +1,51 @@
+/* v8.7.2: desktop header option A (Felix, approved by Matthew 3 Oct 2026). Ported from review/header-abc/hx.css (shared + A rules only).
+   Desktop (>=900px): logo left; Gazebos · Garden rooms · Show sites · Menu ⌄ grouped; 01491 612820 as cream text; one gold Book a visit button far right;
+   the active tab is cream, not gold. Below 900px the existing nav C header and menu are unchanged. Loaded after navc.css. */
+@media (min-width:900px){
+  /* shared */
+  .site-h.navc.hx .hrow{display:flex;align-items:center;gap:0;height:76px}
+  .site-h.navc.hx.cmp .hrow{height:64px}
+  .site-h.navc.hx .logo img{height:38px}
+  .site-h.navc.hx.cmp .logo img{height:32px}
+  .site-h.navc.hx .htabs{display:flex;gap:30px;padding:0;justify-content:flex-start}
+  .site-h.navc.hx .htab{font:500 15px/1 Montserrat,Arial,sans-serif;letter-spacing:.02em;color:#f3eee4;min-height:44px}
+  .site-h.navc.hx .htab:hover,.site-h.navc.hx .hmenu:hover{color:#fff;border-bottom-color:rgba(243,238,228,.6)}
+  .site-h.navc.hx .htab[aria-current="page"]{color:#fff;border-bottom-color:#f3eee4} /* active = cream underline, not gold */
+  .site-h.navc.hx .hact{display:flex;align-items:center;gap:22px;margin-left:auto;padding:0}
+  /* the ONE gold element: a solid button, dark-green text */
+  .site-h.navc.hx .hbook{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin:0;padding:0 22px;
+    background:var(--g);color:var(--fd);border:0;border-radius:2px;font:600 14px/1 Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;white-space:nowrap}
+  .site-h.navc.hx .hbook:hover{background:#d8bb83;color:var(--fd)}
+  /* phone as readable text, cream */
+  .site-h.navc.hx .htel{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#f3eee4;text-decoration:none;
+    font:500 15px/1 Montserrat,Arial,sans-serif;letter-spacing:.03em;white-space:nowrap}
+  .site-h.navc.hx .htel svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;opacity:.85}
+  .site-h.navc.hx .htel:hover{color:#fff;text-decoration:underline;text-underline-offset:5px}
+  /* Menu with a slim hamburger glyph */
+  .site-h.navc.hx .hmenu{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 2px;font:500 15px/1 Montserrat,Arial,sans-serif;color:#f3eee4}
+  .site-h.navc.hx .hmenu .hb{position:relative;width:20px;height:12px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+  .site-h.navc.hx .hmenu .hb::after{content:"";position:absolute;left:0;right:0;top:4px;border-top:1.5px solid currentColor}
+  .site-h.navc.hx .hphone{display:none}
+
+  /* ---- A: logo left, nav inline, right = phone text + gold button + Menu ---- */
+  .site-h.navc.hxA .htabs{margin-left:56px}
+  .site-h.navc.hxA .hact{display:contents}
+  .site-h.navc.hxA .logo{order:1}.site-h.navc.hxA .htabs{order:2}
+  .site-h.navc.hxA .hmenu{order:3;margin-left:30px;gap:8px;padding:0 2px}
+  .site-h.navc.hxA .htel{order:4;margin-left:auto}
+  .site-h.navc.hxA .hbook{order:5;margin-left:22px}
+  .site-h.navc.hxA .hmenu .car{display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.75}
+  .site-h.navc.hxA .hact .htel{padding-right:2px}
+
+}
+/* below 900px keep today's mobile header: hide the desktop-only additions */
+@media (max-width:899px){
+  .site-h.navc.hx .htel,.site-h.navc.hx .htab-sv,.site-h.navc.hxA .hmenu .car,.site-h.navc.hx .hmenu .hb{display:none}
+}
+@media (min-width:900px) and (max-width:1099px){
+  .site-h.navc.hxA .htabs{margin-left:32px;gap:22px}
+  .site-h.navc.hxA .htel span{display:none}
+  .site-h.navc.hx .hact{gap:16px}
+  .site-h.navc.hxA .hmenu{margin-left:22px}.site-h.navc.hxA .hbook{margin-left:16px}
+}
+

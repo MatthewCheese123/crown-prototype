@@ -1,0 +1,97 @@
+/* v8.2 (3 Oct 2026): UX audit batch (review/ux-audit/AUDIT.md). F1 tokens are in the source CSS; this file holds F7/F8 and the F2 finder line. */
+/* F7: keyboard-scrollable regions get a visible focus ring */
+.fstrip:focus-visible,.tscroll:focus-visible{outline:2px solid var(--f);outline-offset:3px}
+/* F8: stand-alone link targets at least 24px tall without moving text (WCAG 2.5.8) */
+a.lnk,a.lnk3d{padding-top:4px;padding-bottom:4px}
+.rcl.foot a.lnk,.cfoot a.lnk,.lgh a.lnk,.soonln a.lnk,.sl a.lnk{margin-top:-4px;margin-bottom:-4px}
+@media(min-width:1080px){details.fcol>summary{min-height:24px;align-items:center}}
+p.proof a{padding-top:2px;padding-bottom:2px}
+h3>a:only-child,h4>a:only-child,.sl b>a{padding-top:3px;padding-bottom:3px}
+/* F2: Insulated finder line on the gazebos hub, now confirmed models (no longer a dashed "coming soon" box) */
+.v4f .soonln[data-range=insulated]{display:grid;grid-template-columns:1fr;gap:2px;border:1px solid var(--ln);padding:14px 16px;color:#4a463d}
+.v4f .soonln[data-range=insulated] span b{font-family:inherit;font-size:inherit;font-weight:600;color:var(--f)}
+.v4f .soonln[data-range=insulated] span{margin-bottom:8px}
+.v4f .soonln[data-range=insulated] .lnk{margin-left:0;justify-self:start}
+/* F1: TBC markers on dark green */
+.dark .tbc,.panext .tbc,.visitb .tbc,[class*=dark] .note .tbc{color:#e3c98f;border-bottom-color:#e3c98f}
+.wg .w>a{padding-top:1px;padding-bottom:1px}
+.sl b>a{display:inline-block;padding-top:2px;padding-bottom:2px}
+.paf input[type=file]{min-height:24px;padding:2px 0}
+/* v8.3 Arthur #1/#2/#6: grouped booking list, display line, wrong-site warning, provisional thank-you */
+.pagrp .pagh{grid-column:1/-1;margin:14px 0 2px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#123627}
+.pagrp .pagh:first-child{margin-top:0}
+.pagrp .pagh span{text-transform:none;letter-spacing:0;font-weight:400;color:#6b6455}
+.paopt .pashow{display:block;font-size:14px;color:#123627;margin-top:2px}
+.pawarn{margin:12px 0 0;padding:10px 14px;border-left:4px solid #b5541c;background:#fbf1e8;color:#3a2a1c;font-size:15px;line-height:1.45}
+.tyno{display:block;margin-top:8px;padding:8px 12px;border-left:4px solid #b5541c;background:#fbf1e8;font-size:15px}
+.tyconf{margin:0 0 12px;font-weight:600}
+.sld{font-weight:400;color:#3d3a33}
+/* v8.3 H5: model cards = Book a visit (primary text link) + Request a brochure (quiet) */
+.mcta{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;margin-top:auto;padding-top:12px}
+.mcta .lnk2{font-size:15px;color:#3d3a33;text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center}
+.card[id^="model-"]:target{outline:2px solid #c6a15b;outline-offset:3px}
+.mgrp .card .cfoot{flex-wrap:wrap!important;row-gap:6px}
+.mgrp .card .cfoot>.lnk{white-space:normal;min-width:0}
+.sovnext{margin-top:10px;font-size:15px}.sovnext a{display:inline-block;min-height:44px;line-height:44px}
+.kv dd a,.pasite dd a{display:inline-block;min-height:24px;line-height:24px}
+.sld a{display:inline-block;min-height:24px;line-height:24px}
+@media (max-width:420px){.hp-stk .sb .btn.mob{padding-left:12px;padding-right:12px}}
+.sdnext{margin:14px 0 6px}
+button.sdagain{background:none;border:0;padding:0;font:inherit;font-size:15px;color:#3d3a33;text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:44px}
+.bsph{margin:22px 0 0;max-width:880px}.bsph img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;display:block}
+/* v8.2 (a11y): utility-bar link stands alone since EN·FR went; On-display link on site pages */
+.util .wrap>span>a,.sdl dd>a{display:inline-block;min-height:24px;line-height:24px}
+
+/* v8.3 desktop header (1080px+): utility bar folded away; "Find a show site" sits by the phone, the trust line
+   moves into the slim prototype strip; slimmer rows (header ~120px). From 1180px the header becomes a single
+   64px row once you scroll (site.js adds .cmp). */
+.proto .ptrust{display:none}
+.hside .hfind{display:none}
+@media (min-width:1080px){
+ .util{display:none!important}
+ .proto{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 24px;padding:3px 24px;font-size:14px;line-height:15px}
+ .proto .pnt,.proto .ptrust{white-space:nowrap}
+ .proto .ptrust{display:inline}
+ .proto .ustar{color:#a77a1f;margin-right:4px;letter-spacing:.05em}
+ .hrow{height:62px}
+ .logo img{height:40px}
+ .hside{display:flex;align-items:center;gap:18px;width:auto;min-width:260px}
+ .hside .hfind{display:inline-flex;align-items:center;min-height:44px;color:#d8d0bd;font-size:14px;text-underline-offset:4px}
+ .hside .hfind:hover{color:#fff}
+ .nav>li>a,.nav>li>button{padding:10px 18px}
+}
+@media (min-width:1180px){
+ .site-h.cmp>.wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:20px;height:64px;position:relative}
+ .site-h.cmp .hrow{display:contents}
+ .site-h.cmp .hside{display:none}
+ .site-h.cmp .logo{grid-column:1;grid-row:1}
+ .site-h.cmp .logo img{height:34px}
+ .site-h.cmp .hact{grid-column:3;grid-row:1}
+ .site-h.cmp .wrap>nav{grid-column:2;grid-row:1;min-width:0}
+ .site-h.cmp .nav{border-top:0;position:static;gap:0}
+ .site-h.cmp .nav>li>a,.site-h.cmp .nav>li>button{padding:21px 11px 19px;font-size:14px;white-space:nowrap}
+}
+
+/* v8.4: gold (#C9A86B) text fails AA on white and over photos: green text with gold underline on light, cream on photos */
+.pac .go{color:#F7F5F2;text-decoration:underline;text-decoration-color:rgba(201,168,107,.9);text-underline-offset:5px}
+.card.rc .rcl .lnk,.card .lnk.pick{color:#123627;text-decoration:underline;text-decoration-color:#c9a86b;text-decoration-thickness:1.5px;text-underline-offset:4px}
+/* v8.4: bottom bar gains "Menu" (switch area from mid-page) */
+.mbar:has(.mmenu){grid-template-columns:48px 1fr 1fr 1.25fr!important;gap:6px!important}
+.mbar .mmenu{font:inherit;cursor:pointer;gap:6px}
+.mbar .mmenu span{font-size:15px;line-height:1}
+
+/* v8.4 scroll cues (scrollcue.js): soft edge fade + chevron where a row has more content */
+.scq-row.scq-mr{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent)}
+.scq-row.scq-ml{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 36px),transparent)}
+.scq-row.scq-ml.scq-mr{-webkit-mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent)}
+.scq{position:fixed;z-index:95;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;color:#123627}
+.scq[hidden]{display:none}
+.scq::before{content:"";position:absolute;left:6px;top:6px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.96);box-shadow:0 1px 6px rgba(0,0,0,.18);border:1px solid #e0d7c4}
+.scq svg{position:relative;width:16px;height:16px;margin:14px}
+.scq:hover::before{border-color:#c9a86b}
+@media (prefers-reduced-motion:no-preference){.scq{transition:opacity .2s}}
+/* sticky rows (configurator step tabs when stuck) stay opaque: no mask, the chevron carries a soft solid fade instead */
+.scq-row.scq-solid{-webkit-mask-image:none!important;mask-image:none!important}
+.scq.scq-bg::after{content:"";position:absolute;top:0;bottom:0;width:40px;z-index:-1;pointer-events:none}
+.scq-r.scq-bg::after{right:30px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95))}
+.scq-l.scq-bg::after{left:30px;background:linear-gradient(270deg,rgba(255,255,255,0),rgba(255,255,255,.95))}

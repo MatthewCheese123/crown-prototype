@@ -1,0 +1,55 @@
+/* proto-awesomeo v7: Premium specification as standard on the Signature pages (Professional removed) */
+.pkone{display:grid;gap:10px}
+.pkone .pkcard{cursor:default;border-color:var(--f);box-shadow:inset 0 0 0 2px var(--f);background:#fbfaf6}
+.pkone .pkcard:hover{border-color:var(--f)}
+.pkstd{font-family:Montserrat,Arial,sans-serif;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--gd);margin-left:6px;vertical-align:3px}
+.pktail{font-size:14px;color:#555;line-height:1.5;margin:0}
+.pktail b{color:var(--f)}
+.pkfrom{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pkfrom span{font-size:14px;color:#555}
+.pkfrom b{font-family:Optima,Georgia,serif;font-weight:500;font-size:30px;color:var(--f)}
+.pspec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin:22px 0 0;background:#fff;border:1px solid var(--ln);padding:6px 22px}
+.pspec .r{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid #efe9dc}
+.pspec dt{font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--gd);padding-top:2px}
+.pspec dd{margin:0;font-size:14.5px;line-height:1.5;color:var(--tx)}
+.pspec dd b{color:var(--f);font-weight:600}
+.pspec dd small{display:block;color:#666;font-size:14px;margin-top:2px}
+.pspec-f{font-size:14px;color:#555;margin:12px 0 0}
+@media (max-width:760px){.pspec{grid-template-columns:1fr;padding:4px 14px}.pspec .r{grid-template-columns:1fr;gap:2px;padding:10px 0}.pkfrom b{font-size:26px}}
+/* v7: Hampton model page links from the range cards */
+.card>.mlink{display:block}
+.card>.mlink img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.v4f .g6 .card>.mlink img{aspect-ratio:3/2}
+.card h4 a{color:inherit;text-decoration:none}
+.card h4 a:hover{text-decoration:underline;text-decoration-color:var(--g)}
+.hpl2{display:flex;flex-wrap:wrap;gap:4px 14px}
+/* v7: Gazebo and Garden Room hover menus share one image height, so both panels are the same size */
+@media (min-width:1080px){
+ .mega.mega-gr .ribl img{aspect-ratio:auto;height:clamp(150px,12.6vw,196px)}
+ .mega.mega-gr .ribl .rd{min-height:2.8em}
+}
+
+/* iter mega-01: shared 5-tile grid, shallower panels (identical for Gazebos & Garden Rooms) */
+.mega.mega-gr{padding:24px 0 20px}
+.rib2.rib5,.rib2.rib-gz.rib5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:28px}
+.rib5 .rgrp:first-child{grid-column:1 / span 3}
+.rib5 .rgrp:nth-child(2){grid-column:4 / span 2}
+.rib5 .rgrp .ribl{grid-auto-flow:row;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:28px}
+.rib5 .rgrp:nth-child(2) .ribl{--n:2}
+.rib5 .ribs{height:20px;margin-bottom:14px}
+.mega.mega-gr .rib5 .ribl img{height:auto;aspect-ratio:16/9;object-position:center 60%;filter:brightness(1.02) saturate(.96)}
+.rib5 .ribl .rn{margin-top:10px;font-size:18px}
+.rib5 .ribl .rd{margin-top:4px;font-size:14px;min-height:2.8em}
+.rib5 .ribl .rp{padding-top:4px}
+.rib5 .ribf{margin-top:16px;padding-top:16px}
+.rib5 .ribl .rsi{font-size:14px;padding:2px 6px}
+
+/* iter 3d-link */
+.lnk3d{display:inline-flex;align-items:center;min-height:32px;margin-top:4px;font-size:14px;font-weight:600;color:var(--f);text-decoration:underline;text-decoration-color:var(--g);text-underline-offset:4px}
+.lnk3d:hover{text-decoration-thickness:2px}
+.lnk3d:focus-visible{outline:2px solid var(--f);outline-offset:3px}
+/* iter-19: keep the 3D link on one line with its arrow (it wrapped at 390) */
+.lnk3d{display:inline;line-height:1.5;min-height:0}
+.lnk3d span{white-space:nowrap}
+@media (max-width:519px){.lnk3d{display:inline-block;padding:6px 0;line-height:1.35}}
+@media (max-width:519px){.stg .stagebar:has(.lnk3d){flex-wrap:wrap;row-gap:10px}.stg .stagebar:has(.lnk3d)>div:first-child{flex:1 1 100%;overflow:visible}.stg .stagebar:has(.lnk3d)>.vtabs{flex:1 1 100%;margin-left:0}.stg .stagebar:has(.lnk3d)>.vtabs>*{flex:1}.lnk3d{padding:4px 0}}

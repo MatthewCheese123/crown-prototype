@@ -1,0 +1,176 @@
+/* v8.5: Hampton page only (loaded by gazebos/hampton/index.html). Selectors are scoped to #hero, .hpcfg and html.hpv85-*. */
+.hpcfg .hpplanw.hps-root{display:block;padding:8px 6px 10px;background:var(--rf-cr,#fbf8f1)!important}
+.hpcfg .hpplanw[hidden]{display:none!important}
+.hpcfg .hpplanw.hps-root .hps-card{background:transparent;padding:0}
+.hpcfg #bp2{padding-top:4px}
+.hpcfg #bp2 .hps-leg{margin-top:4px}
+@media (min-width:1000px){.hpcfg .hpplanw.hps-root{display:flex;flex-direction:column;justify-content:center}.hpcfg .hpplanw.hps-root .hps-planw{width:100%;max-width:640px;margin:0 auto}}
+/* Plan | 3D toggle */
+.hpcfg .hpplanw.hps-root{position:relative;padding-top:52px}
+.hpcfg .hpv85-vt{position:absolute;top:6px;left:6px;z-index:4;display:inline-grid;grid-template-columns:1fr 1fr;padding:0;border:.5px solid rgba(18,54,39,.35);border-radius:22px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hpcfg .hpv85-vt button{min-width:56px;min-height:44px;padding:0 14px;border:0;border-radius:22px;background:transparent;color:#123627;font:600 14px Montserrat,Arial,sans-serif;letter-spacing:0;text-transform:none;cursor:pointer;transition:background-color 200ms ease,color 200ms ease,box-shadow 200ms ease}
+.hpcfg .hpv85-vt button[aria-checked=true]{background:#123627;color:#fff;box-shadow:inset 0 0 0 1px #123627,0 0 0 .5px #c9a86b}
+.hpcfg .hpv85-vt button:focus-visible{outline:2px solid #c9a86b;outline-offset:1px}
+.hpcfg .hpv85-3d,.hpcfg .hpv85-cap{display:none}
+.hpcfg .hpplanw[data-v85view="3d"] .hps-planw,.hpcfg .hpplanw[data-v85view="3d"] .hps-size{display:none}
+.hpcfg .hpplanw[data-v85view="3d"] .hpv85-3d{display:block;animation:hpv85in 200ms ease}
+.hpcfg .hpplanw[data-v85view="3d"] .hpv85-cap{display:block;margin:6px 0 0;text-align:center;font-size:14px;color:#8a8270}
+.hpcfg .hpplanw[data-v85view="plan"] .hps-planw{animation:hpv85in 200ms ease}
+@keyframes hpv85in{from{opacity:0}to{opacity:1}}
+.hpcfg .hpv85-3d .rf3d{margin:0!important;border:0!important;background:none!important;padding:0!important}
+.hpcfg .hpv85-3d .rf3d>summary{display:none!important}
+.hpcfg .hpv85-3d .rf3dbody{display:block!important;padding:0!important;margin:0!important}
+.hpcfg .hpv85-3d .rf3dw{width:100%;max-width:640px;margin:0 auto}
+.hpcfg .hpv85-3d .rf3dw svg{width:100%;height:auto;display:block}
+.hpcfg .hpv85-3d .rf3dt{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hpcfg .hpv85-3d .rf3dn{display:none!important}
+.hpcfg .hpv85-ld{display:flex;align-items:center;justify-content:center;gap:10px;min-height:220px;font-size:14px;color:#8a8270}
+.hpcfg .hpv85-ld i{width:18px;height:18px;border-radius:50%;border:1.2px solid rgba(201,168,107,.35);border-top-color:#c9a86b;animation:hpv85spin .9s linear infinite}
+@keyframes hpv85spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hpcfg .hpv85-vt button{transition:none}.hpcfg .hpplanw .hpv85-3d,.hpcfg .hpplanw .hps-planw,.hpcfg .hpv85-ld i{animation:none!important}}
+/* Summary tab ("Your Hampton") */
+.hpcfg #bp7 .hplines li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;padding:12px 0;line-height:1.5}
+.hpcfg #bp7 .hplines small{line-height:1.5;margin-top:2px}
+.hpcfg #bp7 .hplines .lp{text-align:right;white-space:nowrap;line-height:1.5}
+.hpcfg #bp7 .hplines li:last-child{border-bottom:0}
+.hpcfg #bp7 .hptot{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:12px 0 24px!important;padding:24px 0;border-top:1px solid #e6dfcf;border-bottom:1px solid #e6dfcf}
+.hpcfg #bp7 .hplead{margin:0 0 16px;line-height:1.5;font-size:14px}
+.hpcfg #bp7 .hpsee2{margin:0 0 24px;display:flex;flex-wrap:wrap;align-items:center;column-gap:2px;line-height:1.5;font-size:14px}
+.hpcfg #bp7 .hpsee2 a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+.hpcfg #bp7 .hpcta{display:flex!important;gap:12px;margin:0}
+@media (max-width:999px){
+ html.hpv85-sum .hpcfg .bfoot{display:none!important}
+ html.hpv85-sum .hpcfg .bsend{display:none!important}
+ html.hpv85-incfg:not(.hpv85-sum) .hp-stk{transform:translateY(110%)!important;visibility:hidden!important}
+ html.hpv85-rise:not(.hpv85-sum) .hp-stk{transform:translateY(var(--hpv85-rise,0px))!important;transition:none!important}
+ .hpcfg #bp7 .hpcta{flex-direction:column}
+ .hpcfg #bp7 .hpcta .btn{width:100%;min-height:48px;justify-content:center}
+ .hpcfg #bp7 .hpcta .ghl{background:transparent}
+ .hpcfg #bp7{padding-bottom:32px}
+ .hpcfg .ie1{margin-top:32px!important}
+ /* hero price block: 16/24 rhythm */
+ #hero .info .story{margin:16px 0 0}
+ #hero .prc{margin-top:8px!important;padding-top:0!important;border-top:0!important;row-gap:4px!important}
+ #hero .prc .pctx{font-size:14px!important;line-height:1.5}
+ #hero .prc .pfn{flex-basis:100%;font-size:14px;line-height:1.5;color:#6b6455}
+ #hero .info{min-width:0;max-width:100%}
+ #hero .rftrust{max-width:100%;margin:16px 0 0!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px!important;letter-spacing:-.01em}
+ #hero .rftrust .gst{letter-spacing:0;font-size:14px}
+ #hero .rfcta{margin-top:24px!important}
+ #hero .stc{margin-top:24px!important}
+ #hero .stc,#hero .stc>summary{max-width:100%;min-width:0}
+ #hero .stc>summary{flex-wrap:nowrap!important;overflow:hidden;align-items:center!important;gap:8px!important;padding-right:20px!important;white-space:nowrap;min-height:44px}
+ #hero .stc>summary b{font-size:14px!important}
+ #hero .stc>summary span{overflow:hidden;text-overflow:ellipsis;font-size:14px!important;letter-spacing:-.005em}
+ #hero .stc>summary span .pl{display:none}
+ #hero .stc>summary:after{top:50%!important;transform:translateY(-50%);right:0!important}
+ #hero .rfsee{margin:24px 0 0!important;line-height:1.5}
+}
+@media (min-width:1000px){#hero .prc .pfn{flex-basis:100%;font-size:14px;color:#6b6455}}
+@media (max-width:999px){
+ .hpcfg .hpstage:has(>.hpplanw:not([hidden])){aspect-ratio:auto}
+ .hpcfg .hpstage>.hpplanw.hps-root{position:relative;inset:auto}
+}
+/* v8.5.1: top of page. Breadcrumb merged into the eyebrow; price under the h1; tighter gallery; "More Classic gazebos" row before the footer */
+#hero .hpcrumb a{color:inherit;text-decoration:none;display:inline-block;padding:14px 0;margin:-14px 0;border-bottom:0}
+#hero .hpcrumb a:hover{color:var(--f)}
+#hero .hpcrumb a:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+@media (min-width:1000px){#hero .prc{margin-top:14px}#hero .story{margin-top:18px}}
+@media (max-width:999px){
+ #hero>.wrap{padding-top:12px!important;row-gap:0!important}
+ #hero .gmain img{aspect-ratio:4/3!important;height:auto!important;object-fit:cover}
+ #hero .thumbs{margin-top:8px!important;gap:6px!important}
+ #hero .thumbs button{height:48px!important;flex:0 0 64px!important;width:64px!important}
+ #hero .thumbs img{height:48px!important;width:64px!important;object-fit:cover}
+ #hero .info{padding-top:0!important;margin-top:14px!important}
+ #hero .hpcrumb{margin:0!important;line-height:1.3}
+ #hero h1{margin:2px 0 0!important;line-height:1.05}
+ #hero .prc b{font-size:34px!important}
+}
+.hpmore .hpmc{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.hpmore .hpmc a{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--ln);height:100%;transition:border-color .2s}
+.hpmore .hpmc a:hover{border-color:var(--g)}
+.hpmore .hpmc a:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.hpmore .hpmc img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:cover}
+.hpmore .mcn{display:block;padding:12px 14px 0;font-family:Optima,Georgia,serif;font-size:18px;color:var(--f);line-height:1.25}
+.hpmore .mcf{display:block;padding:2px 14px 0;font-size:14px;color:var(--mu)}
+.hpmore .mcp{display:block;padding:6px 14px 14px;font-size:14px;color:var(--mu)}
+.hpmore .mcp b{font-family:Optima,Georgia,serif;font-weight:400;font-size:18px;color:var(--f);margin-left:2px}
+@media (max-width:999px){.hpmore .hpmc{grid-template-columns:1fr 1fr;gap:12px}.hpmore .mcn{font-size:16px;padding:10px 12px 0}.hpmore .mcf{padding:2px 12px 0;font-size:14px}.hpmore .mcp{padding:4px 12px 12px}}
+
+/* v8.5.3: compact Why Crown on Hampton only (facts from review/why-crown/SOURCES.md) */
+.hpwhy{padding:40px 0 36px!important;background:var(--al,#f7f4ec)}
+.hpwhy .hpwhy-hd{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px;margin:0 0 18px}
+.hpwhy .hpwhy-hd h2{margin:6px 0 0;font-size:clamp(24px,3.2vw,32px);line-height:1.15}
+.hpwhy .hpwhy-hd .lnk{font-size:14px;white-space:nowrap}
+.hpwhy-g{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--pl,#e6dfcf);border-left:1px solid var(--pl,#e6dfcf)}
+.hpwhy-g li{padding:14px 12px 16px;border-right:1px solid var(--pl,#e6dfcf);border-bottom:1px solid var(--pl,#e6dfcf);background:#fff;display:flex;flex-direction:column;gap:4px;min-width:0}
+.hpwhy-i{color:var(--gd,#7d6230);display:block;line-height:0;margin-bottom:2px}
+.hpwhy-g b{font-family:Montserrat,Arial,sans-serif;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--gd,#7d6230);line-height:1.35}
+.hpwhy-g span:not(.hpwhy-i){font-size:14px;color:var(--mu,#6b6455);line-height:1.45}
+.hpwhy-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin:18px 0 0;padding:0;font-size:14px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--f,#1a1814)}
+.hpwhy-strip span{padding:0 12px;border-left:1px solid var(--g,#c9a86b)}
+.hpwhy-strip span:first-child{border-left:0}
+@media (min-width:900px){
+ .hpwhy{padding:48px 0 40px!important}
+ .hpwhy-g{grid-template-columns:repeat(3,1fr)}
+ .hpwhy-g li{padding:18px 18px 20px}
+ .hpwhy-g b{font-size:14px}
+ .hpwhy-g span:not(.hpwhy-i){font-size:14px}
+}
+@media (max-width:599px){
+ .hpwhy{padding:32px 0 28px!important}
+ .hpwhy .hpwhy-hd{margin-bottom:12px}
+ .hpwhy .hpwhy-hd h2{font-size:22px}
+ .hpwhy-g li{padding:12px 10px 14px}
+ .hpwhy-g b{font-size:14px;letter-spacing:.06em}
+ .hpwhy-g span:not(.hpwhy-i){font-size:14px}
+ .hpwhy-strip{font-size:14px;letter-spacing:.06em;gap:4px 0}
+ .hpwhy-strip span{padding:0 8px}
+}
+/* v8.7.2 (desktop only, >=1000px): the Plan | 3D views share one stage. The drawing frame (.hpplanw) fills the whole stage
+   (no beige box under it), the plan stays in the flow but invisible while 3D shows (so the stage keeps the plan's height
+   and nothing below jumps), and the 3D drawing is laid over the same area, scaled up to the plan's width and centred.
+   Phones (<1000px) are unchanged. */
+@media (min-width:1000px){
+ .hpcfg .hpstage:has(>.hpplanw.hps-root:not([hidden])){display:flex;flex-direction:column}
+ .hpcfg .hpstage>.hpplanw.hps-root{flex:1 0 auto}
+ .hpcfg .hpplanw.hps-root[data-v85view="3d"] .hps-planw,.hpcfg .hpplanw.hps-root[data-v85view="3d"] .hps-size{display:block;visibility:hidden;animation:none}
+ .hpcfg .hpplanw.hps-root[data-v85view="3d"] .hpv85-3d{position:absolute;inset:52px 16px 36px;display:flex;align-items:center;justify-content:center}
+ .hpcfg .hpv85-3d .rf3d,.hpcfg .hpv85-3d .rf3dbody{width:100%;height:100%}
+ .hpcfg .hpv85-3d .rf3dbody{display:flex!important;align-items:center;justify-content:center}
+ .hpcfg .hpv85-3d .rf3dw{height:100%;max-width:640px}
+ .hpcfg .hpv85-3d .rf3dw svg.rf3dsvg{width:100%;height:100%;max-height:none}
+ .hpcfg .hpv85-3d .hpv85-ld{min-height:0;height:100%;width:100%}
+ .hpcfg .hpplanw.hps-root[data-v85view="3d"] .hpv85-cap{position:absolute;left:0;right:0;bottom:10px;margin:0}
+}
+/* v8.7.2: extras and foundation without thumbnails; a quiet "See photo" link (44px target) opens the full photo */
+.hpcfg .hprow{grid-template-columns:1fr!important}
+.hpcfg .hprow>img{display:none!important}
+.hpcfg .hpfdc{position:relative}
+.hpcfg .hpfd .hpfdc>.hpo{width:100%;grid-template-columns:1fr!important}
+.hpcfg .hpfd .hpfdc>.hpo img{display:none!important}
+.hpcfg .hpfd .hpfdc:has(>.hpsee)>.hpo{padding-right:104px!important}
+.hpcfg .hpsee{display:inline-flex;align-items:center;min-height:44px;padding:0;margin:0 0 2px;border:0;background:none;cursor:pointer;
+ font:500 14px/1 Montserrat,Arial,sans-serif;letter-spacing:.04em;color:#123627;text-decoration:underline;text-decoration-color:rgba(201,168,107,.75);text-decoration-thickness:1px;text-underline-offset:4px}
+.hpcfg .hpsee:hover{color:#0b2a1d;text-decoration-color:#a8843f}
+.hpcfg .hpsee:focus-visible{outline:2px solid #c9a86b;outline-offset:2px;border-radius:2px}
+.hpcfg .hprow .hpsee{margin:-4px 0 4px}
+.hpcfg .hpfdc>.hpsee{position:absolute;top:50%;right:16px;transform:translateY(-50%);z-index:1;padding:0 2px}
+.hpcfg .hpfdc>.hpo[aria-checked=true]~.hpsee{right:18px}
+html.hpph-open{overflow:hidden}
+.hpph{padding:0;border:0;background:transparent;max-width:min(1100px,94vw);max-height:92vh;overflow:visible}
+.hpph::backdrop{background:rgba(12,22,17,.82)}
+.hpph-i{position:relative;background:#fbf8f1;padding:12px;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.hpph figure{margin:0}
+.hpph img{display:block;max-width:100%;max-height:calc(92vh - 90px);width:auto;height:auto;margin:0 auto;border-radius:2px}
+.hpph figcaption{padding:10px 48px 2px 2px;font:400 14px/1.5 Montserrat,Arial,sans-serif;color:#4a463c}
+.hpph-x{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,168,107,.8);background:#123627;color:#fff;font-size:16px;cursor:pointer}
+.hpph-x:focus-visible{outline:2px solid #c9a86b;outline-offset:2px}
+@media (max-width:599px){.hpph-x{top:6px;right:6px}.hpph figcaption{padding-right:4px}}
+/* v8.7.3: the v8.7.2 stacked desktop column (photo above Plan | 3D on every step) is removed; one step's visual at a time again, as v8.7.1. */
+
+/* v8.7.3 (desktop): the step's visual takes its own height (no stretched beige block on long steps such as the summary)
+   and stays in view beside a long options panel. */
+@media (min-width:1000px){.hpcfg .ccfg>.stg{align-self:start;position:sticky;top:calc(var(--hdrvis,0px) + 12px);transition:top .3s ease}}
+@media (min-width:1000px) and (prefers-reduced-motion:reduce){.hpcfg .ccfg>.stg{transition:none}}
