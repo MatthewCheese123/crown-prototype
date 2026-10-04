@@ -52,3 +52,26 @@ html body .v952proof.v9trust:not(#z1) a:hover{text-decoration:underline;text-und
 }
 @media (max-width:370px){html body main .v952hero h1:not(#z1):not(#z2):not(#z3):not(#z4){font-size:33px!important}html body main .v952hero h2.v952q:not(#z1):not(#z2):not(#z3):not(#z4){margin-top:120px!important}}
 @media (max-width:700px){html body .v952proof.v9trust:not(#z1) li{display:block}}
+/* v9.5.3 / v9.5.4: hubs C (gazebos, garden rooms) share the homepage C first screen */
+.v952more{display:flex;flex-wrap:wrap;gap:4px 24px;margin:14px 0 0}
+.v952more a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font:600 15px/1.2 Montserrat,Arial,sans-serif;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.5)}
+.v952more a:hover{text-decoration-color:#fff}
+.v952more a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.v953hub .v952in{min-height:min(72vh,700px)}
+.v952tiles.v953t5{grid-template-columns:repeat(5,minmax(0,1fr));max-width:none}
+.v953hub .v952tiles b{font-size:19px}
+@media (max-width:1100px){.v952tiles.v953t5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){
+ .v952tiles.v953t5{grid-template-columns:1fr}
+ .v953hub .v952in{min-height:0}
+ html body main .v953hub h2.v952q:not(#z1):not(#z2):not(#z3):not(#z4){margin-top:96px!important}
+ .v953hub .v952tiles a{min-height:60px}
+ .v953hub .v952tiles img{width:84px;height:52px}
+ .v952more{margin-top:6px}
+ .v952more a{font-size:14px}
+}
+body[data-cz=grhub] .v952bg img{object-position:70% 70%}
+body[data-cz=gzhub] .v952bg img{object-position:60% 55%}
+@media (max-width:700px){
+ .v953hub::before{background:linear-gradient(180deg,rgba(9,28,19,.84) 0%,rgba(9,28,19,.62) 9%,rgba(9,28,19,.4) 13%,rgba(9,28,19,.82) 19%,rgba(9,28,19,.9) 100%)}
+}
