@@ -1,0 +1,41 @@
+/* v9.5.7 gazebo catalogue A (Leo): compact finder, tick-row compare, slim strip. /gazebos/ only */
+html body[data-cz=gzhub] .v94tel,html body[data-cz=gzhub] #models#models#models .kick,html body[data-cz=gzhub] #compare-models .kick{display:none!important}
+html body[data-cz=gzhub] #models#models#models .grid.g6{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:16px!important}
+@media(max-width:1099px){html body[data-cz=gzhub] #models#models#models .grid.g6{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:759px){html body[data-cz=gzhub] #models#models#models .grid.g6{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}}
+html body[data-cz=gzhub] #models#models#models .card{border-radius:0!important;box-shadow:none!important;background:#fff!important;border:1px solid var(--ln)!important;display:flex!important;flex-direction:column!important;min-width:0}
+html body[data-cz=gzhub] #models#models#models .card:has(input[data-cmp]:checked){border-color:var(--f)!important;outline:1px solid var(--f);outline-offset:-2px}
+html body[data-cz=gzhub] #models#models#models .card .mlink{display:block;aspect-ratio:4/3;overflow:hidden}
+html body[data-cz=gzhub] #models#models#models .card .mlink img{width:100%!important;height:100%!important;object-fit:cover;aspect-ratio:auto!important;border-radius:0!important}
+html body[data-cz=gzhub] #models#models#models .card .tx{display:flex!important;flex-direction:column!important;align-items:flex-start;gap:0!important;padding:8px 12px 6px!important;flex:1}
+html body[data-cz=gzhub] #models#models#models .card .tag2,html body[data-cz=gzhub] #models#models#models .card .v9bk{display:none!important}
+html body[data-cz=gzhub] #models#models#models .card h3.v91cn{order:1!important;font-size:20px!important;line-height:1.25!important;margin:0 0 2px!important}
+html body[data-cz=gzhub] #models#models#models .card h3.v91cn a{color:var(--f)!important;min-height:0!important}
+html body[data-cz=gzhub] #models#models#models .card ul.v91fc{order:2!important;display:flex!important;flex-wrap:wrap;gap:0!important;margin:0 0 2px!important;padding:0!important;list-style:none}
+html body[data-cz=gzhub] #models#models#models .card ul.v91fc li{all:unset;font-size:14px;line-height:1.45;color:#5e6660}
+html body[data-cz=gzhub] #models#models#models .card ul.v91fc li+li::before{content:" · ";white-space:pre}
+html body[data-cz=gzhub] #models#models#models .card .fp{order:3!important;font-size:16px!important;font-weight:600!important;color:var(--f)!important;margin:0!important}
+html body[data-cz=gzhub] #models#models#models .card .fp .cz-fr{display:inline!important;font-weight:600}
+html body[data-cz=gzhub] #models#models#models .card .v9b,html body[data-cz=gzhub] #models#models#models .card .v9r{display:contents!important}
+html body[data-cz=gzhub] #models#models#models .card .cmpk{order:4!important;align-self:flex-start!important;justify-content:flex-start!important;width:auto!important;display:inline-flex!important;align-items:center;gap:8px;min-height:44px!important;margin:0!important;padding:0!important;font-size:14px!important;font-weight:400!important;color:#5e6660!important;cursor:pointer;background:none!important;border:0!important;position:relative}
+html body[data-cz=gzhub] #models#models#models .card .cmpk input{position:absolute!important;opacity:0;width:44px;height:44px;left:-12px;margin:0;cursor:pointer}
+html body[data-cz=gzhub] #models#models#models .card .cmpk::before{content:"";width:18px;height:18px;box-sizing:border-box;border:1.5px solid #8a918c;background:#fff;flex:none}
+html body[data-cz=gzhub] #models#models#models .card .cmpk:has(input:focus-visible)::before{outline:2px solid var(--f);outline-offset:2px}
+html body[data-cz=gzhub] #models#models#models .card .cmpk:has(input:checked){color:var(--f)!important;font-weight:600!important}
+html body[data-cz=gzhub] #models#models#models .card .cmpk:has(input:checked)::before{content:"✓";font-size:13px;line-height:15px;text-align:center;color:#fff;background:var(--f);border-color:var(--f)}
+html body[data-cz=gzhub] #models#models#models .card .cmpk:has(input:checked) .cmpw{display:none}
+html body[data-cz=gzhub] #models#models#models .card .cmpk:has(input:checked)::after{content:"Comparing"}
+html body[data-cz=gzhub] #models#models#models .card .cmpk.off{opacity:.5}
+html body[data-cz=gzhub] #models#models#models .card a.v9dp:not(#z1):not(#z2):not(#z3){order:5!important;align-self:flex-start!important;display:inline-flex!important;align-items:center!important;min-height:44px!important;height:auto!important;width:auto!important;padding:0!important;margin:0!important;border:0!important;background:none!important;box-shadow:none!important;font-size:14px!important;font-weight:600!important;color:var(--f)!important;text-decoration:none!important;justify-content:flex-start!important}
+html body[data-cz=gzhub] #models#models#models .card a.v9dp:not(#z1):not(#z2):not(#z3)::after{content:" →";white-space:pre}
+html body[data-cz=gzhub] #models#models#models .card a.v9dp:hover,html body[data-cz=gzhub] #models#models#models .card a.v9dp:focus-visible{text-decoration:underline;outline:none}
+/* slim compare strip */
+html body[data-cz=gzhub] .cmptray{position:sticky!important;bottom:0!important;z-index:40!important;background:#fff!important;color:var(--f)!important;border:0!important;border-top:1px solid var(--ln)!important;box-shadow:0 -4px 14px rgba(0,0,0,.08)!important;padding:6px 0 calc(6px + env(safe-area-inset-bottom))!important;margin-top:16px!important}
+html body[data-cz=gzhub] .cmptray .wrap{flex-wrap:nowrap!important;gap:10px!important;padding-left:0;padding-right:0}
+html body[data-cz=gzhub] .cmptray .cmpn{order:-1;font-size:14px!important;font-weight:600;color:var(--f)!important;white-space:nowrap}
+html body[data-cz=gzhub] .cmptray .cmpth{display:flex!important;gap:6px!important;flex:1;min-width:0;overflow:hidden}
+html body[data-cz=gzhub] .cmptray .cmpth img{width:56px!important;height:42px!important;object-fit:cover;border-radius:0!important;border:1px solid var(--ln)!important;flex:none}
+html body[data-cz=gzhub] .cmptray .lnk{font-size:14px!important;min-width:44px;justify-content:center;padding:0 6px!important;color:var(--f)!important}
+html body[data-cz=gzhub] .cmptray .btn{border-radius:0!important;background:var(--f)!important;color:#fff!important;border-color:var(--f)!important;min-height:44px!important;font-size:15px!important;white-space:nowrap;padding:0 18px!important}
+@media(max-width:599px){html body[data-cz=gzhub] .cmptray .cmpn{display:none!important}html body[data-cz=gzhub] .cmptray .btn{padding:0 10px!important;font-size:14px!important}html body[data-cz=gzhub] .cmptray .wrap{gap:8px!important}html body[data-cz=gzhub] .cmptray .cmpth img{width:40px!important;height:40px!important}html body[data-cz=gzhub] .cmptray .cmpth{flex:none!important}}
+html body[data-cz=gzhub] #models#models#models .card .vsw{order:6!important;font-size:14px!important;margin:0 0 6px!important;color:#5e6660}
