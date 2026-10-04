@@ -1,0 +1,104 @@
+/* v9.3 (4 Oct 2026): slimmed header sitewide; homepage C, the editorial split. Nothing below 14px; motion only without prefers-reduced-motion. */
+
+/* ---------- header: logo · Gazebos · Garden rooms · Menu · Book a visit (72px desktop, 56px phones) ---------- */
+html body .site-h.navc.hx.v93h .hrow{display:flex;align-items:center;justify-content:flex-start!important;gap:0;height:72px}
+html body .site-h.navc.hx.v93h.cmp .hrow{height:64px}
+.site-h.v93h .logo{order:1;flex:none;margin-right:44px;padding:0}
+html body .site-h.navc.hx.v93h .htabs{order:2;display:flex;align-items:center;gap:30px;margin:0!important;justify-content:flex-start;flex:none}
+.site-h.v93h .hact{display:contents}
+html body .site-h.navc.hx.v93h .hmenu{order:3;display:inline-flex!important;align-items:center;gap:8px;margin:0 0 0 30px;min-height:44px;padding:0 2px;font:500 15px/1 Montserrat,Arial,sans-serif;color:#f3eee4;background:none;border:0;border-bottom:2px solid transparent;cursor:pointer}
+html body .site-h.navc.hx.v93h .hmenu .car{display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.75}
+html body .site-h.navc.hx.v93h .hmenu[aria-expanded="true"] .car{transform:translateY(1px) rotate(225deg)}
+html body .site-h.navc.hx.v93h .hmenu:hover,html body .site-h.navc.hx.v93h .hmenu[aria-expanded="true"]{color:#fff;border-bottom-color:rgba(243,238,228,.6)}
+html body .site-h.navc.hx.v93h .hbook{order:4;margin-left:auto!important}
+@media (prefers-reduced-motion:no-preference){.site-h.v93h .hmenu .car{transition:transform .2s ease}}
+
+/* desktop Menu panel: three big links, then a footer row (About, Prices & finance, Contact, Brochure, the phone and search) */
+.v93mp .dw{padding-top:30px;padding-bottom:26px}
+.v93mn ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.v93mn a{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border:1px solid rgba(243,238,228,.16);color:#f3eee4;text-decoration:none;min-height:44px}
+.v93mn a b{font:400 26px/1.15 Optima,"Linux Biolinum",Georgia,serif;letter-spacing:-.3px;color:#f7f5f2}
+.v93mn a span{font-size:15px;color:rgba(243,238,228,.78)}
+.v93mn a:hover,.v93mn a:focus-visible{border-color:rgba(243,238,228,.5)}
+.v93mn a:hover b{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.v93mn a[aria-current] b{text-decoration:underline;text-underline-offset:5px}
+.v93mf{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:22px;padding-top:16px;border-top:1px solid rgba(243,238,228,.16)}
+.v93ml{display:flex;flex-wrap:wrap;gap:0 26px}
+.v93mf a,.v93srch{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:400 15px/1 Montserrat,Arial,sans-serif;color:rgba(247,245,242,.85);text-decoration:none;background:none;border:0;padding:0;cursor:pointer}
+.v93mf a:hover,.v93srch:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.v93ml a[aria-current]{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.v93mr{display:flex;align-items:center;gap:28px}
+.v93mf svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7}
+.v93tel{font-weight:500!important}
+
+/* 900–1023px: same bar; Menu opens the sheet */
+@media (max-width:1023px){ .site-h.v93h .logo{margin-right:32px} html body .site-h.navc.hx.v93h .htabs{gap:22px} html body .site-h.navc.hx.v93h .hmenu{margin-left:22px} }
+
+/* phones: logo · Book a visit · burger, 56px, one row (the sheet holds everything else) */
+@media (max-width:899px){
+  html body .site-h.navc.hx.v93h .hrow,html body .site-h.navc.hx.v93h.cmp .hrow{height:56px;padding-top:0;padding-bottom:0}
+  html body .site-h.navc.hx.v93h .htabs{display:none!important}
+  html body .site-h.navc.hx.v93h .logo{margin-right:12px}
+  html body .site-h.navc.hx.v93h .logo img{height:28px;width:auto}
+  html body .site-h.navc.hx.v93h .hbook{display:inline-flex!important;align-items:center;justify-content:center;height:40px;min-height:40px;padding:0 16px!important;font:600 14px/1 Montserrat,Arial,sans-serif;margin-left:auto;white-space:nowrap;background:#C9A86B;color:#123627;border:0;border-radius:2px;text-decoration:none;letter-spacing:0;text-transform:none}
+  html body .site-h.navc.hx.v93h .hmenu{order:5;margin:0 -10px 0 6px;width:44px;height:44px;padding:0;justify-content:center;font-size:0;border:0;position:relative}
+  html body .site-h.navc.hx.v93h .hmenu .car{display:none}
+  html body .site-h.navc.hx.v93h .hmenu::before{content:"";width:22px;height:14px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor;background:linear-gradient(currentColor,currentColor) 0 50%/100% 1.5px no-repeat}
+  html body .site-h.navc.hx.v93h .hmenu[aria-expanded="true"]::before{width:20px;height:20px;border:0;background:linear-gradient(45deg,transparent calc(50% - .75px),currentColor calc(50% - .75px),currentColor calc(50% + .75px),transparent calc(50% + .75px)),linear-gradient(-45deg,transparent calc(50% - .75px),currentColor calc(50% - .75px),currentColor calc(50% + .75px),transparent calc(50% + .75px))}
+}
+/* one gold per screen: the header's Book a visit is always there, so the menu sheet and the floating pill don't repeat it */
+.fsm4 .mbook{display:none!important}
+.fbook{display:none!important}
+
+/* ---------- homepage C: cream header (green type, green logo) ---------- */
+html body.v93home{background:#F7F5F2}
+html body.v93home .site-h.navc.hx.v93h{background:#F7F5F2!important;box-shadow:0 1px 0 #E8D7B3}
+html body.v93home .site-h.navc.hx.v93h .htab,html body.v93home .site-h.navc.hx.v93h .hmenu{color:#123627!important}
+html body.v93home .site-h.navc.hx.v93h .htab:hover,html body.v93home .site-h.navc.hx.v93h .htab[aria-expanded="true"],
+html body.v93home .site-h.navc.hx.v93h .hmenu:hover,html body.v93home .site-h.navc.hx.v93h .hmenu[aria-expanded="true"]{color:#123627!important;border-bottom-color:#123627!important}
+html body.v93home .site-h.navc.hx.v93h .htab:focus-visible,html body.v93home .site-h.navc.hx.v93h .hmenu:focus-visible{outline:2px solid #123627;outline-offset:3px}
+
+/* ---------- homepage C: the first screen ---------- */
+.v93hero{display:grid;grid-template-columns:48% 52%;height:calc(100svh - var(--v93top,94px));min-height:560px;max-height:980px;background:#F7F5F2}
+.v93ht{display:flex;flex-direction:column;justify-content:center;padding:40px 36px 40px max(64px,(100vw - 1200px) / 2)}
+.v93hero h1{margin:0;font:400 56px/1.06 Optima,"Linux Biolinum",Georgia,serif;letter-spacing:-.5px;color:#123627;max-width:600px;text-wrap:balance}
+.v93hs{margin:28px 0 0;max-width:440px;font:400 18px/1.6 Montserrat,Arial,sans-serif;color:#3d3a34}
+.v93fam{list-style:none;margin:32px 0 0;padding:0;max-width:460px;border-top:1px solid #E8D7B3}
+.v93fam a{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:48px;padding:10px 0;border-bottom:1px solid #E8D7B3;font:400 16px/1.3 Montserrat,Arial,sans-serif;color:#123627;text-decoration:none}
+.v93fam em{font-style:normal;color:#5f5a4f;white-space:nowrap}
+.v93fam a:hover,.v93fam a:focus-visible{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.v93fam a:hover em{color:#123627}
+.v93vat{margin:10px 0 0;max-width:460px;font-size:14px;color:#5f5a4f}
+.v93q{margin:24px 0 0;max-width:460px;font-size:14px;line-height:1.5;color:#5f5a4f}
+.v93q span{color:#123627}
+.v93hi{position:relative;overflow:hidden;background:#dfe3da}
+.v93hi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:45% 50%;display:block}
+@media (min-width:900px) and (max-width:1099px){.v93hero{grid-template-columns:50% 50%}.v93ht{padding:32px 36px 32px 32px}.v93hero h1{font-size:clamp(40px,4.5vw,46px)}}
+
+/* Made by hand, since 2006: the calm proof section below the fold */
+.v93made{background:#fff;padding:96px 0}
+.v93mg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:center;max-width:1100px}
+.v93mi{margin:0}.v93mi img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.v93mt h2{margin:0;font:400 48px/1.1 Optima,"Linux Biolinum",Georgia,serif;letter-spacing:-.5px;color:#123627}
+.v93ml1{margin:24px 0 0;max-width:480px;font-size:18px;line-height:1.6;color:#3d3a34}
+.v93pq{margin:14px 0 0;font-size:15px;line-height:1.55;color:#5f5a4f}
+.v93pq a{color:#123627;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.v93quote{margin:28px 0 0;padding-top:20px;border-top:1px solid #E8D7B3}
+.v93quote blockquote{margin:0;font:400 20px/1.45 Optima,"Linux Biolinum",Georgia,serif;color:#123627}
+.v93quote figcaption{margin-top:8px;font-size:14px;color:#5f5a4f}
+.v93vat2{text-align:center;margin:28px 0 0;font-size:15px;color:#5f5a4f}
+
+/* phones: the photo on top (about half the screen), then the headline, the three families and the quiet line */
+@media (max-width:899px){
+  .v93hero{display:flex;flex-direction:column-reverse;height:auto;min-height:0;max-height:none}
+  .v93hi{height:min(46svh,360px);min-height:220px}
+  .v93ht{padding:28px 20px 36px}
+  .v93hero h1{font-size:38px;line-height:1.1}
+  .v93hs{display:none}
+  .v93fam{margin-top:22px}
+  .v93q{margin-top:18px}
+  .v93made{padding:56px 0}
+  .v93mg{grid-template-columns:1fr;gap:28px}
+  .v93mt h2{font-size:34px}
+  .v93ml1{font-size:16px}
+}

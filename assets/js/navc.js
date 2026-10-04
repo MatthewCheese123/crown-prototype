@@ -219,7 +219,7 @@
   if(!hdr) return;
   /* v8.9: Gazebos and Garden rooms each open their own photo panel, on hover (250ms) and on click / Enter / Space; a second click goes to the page.
      The Menu button is phones/tablets only (the bar shows every section from 1024px). */
-  var pairs=[].slice.call(hdr.querySelectorAll("[data-mm]")).map(function(t){ return {t:t,p:document.getElementById(t.getAttribute("data-mm")),hover:true}; });
+  var pairs=[].slice.call(hdr.querySelectorAll("[data-mm]")).map(function(t){ return {t:t,p:document.getElementById(t.getAttribute("data-mm")),hover:!t.classList.contains("hmenu")}; }); /* v9.3: Menu = click only */
   var mb=null, mp=null;
   pairs=pairs.filter(function(x){ return x.p; });
   if(!pairs.length) return;
