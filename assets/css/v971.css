@@ -1,0 +1,158 @@
+/* v9.7.1 — phone-only model-page hero / price / spec overflow fix.
+   Scoped to #hero on model pages. Desktop (≥601px) unchanged. */
+
+@media (max-width:600px){
+
+/* ---------- Hero actions: full-width stack ---------- */
+html body #hero .cz-cta:not(#z1),
+html body #hero .ctas[data-sticky-trigger]:not(#z1),
+html body #hero .hpv-cta:not(#z1){
+  display:flex!important;
+  flex-direction:column!important;
+  flex-wrap:nowrap!important;
+  align-items:stretch!important;
+  gap:10px!important;
+  margin-top:12px!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+}
+
+html body #hero .cz-cta>.btn:not(#z1),
+html body #hero .cz-cta>.lnk:not(#z1),
+html body #hero .ctas[data-sticky-trigger]>.btn:not(#z1),
+html body #hero .ctas[data-sticky-trigger]>.lnk:not(#z1),
+html body #hero .hpv-cta>.btn:not(#z1){
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  flex:0 0 auto!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+  text-align:center!important;
+  justify-content:center!important;
+  align-items:center!important;
+  min-height:44px!important;
+  height:auto!important;
+  padding:10px 16px!important;
+  font-size:14px!important;
+  line-height:1.35!important;
+  overflow:hidden!important;
+}
+
+/* Design your X — green solid (not gold); one gold/screen rule keeps header Book a visit */
+html body #hero .cz-cta>a.btn:not(.gh):not(.ghl):not(#z1),
+html body #hero .ctas[data-sticky-trigger]>a.btn:not(.gh):not(.ghl):not(#z1),
+html body #hero .hpv-cta>a.btn.hpv-go:not(#z1),
+html body #hero .hpv-cta>a.btn:not(.gh):not(.ghl):not(#z1){
+  background:#123627!important;
+  border:1px solid #123627!important;
+  color:#f7f5f2!important;
+  box-shadow:none!important;
+}
+
+/* Outline "See the X in person" — text stays inside the box */
+html body #hero a.btn.gh.v97see:not(#z1):not(#z2):not(#z3):not(#z4){
+  display:inline-flex!important;
+  white-space:normal!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  border:1.5px solid #123627!important;
+  color:#123627!important;
+}
+
+/* Text link "Tailor it with a designer" */
+html body #hero .cz-cta>a.lnk:not(#z1),
+html body #hero .ctas[data-sticky-trigger]>a.lnk:not(#z1){
+  display:inline-flex!important;
+  text-decoration:underline!important;
+  text-underline-offset:4px!important;
+  color:#123627!important;
+  background:transparent!important;
+  border:0!important;
+  padding:10px 4px!important;
+}
+
+/* "Not on display yet" / "See the X at your place" — left under the CTAs */
+html body #hero .v92ond:not(#z1){
+  display:flex!important;
+  flex-wrap:wrap!important;
+  justify-content:flex-start!important;
+  align-items:center!important;
+  text-align:left!important;
+  margin:10px 0 0!important;
+  width:100%!important;
+}
+
+/* ---------- From price / finance row: no overlap ---------- */
+html body #hero .cz-price:not(#z1){
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  gap:4px 8px!important;
+  margin:8px 0 0!important;
+  line-height:1.25!important;
+  position:relative!important;
+  z-index:1;
+}
+html body #hero .hpv-pb:not(#z1),
+html body #hero .prc:not(#z1){
+  margin:8px 0 0!important;
+  position:relative!important;
+  z-index:1;
+}
+html body #hero .stc:not(#z1),
+html body #hero details.stc:not(#z1){
+  display:block!important;
+  margin-top:10px!important;
+  clear:both!important;
+  position:relative!important;
+  z-index:0;
+  float:none!important;
+}
+html body #hero .stc>summary:not(#z1){
+  min-height:44px!important;
+  align-items:center!important;
+}
+
+/* ---------- Spec grid: wrap labels, no cell overlap ---------- */
+html body #hero .cz-f4:not(#z1),
+html body #hero .f4:not(#z1){
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  column-gap:14px!important;
+  row-gap:12px!important;
+  margin-top:14px!important;
+  align-items:start!important;
+}
+html body #hero .cz-f4>div:not(#z1),
+html body #hero .f4>div:not(#z1){
+  min-width:0!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+  padding:4px 0!important;
+  border:0!important;
+  border-bottom:0!important;
+}
+html body #hero .cz-f4 b:not(#z1),
+html body #hero .f4 b:not(#z1),
+html body #hero .cz-f4 span:not(#z1),
+html body #hero .f4 span:not(#z1),
+html body #hero .f4 small:not(#z1){
+  display:block!important;
+  max-width:100%!important;
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+  white-space:normal!important;
+  line-height:1.35!important;
+  letter-spacing:0.01em!important;
+  margin:0!important;
+}
+html body #hero .cz-f4 span:not(#z1),
+html body #hero .f4 span:not(#z1),
+html body #hero .f4 small:not(#z1){
+  margin-top:3px!important;
+}
+
+}
