@@ -1,11 +1,16 @@
-/* v9.8.1 / v972: homepage Garden rooms tile = swipeable 5-photo carousel */
+/* v9.8.2 / v972: homepage Garden rooms tile = swipeable 5-photo carousel (full-bleed, no scrollcue side fades) */
 html body .v959tiles li.v972gr:not(#z1){margin:0;min-width:0}
 html body .v972card:not(#z1){display:flex;flex-direction:column;background:#fff;border:1px solid #e6dfcf;position:relative;min-width:0;overflow:hidden}
 html body .v972sw:not(#z1){display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:0}
 html body .v972sw:not(#z1)::-webkit-scrollbar{display:none}
 html body .v972sw:focus-visible:not(#z1){outline:3px solid #1b5fd6;outline-offset:-3px}
-html body .v972sl:not(#z1){flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;display:block;min-width:0;background:#123627;line-height:0;border:0;text-decoration:none;min-height:0}
-html body .v972sl img:not(#z1){width:100%;height:260px;object-fit:cover;display:block;grid-column:auto}
+/* Kill global scrollcue edge masks — they read as soft white side fades on full-bleed tile photos */
+html body .v972sw.scq-row:not(#z1),
+html body .v972sw.scq-ml:not(#z1),
+html body .v972sw.scq-mr:not(#z1),
+html body .v972sw.scq-ml.scq-mr:not(#z1){-webkit-mask-image:none!important;mask-image:none!important}
+html body .v972sl:not(#z1){flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;display:block;min-width:0;background:#123627;line-height:0;border:0;text-decoration:none;min-height:0;overflow:hidden}
+html body .v972sl img:not(#z1){width:100%;height:260px;object-fit:cover;object-position:center;display:block;grid-column:auto}
 html body .v972dots:not(#z1){display:flex;justify-content:center;align-items:center;gap:0;margin:-28px 0 0;position:relative;z-index:2;pointer-events:none}
 html body .v972dots button:not(#z1){pointer-events:auto;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;background:transparent;cursor:pointer;display:inline-grid;place-items:center}
 html body .v972dots button:not(#z1)::before{content:"";width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(18,54,39,.25);display:block}
