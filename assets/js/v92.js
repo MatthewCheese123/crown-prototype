@@ -14,7 +14,10 @@ function key(n){ return String(n||"").toLowerCase().replace(/\s+/g," ").trim() }
 function at(model){ var k=key(model); return SITES.filter(function(s){ return (s.models||[]).some(function(m){return key(m)===k}) }).sort(function(a,b){return a.town<b.town?-1:1}) }
 function links(s){ return (s.models||[]).map(function(n){return '<a href="'+murl(n)+'">'+esc(n)+'</a>'}).join(", ") }
 /* v9.6.0: main pages show On display names as plain text (no text-only product links) */
-var V96TXT=!!document.querySelector("[data-v96txt]"); function names(s){ return (s.models||[]).map(esc).join(", ") }
+var V96TXT=!!document.querySelector("[data-v96txt]");
+/* v9.7.0: On display names carry a small photo */
+function slug(n){ return n.replace(/^Crown /,"").replace(/\./g,"").toLowerCase().replace(/\s+/g,"-") }
+function names(s){ return (s.models||[]).map(function(n){ return '<a class="v97on" href="'+murl(n)+'"><img src="'+ROOT+'assets/img/thumb/'+slug(n)+'-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async">'+esc(n)+'</a>' }).join(" ") }
 /* site pages: the On display row */
 $$("[data-v92disp]").forEach(function(dd){ var s=SITES.filter(function(x){return x.id===dd.getAttribute("data-v92disp")})[0]; if(!s) return;
   var h=links(s); if(h){ dd.innerHTML=h } else { var row=dd.parentNode; if(row) row.hidden=true } });

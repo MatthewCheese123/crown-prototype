@@ -1,4 +1,4 @@
-/* proto-awesomeo v7: Premium specification as standard on the Signature pages (Professional removed) */
+/* proto-awesomeo v7: single-package (Premium) layout, used on gazebo pages only; Signature pages list Professional and Premium */
 .pkone{display:grid;gap:10px}
 .pkone .pkcard{cursor:default;border-color:var(--f);box-shadow:inset 0 0 0 2px var(--f);background:#fbfaf6}
 .pkone .pkcard:hover{border-color:var(--f)}

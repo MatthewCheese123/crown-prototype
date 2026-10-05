@@ -393,6 +393,9 @@
   var sov=$("#site-search"), sq=$("#sov-q"), sres=$(".sovres"), sopen=$$("[data-search-open]"), sback=null;
   function sOpen(btn){ if(!sov) return; closeAll(); if(mnav && mnav.classList.contains("open")) burger.click(); sback=btn||document.activeElement; sov.hidden=false; document.body.classList.add("sov-on"); document.body.style.overflow="hidden"; sopen.forEach(function(b){b.setAttribute("aria-expanded","true")}); setTimeout(function(){ sq.focus() },20); syncBar() }
   function sClose(){ if(!sov || sov.hidden) return; sov.hidden=true; document.body.classList.remove("sov-on"); var fsmOpen=document.body.classList.contains("fsm-on"); if(!fsmOpen) document.body.style.overflow=""; sopen.forEach(function(b){b.setAttribute("aria-expanded","false")}); var back=sback; if(back && back.closest && back.closest(".fsmenu[hidden]")) back=$(".hmenu")||back; if(back && back.focus) back.focus(); syncBar() }
+  function sThumb(u){ var m=/^(gazebos|garden-rooms)\/([a-z-]+)\/index\.html/.exec(u); if(m) return m[2]==="shelters"?"shelters":m[2];
+    var r=/#range-([a-z]+)/.exec(u); if(r) return r[1]==="insulated"?"all-season":r[1];
+    if(/^bespoke\//.test(u)) return "bespoke"; if(/^garden-rooms\/index/.test(u)) return "heritage"; if(/^gazebos\/index/.test(u)) return "classic"; return "" }
   function sRun(){
     var q=sq.value.trim().toLowerCase(), data=window.CP_SEARCH||[]; sres.textContent="";
     if(!q) return;
@@ -401,8 +404,15 @@
     ["Buildings","Guides","Show sites"].forEach(function(g){
       var hs=hits.filter(function(d){return d.g===g}); if(!hs.length) return;
       var sec=mk("section","sovg"); sec.setAttribute("data-group",g); var h=mk("h3",null,g+" ("+hs.length+")"); sec.appendChild(h);
-      var ul=mk("ul"); hs.slice(0,8).forEach(function(d){ var li=mk("li"), a=mk("a"); a.href=base+d.u; a.appendChild(mk("b",null,d.t)); a.appendChild(mk("span",null,d.s)); li.appendChild(a); ul.appendChild(li) });
-      sec.appendChild(ul); sres.appendChild(sec);
+      /* v9.7.0: building results with photos, prices marked inc. VAT, and "See all N" */
+      var ul=mk("ul"); hs.forEach(function(d,i){ var li=mk("li"), a=mk("a"); a.href=base+d.u;
+        var th=g==="Buildings"?sThumb(d.u):""; if(th){ var im=mk("img"); im.src=base+"assets/img/thumb/"+th+"-96.webp"; im.alt=""; im.width=48; im.height=48; im.loading="lazy"; im.decoding="async"; a.appendChild(im); a.className="sovph" }
+        var tx=mk("span","sovtx"); tx.appendChild(mk("b",null,d.t)); tx.appendChild(mk("span",null,String(d.s).replace(/(From £[\d,]+)(?! inc)/g,"$1 inc. VAT"))); a.appendChild(tx);
+        if(i>=8) li.hidden=true; li.appendChild(a); ul.appendChild(li) });
+      sec.appendChild(ul);
+      if(hs.length>8){ var more=mk("button","sovall","See all "+hs.length); more.type="button"; more.setAttribute("aria-label","See all "+hs.length+" "+g.toLowerCase());
+        more.addEventListener("click",function(){ var first=null; $$("li[hidden]",ul).forEach(function(li){ li.hidden=false; if(!first) first=li }); more.remove(); if(first){ var fa=$("a",first); if(fa) fa.focus() } }); sec.appendChild(more) }
+      sres.appendChild(sec);
     });
   }
   if(sov){

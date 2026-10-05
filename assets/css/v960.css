@@ -143,3 +143,83 @@ html body .v96pl ul.dots li::before,html body .v96pl ul.dots li::marker{color:#1
 html body .visitb a.btn.v96cream:not(#z1):not(#z2):not(#z3):not(#z4){background:#f7f5f2!important;border-color:#f7f5f2!important;color:#123627!important}
 html body .visitb a.btn.v96cream:not(#z1):not(#z2):not(#z3):not(#z4):hover{background:#fff!important}
 @media (max-width:700px){.v96vat{display:block;margin-left:0}}
+
+/* ===== v9.7.0 Garden rooms hub ===== */
+.v97anc{position:relative;top:-90px;display:block;height:0}
+.v97sig .v97sgt{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;margin:0 0 14px}
+.v97sig .v97sgt h3{margin:0}
+.v97sig .v97sgt p{margin:0}
+html body .v96sig.v97sig:not(#z1){display:block!important}
+html body .v97sig .v97sgrow:not(#z1){display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:20px!important;margin:0!important;padding:0!important}
+@media (max-width:899px){html body .v97sig .v97sgrow:not(#z1){grid-template-columns:1fr!important;gap:12px!important}}
+.v97sw{display:inline-grid;grid-template-columns:auto auto;border:1px solid #123627;margin:0 0 18px}
+.v97sw button{min-height:48px;padding:0 18px;background:#fff;border:0;color:#123627;font:600 15px Montserrat,Arial,sans-serif;cursor:pointer}
+.v97sw button[aria-selected=true]{background:#123627;color:#f7f5f2}
+.v97three{list-style:none;margin:6px 0 2px;padding:0;display:grid;gap:2px}
+.v97three li{display:flex;flex-wrap:wrap;gap:0 8px;align-items:center;min-height:30px;font-size:14px}
+.v97three a{color:#123627;font-weight:600;min-height:30px;display:inline-flex;align-items:center}
+.v97three span{color:#4a4a42}
+.v97inc{display:block;font-size:14px;color:#4a4a42}
+.v97sgnote{font-size:14px;margin:14px 0 0;color:#4a4a42}
+html body .v97pn:not(#z1){color:#123627!important}
+/* fix 9: phone compare tables stack, label above the values */
+@media (max-width:699px){
+ .cz-ct.cz-ct,.cz-ct tbody,.cz-ct thead{display:block;width:100%}
+ .cz-ct thead tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .cz-ct thead td:first-child{display:none}
+ html body .cz-ct thead th:not(#z1){padding:0!important;min-width:0}
+ .cz-ct tbody tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 8px;border-top:1px solid #e6dfcf;padding:8px 0}
+ html body .cz-ct tbody th:not(#z1){grid-column:1/-1;border:0!important;padding:0 0 4px!important;letter-spacing:0!important}
+ html body .cz-ct tbody td:not(#z1){border:0!important;padding:0!important;min-width:0;overflow-wrap:anywhere}
+ .cz-ct tbody td[colspan="2"]{grid-column:span 2}
+ .v97three li{font-size:14px}
+ .v97sw{display:grid;width:100%}
+ .v97sw button{padding:0 8px}
+}
+/* ===== v9.7.0 Home ===== */
+html body .v959tiles ul.v97mini:not(#z1){display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;padding:0;list-style:none;grid-template-columns:none}
+html body .v959tiles .v97mini li{margin:0}
+html body .v959tiles .v97mini a:not(#z1){display:inline-flex;align-items:center;gap:8px;background:transparent;border:0;min-height:44px;color:#123627;font-size:15px;font-weight:600}
+html body .v959tiles .v97mini img:not(#z1){width:40px;height:40px;object-fit:cover;grid-column:auto}
+html body .v959tiles .v97mini a:hover span{text-decoration:underline;text-underline-offset:4px}
+html body .v959tiles li>a>img:not(#z1){height:260px}
+@media (max-width:700px){html body .v959tiles li>a>img:not(#z1){height:156px}html body .v959tiles ul.v97mini:not(#z1){gap:0 12px}}
+.v96ft small{font-size:14px;color:inherit;opacity:.8;margin-left:4px}
+/* ===== v9.7.0 Gazebos hub ===== */
+/* fix 12: On display names with small photos; range tabs with a small photo */
+.v97on{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin:0 12px 0 0;color:#123627;font-weight:600;text-decoration:none;font-size:14px;vertical-align:middle}
+.v97on img{width:32px;height:32px;object-fit:cover;display:block;flex:none}
+.v97on:hover{text-decoration:underline;text-underline-offset:3px}
+html body .chip .v97ci:not(#z1){width:24px;height:24px;object-fit:cover;display:inline-block;vertical-align:middle;margin:0 6px 0 -4px}
+/* 7A character line */
+.v97ln{margin:2px 0 6px;font-size:14px;line-height:1.4;color:#4a4a42}
+/* 12B Glazed / All-season strip */
+.v97sl{position:relative;display:block}
+.v97strip{position:absolute;left:0;bottom:0;background:#123627;color:#f7f5f2;font:600 14px/1 Montserrat,Arial,sans-serif;padding:7px 10px}
+/* fix 15: plain links */
+.v97plain .lnk{font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+html body .pacmpcta.v97plain:not(#z1){display:block}
+html body .pacmpcta.v97plain p:not(#z1){margin:0}
+html body .v96fcol:not(#z1),html body .v96ft a:not(#z1){min-width:0}
+html body .v97three a:not(#z1){min-height:44px}
+html body #collections .v96rng:not(.v97sgrow):not(#z1){grid-template-columns:repeat(2,minmax(0,1fr))}
+html body .v97sig .v97sgrow .v96rc:not(#z1){flex-direction:column;background:#fff}
+html body .v97sig .v97sgrow .v96rc img:not(#z1){width:100%;aspect-ratio:3/2;min-height:0;height:auto}
+html body .v97sig .v97sgrow .tx b:not(#z1){font-size:22px}
+html body .v96sig.v97sig:not(#z1){background:transparent;border:0;padding:0}
+@media (max-width:899px){html body #collections .v96rng:not(.v97sgrow):not(#z1){grid-template-columns:1fr}html body .v97sig .v97sgrow .v96rc:not(#z1){flex-direction:row}html body .v97sig .v97sgrow .v96rc img:not(#z1){width:118px;aspect-ratio:auto;min-height:100%}}
+/* 7A line sits under the name */
+html body #models .card .tx .v97ln:not(#z1){order:1}
+/* 10A: phone, under All, a heading per range with its count */
+@media (max-width:699px){
+ html body #models #mlist[data-v97all] .mgrp .lgh:not(#z1){display:block;margin:22px 0 10px;padding-top:14px;border-top:1px solid #d9d3c4}
+ html body #models #mlist[data-v97all] .mgrp:first-child .lgh:not(#z1){margin-top:4px;border-top:0;padding-top:0}
+ html body #models #mlist[data-v97all] .mgrp .lgh h3:not(#z1){margin:0;font:400 22px/1.25 Optima,"Linux Biolinum",Georgia,serif;color:#123627}
+ html body #models #mlist[data-v97all] .mgrp .lgh .sub:not(#z1){display:block;font-size:14px;color:#4a4a42}
+ html body #models #mlist[data-v97all] .mgrp .lgh .pk:not(#z1){display:none}
+}
+@media (max-width:699px){
+ html body .cz-ct.v97sigt tbody tr:not(#z1){display:grid}
+ html body .cz-ct .cz-fp em:not(#z1){display:block;font-size:14px}
+}
+@media (max-width:699px){html body .cz-ct thead .hs:not(#z1){display:none}}
