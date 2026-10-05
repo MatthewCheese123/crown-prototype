@@ -34,9 +34,9 @@
     var W=+S.w*1000, Dp=+S.d*1000, cw=B.w, ch=B.h, nar=cw<560;
     var L=layout(W);
     if(S.view==="front"){
-      var note=S.w==="5"?["Standard doors and windows, included","layout as the live 5m drawing"]:["Standard doors and windows, included","same pattern as the live 5m drawing; exact positions confirmed on your quote"];
-      if(!nar) note=[note.join(" · ")];
-      var lh=nar?14:14, mL=nar?44:50, mT=12+note.length*lh, mB=52, FG=nar?450:800;
+      var note=S.w==="5"?["Standard doors and windows, included","layout as the live 5m drawing"]:["Standard doors and windows, included","same pattern as the live 5m drawing;","exact positions confirmed on your quote"];
+      if(!nar&&S.w==="5") note=[note.join(" · ")]; /* v9.8.5: other widths keep short lines so the note never runs past a narrow drawing */
+      var lh=nar?14:17, mL=nar?44:50, mT=12+note.length*lh, mB=52, FG=nar?450:800;
       var mR=nar?42:48, s=Math.min((cw-mL-mR)/(W+FG),(ch-mT-mB)/2500);
       var x0=(cw-(mL+(W+FG)*s+mR))/2+mL, G=(ch-(mT+2500*s+mB))/2+mT+2500*s, X=function(m){return x0+m*s}, Y=function(m){return G-m*s};
       var fx=X(W+FG);

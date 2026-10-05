@@ -256,3 +256,13 @@ html body .ccfg.dz:not(#z1):not(#z2):not(#z3)>.dz-stitle{margin:20px 0 12px}
 .dz .icard.dz-itile>b,.dz .icard.dz-itile>small,.dz .icard.dz-itile>.ot{margin-left:12px;margin-right:12px}
 @media (max-width:600px){.dz-d.dz-dq{white-space:normal;max-width:112px;line-height:1.15;padding:3px 6px}}
 html body .dz-bar .dz-bk{min-height:48px!important;min-width:44px!important;height:auto!important;padding-top:0;padding-bottom:0}
+/* v9.8.5: interior photo tiles keep 4:3; on phones they sit one per row, photo left */
+html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icard.dz-itile>img{height:auto!important;aspect-ratio:4/3!important}
+@media (max-width:480px){
+ html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icards:has(.dz-itile){grid-template-columns:1fr!important}
+ html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icard.dz-itile{display:grid!important;grid-template-columns:40% minmax(0,1fr)!important;grid-template-rows:auto auto 1fr;column-gap:12px;row-gap:4px;align-items:start!important}
+ html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icard.dz-itile>img{grid-column:1;grid-row:1/4;height:100%!important;min-height:104px;aspect-ratio:auto!important}
+ html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icard.dz-itile>b,html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icard.dz-itile>.ot,html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icard.dz-itile>small{grid-column:2!important;grid-row:auto!important;margin:0 12px 0 0!important;justify-self:start}
+ html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icard.dz-itile>b{margin-top:10px!important}
+ html body .dz:not(#z1):not(#z2):not(#z3):not(#z4) .icard.dz-itile>small{margin-bottom:10px!important}
+}

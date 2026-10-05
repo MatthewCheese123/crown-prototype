@@ -124,6 +124,9 @@ STEPS.concat(MERGED).forEach(function(s){ var p=s.panel;
   /* v9.8.4 area 11A: fabric photos on cushion swatches (Ivory has no photo yet: it keeps its flat colour); Signature interiors as 4:3 photo tiles */
   $$('[data-hp=cushion]',p).forEach(function(b){ var v=b.getAttribute("data-v"), i=b.querySelector("i"); if(i&&/^(beige|burgundy|green|navy|taupe)$/.test(v)){ i.style.backgroundImage="url("+IMG+"hampton/fab-"+v+".webp)"; i.classList.add("dz-fab") } });
   $$('.icard[data-sgint]',p).forEach(function(b){ if(b.querySelector("img")) return; b.classList.add("dz-itile"); b.insertAdjacentHTML("afterbegin",'<img src="'+IMG+'sg-int-'+esc(b.getAttribute("data-sgint"))+'.webp" alt="" loading="lazy">') });
+  /* v9.8.5: Contemporary interiors as photo tiles, using the finish photos already labelled on the Contemporary page */
+  var CTI={melamine:"ct-interior-empty",maple:"ct-acoustic",teak:"ct-acoustic2",whitewash:"ct-interior-win"};
+  $$('.icard[data-ctint]',p).forEach(function(b){ var f=CTI[b.getAttribute("data-ctint")]; if(!f||b.querySelector("img")) return; b.classList.add("dz-itile"); b.insertAdjacentHTML("afterbegin",'<img src="'+IMG+f+'.webp" alt="" loading="lazy">') });
   if(s.colours){ var gs=$$(".hpsw",p); s.subs=gs.map(function(g){ var lab=document.getElementById(g.getAttribute("aria-labelledby")); return {g:g,lab:lab,name:(lab&&lab.textContent||"").trim()} });
     s.subs.forEach(function(sb,j){ if(!j) return; var key=(sb.g.querySelector("[data-hp]")||{}).getAttribute&&sb.g.querySelector("[data-hp]").getAttribute("data-hp");
       var m=document.createElement("button"); m.type="button"; m.className="dz-match"; m.setAttribute("aria-pressed","false"); m.setAttribute("data-dz-match",key); m.innerHTML='<i aria-hidden="true"></i>Match cushions';
