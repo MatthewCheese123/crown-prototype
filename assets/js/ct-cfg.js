@@ -6,7 +6,7 @@
   var root=document.querySelector("[data-ctcfg]"); if(!root) return;
   var P=JSON.parse(root.querySelector("[data-ct-prices]").textContent);
   var INT={melamine:"White melamine",maple:"Acoustic panelling: maple veneer",teak:"Acoustic panelling: teak veneer",whitewash:"White wash redwood"};
-  var S={w:"5",d:"3",int:"melamine",view:"front"}; /* views: front, plan, photo */
+  var S={w:"3",d:"3",int:"melamine",view:"front"}; /* views: front, plan, photo */
   var $=function(s){return root.querySelector(s)}, $$=function(s){return [].slice.call(root.querySelectorAll(s))};
   var NS="http://www.w3.org/2000/svg", svg=$("#ct-svg");
   function gbp(n){return "£"+Math.round(n).toLocaleString("en-GB")}

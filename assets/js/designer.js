@@ -37,10 +37,15 @@ function restore(s){ if(!s) return;
 var tabs=$$(".btabs [role=tab]");
 var ALL=tabs.map(function(t,i){ var p=document.getElementById(t.getAttribute("aria-controls")); var nm=((t.querySelector("b")||t).textContent||"").trim();
   var kind=t.classList.contains("hpsum")?"summary":(p&&p.querySelector(".pkone")&&!p.querySelector("[role=radio]"))?"info":"step"; return {i:i,tab:t,panel:p,name:nm,kind:kind} });
-var STEPS=ALL.filter(function(s){return s.kind==="step"&&s.panel});
+var STEPS=ALL.filter(function(s){return s.kind==="step"&&s.panel&&!(/extra/i.test(s.name)&&!s.panel.querySelector("[role=radio],input,select,[aria-pressed]"))});
 var SUMTAB=ALL.filter(function(s){return s.kind==="summary"})[0], INFO=ALL.filter(function(s){return s.kind==="info"})[0];
 if(!STEPS.length) return;
-function skip(i){ var x=STEPS[i]; return !!(x&&/colour/i.test(x.name)&&root.getAttribute("data-mpfurn")==="0") }
+/* v9.8.4 area 6C: Glazed / All-season get one "Package & colours" step; the swatches open under Furnished */
+var MERGED=[]; (function(){ var p=STEPS.filter(function(s){return /package/i.test(s.name)&&/furnished/i.test(s.panel.textContent)&&s.panel.querySelectorAll("[role=radio]").length>1})[0], c=STEPS.filter(function(s){return /colour/i.test(s.name)})[0];
+  if(p&&c&&STEPS.indexOf(c)===STEPS.indexOf(p)+1){ p.extra=c; c.merged=true; MERGED.push(c); STEPS.splice(STEPS.indexOf(c),1) } })();
+function furn(){ return root.getAttribute("data-mpfurn")!=="0" }
+function extraVis(){ STEPS.forEach(function(s){ if(!s.extra) return; var on=st.view==="step"&&STEPS[st.step]===s&&furn(); s.extra.panel.hidden=!on; s.extra.panel.classList.toggle("dz-xtra",on); if(on&&s.extra.subs) s.extra.subs.forEach(function(sb){ sb.g.hidden=false; if(sb.lab) sb.lab.hidden=false }) }) }
+function skip(i){ var x=STEPS[i]; return !!(x&&/colour/i.test(x.name)&&!x.extra&&root.getAttribute("data-mpfurn")==="0") }
 function act(){ return STEPS.map(function(_,i){return i}).filter(function(i){return !skip(i)}) }
 var COPY={sides:["Choose your sides","Tap any bay on the plan to change it. Every layout is included."],roof:["Choose your roof",""],colours:["Choose your colours","Included · any mix. We’ll post fabric samples so you see the true colours."],
   heat:["Add warmth?","Infrared ceiling heaters with a built-in spotlight. Supplied and hung by our team; your electrician connects them."],extras:["Any extras?","Only extras change the price."],
@@ -49,8 +54,9 @@ var COPY={sides:["Choose your sides","Tap any bay on the plan to change it. Ever
 function copyFor(n){ var k=n.toLowerCase(); if(/side/.test(k))return COPY.sides; if(/^roof/.test(k))return COPY.roof; if(/colour/.test(k))return COPY.colours; if(/heat/.test(k))return COPY.heat; if(/extra/.test(k)&&!/clad/.test(k))return COPY.extras;
   if(/found|base/.test(k))return COPY.foundation; if(/package/.test(k))return GAZ?["Furnished or unfurnished?",""]:COPY.package; if(/size/.test(k))return COPY.size; if(/interior/.test(k))return COPY.interior; if(/door/.test(k))return COPY.doors; if(/clad/.test(k))return COPY.cladding;
   return ["Choose your "+k,""] }
-STEPS.forEach(function(s){ var c=copyFor(s.name); s.title=c[0]; s.lead=c[1]; s.sides=!!s.panel.querySelector("[data-hpsides]"); s.colours=/colour/i.test(s.name)&&s.panel.querySelectorAll(".hpsw").length>1;
+STEPS.concat(MERGED).forEach(function(s){ var c=copyFor(s.name); s.title=c[0]; s.lead=c[1]; s.sides=!!s.panel.querySelector("[data-hpsides]"); s.colours=/colour/i.test(s.name)&&s.panel.querySelectorAll(".hpsw").length>1;
   if(/roof/i.test(s.name)&&!s.lead){ var pr=$$(".pr",s.panel).map(function(x){return x.textContent}); if(pr.length&&pr.every(function(t){return /Included/i.test(t)})) s.lead=(pr.length===2?"Both are":"All are")+" included in your price." } });
+STEPS.forEach(function(s){ if(s.extra){ s.name="Package & colours"; s.lead=s.lead||"Choose Furnished to pick your cushion and piping colours here." } });
 /* ---------- store ---------- */
 var KEY="crown.designs";
 function load(){ try{ var a=JSON.parse(localStorage.getItem(KEY)||"{}"); return a&&a.designs&&a.designs[SLUG]&&a.designs[SLUG].A||null }catch(_){ return null } }
@@ -63,7 +69,7 @@ var st={view:"start",step:0,sub:0,visited:[]}, P0=price(), FIRST=snap(), saved=l
 root.classList.add("dz");
 var head=document.createElement("div"); head.className="dz-head";
 head.innerHTML='<div class="dz-toprow"><button type="button" class="dz-back" data-dz-back>‹ Back</button><b class="dz-tt">Design your '+esc(SHORT)+'</b><button type="button" class="dz-x" data-dz-x aria-label="Close the designer">✕</button></div>'+
-  '<div class="dz-ind"><button type="button" class="dz-eyeb" data-dz-list aria-expanded="false" aria-live="polite"></button><div class="dz-prog" aria-hidden="true"><i></i></div>'+
+  '<div class="dz-ind"><button type="button" class="dz-eyeb" data-dz-list aria-expanded="false"><span class="dz-ey" aria-live="polite"></span><span class="dz-all">All steps <span aria-hidden="true">▾</span></span></button><div class="dz-segs" aria-hidden="true"></div><p class="dz-trail" aria-hidden="true"></p>'+
   '<ol class="dz-list" hidden>'+STEPS.map(function(s,i){return '<li><button type="button" data-dz-jump="'+i+'">'+(i+1)+' · '+esc(s.name)+'</button></li>'}).join("")+'<li><button type="button" data-dz-jump="r">Review</button></li></ol></div>';
 root.insertBefore(head,root.firstChild);
 var bpanel=$(".bpanel")||STEPS[0].panel.parentNode;
@@ -79,7 +85,7 @@ function startHTML(){ var sv=load(), n=act().length, pk=INFO&&INFO.panel.querySe
   if(pk) s+='<p class="dz-pk">'+esc(((INFO.panel.querySelector(".pkone b,.pkone h4,.pkone strong")||{}).textContent||"Premium Package").replace(/as standard/i,"").trim())+' included. Everything included is listed on Review.</p>';
   s+='</div>';
   if(sv) s+='<div class="dz-wb" role="status"><p><b>Welcome back.</b> Your '+esc(SHORT)+' is as you left it'+(sv.price?" · "+gbp(sv.price):"")+'.</p><div class="dz-wbb"><button type="button" class="btn" data-dz-continue>Continue</button><button type="button" class="dz-lnk" data-dz-reset>Start again</button></div></div>';
-  if(STD) s+='<a class="dz-card" href="#design" data-dz-std><img src="'+esc(STD.img||mainImg)+'" alt="" loading="lazy"><span class="dz-cf"><span class="dz-cl">Option 1</span><b>Standard stock</b><span>'+esc(STD.desc||"")+'</span><span class="btn">See my price ›</span></span></a>';
+  if(STD) s+='<a class="dz-card" href="#design" data-dz-std><img src="'+esc(STD.img||mainImg)+'" alt="" loading="lazy"><span class="dz-cf"><span class="dz-cl">Option 1</span><b>Most popular</b><span>'+esc(STD.desc||"")+'</span><span class="btn">See my price ›</span></span></a>';
   s+='<a class="dz-card" href="#design" data-dz-scratch><img src="'+esc(inImg)+'" alt="" loading="lazy"'+'><span class="dz-cf">'+(STD?'<span class="dz-cl">Option 2</span>':'')+'<b>Made from scratch</b><span>Choose '+esc(STEPS.map(function(x){return x.name.toLowerCase()}).join(", ").replace(/, ([^,]*)$/," and $1"))+', step by step.</span><span class="dz-cl">'+n+' short step'+(n>1?"s":"")+'</span><span class="btn gh dz-go">Start designing ›</span></span></a>';
   return s }
 root.insertBefore(start,head.nextSibling);
@@ -91,7 +97,7 @@ $$("[data-sendpanel]",document).forEach(function(p){ var pc=p.querySelector("inp
   var sp=p.querySelector("[data-spec]"); if(sp){ var f=sp.closest(".f"); if(f) f.classList.add("dz-auto") } });
 /* bar */
 var bar=document.createElement("div"); bar.className="dz-bar"; bar.setAttribute("role","region"); bar.setAttribute("aria-label","Your price");
-bar.innerHTML='<div class="dz-bl"><div class="dz-pr"><span class="dz-p" data-dz-p></span><span class="dz-d" data-dz-d aria-hidden="true"></span></div><button type="button" class="dz-vs" data-dz-sum aria-expanded="false">inc. VAT · View summary ▴</button></div><button type="button" class="dz-next" data-dz-next>Next</button>';
+bar.innerHTML='<div class="dz-bl"><span class="dz-bth" aria-hidden="true" hidden></span><div class="dz-bi"><div class="dz-pr"><span class="dz-bn">'+esc(SHORT)+'</span><span class="dz-p" data-dz-p></span><span class="dz-d" data-dz-d aria-hidden="true"></span></div><button type="button" class="dz-vs" data-dz-sum aria-expanded="false">inc. VAT · View summary ▴</button></div></div><div class="dz-br"><button type="button" class="dz-bk" data-dz-bk>Back</button><button type="button" class="dz-next" data-dz-next>Next</button></div>';
 document.body.appendChild(bar);
 var sumsh=document.createElement("div"); sumsh.className="dz-sumsh"; sumsh.hidden=true; sumsh.setAttribute("role","dialog"); sumsh.setAttribute("aria-label","Your design so far"); document.body.appendChild(sumsh);
 var toast=document.createElement("div"); toast.className="dz-toast"; toast.setAttribute("role","status"); toast.innerHTML='<span></span><button type="button">Undo</button>'; document.body.appendChild(toast);
@@ -108,13 +114,16 @@ function cardsFromSeg(seg){ var g=seg.querySelector("[data-hp]"); g=g&&g.getAttr
     c.innerHTML='<img src="'+esc(none?mainImg:PH_OF[g])+'" alt="" loading="lazy"><span class="dz-ot"><b>'+esc(nm)+'</b>'+(none?'':'<small>'+esc((desc&&desc.textContent)||"")+'</small>')+'<span class="dz-op">'+(m?"+"+m[0]:"No extra cost")+'</span></span><i class="dz-tick" aria-hidden="true">✓</i>';
     c.addEventListener("click",function(){ b.click() }); box.appendChild(c) });
   seg.parentNode.insertBefore(box,seg); seg.classList.add("dz-src"); var see=row&&row.querySelector(".hpsee"); if(see) see.classList.add("dz-src") }
-STEPS.forEach(function(s){ var p=s.panel;
+STEPS.concat(MERGED).forEach(function(s){ var p=s.panel;
   $$(".hpseg",p).forEach(cardsFromSeg);
   $$(".hpos",p).forEach(function(g){ var o=$$(".hpo",g); g.classList.add("dz-cards",o.length>=4?"dz-B":"dz-A");
     o.forEach(function(b){ var im=b.querySelector("img"), src=b.getAttribute("data-stage"); if(!im&&src){ b.insertAdjacentHTML("afterbegin",'<img src="'+esc(src)+'" alt="" loading="lazy">') } else if(im&&src&&/models\//.test(src)) im.src=src;
       b.classList.add("dz-opt"); if(!b.querySelector(".dz-tick")) b.insertAdjacentHTML("beforeend",'<i class="dz-tick" aria-hidden="true">✓</i>') }) });
   $$(".hpsee",p).forEach(function(x){ x.classList.add("dz-src") });
   $$(".pkcard[role=radio],.icard[role=radio]",p).forEach(function(b){ b.classList.add("dz-opt") });
+  /* v9.8.4 area 11A: fabric photos on cushion swatches (Ivory has no photo yet: it keeps its flat colour); Signature interiors as 4:3 photo tiles */
+  $$('[data-hp=cushion]',p).forEach(function(b){ var v=b.getAttribute("data-v"), i=b.querySelector("i"); if(i&&/^(beige|burgundy|green|navy|taupe)$/.test(v)){ i.style.backgroundImage="url("+IMG+"hampton/fab-"+v+".webp)"; i.classList.add("dz-fab") } });
+  $$('.icard[data-sgint]',p).forEach(function(b){ if(b.querySelector("img")) return; b.classList.add("dz-itile"); b.insertAdjacentHTML("afterbegin",'<img src="'+IMG+'sg-int-'+esc(b.getAttribute("data-sgint"))+'.webp" alt="" loading="lazy">') });
   if(s.colours){ var gs=$$(".hpsw",p); s.subs=gs.map(function(g){ var lab=document.getElementById(g.getAttribute("aria-labelledby")); return {g:g,lab:lab,name:(lab&&lab.textContent||"").trim()} });
     s.subs.forEach(function(sb,j){ if(!j) return; var key=(sb.g.querySelector("[data-hp]")||{}).getAttribute&&sb.g.querySelector("[data-hp]").getAttribute("data-hp");
       var m=document.createElement("button"); m.type="button"; m.className="dz-match"; m.setAttribute("aria-pressed","false"); m.setAttribute("data-dz-match",key); m.innerHTML='<i aria-hidden="true"></i>Match cushions';
@@ -158,17 +167,17 @@ document.addEventListener("keydown",function(e){ var g=e.target.closest&&e.targe
 /* ---------- feedback: every option tap ---------- */
 var undoSnap=null, tt=0, countRaf=0, shown=null;
 function optLabel(b){ var x=b.querySelector("b"); var t=(x?x.textContent:(b.getAttribute("title")||b.getAttribute("aria-label")||b.textContent)).trim().replace(/\s+/g," "); return t.replace(/\s*·\s*£[\d,]+.*$/,"").slice(0,40) }
-function changed(before,p0,label){ var now=snap(); if(same(before,now)) return; var p1=price(); undoSnap={s:before,p:p0};
-  var d=(p1!=null&&p0!=null)?p1-p0:0; chip(d); showToast("✓ "+label+(d?" · "+(d>0?"+":"−")+gbp(d):" · Included"));
+function changed(before,p0,label,q){ var now=snap(); if(same(before,now)) return; var p1=price(); undoSnap={s:before,p:p0};
+  var d=(p1!=null&&p0!=null)?p1-p0:0; chip(d,q); showToast("✓ "+label+(d?" · "+(d>0?"+":"−")+gbp(d):q?" · priced by your designer":" · Included"));
   if(d) say("Price now "+gbp(p1)+" including VAT, "+(d>0?"up ":"down ")+gbp(d)+"."); if(navigator.vibrate&&!RM.matches&&/Android/.test(navigator.userAgent)) try{navigator.vibrate(8)}catch(_){}
   if(st.visited.indexOf(st.step)<0&&st.view==="step") st.visited.push(st.step); save(); sync() }
 root.addEventListener("click",function(e){ if(st.view!=="step") return; var b=e.target.closest("[role=radio],[data-hpq],input[type=checkbox],.dz-match,.seg button,button[data-w],button[data-d]"); if(!b||!root.contains(b)||b.closest(".dz-head,.dz-rad")) return;
   if(b.closest("[data-dz-proxy]")) return;
   var before=snap(), p0=price(), lab=b.classList.contains("dz-match")?"Matched to cushions":b.hasAttribute("data-hpq")?"Heaters":optLabel(b.closest("label")||b);
   b.classList.add("dz-press"); setTimeout(function(){b.classList.remove("dz-press")},120);
-  setTimeout(function(){ changed(before,p0,lab) },0) },true);
+  var q=/priced by your designer|on your quote|on request/i.test((b.closest("label")||b).textContent); setTimeout(function(){ changed(before,p0,lab,q) },0) },true);
 root.addEventListener("click",function(e){ var px=e.target.closest("[data-dz-proxy]"); if(!px||st.view!=="step") return; var before=snap(), p0=price(), lab=optLabel(px); setTimeout(function(){ changed(before,p0,lab) },0) },true);
-function chip(d){ var el=bar.querySelector("[data-dz-d]"); el.textContent=d?(d>0?"+":"−")+gbp(d):"Included"; el.classList.add("on"); clearTimeout(chip.t); chip.t=setTimeout(function(){el.classList.remove("on")},2000) }
+function chip(d,q){ var el=bar.querySelector("[data-dz-d]"); el.textContent=d?(d>0?"+":"−")+gbp(d):q?"Priced by your designer":"Included"; el.classList.toggle("dz-dq",!d&&!!q); el.classList.add("on"); clearTimeout(chip.t); chip.t=setTimeout(function(){el.classList.remove("on")},2000) }
 function showToast(m){ toast.querySelector("span").textContent=m; toast.querySelector("button").hidden=!undoSnap; toast.classList.add("on"); clearTimeout(tt); tt=setTimeout(hideToast,4000) }
 function hideToast(){ toast.classList.remove("on") }
 toast.querySelector("button").addEventListener("click",function(){ if(!undoSnap) return; var u=undoSnap; undoSnap=null; restore(u.s); hideToast(); chip(price()-(u.p==null?price():price())); say("Undone"); save(); sync(); if(rad.on) radDraw() });
@@ -181,6 +190,7 @@ function setNext(){ var n=bar.querySelector("[data-dz-next]"); n.classList.toggl
 function selThumb(p){ var b=p.querySelector("[role=radio][aria-checked=true]"); if(!b) return ""; var im=b.querySelector("img"); if(im) return '<img src="'+esc(im.getAttribute("src"))+'" alt="">';
   var i=b.querySelector("i[style]"); if(i) return '<i style="'+esc(i.getAttribute("style"))+'"></i>'; return "" }
 function valueOf(s){ var v=s.tab.querySelector(".v"), t=v&&v.textContent.trim();
+  if(s.extra){ var pv=$$("[role=radio][aria-checked=true]",s.panel).map(optLabel).filter(Boolean).join(" · ")||t||""; return pv+(furn()?" · "+valueOf(s.extra):"") }
   if(s.sides&&H&&SIDES()){ var c={B:0,F:0,H:0}; SIDES().get().forEach(function(x){if(c[x]!=null)c[x]++}); return (t||"")+(t?": ":"")+c.F+" clad, "+c.H+" half plexi, "+c.B+" open" }
   if(/colour/i.test(s.name)&&H){ var S=H.state, C={green:"Green",burgundy:"Burgundy",beige:"Beige",ivory:"Ivory",navy:"Navy",taupe:"Taupe"}; return s.subs?s.subs.map(function(sb){var k=(sb.g.querySelector("[data-hp]")||{}).getAttribute("data-hp");return C[S[k]]}).filter(Boolean).join(" · "):t }
   if(/heat/i.test(s.name)&&H){ var S2=H.state; var a=[]; if(S2.heater!=="none") a.push(S2.hq+" × "+(S2.heater==="h3"?"3kW":"3/6kW")+" · +"+gbp(H.prices[S2.heater]*S2.hq)); if(S2.cab&&S2.cab!=="none") a.push(S2.cab+"-shape cabinet"); if(S2.bbq&&S2.bbq!=="no") a.push("BBQ table"); return a.join(" · ")||"None" }
@@ -198,6 +208,7 @@ function reviewHTML(){ var A=act(), n=A.length, done=A.filter(function(i){return
     s+='<li class="'+(ok?"":"dz-open")+'"><span class="dz-ck" aria-hidden="true">'+(ok?"✓":"○")+'</span><span class="dz-th">'+(selThumb(x.panel)||(mainImg?'<img src="'+esc(mainImg)+'" alt="">':""))+'</span><span class="dz-cv"><small>'+esc(lab)+'</small><b>'+(ok?esc(valueOf(x)):"Not chosen yet")+'</b></span><button type="button" class="'+(ok?"dz-lnk":"btn gh")+'" data-dz-jump="'+i+'" aria-label="'+(ok?"Change ":"Choose ")+esc(x.name)+'">'+(ok?"Change":"Choose")+'</button></li>' });
   s+='</ul>';
   if(H&&H.lines){ s+='<details class="dz-lines"><summary>Itemised price</summary><ul>'+H.lines().map(function(l){return '<li><span><b>'+esc(l[0])+'</b><small>'+esc(l[1])+'</small></span><span>'+esc(l[2])+'</span></li>'}).join("")+'</ul></details>' }
+  var FINP=price(); if(FINP!=null&&/10-Year Plan/.test(document.body.textContent)){ var fr=Math.pow(1.089,1/12)-1, fm=Math.floor(FINP*0.8*fr/(1-Math.pow(1+fr,-120))), fx=(document.body.textContent.match(/from £([0-9,]+) a month/)||[])[1]; if(fx&&P0) fm=Math.round(+fx.replace(/,/g,)*FINP/P0); /* scale the page's own representative example */ s+='<p class="dz-fin">Or from <b>'+gbp(fm)+' a month</b> on our 10-Year Plan: 8.9% APR representative, 20% deposit, 120 months. Credit is subject to status. <a class="dz-lnk" href="../../your-project/prices-finance/index.html">How finance works</a></p>' }
   var cd=$("[data-rfcode]"); if(cd&&cd.textContent.indexOf("·")<0) s+='<p class="dz-code">Design code <b>'+esc(cd.textContent)+'</b> · quote it at a show site or on the phone.</p>';
   var inc=INFO&&INFO.panel.querySelector(".hpinc"), jl=!inc&&document.querySelector(".grj .jcard .jl");
   if(IE) s+='<details class="dz-inc" data-dz-ie><summary>What’s included</summary></details>'; else if(inc) s+='<details class="dz-inc"><summary>What’s included</summary>'+inc.outerHTML+'</details>'; else if(jl) s+='<details class="dz-inc"><summary>What’s included</summary>'+jl.outerHTML+'<a class="dz-lnk" href="#included">See everything included ↓</a></details>';
@@ -208,7 +219,10 @@ function sumHTML(){ return '<div class="dz-ssh"><b>Your '+esc(SHORT)+' so far</b
 function sync(){
   $$("[data-dz-proxy]").forEach(function(c){ var k=c.getAttribute("data-dz-proxy"), src=$$("[data-hp]",c.closest(".bp")).filter(function(b){return radioKey(b)===k&&!b.closest(".dz-cards")})[0]; c.setAttribute("aria-checked",src?src.getAttribute("aria-checked"):"false") });
   $$("[data-dz-match]").forEach(function(m){ var k=m.getAttribute("data-dz-match"); m.setAttribute("aria-pressed",String(!!(H&&H.state[k]===H.state.cushion))) });
-  curPrice(); }
+  curPrice(); bthumb(st.view); }
+function segs(pos,part){ var A=act(), h=""; A.forEach(function(ix,k){ var w=pos<0||k<pos?100:k===pos?Math.round(part*100):(st.visited.indexOf(ix)>=0?100:0); h+='<i class="'+(k===pos?"cur":"")+'"><b style="width:'+w+'%"></b></i>' }); head.querySelector(".dz-segs").innerHTML=h;
+  head.querySelector(".dz-trail").innerHTML=A.map(function(ix,k){ var nm=esc(STEPS[ix].name.replace(/&amp;/g,"&")); return k===pos?"<b>"+nm+"</b>":(st.visited.indexOf(ix)>=0?"✓ "+nm:nm) }).join(" · ")+" · "+(pos<0?"<b>Review</b>":"Review") }
+function bthumb(view){ var el=bar.querySelector(".dz-bth"); if(!el) return; var h=""; if(view==="step"){ h=selThumb(STEPS[st.step].panel) } if(!h&&mainImg) h='<img src="'+esc(mainImg)+'" alt="">'; el.innerHTML=h; el.hidden=!h }
 function show(view,i,sub,dir){
   if(rad.on) radClose();
   st.view=view; if(i!=null) st.step=i; st.sub=sub||0;
@@ -217,16 +231,17 @@ function show(view,i,sub,dir){
   var stepOn=view==="step", s=STEPS[st.step];
   if(stepOn){ if(s.tab.getAttribute("aria-selected")!=="true") s.tab.click(); }
   else if(view==="review"&&SUMTAB){ if(SUMTAB.tab.getAttribute("aria-selected")!=="true") SUMTAB.tab.click() }
-  ALL.forEach(function(x){ if(x.panel) x.panel.hidden=!(stepOn&&x===s) });
+  ALL.forEach(function(x){ if(x.panel) x.panel.hidden=!(stepOn&&x===s) }); extraVis();
   ttl.hidden=!stepOn; rv.hidden=view!=="review";
   if(stepOn){ var t=s.title, l=s.lead, nm=s.name;
     if(s.subs){ s.subs.forEach(function(sb,j){ var on=j===st.sub; sb.g.hidden=!on; if(sb.lab) sb.lab.hidden=true }); var sb=s.subs[st.sub]; t="Choose your "+sb.name.toLowerCase(); nm=s.name+" · "+sb.name; l=st.sub?"Or keep them matched to your cushions.":s.lead }
     ttl.querySelector("h3").textContent=t; var lp=ttl.querySelector("p"); lp.textContent=l; lp.hidden=!l;
-    var A=act(), pos=A.indexOf(st.step); if(pos<0) pos=0; head.querySelector(".dz-eyeb").textContent="Step "+(pos+1)+" of "+A.length+" · "+nm;
-    var frac=(pos+(s.subs?(st.sub+1)/s.subs.length:1))/A.length; head.querySelector(".dz-prog i").style.width=(frac*100).toFixed(1)+"%";
+    var A=act(), pos=A.indexOf(st.step); if(pos<0) pos=0; head.querySelector(".dz-ey").textContent="Step "+(pos+1)+" of "+A.length+" · "+nm;
+    segs(pos,s.subs?(st.sub+1)/s.subs.length:1);
     if(dir&&!RM.matches){ s.panel.classList.remove("dz-in-r","dz-in-l"); void s.panel.offsetWidth; s.panel.classList.add(dir>0?"dz-in-r":"dz-in-l") }
     if(st.visited.indexOf(st.step)<0) st.visited.push(st.step) }
-  if(view==="review"){ rv.innerHTML=reviewHTML(); var ieh=rv.querySelector("[data-dz-ie]"); if(ieh&&IE) ieh.appendChild(IE); head.querySelector(".dz-eyeb").textContent="Review · "+act().filter(function(i){return st.visited.indexOf(i)>=0}).length+" of "+act().length+" chosen"; head.querySelector(".dz-prog i").style.width="100%" }
+  if(view==="review"){ rv.innerHTML=reviewHTML(); var ieh=rv.querySelector("[data-dz-ie]"); if(ieh&&IE) ieh.appendChild(IE); head.querySelector(".dz-ey").textContent="Review · "+act().filter(function(i){return st.visited.indexOf(i)>=0}).length+" of "+act().length+" chosen"; segs(-1,1) }
+  bthumb(view);
   var stgE=root.querySelector(":scope>.stg"); if(stepOn&&s.sides&&stgE&&PH.matches){ if(ttl.nextSibling!==stgE) root.insertBefore(ttl,stgE) } else if(ttl.parentNode!==bpanel||bpanel.firstChild!==ttl) bpanel.insertBefore(ttl,bpanel.firstChild);
   head.hidden=view==="start"; [].forEach.call(head.querySelectorAll(".dz-list [data-dz-jump]"),function(b){ var j=b.getAttribute("data-dz-jump"); if(j!=="r"){ b.parentNode.hidden=skip(+j); b.textContent=(act().indexOf(+j)+1)+" · "+STEPS[+j].name.replace(/&amp;/g,"&") } }); root.classList.toggle("dz-sidesstep",stepOn&&!!s.sides); root.classList.toggle("dz-photostep",stepOn&&!s.sides&&!!s.panel.querySelector(".dz-cards")&&!s.subs); root.classList.toggle("dz-colstep",stepOn&&!!s.subs);
   head.querySelector(".dz-back").textContent=view==="review"?"‹ Back":"‹ Back";
@@ -240,14 +255,14 @@ function next(){ if(rad.on){ radClose(); return }
   var A=act().filter(function(i){return i>st.step}); if(A.length){ show("step",A[0],0,1) } else show("review"); scrollTop(); focusTitle() }
 function back(){ if(rad.on){ radClose(); return } if(st.view==="review"){ var A0=act(), li=A0[A0.length-1], l=STEPS[li]; show("step",li,l.subs?l.subs.length-1:0,-1); scrollTop(); return }
   var s=STEPS[st.step]; if(s.subs&&st.sub>0){ show("step",st.step,st.sub-1,-1); return } var B=act().filter(function(i){return i<st.step}); if(B.length){ var pi=B[B.length-1], p=STEPS[pi]; show("step",pi,p.subs?p.subs.length-1:0,-1) } else show("start"); scrollTop(); focusTitle() }
-bar.querySelector("[data-dz-next]").addEventListener("click",next);
+bar.querySelector("[data-dz-next]").addEventListener("click",next); bar.querySelector("[data-dz-bk]").addEventListener("click",function(){ back() });
 root.addEventListener("click",function(e){ var t=e.target.closest("[data-dz-back],[data-dz-x],[data-dz-list],[data-dz-jump],[data-dz-scratch],[data-dz-std],[data-dz-continue],[data-dz-reset]"); if(!t) return;
   if(t.hasAttribute("data-dz-back")){ back(); return }
   if(t.hasAttribute("data-dz-x")){ show("start"); scrollTop(); return }
   if(t.hasAttribute("data-dz-list")){ var L=head.querySelector(".dz-list"); L.hidden=!L.hidden; t.setAttribute("aria-expanded",String(!L.hidden)); return }
   if(t.hasAttribute("data-dz-jump")){ e.preventDefault(); head.querySelector(".dz-list").hidden=true; var j=t.getAttribute("data-dz-jump"); if(j==="r") show("review"); else show("step",+j,0,0); scrollTop(); focusTitle(); return }
   if(t.hasAttribute("data-dz-scratch")){ e.preventDefault(); show("step",act()[0],0,1); scrollTop(); focusTitle(); return }
-  if(t.hasAttribute("data-dz-std")){ e.preventDefault(); restore(STD.choices); st.visited=STEPS.map(function(_,i){return i}); show("review"); scrollTop(); focusTitle(); return }
+  if(t.hasAttribute("data-dz-std")){ e.preventDefault(); restore(STD.choices); /* the base is never part of the most popular spec: it stays open on Review */ st.visited=STEPS.map(function(_,i){return i}).filter(function(i){return !/found|base/i.test(STEPS[i].name)}); show("review"); scrollTop(); focusTitle(); return }
   if(t.hasAttribute("data-dz-continue")){ var sv=load(); if(sv){ st.visited=sv.visited||[]; if(sv.step==="review") show("review"); else show("step",Math.min(+sv.step||0,STEPS.length-1),0,1) } scrollTop(); focusTitle(); return }
   if(t.hasAttribute("data-dz-reset")){ wipe(); restore(FIRST); st.visited=[]; undoSnap=null; show("start"); return }
 });
@@ -257,7 +272,7 @@ document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ if(!sumsh
 /* ---------- bar placement, gold rule, header ---------- */
 var raf=0;
 function place(){ raf=0; var r=root.getBoundingClientRect(), vh=innerHeight, inv=st.view!=="start"&&r.top<vh-80&&r.bottom>140;
-  bar.classList.toggle("on",inv); html.classList.toggle("dz-inview",inv); if(!inv){ hideToast(); sumsh.hidden=true }
+  bar.classList.toggle("on",inv); html.classList.toggle("dz-inview",inv); if(inv) html.style.setProperty("--dzbh",bar.offsetHeight+"px"); if(!inv){ hideToast(); sumsh.hidden=true }
   /* one gold: while Review's gold Send is on screen, the header's Book a visit drops to outline */
   html.classList.toggle("dz-rv",st.view==="review"&&inv) }
 function qp(){ if(!raf) raf=requestAnimationFrame(place) }
@@ -269,6 +284,7 @@ $$("[data-sendpanel]",document).forEach(function(p){ var ok=p.querySelector("[da
 /* ---------- plan labels: never under 14px on screen ---------- */
 function fixLabels(){ $$("svg text",sec).forEach(function(t){ var svg=t.ownerSVGElement; if(!svg||!t.getScreenCTM||!svg.getBoundingClientRect().width) return; var m=t.getScreenCTM(); if(!m) return; var k=Math.hypot(m.a,m.b)||1;
   var cur=parseFloat(t.getAttribute("data-dzfs")||getComputedStyle(t).fontSize)||12; if(!t.getAttribute("data-dzfs")) t.setAttribute("data-dzfs",cur); var need=14.3/k; if(cur*k<14) t.style.setProperty("font-size",need.toFixed(2)+"px","important"); else t.style.removeProperty("font-size") }) }
+if(MERGED.length) new MutationObserver(function(){ extraVis(); if(st.view==="step") qp() }).observe(root,{attributes:true,attributeFilter:["data-mpfurn"]});
 var lt=0; new MutationObserver(function(){ clearTimeout(lt); lt=setTimeout(fixLabels,60) }).observe(sec,{childList:true,subtree:true});
 /* ---------- deep links: ?tab= or #design-step ---------- */
 var qs=new URLSearchParams(location.search), qt=+qs.get("tab");

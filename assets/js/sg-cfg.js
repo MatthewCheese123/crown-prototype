@@ -110,6 +110,8 @@
     if(S.door===st.t) S.door=null;
     radio("sgw",S.w); radio("sgd",S.d); radio("sgpkg",S.pkg); radio("sgdoor",dt); radio("sgroof",S.roof); radio("sgint",S.int);
     var sk=$("[data-sgsky]"); if(sk) sk.checked=S.sky;
+    /* v9.8.4 area 10: each width shows its price at the chosen depth and package */
+    $$("[data-sgw]").forEach(function(b){ var v=D.prices[S.pkg][b.getAttribute("data-sgw")+"x"+S.d], sm=b.querySelector(".sgwp"); if(!sm){ sm=document.createElement("small"); sm.className="sgwp"; b.appendChild(sm) } sm.textContent=v?gbp(v):"On request" });
     $$("[data-sgdoor]").forEach(function(b){ var tg=$("small",b); if(tg) tg.textContent=b.getAttribute("data-sgdoor")===st.t?"standard at "+S.w+"m":(b.hasAttribute("data-tbc")?"confirmed on your quote":"tailored") });
     $$("[data-sgpkgp]").forEach(function(e){ var v=price(e.getAttribute("data-sgpkgp")); e.textContent=v?gbp(v)+" at "+sz:"Price on request" });
     $$("[data-sgint=plasterboard]").forEach(function(b){ b.classList.toggle("pkonly",S.pkg!=="premium") });

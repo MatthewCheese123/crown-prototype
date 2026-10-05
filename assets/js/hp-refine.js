@@ -85,7 +85,7 @@ function build(){
   /* colour swatch chips -> circular fabric swatches */
   $$("#bp4 .hpsw button").forEach(function(b){ b.classList.add("rfsw") });
   /* 3 real installs before the configurator (Arthur) */
-  var ds=$("#design"); if(ds){ var st=document.createElement("section"); st.className="rfreal"; st.setAttribute("aria-label","Real Hampton installs");
+  var ds=null; /* v9.8.1: one gallery per page, so the extra installs strip is no longer added */ if(ds){ var st=document.createElement("section"); st.className="rfreal"; st.setAttribute("aria-label","Real Hampton installs");
     st.innerHTML='<div class="wrap"><div class="rk">Real Hampton installs</div><ul>'+
       [["../../assets/img/hampton/h03-1400.webp","Beside the house, cedar roof",""],["../../assets/img/hampton/h07.webp","Lakeside, on a raised deck",""],["../../assets/img/hampton/h13.webp","On the lawn of a country house",""]].map(function(x){ return '<li><img src="'+x[0]+'" alt="'+x[1]+'" loading="lazy"><span><b>'+x[1]+'</b>'+(x[2]?'<small>'+x[2]+'</small>':'')+'</span></li>' }).join("")+'</ul><a class="lnk" href="#installs">All Hampton photos →</a></div>';
     ds.parentNode.insertBefore(st,ds) }

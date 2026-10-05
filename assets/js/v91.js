@@ -6,20 +6,22 @@ var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){ret
 
 /* ---------- model page A: 'View all N photos' opens every photo in one scrolling dialog ---------- */
 (function(){
-  var hero=$("#hero.v91a,#hero.v91c"), g=hero&&$("[data-gallery]",hero); if(!g) return;
-  var th=$$(".thumbs button",g); var n=th.length; if(n<2) return;
+  var hero=$("#hero"), g=hero&&$("[data-gallery]",hero); if(!g||!$(".thumbs",g)) return;
+  var th=$$(".thumbs button[data-src]",g); var n=th.length; if(n<2) return;
   var name=(g.getAttribute("data-name")||"").trim();
   var dlg=document.createElement("dialog"); dlg.className="v91pv"; dlg.setAttribute("aria-label","All photos of the "+name);
   dlg.innerHTML='<div class="v91pvh"><h2>The '+name+' · '+n+' photos</h2><button type="button" class="v91pvx">Close</button></div><ul>'+
-    th.map(function(b){return '<li><figure><img src="'+b.getAttribute("data-src")+'" alt="'+(b.getAttribute("data-alt")||"").replace(/"/g,"&quot;")+'" loading="lazy" decoding="async"><figcaption>'+(b.getAttribute("data-alt")||"")+'</figcaption></figure></li>'}).join("")+'</ul>';
+    th.map(function(b){return '<li><figure><img src="'+b.getAttribute("data-src")+'"'+(b.getAttribute("data-srcset")?' srcset="'+b.getAttribute("data-srcset")+'" sizes="(max-width:900px) 100vw, 900px"':'')+' alt="'+(b.getAttribute("data-alt")||"").replace(/"/g,"&quot;")+'" loading="lazy" decoding="async"><figcaption>'+(b.getAttribute("data-alt")||"")+'</figcaption></figure></li>'}).join("")+'</ul>';
   document.body.appendChild(dlg);
   $(".v91pvx",dlg).addEventListener("click",function(){dlg.close()});
   dlg.addEventListener("click",function(e){ if(e.target===dlg) dlg.close() });
   var b=document.createElement("button"); b.type="button"; b.className="v91all"; b.textContent="View all "+n+" photos"; b.setAttribute("aria-haspopup","dialog");
-  b.addEventListener("click",function(e){ e.stopPropagation(); if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","") });
-  /* on layout A the button sits on the last big tile; on C (and phones) on the main photo */
-  var host=(hero.classList.contains("v91a")&&matchMedia("(min-width:1000px)").matches&&n>2)?$(".thumbs",g):$(".gmain",g);
-  host.appendChild(b);
+  /* v9.8.1: one gallery, one count. If the page's gallery block shows the same photos, the button takes you there; otherwise the dialog. */
+  var ins=document.querySelector("#installs [data-sggal]"), same=ins&&ins.querySelectorAll(".sgi").length===n;
+  b.addEventListener("click",function(e){ e.stopPropagation();
+    if(same){ ins.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"start"}); var f=ins.querySelector(".sgi button"); if(f) setTimeout(function(){ f.focus({preventScroll:true}) },400); return }
+    if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","") });
+  $(".gmain",g).appendChild(b);
 })();
 /* ---------- designers: base guidance dialog ---------- */
 (function(){

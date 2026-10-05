@@ -227,11 +227,18 @@
     b.textContent=p?"❚❚  Pause video":"▶  Play video";
   })});
 
-  /* ---------- gallery ---------- */
+  /* ---------- gallery (v9.8.1: the one shared swap; mp-page.js, hp-v852.js and v91.js reuse window.CrownGallery) ---------- */
+  window.CrownGallery={
+    /* copy a thumbnail button's photo (data-src, data-srcset, data-alt) onto an <img>; srcset and src always change together */
+    apply:function(img,b,sizes){ if(!img||!b) return; var ss=b.getAttribute("data-srcset");
+      if(ss){ img.setAttribute("srcset",ss); img.setAttribute("sizes",sizes||img.getAttribute("sizes")||"100vw") } else { img.removeAttribute("srcset"); img.removeAttribute("sizes") }
+      img.src=b.getAttribute("data-src"); img.alt=b.getAttribute("data-alt")||"" },
+    thumbs:function(g){ return g?[].slice.call(g.querySelectorAll(".thumbs button[data-src]")):[] }
+  };
   $$("[data-gallery]").forEach(function(g){
-    var main=$(".gmain img",g), cnt=$(".cnt",g), th=$$(".thumbs button",g);
+    var main=$(".gmain img",g), cnt=$(".cnt",g), th=CrownGallery.thumbs(g);
     th.forEach(function(b,i){ b.addEventListener("click",function(){
-      main.removeAttribute("srcset"); main.removeAttribute("sizes"); main.src=b.getAttribute("data-src"); main.alt=b.getAttribute("data-alt");
+      CrownGallery.apply(main,b);
       th.forEach(function(x){x.removeAttribute("aria-current")}); b.setAttribute("aria-current","true");
       if(cnt) cnt.textContent=(i+1)+" / "+th.length;
     })});

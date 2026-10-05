@@ -42,7 +42,7 @@ if(gm&&th.length>1){
  dots.className="hpv-dots";dots.setAttribute("role","group");dots.setAttribute("aria-label","Choose a photo");
  th.forEach(function(b,i){
   var im=document.createElement("img");
-  if(i===0&&main){im.src=main.getAttribute("src");im.loading="eager"}else{im.src=b.getAttribute("data-src");im.loading="lazy"}
+  if(window.CrownGallery) CrownGallery.apply(im,b,"100vw"); else im.src=b.getAttribute("data-src"); im.loading=i===0?"eager":"lazy";
   im.decoding="async";im.alt=b.getAttribute("data-alt")||"";im.setAttribute("aria-label",(i+1)+" of "+th.length);sw.appendChild(im);
   var d=document.createElement("button");d.type="button";d.setAttribute("aria-label","Show photo "+(i+1)+" of "+th.length);if(i===0)d.setAttribute("aria-current","true");
   d.addEventListener("click",function(){sw.scrollTo({left:i*sw.clientWidth,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})});

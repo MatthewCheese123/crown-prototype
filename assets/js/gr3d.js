@@ -33,7 +33,7 @@
     var INT={melamine:"white melamine",maple:"maple veneer acoustic panelling",teak:"teak veneer acoustic panelling",whitewash:"white wash redwood"};
     return {name:"Contemporary",W:W,D:Dd,e:2.25,top:2.5,roof:"flat",wall:"#6f5a46",roofc:"#3b3d40",frame:"#3b4045",glass:"#8fa6b0",front:fr,sides:[],boards:.14,
       sum:"Contemporary "+gbpN(W)+" m × "+gbpN(Dd)+" m, flat roof, 2.5 m overall. Anthracite aluminium doors and windows; interior in "+(INT[S.int]||S.int)+
-        ". Door and window positions and the cladding colour are illustrative (cladding is quoted individually)."};
+        ". Door and window positions and the cladding colour are illustrative (cladding is priced by your designer)."};
   }
   function signature(){
     var G=window.__sgcfg, S=G.state, D=G.data, W=+S.w, Dd=+S.d, st=G.stdDoor(S.w), dt=S.door||st.t, fr=[];

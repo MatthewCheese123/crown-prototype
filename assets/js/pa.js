@@ -225,7 +225,7 @@ if(ty){
     $("[data-ty-sub]").textContent=rq.format==="printed"?"We'll post your printed brochure. You can read the digital version straight away.":"Read it now, or find it in your inbox.";
     lines.push('<a class="btn big" href="https://www.crownpavilions.com/request-brochure/thank-you/" rel="noopener" target="_blank">Download the brochure<span class="sr"> (opens the Crown Pavilions brochures page)</span></a>');
     steps=[["Read the brochure","Prices, sizes and what's included, range by range."],["See it in person","Six show sites. Pick a day and a time that suit you."],["Talk it through","A design consultant can help with size, planning and foundations."]];
-    lines.push('<p style="margin-top:16px">The best next step is seeing a building in person: <a class="lnk" href="'+ROOT+'visit-us/index.html#book">book a show-site visit →</a></p>');
+    lines.push('<p style="margin-top:16px">The best next step is seeing a building in person: <a class="lnk" href="'+ROOT+'visit-us/index.html#book">book a visit →</a></p>');
   } else {
     var when=fmtDate(rq.date)+" at "+rq.slot;
     $("[data-ty-sub]").innerHTML=(s.remote?s.town:("<b>"+s.town+"</b> show site, "+s.gc))+" · <b>"+when+"</b>"+(rq.model?" · to see the "+rq.model:"");

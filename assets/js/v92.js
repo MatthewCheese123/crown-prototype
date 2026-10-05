@@ -34,10 +34,13 @@ $$("[data-v92dl]").forEach(function(el){ var s=SITES.filter(function(x){return x
   var name=h1.textContent.trim(), short=name.replace(/^Crown /,""), sites=at(name), q="?model="+encodeURIComponent(name)+"#book";
   var p=document.createElement("p"); p.className="v92ond";
   if(sites.length){
-    var l=sites.map(function(s){return '<a href="'+ROOT+'visit-us/'+s.id+'/index.html'+q+'">'+esc(s.town)+'</a>'});
-    p.innerHTML='<span class="v92dot" aria-hidden="true"></span>See the '+esc(short)+' at '+(l.length>1?l.slice(0,-1).join(", ")+" or "+l[l.length-1]:l[0])+(l.length===1?' →':'');
+    /* v9.8.2: Matthew's names for the Hampton's three sites; show sites on one tidy line */
+    var HN=name==="Crown Hampton"?{"bagshot":"Longacres","wickford":"Essex (Alton)","woburn-sands":"Milton Keynes (Frosts)"}:{};
+    var l=sites.map(function(s){return '<a class="v98site" href="'+ROOT+'visit-us/'+s.id+'/index.html'+q+'">'+esc(HN[s.id]||s.town)+'</a>'});
+    p.innerHTML='<span class="v92dot" aria-hidden="true"></span>See the '+esc(short)+' at '+l.join('<span class="v98sep" aria-hidden="true"> · </span>')+(l.length===1?' →':'');
   } else {
-    p.innerHTML='Not on display yet. <a href="'+ROOT+'visit-us/index.html'+q+'">See the '+esc(short)+' at your place →</a>';
+    if(/^(horizon|oceania|tranquility|sunrise-carport)$/.test(m[2])) p.innerHTML='Not on show yet. <a href="'+ROOT+'visit-us/index.html?model='+encodeURIComponent(name)+'&site=home#book">A designer can visit you to plan it →</a>'; /* v9.8.2: garden shelters */
+    else p.innerHTML='Not on display yet. <a href="'+ROOT+'visit-us/index.html'+q+'">See the '+esc(short)+' at your place →</a>';
   }
   cta.parentNode.insertBefore(p,cta.nextSibling);
 })();
