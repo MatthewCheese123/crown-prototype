@@ -40,3 +40,17 @@ html{scroll-behavior:smooth}
 /* v9.6.0: closing CTA as a solid cream button (F1) */
 html body .panext a.btn.v96cream:not(#z1):not(#z2):not(#z3):not(#z4){background:#f7f5f2!important;border-color:#f7f5f2!important;color:#123627!important}
 html body .panext a.btn.v96cream:not(#z1):not(#z2):not(#z3):not(#z4):hover{background:#fff!important}
+
+/* v9.8.2: hero video back on the C3 hero (Home only). The film fills the hero exactly as the photo did, under the
+   same gradient; hero-video.js picks the 1600 or 960 file (no src in the HTML) and keeps the poster for
+   reduced motion, Save-Data and 2G. Play/Pause is a 44px round icon (WCAG 2.2.2). */
+.v959hero>video.hv{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 60%;z-index:-2;background:#123627;display:block}
+.v959hero .vctl{position:absolute;z-index:2;top:12px;right:12px;bottom:auto;left:auto;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;margin:0;background:none;border:0;border-radius:50%;overflow:hidden;text-indent:200%;white-space:nowrap;color:transparent;cursor:pointer}
+.v959hero .vctl[hidden]{display:none}
+.v959hero .vctl::before{content:"";position:absolute;left:4px;top:4px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.6);box-shadow:0 0 0 1px rgba(255,255,255,.35)}
+.v959hero .vctl::after{content:"";position:absolute;left:16px;top:15px;width:4px;height:14px;border-left:3px solid #fff;border-right:3px solid #fff;text-indent:0}
+.v959hero .vctl[aria-label^="Play"]::after{left:18px;top:14px;width:0;height:0;border-style:solid;border-width:8px 0 8px 12px;border-color:transparent transparent transparent #fff;border-right:0}
+.v959hero .vctl:hover::before{background:rgba(0,0,0,.78)}
+.v959hero .vctl:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(min-width:1000px){.v959hero .vctl{top:auto;right:24px;bottom:24px}}
+@media(max-width:700px){.v959hero>video.hv{object-position:center 70%}}

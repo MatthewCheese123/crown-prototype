@@ -5,7 +5,7 @@
 (function(){
   var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)");
   document.querySelectorAll("video[data-hv]").forEach(function(v){
-    var hero=v.closest(".hero"), btn=hero&&hero.querySelector(".vctl"), userPaused=false, loaded=false;
+    var hero=v.closest(".hero,.v959hero"), btn=hero&&hero.querySelector(".vctl"), userPaused=false, loaded=false;
     function mobile(){ var m=v.getAttribute("data-m"), r=v.getBoundingClientRect();
       return m==="portrait" ? r.height>r.width : (window.innerWidth<900) }
     var mob=v.getAttribute("data-src-m")&&mobile();
@@ -22,7 +22,7 @@
       btn.addEventListener("click",function(){ if(v.paused){ userPaused=false; play() } else { userPaused=true; v.pause() } }) }
     /* poster only: reduced motion, Save-Data, or a 2G connection (the visitor can still press Play) */
     var C=navigator.connection, SD=!!(C&&(C.saveData||/(^|-)2g$/.test(C.effectiveType||"")));
-    if((RM&&RM.matches)||SD){ v.removeAttribute("autoplay"); hero.classList.add("hv-still"); ui(false); return }
+    if((RM&&RM.matches)||SD){ v.removeAttribute("autoplay"); if(hero) hero.classList.add("hv-still"); ui(false); return }
     ui(true); load();
     /* pause off-screen to save battery; resume only if the visitor hadn't paused it */
     if("IntersectionObserver" in window) new IntersectionObserver(function(es){ es.forEach(function(e){
