@@ -2,8 +2,8 @@
    1 one gold per screen  2 no extra fixed/sticky bars  3 360px overflow  4 44px targets + square corners  5 type scale  6 finder cards */
 
 /* ---------- 1. One gold: only header "Book a visit" (and the menu's copy) stay gold. Every other .btn is green solid. ---------- */
-html body .btn.btn:not(#z1):not(#z2):not(#z3):not(.gh):not(.ghl):not(.hbook):not(.mbook):not(.v94ol){background:#123627!important;border-color:#123627!important;color:#f7f5f2!important}
-html body .btn.btn:not(#z1):not(#z2):not(#z3):not(.gh):not(.ghl):not(.hbook):not(.mbook):not(.v94ol):hover{background:#0d2a1e!important;border-color:#0d2a1e!important;color:#fff!important}
+html body .btn.btn:not(#z1):not(#z2):not(#z3):not(.gh):not(.ghl):not(.hbook):not(.mbook):not(.v94ol):not(.dz-gold){background:#123627!important;border-color:#123627!important;color:#f7f5f2!important}
+html body .btn.btn:not(#z1):not(#z2):not(#z3):not(.gh):not(.ghl):not(.hbook):not(.mbook):not(.v94ol):not(.dz-gold):hover{background:#0d2a1e!important;border-color:#0d2a1e!important;color:#fff!important}
 html body .hero.hv2 .hvc3 .hvbk{background:#f7f5f2!important;border-color:#f7f5f2!important;color:#123627!important}
 html body .hpsum>i,html body .jdot,html body .ypgo,html body .sgtl{background:#123627!important;color:#f7f5f2!important;border-color:#123627!important}
 /* green buttons that sit on dark green or photo bands become cream solid with green text */
@@ -27,6 +27,7 @@ main .grid>*,main [class*=grid]>*,main .g>*{min-width:0}
 html body *,html body *::before,html body *::after{border-radius:0!important}
 html body .dot,html body .paopt .dot,html body .patl li::before,html body .hpv-dots button::before,html body .hpo::after,html body .hpseg button::after,html body .vctl,html body .vctl::before,html body .avatar,html body [class*=avatar],html body .cmpk input[type=radio],html body input[type=radio]{border-radius:50%!important}
 html body .paopt.cb .dot{border-radius:0!important}
+html body :is(.dz-bub,.dz-bub img,.dz-tick,.dz-next3 b,.hpsw .rfsw i):not(#z1):not(#z2):not(#z3){border-radius:50%!important}
 
 /* ---------- 5. Type scale: H1 56/38, H2 42/30, floor 14px ---------- */
 html body main h1:not(#z1):not(#z2):not(#z3){font-size:56px!important;line-height:1.08!important}

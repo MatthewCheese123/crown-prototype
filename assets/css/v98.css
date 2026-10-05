@@ -1,0 +1,6 @@
+/* v9.8 (5 Oct 2026): models-review batch. Loaded last on the 28 model pages and the two hubs. */
+/* phone: show-site list on the hubs fits at 360 (was 186px + 150px + gap) */
+@media (max-width:600px){html body .visitb .sites{grid-template-columns:repeat(2,minmax(0,1fr))!important}html body .visitb .sites>div{min-width:0;overflow-wrap:anywhere}}
+/* phone: designer view tabs (Front / Plan / Photo) never push the page wider */
+html body .vtabs{max-width:100%;flex-wrap:wrap}
+@media (max-width:600px){html body #hero .v9fur{margin-top:8px!important}}
